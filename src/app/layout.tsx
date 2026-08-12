@@ -31,8 +31,11 @@ export const metadata: Metadata = {
     'IS 1786 Reinforcement Bars',
   ],
   icons: {
-    icon: '/logo.png',
-    apple: '/logo.png',
+    icon: [
+      { url: '/favicon.png', type: 'image/png' },
+      { url: '/icon.png', type: 'image/png' },
+    ],
+    apple: '/apple-touch-icon.png',
   },
   authors: [{ name: 'Shree Balaji Rolling Mills Pvt. Ltd.' }],
   openGraph: {
