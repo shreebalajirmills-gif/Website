@@ -1,15 +1,31 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { FINANCIAL_METRICS } from '@/data/financial';
 import { FinancialGrowthMetric } from '@/types';
 import { BarChart3, Zap, Award, Download, TrendingUp, Layers, Activity } from 'lucide-react';
 import { downloadDynamicPdf } from '@/lib/pdf-generator';
 import { SteelSparksCanvas } from '@/components/3d/SteelSparksCanvas';
+import { motion, useScroll, useTransform, useSpring, useMotionValueEvent, AnimatePresence } from 'framer-motion';
 
 export const GrowthTimeline: React.FC = () => {
   const [selectedYear, setSelectedYear] = useState<string>(FINANCIAL_METRICS[0].year);
   const [chartMode, setChartMode] = useState<'revenue' | 'capacity' | 'ebitda'>('revenue');
+  const [isManualSelection, setIsManualSelection] = useState<boolean>(false);
+
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  // Scroll Driven Progression
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start 75%', 'end 30%'],
+  });
+
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 90,
+    damping: 20,
+    restDelta: 0.001,
+  });
 
   const activeMetric: FinancialGrowthMetric =
     FINANCIAL_METRICS.find((m) => m.year === selectedYear) || FINANCIAL_METRICS[0];
@@ -50,7 +66,7 @@ export const GrowthTimeline: React.FC = () => {
     return { ...item, cx, cy, val, maxVal, unit, labelVal };
   });
 
-  // Construct SVG Bezier Smooth Curve & Area Path
+  // Dynamic SVG Bezier Smooth Curve & Area Path
   const pathD = chartPoints.reduce((acc, pt, i, arr) => {
     if (i === 0) return `M ${pt.cx} ${pt.cy}`;
     const prev = arr[i - 1];
@@ -63,9 +79,49 @@ export const GrowthTimeline: React.FC = () => {
 
   const areaD = `${pathD} L ${chartPoints[chartPoints.length - 1].cx} ${height - padBottom} L ${chartPoints[0].cx} ${height - padBottom} Z`;
 
+  // Dynamic Scroll Clip-Path width (draws graph progressively from padLeft to width - padRight)
+  const clipWidth = useTransform(smoothProgress, [0, 1], [padLeft - 5, width - padRight + 10]);
+
+  // Dynamic Cursor Glow position synchronized to scroll
+  const tracerCx = useTransform(
+    smoothProgress,
+    [0, 0.25, 0.5, 0.75, 1],
+    chartPoints.map((p) => p.cx)
+  );
+  const tracerCy = useTransform(
+    smoothProgress,
+    [0, 0.25, 0.5, 0.75, 1],
+    chartPoints.map((p) => p.cy)
+  );
+
+  // Synchronize active year metric node with scroll progress
+  useMotionValueEvent(smoothProgress, 'change', (latest) => {
+    if (isManualSelection) return;
+    if (latest < 0.15) setSelectedYear(FINANCIAL_METRICS[0].year);
+    else if (latest < 0.38) setSelectedYear(FINANCIAL_METRICS[1].year);
+    else if (latest < 0.62) setSelectedYear(FINANCIAL_METRICS[2].year);
+    else if (latest < 0.85) setSelectedYear(FINANCIAL_METRICS[3].year);
+    else setSelectedYear(FINANCIAL_METRICS[4].year);
+  });
+
+  const handleManualYearSelect = (year: string) => {
+    setIsManualSelection(true);
+    setSelectedYear(year);
+    setTimeout(() => setIsManualSelection(false), 5000);
+  };
+
+  const handleManualModeSelect = (mode: 'revenue' | 'capacity' | 'ebitda') => {
+    setIsManualSelection(true);
+    setChartMode(mode);
+    setTimeout(() => setIsManualSelection(false), 5000);
+  };
+
   return (
-    <section id="growth-timeline" className="py-28 bg-steel-base border-b border-steel-200 relative steel-grid-pattern overflow-hidden">
-      
+    <section
+      ref={sectionRef}
+      id="growth-timeline"
+      className="py-28 bg-steel-base border-b border-steel-200 relative steel-grid-pattern overflow-hidden"
+    >
       {/* 3D Liquid Metal Steel Sparks Canvas */}
       <SteelSparksCanvas />
 
@@ -74,7 +130,6 @@ export const GrowthTimeline: React.FC = () => {
       <div className="ambient-liquid-glow ambient-glow-authority bottom-10 left-10" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
           <div className="glass-pill px-4 py-1.5 inline-flex items-center gap-2 text-growth-800 text-xs font-bold uppercase tracking-wider">
@@ -84,13 +139,12 @@ export const GrowthTimeline: React.FC = () => {
             Institutional Growth & <span className="text-gradient-growth">Scale Roadmap</span>
           </h2>
           <p className="text-base text-steel-600 leading-relaxed font-normal">
-            Interactive breakdown of capacity trajectory, gross margin expansion, and multi-phase scaling objectives.
+            Scroll down to watch the financial trajectory curve grow live alongside operational milestone expansion.
           </p>
         </div>
 
         {/* 3 Phase Cards in Liquid Glass */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14">
-          
           <div className="liquid-glass p-6 rounded-3xl border border-steel-200 relative space-y-3 shadow-md">
             <div className="flex items-center justify-between">
               <span className="text-xs font-bold text-steel-500 uppercase tracking-widest font-mono">Phase 1</span>
@@ -120,7 +174,6 @@ export const GrowthTimeline: React.FC = () => {
             <p className="text-2xl font-black text-growth-800 font-mono">₹1,000 Cr Target</p>
             <p className="text-xs text-steel-700 font-normal">Sustained market growth & profitability expansion milestone</p>
           </div>
-
         </div>
 
         {/* Phase Pills Filter */}
@@ -130,7 +183,7 @@ export const GrowthTimeline: React.FC = () => {
             return (
               <button
                 key={metric.year}
-                onClick={() => setSelectedYear(metric.year)}
+                onClick={() => handleManualYearSelect(metric.year)}
                 className={`glass-pill px-6 py-2.5 text-xs font-black transition-all flex items-center gap-2 cursor-pointer ${
                   isSelected
                     ? 'bg-slate-950 text-amber-400 font-black border border-slate-700 shadow-md scale-105 ring-2 ring-amber-500/30'
@@ -139,9 +192,11 @@ export const GrowthTimeline: React.FC = () => {
               >
                 <span>{metric.year}</span>
                 {metric.year === 'Phase 3' && (
-                  <span className={`text-[9px] px-1.5 py-0.5 rounded font-black uppercase ${
-                    isSelected ? 'bg-amber-400 text-slate-950' : 'bg-growth-100 text-growth-800'
-                  }`}>
+                  <span
+                    className={`text-[9px] px-1.5 py-0.5 rounded font-black uppercase ${
+                      isSelected ? 'bg-amber-400 text-slate-950' : 'bg-growth-100 text-growth-800'
+                    }`}
+                  >
                     Inflection
                   </span>
                 )}
@@ -152,10 +207,8 @@ export const GrowthTimeline: React.FC = () => {
 
         {/* Liquid Glass Interactive Visualizer */}
         <div className="liquid-glass-prominent rounded-3xl p-6 sm:p-8 border border-steel-200 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center shadow-xl">
-          
           {/* Left Column: Interactive Vector Graph Visualizer */}
           <div className="lg:col-span-7 space-y-6">
-            
             {/* Chart Header & Metric Selectors */}
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
               <h4 className="text-base font-bold text-steel-900 flex items-center gap-2">
@@ -167,9 +220,11 @@ export const GrowthTimeline: React.FC = () => {
               <div className="flex items-center gap-1.5 p-1 bg-steel-100 rounded-full border border-steel-200 text-xs font-bold">
                 <button
                   type="button"
-                  onClick={() => setChartMode('revenue')}
+                  onClick={() => handleManualModeSelect('revenue')}
                   className={`px-3 py-1 rounded-full transition-all flex items-center gap-1 cursor-pointer ${
-                    chartMode === 'revenue' ? 'bg-white text-growth-800 shadow-sm font-black' : 'text-steel-600 hover:text-steel-900'
+                    chartMode === 'revenue'
+                      ? 'bg-white text-growth-800 shadow-sm font-black'
+                      : 'text-steel-600 hover:text-steel-900'
                   }`}
                 >
                   <TrendingUp className="w-3.5 h-3.5" />
@@ -177,9 +232,11 @@ export const GrowthTimeline: React.FC = () => {
                 </button>
                 <button
                   type="button"
-                  onClick={() => setChartMode('capacity')}
+                  onClick={() => handleManualModeSelect('capacity')}
                   className={`px-3 py-1 rounded-full transition-all flex items-center gap-1 cursor-pointer ${
-                    chartMode === 'capacity' ? 'bg-white text-trust-800 shadow-sm font-black' : 'text-steel-600 hover:text-steel-900'
+                    chartMode === 'capacity'
+                      ? 'bg-white text-trust-800 shadow-sm font-black'
+                      : 'text-steel-600 hover:text-steel-900'
                   }`}
                 >
                   <Layers className="w-3.5 h-3.5" />
@@ -187,9 +244,11 @@ export const GrowthTimeline: React.FC = () => {
                 </button>
                 <button
                   type="button"
-                  onClick={() => setChartMode('ebitda')}
+                  onClick={() => handleManualModeSelect('ebitda')}
                   className={`px-3 py-1 rounded-full transition-all flex items-center gap-1 cursor-pointer ${
-                    chartMode === 'ebitda' ? 'bg-white text-amber-800 shadow-sm font-black' : 'text-steel-600 hover:text-steel-900'
+                    chartMode === 'ebitda'
+                      ? 'bg-white text-amber-800 shadow-sm font-black'
+                      : 'text-steel-600 hover:text-steel-900'
                   }`}
                 >
                   <Activity className="w-3.5 h-3.5" />
@@ -200,19 +259,22 @@ export const GrowthTimeline: React.FC = () => {
 
             {/* Responsive Vector SVG Graph */}
             <div className="w-full bg-steel-50/80 rounded-2xl p-4 border border-steel-200 relative overflow-hidden shadow-inner">
-              <svg
-                viewBox={`0 0 ${width} ${height}`}
-                className="w-full h-auto overflow-visible"
-              >
+              <svg viewBox={`0 0 ${width} ${height}`} className="w-full h-auto overflow-visible">
                 <defs>
                   <linearGradient id="growthGradient" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="#059669" stopOpacity="0.35" />
+                    <stop offset="0%" stopColor="#059669" stopOpacity="0.45" />
                     <stop offset="100%" stopColor="#059669" stopOpacity="0.0" />
                   </linearGradient>
+
                   <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
                     <feGaussianBlur stdDeviation="3" result="blur" />
                     <feComposite in="SourceGraphic" in2="blur" operator="over" />
                   </filter>
+
+                  {/* Scroll Reveal Dynamic Clip Path */}
+                  <clipPath id="scrollCurveClip">
+                    <motion.rect x="0" y="0" height={height} style={{ width: clipWidth }} />
+                  </clipPath>
                 </defs>
 
                 {/* Horizontal Gridlines */}
@@ -232,32 +294,43 @@ export const GrowthTimeline: React.FC = () => {
                   );
                 })}
 
-                {/* Fill Area Gradient */}
-                <path d={areaD} fill="url(#growthGradient)" />
+                {/* Fill Area Gradient (Clipped to Scroll Progress) */}
+                <motion.path
+                  d={areaD}
+                  fill="url(#growthGradient)"
+                  clipPath="url(#scrollCurveClip)"
+                  animate={{ d: areaD }}
+                  transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                />
 
-                {/* Smooth Vector Curve Line */}
-                <path
+                {/* Smooth Vector Curve Line (Clipped to Scroll Progress) */}
+                <motion.path
                   d={pathD}
                   fill="none"
                   stroke="#059669"
-                  strokeWidth="3.5"
+                  strokeWidth="4"
                   strokeLinecap="round"
                   filter="url(#glow)"
+                  clipPath="url(#scrollCurveClip)"
+                  animate={{ d: pathD }}
+                  transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
                 />
+
+                {/* Traveling Scroll Glow Cursor Point */}
+                <motion.g style={{ x: tracerCx, y: tracerCy }} clipPath="url(#scrollCurveClip)">
+                  <circle r="12" className="fill-growth-500/30 animate-ping" />
+                  <circle r="6" className="fill-growth-600 stroke-white stroke-2 shadow-lg" />
+                </motion.g>
 
                 {/* Data Points & Interactive Nodes */}
                 {chartPoints.map((pt) => {
                   const isSelected = pt.year === selectedYear;
 
                   return (
-                    <g
-                      key={pt.year}
-                      onClick={() => setSelectedYear(pt.year)}
-                      className="cursor-pointer group"
-                    >
+                    <g key={pt.year} onClick={() => handleManualYearSelect(pt.year)} className="cursor-pointer group">
                       {/* Vertical Reference Line on Active Point */}
                       {isSelected && (
-                        <line
+                        <motion.line
                           x1={pt.cx}
                           y1={padTop}
                           x2={pt.cx}
@@ -265,40 +338,43 @@ export const GrowthTimeline: React.FC = () => {
                           stroke="#10b981"
                           strokeDasharray="3 3"
                           strokeWidth="1.5"
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          transition={{ duration: 0.3 }}
                         />
                       )}
 
                       {/* Outer Pulse Circle */}
-                      <circle
-                        cx={pt.cx}
-                        cy={pt.cy}
-                        r={isSelected ? 10 : 6}
-                        className={`transition-all duration-300 ${
+                      <motion.circle
+                        animate={{ cx: pt.cx, cy: pt.cy, r: isSelected ? 10 : 6 }}
+                        transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+                        className={`transition-colors duration-300 ${
                           isSelected
-                            ? 'fill-growth-500 stroke-growth-900 stroke-2'
+                            ? 'fill-growth-500 stroke-growth-900 stroke-2 shadow-md'
                             : 'fill-white stroke-growth-600 stroke-2 group-hover:r-8'
                         }`}
                       />
 
                       {/* Inner Dot */}
-                      <circle
-                        cx={pt.cx}
-                        cy={pt.cy}
-                        r={isSelected ? 4 : 2}
+                      <motion.circle
+                        animate={{ cx: pt.cx, cy: pt.cy, r: isSelected ? 4 : 2 }}
+                        transition={{ type: 'spring', stiffness: 300, damping: 25 }}
                         className={isSelected ? 'fill-slate-950' : 'fill-growth-600'}
                       />
 
                       {/* Hover / Active Badge Pill */}
-                      <text
-                        x={pt.cx}
-                        y={pt.cy - 14}
+                      <motion.text
+                        animate={{ x: pt.cx, y: pt.cy - 14 }}
+                        transition={{ type: 'spring', stiffness: 300, damping: 25 }}
                         textAnchor="middle"
                         className={`text-[10px] font-mono font-black ${
-                          isSelected ? 'fill-growth-800 font-extrabold' : 'fill-steel-600 group-hover:fill-steel-900'
+                          isSelected
+                            ? 'fill-growth-800 font-extrabold text-xs'
+                            : 'fill-steel-600 group-hover:fill-steel-900'
                         }`}
                       >
                         {pt.labelVal}
-                      </text>
+                      </motion.text>
 
                       {/* X-Axis Label */}
                       <text
@@ -316,7 +392,6 @@ export const GrowthTimeline: React.FC = () => {
                 })}
               </svg>
             </div>
-
           </div>
 
           {/* Right Column: Liquid Glass Active Metric Card */}
@@ -401,7 +476,7 @@ export const GrowthTimeline: React.FC = () => {
                     'Inflection FY27-FY28: Revenue ₹260 Cr -> ₹812 Cr | Capacity 180,000 TPA',
                     'Scale FY29-FY30: Revenue ₹903 Cr -> ₹1,006 Cr | PAT ₹30.00 Cr (2.98%)',
                     'Key Driver: Operating leverage & TMT Rebar Fe-500D 144,000 TPA expansion',
-                    'Factory: Bhiwari, Haryana | Head Office: Delhi NCR'
+                    'Factory: Bhiwadi, Haryana | Head Office: Delhi NCR'
                   ]
                 );
               }}

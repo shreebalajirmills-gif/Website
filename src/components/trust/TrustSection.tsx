@@ -109,7 +109,7 @@ export const TrustSection: React.FC = () => {
                         `Issuing Authority: ${cert.issuer}`,
                         `Scope: ${cert.description}`,
                         `Holder: Shree Balaji Rolling Mills Private Limited`,
-                        `Plant Location: Bhiwari, Haryana`,
+                        `Plant Location: Bhiwadi, Haryana`,
                         `Head Office: Delhi NCR`,
                         `Status: Active & Verified Compliance`
                       ]
