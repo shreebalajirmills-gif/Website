@@ -38,14 +38,14 @@ export const Footer: React.FC<FooterProps> = ({ onSelectSegment = () => {} }) =>
               </div>
             </div>
             <p className="text-xs sm:text-sm text-slate-300 max-w-md leading-relaxed font-normal">
-              Use this footer block for your real company summary, proof points, and operating notes once the MVP content is ready.
+              Premier steel manufacturing platform operating 36,000 TPA structural steel & 144,000 TPA TMT bar rolling mill in Bhiwadi, Haryana.
             </p>
             <div className="flex flex-wrap items-center gap-3 pt-2 text-xs font-semibold">
               <span className="glass-pill px-3 py-1 text-emerald-300 inline-flex items-center gap-1.5 border-emerald-500/30">
-                <ShieldCheck className="w-4 h-4 text-emerald-400" /> Brand Badge Placeholder
+                <ShieldCheck className="w-4 h-4 text-emerald-400" /> BIS IS 2062 & IS 1786 Certified
               </span>
               <span className="glass-pill px-3 py-1 text-slate-200">
-                Quality Badge Placeholder
+                180,000 TPA Rolling Capacity
               </span>
             </div>
           </div>

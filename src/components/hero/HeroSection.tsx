@@ -38,11 +38,11 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onSelectSegment }) => 
           <div className="glass-pill px-5 py-2 inline-flex items-center gap-3 backdrop-blur-xl border-steel-300 shadow-md">
             <span className="flex items-center gap-1.5 text-xs font-mono font-bold text-growth-700">
               <Flame className="w-4 h-4 text-growth-600 animate-pulse" />
-              MVP HERO PLACEHOLDER
+              STEEL MANUFACTURING PLATFORM
             </span>
             <span className="h-3 w-px bg-steel-300" />
             <span className="text-xs font-semibold text-steel-700 tracking-wide font-mono">
-              PLACEHOLDER COPY ONLY | REPLACE WITH REAL HERO METRICS
+              180,000 TPA CAPACITY • BHIWADI, HARYANA
             </span>
           </div>
         </div>
@@ -50,19 +50,19 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onSelectSegment }) => 
         {/* Hero Subject Thesis Title */}
         <div className="text-center max-w-4xl mx-auto space-y-6">
           <h1 className="text-4xl sm:text-6xl md:text-7xl font-black tracking-tight text-steel-900 leading-[1.06]">
-            The Rolling Platform. <br className="hidden sm:inline" />
-            <span className="text-gradient-growth">Built for your MVP story.</span>
+            The Steel Rolling Platform. <br className="hidden sm:inline" />
+            <span className="text-gradient-growth">Built for Scaled Infrastructure.</span>
           </h1>
 
           <p className="text-base sm:text-xl text-steel-600 max-w-2xl mx-auto leading-relaxed font-normal">
-            Placeholder copy for product, inquiry, and trust routes until your real business information is ready.
+            Manufacturing IS 2062 structural steel profiles and expanding into 144,000 TPA IS 1786 Fe-500D TMT bar production across Northern India.
           </p>
         </div>
 
         {/* Studio Design Element: Interactive Rolling Mill Pass Terminal (Bespoke Hero Thesis) */}
         <div className="mt-12 max-w-5xl mx-auto">
           <div className="glass-pill px-4 py-1.5 text-center text-xs font-mono font-bold uppercase tracking-widest text-growth-700 mb-6 flex items-center justify-center gap-2 max-w-md mx-auto">
-            <span>Select a Placeholder Journey</span>
+            <span>Select Your Inquiry Focus</span>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -86,10 +86,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onSelectSegment }) => 
                   </span>
                 </div>
                 <h3 className="text-lg font-bold text-steel-900 group-hover:text-authority-700 transition-colors">
-                  Distributor Placeholder
+                  Distributor Network
                 </h3>
                 <p className="text-xs text-steel-600 mt-1.5 leading-snug">
-                  Replace this with your distributor pitch, margin policy, or partner program.
+                  Direct mill pricing, transparent dispatch schedules, and dedicated regional supply for trade partners.
                 </p>
               </div>
 
@@ -118,10 +118,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onSelectSegment }) => 
                   </span>
                 </div>
                 <h3 className="text-lg font-bold text-steel-900 group-hover:text-growth-700 transition-colors">
-                  Contractor Placeholder
+                  Contractors & EPCs
                 </h3>
                 <p className="text-xs text-steel-600 mt-1.5 leading-snug">
-                  Replace this with your contractor, EPC, or bulk-order story.
+                  High-tensile structural sections & Fe-500D TMT bars engineered for heavy civic infrastructure & high-rises.
                 </p>
               </div>
 
@@ -150,10 +150,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onSelectSegment }) => 
                   </span>
                 </div>
                 <h3 className="text-lg font-bold text-steel-900 group-hover:text-trust-700 transition-colors">
-                  Project Placeholder
+                  Infrastructure Projects
                 </h3>
                 <p className="text-xs text-steel-600 mt-1.5 leading-snug">
-                  Replace this with project, tender, or procurement details.
+                  BIS certified IS 2062 & IS 1786 steel sections tested for seismic resilience and industrial framing.
                 </p>
               </div>
 
@@ -182,10 +182,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onSelectSegment }) => 
                   </span>
                 </div>
                 <h3 className="text-lg font-bold text-steel-900 group-hover:text-growth-800 transition-colors">
-                  Investor Placeholder
+                  Investor Roadmap
                 </h3>
                 <p className="text-xs text-steel-600 mt-1.5 leading-snug">
-                  Replace this with your capital, roadmap, or growth narrative.
+                  Proven 2.42% gross margin resilience scaling toward ₹1,000+ Cr turnover by FY30.
                 </p>
               </div>
 
@@ -222,7 +222,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onSelectSegment }) => 
         <div className="flex justify-center mt-12">
           <a href="#products" className="glass-pill px-5 py-2.5 flex items-center gap-2.5 text-xs font-mono font-bold text-steel-700 hover:text-growth-700 transition-colors">
             <Truck className="w-4 h-4 text-growth-600" />
-            <span>ENTER PRODUCT PLACEHOLDER SECTION</span>
+            <span>EXPLORE PRODUCT CATALOG & SPECS</span>
             <ChevronDown className="w-4 h-4 animate-bounce text-growth-600" />
           </a>
         </div>

@@ -56,13 +56,13 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onSelectSegment 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
           <div className="glass-pill px-4 py-1.5 inline-flex items-center gap-2 text-authority-700 text-xs font-bold uppercase tracking-wider">
-            MVP Contact Placeholders
+            DIRECT SALES & MILL DISPATCH
           </div>
           <h2 className="text-3xl sm:text-5xl font-black text-steel-900 tracking-tight">
-            Get In Touch With <span className="text-gradient-authority">The Contact Desk</span>
+            Get In Touch With <span className="text-gradient-authority">Our Mill Sales Desk</span>
           </h2>
           <p className="text-sm text-steel-600 max-w-xl mx-auto font-normal">
-            These tiles are reserved for your real chat, callback, email, and form details. For now they point into the inquiry flow so the MVP stays honest.
+            Connect directly with our mill sales team for instant price quotes, structural steel specifications, TMT batch testing certificates, or institutional tender proposals.
           </p>
         </div>
 
@@ -73,11 +73,11 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onSelectSegment 
                 <MessageSquare className="w-6 h-6" />
               </div>
               <span className="text-[10px] font-extrabold text-trust-700 uppercase tracking-widest block font-mono">
-                Chat Placeholder
+                INSTANT QUOTATION
               </span>
-              <h3 className="text-xl font-bold text-steel-900">Live Chat</h3>
+              <h3 className="text-xl font-bold text-steel-900">Direct Mill Inquiry</h3>
               <p className="text-xs text-steel-600 leading-relaxed font-normal">
-                Reserve this tile for a live chat widget or messaging provider once you connect one.
+                Connect with our sales managers for distributor price lists & batch availability across Northern India.
               </p>
             </div>
             <button
@@ -85,7 +85,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onSelectSegment 
               onClick={() => openInquiry('distributor')}
               className="mt-6 btn-project py-3 px-4 rounded-2xl text-xs font-bold flex items-center justify-center gap-2"
             >
-              <span>Open inquiry form</span>
+              <span>Submit Sales Inquiry</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </button>
           </div>
@@ -96,11 +96,11 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onSelectSegment 
                 <Phone className="w-6 h-6" />
               </div>
               <span className="text-[10px] font-extrabold text-growth-700 uppercase tracking-widest block font-mono">
-                Callback Placeholder
+                MILL SALES DESK
               </span>
-              <h3 className="text-xl font-bold text-steel-900">Phone Desk</h3>
+              <h3 className="text-xl font-bold text-steel-900">Phone & Call Desk</h3>
               <p className="text-xs text-steel-600 leading-relaxed font-normal">
-                Reserve this tile for a real callback number or scheduler when your launch details are ready.
+                Speak directly with our Bhiwadi sales desk for urgent delivery schedules & rolling mill dispatch.
               </p>
             </div>
             <button
@@ -108,7 +108,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onSelectSegment 
               onClick={() => openInquiry('contractor')}
               className="mt-6 btn-primary py-3 px-4 rounded-2xl text-xs font-extrabold flex items-center justify-center gap-2"
             >
-              <span>Request callback</span>
+              <span>Request Sales Call</span>
               <Phone className="w-3.5 h-3.5" />
             </button>
           </div>
@@ -119,11 +119,11 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onSelectSegment 
                 <Mail className="w-6 h-6" />
               </div>
               <span className="text-[10px] font-extrabold text-authority-700 uppercase tracking-widest block font-mono">
-                Email Placeholder
+                CORPORATE EMAIL
               </span>
               <h3 className="text-xl font-bold text-steel-900">Email Desk</h3>
               <p className="text-xs text-steel-600 leading-relaxed font-normal">
-                Reserve this tile for a support inbox or shared mailbox once the final address is available.
+                Send formal RFQs, purchase orders, or technical specification requests to our sales office.
               </p>
             </div>
             <button
@@ -131,7 +131,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onSelectSegment 
               onClick={() => openInquiry('project')}
               className="mt-6 btn-secondary py-3 px-4 rounded-2xl text-xs font-bold flex items-center justify-center gap-2"
             >
-              <span>Open email inquiry</span>
+              <span>Send Email Request</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </button>
           </div>
@@ -142,11 +142,11 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onSelectSegment 
                 <Clock className="w-6 h-6" />
               </div>
               <span className="text-[10px] font-extrabold text-growth-800 uppercase tracking-widest block font-mono">
-                Form Placeholder
+                SPECIFICATION TENDER
               </span>
-              <h3 className="text-xl font-bold text-steel-900">Inquiry Portal</h3>
+              <h3 className="text-xl font-bold text-steel-900">Institutional Portal</h3>
               <p className="text-xs text-steel-600 leading-relaxed font-normal">
-                Reserve this tile for the final multi-step inquiry form and routing rules.
+                Submit institutional tender RFQs, structural steel specs, or joint venture investment proposals.
               </p>
             </div>
             <button
@@ -154,7 +154,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onSelectSegment 
               onClick={() => openInquiry('investor')}
               className="mt-6 btn-secondary py-3 px-4 rounded-2xl text-xs font-bold flex items-center justify-center gap-2 hover:text-growth-700"
             >
-              <span>Open inquiry portal</span>
+              <span>Launch Inquiry Portal</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </button>
           </div>

@@ -21,13 +21,13 @@ export default function ContactPage() {
       <section className="pt-36 pb-12 bg-white border-b border-slate-200 steel-grid-pattern text-center">
         <div className="max-w-4xl mx-auto px-4 space-y-3">
           <span className="text-xs font-mono font-bold text-slate-800 bg-slate-100 px-3 py-1 rounded-full border border-slate-300">
-            MVP CONTACT PLACEHOLDERS
+            CORPORATE & MILL CONTACT DESK
           </span>
           <h1 className="text-4xl sm:text-5xl font-black text-slate-900">
             Multi-Channel <span className="text-gradient-amber">Contact Desk</span>
           </h1>
           <p className="text-sm text-slate-600 font-normal max-w-xl mx-auto">
-            Use these placeholder routes for chat, callback, email, and form testing while the live details are being finalized.
+            Connect directly with our mill sales team in Bhiwadi, Haryana or corporate office in Delhi NCR for immediate quotes & dispatch schedules.
           </p>
         </div>
       </section>

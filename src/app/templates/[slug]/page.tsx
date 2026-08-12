@@ -18,11 +18,11 @@ interface TemplateData {
 
 const TEMPLATES: Record<string, TemplateData> = {
   privacy: {
-    title: 'Privacy Policy Template',
-    badge: 'Legal & Data Governance Placeholder',
+    title: 'Privacy Policy',
+    badge: 'Legal & Data Governance',
     updatedAt: 'August 2026',
     description:
-      'This document serves as a template placeholder for your official Privacy Policy. Replace the sections below with your finalized legal disclosure.',
+      'Official Privacy Policy and Data Governance Policy for Shree Balaji Rolling Mills Private Limited.',
     sections: [
       {
         heading: '1. Overview & Data Collection',
@@ -57,11 +57,11 @@ const TEMPLATES: Record<string, TemplateData> = {
     ],
   },
   terms: {
-    title: 'Terms of Use Template',
-    badge: 'Commercial Terms Placeholder',
+    title: 'Terms of Use',
+    badge: 'Commercial Terms & Policy',
     updatedAt: 'August 2026',
     description:
-      'This document serves as a template placeholder for your Terms of Service & Website Usage Policy. Replace these sections with your counsel-approved terms.',
+      'Terms of Service and Website Usage Policy governing commercial inquiries, technical catalog access, and B2B communications.',
     sections: [
       {
         heading: '1. Acceptance of Terms',

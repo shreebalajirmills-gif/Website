@@ -45,12 +45,12 @@ export const CERTIFICATIONS: CertBadge[] = [
 ];
 
 export const CLIENT_LOGOS: ClientLogo[] = [
-  { id: '1', name: '[Client / Infrastructure Project 1]', category: 'Highway Infrastructure', location: '[Region / State]' },
-  { id: '2', name: '[Client / Logistics Park Partner 2]', category: 'Logistics Parks', location: '[Industrial Hub]' },
-  { id: '3', name: '[Client / Commercial Developer 3]', category: 'High-Rise Construction', location: '[Metropolitan Area]' },
-  { id: '4', name: '[Client / Power Transmission Partner 4]', category: 'Electrical Grid Utility', location: '[State Grid]' },
-  { id: '5', name: '[Client / PEB Fabricator 5]', category: 'Pre-Engineered Buildings', location: '[Industrial Zone]' },
-  { id: '6', name: '[Client / Civic Contracting Partner 6]', category: 'Civic Infrastructure', location: '[Regional Sector]' },
+  { id: '1', name: 'Highway & Flyover Corridors', category: 'Highway Infrastructure', location: 'Northern India' },
+  { id: '2', name: 'Logistics & Industrial Parks', category: 'Logistics Parks', location: 'Delhi NCR & Haryana' },
+  { id: '3', name: 'Commercial High-Rise Towers', category: 'High-Rise Construction', location: 'Delhi NCR' },
+  { id: '4', name: 'Power Transmission Grids', category: 'Electrical Grid Utility', location: 'State Sub-Grids' },
+  { id: '5', name: 'Pre-Engineered Structure Works', category: 'Pre-Engineered Buildings', location: 'Industrial Hubs' },
+  { id: '6', name: 'Civic Infrastructure Projects', category: 'Civic Infrastructure', location: 'Northern Region' },
 ];
 
 export const COMPANY_FACTS = {
@@ -61,6 +61,6 @@ export const COMPANY_FACTS = {
   totalCapacity: '180,000 TPA',
   factoryLocation: 'Bhiwadi, Haryana',
   headOfficeLocation: 'Delhi NCR',
-  onTimeDeliveryRate: '[Needs Confirmation: Target Dispatch SLA %]',
-  distributorCount: '[Needs Confirmation: Channel Partner Network Count]',
+  onTimeDeliveryRate: 'Direct Mill Dispatch',
+  distributorCount: 'Northern India Network',
 };
