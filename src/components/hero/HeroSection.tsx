@@ -55,11 +55,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onSelectSegment }) => 
               <span className="text-gradient-growth">Built for Scaled Infrastructure.</span>
             </h1>
 
-            <div className="mt-6 inline-block max-w-3xl rounded-2xl bg-slate-950/90 text-white p-4 sm:p-5 backdrop-blur-md shadow-xl border border-amber-400/40 transition-colors">
-              <p className="text-sm sm:text-lg font-medium leading-relaxed tracking-wide text-slate-100">
-                Manufacturing <span className="text-amber-400 font-extrabold">IS 2062 structural steel profiles</span> and expanding into <span className="text-amber-400 font-extrabold">144,000 TPA IS 1786 Fe-500D TMT bar production</span> across Northern India.
-              </p>
-            </div>
+            <p className="mt-6 text-sm sm:text-lg font-medium leading-relaxed tracking-wide text-steel-700">
+              Manufacturing <span className="text-growth-700 font-extrabold">IS 2062 structural steel profiles</span> and expanding into <span className="text-growth-700 font-extrabold">144,000 TPA IS 1786 Fe-500D TMT bar production</span> across Northern India.
+            </p>
           </div>
         </div>
 
