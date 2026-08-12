@@ -3,9 +3,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu, X, ArrowRight, ShieldCheck, Flame, Phone, Sun, Moon } from 'lucide-react';
+import { Menu, X, ArrowRight } from 'lucide-react';
 import { BuyerSegment } from '@/types';
-import { useTheme } from '@/context/ThemeContext';
 
 interface HeaderProps {
   onSelectSegment?: (segment: BuyerSegment) => void;
@@ -16,7 +15,6 @@ export const Header: React.FC<HeaderProps> = ({ onSelectSegment }) => {
   const pathname = usePathname();
   const toggleRef = useRef<HTMLButtonElement | null>(null);
   const mobileNavRef = useRef<HTMLDivElement | null>(null);
-  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     if (!mobileMenuOpen) return;
@@ -70,26 +68,16 @@ export const Header: React.FC<HeaderProps> = ({ onSelectSegment }) => {
         <div className="w-full liquid-glass rounded-full px-5 py-3 flex items-center justify-between border border-slate-200/90 shadow-xl">
           
           {/* Logo & Brand */}
-          <Link href="/" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 rounded-xl bg-slate-950 text-amber-400 border border-slate-700/60 flex items-center justify-center font-black text-base shadow-md group-hover:scale-105 transition-transform shrink-0">
-              SB
-            </div>
-            <div className="flex flex-col">
-              <span className={`font-black text-sm sm:text-base tracking-tight leading-none ${
-                theme === 'dark' ? 'text-white' : 'text-slate-950'
-              }`}>
-                SHREE BALAJI
-              </span>
-              <span className={`text-[10px] sm:text-[11px] font-mono font-black tracking-widest uppercase mt-1 ${
-                theme === 'dark' ? 'text-amber-400' : 'text-amber-800'
-              }`}>
-                Rolling Mills
-              </span>
-            </div>
+          <Link href="/" className="flex items-center gap-3 group shrink-0">
+            <img 
+              src="/logo.png" 
+              alt="Shree Balaji Rolling Mills Private Limited Logo" 
+              className="h-10 sm:h-12 w-auto object-contain transition-transform group-hover:scale-105"
+            />
           </Link>
 
           {/* Navigation Links */}
-          <nav className="hidden md:flex items-center gap-1 bg-steel-100/90 dark:bg-steel-800/90 p-1 rounded-full border border-steel-200/90 dark:border-steel-700">
+          <nav className="hidden md:flex items-center gap-1 bg-steel-100/90 p-1 rounded-full border border-steel-200/90">
             {navLinks.map((link) => {
               const isActive = pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href));
               return (
@@ -99,8 +87,8 @@ export const Header: React.FC<HeaderProps> = ({ onSelectSegment }) => {
                   aria-current={isActive ? 'page' : undefined}
                   className={`px-4 py-1.5 rounded-full text-xs transition-all duration-200 transform font-bold inline-flex items-center justify-center ${
                     isActive
-                      ? 'bg-slate-200 dark:bg-white text-black dark:text-slate-950 font-black shadow-md border border-slate-300/80 hover:bg-red-600 hover:text-white hover:border-red-600 hover:shadow-lg hover:shadow-red-600/30 hover:scale-105'
-                      : 'text-slate-800 dark:text-slate-200 hover:bg-red-600 hover:text-white hover:shadow-lg hover:shadow-red-600/30 hover:scale-105'
+                      ? 'bg-slate-200 text-black font-black shadow-md border border-slate-300/80 hover:bg-red-600 hover:text-white hover:border-red-600 hover:shadow-lg hover:shadow-red-600/30 hover:scale-105'
+                      : 'text-slate-800 hover:bg-red-600 hover:text-white hover:shadow-lg hover:shadow-red-600/30 hover:scale-105'
                   }`}
                 >
                   {link.name}
@@ -109,21 +97,8 @@ export const Header: React.FC<HeaderProps> = ({ onSelectSegment }) => {
             })}
           </nav>
 
-          {/* CTA Action & Theme Toggle */}
+          {/* CTA Action */}
           <div className="flex items-center gap-2 sm:gap-3">
-            <button
-              type="button"
-              onClick={toggleTheme}
-              className="p-2 rounded-full text-steel-700 dark:text-steel-300 hover:bg-steel-100 dark:hover:bg-steel-800 transition-colors"
-              aria-label="Toggle dark/light theme"
-            >
-              {theme === 'dark' ? (
-                <Sun className="w-4 h-4 text-amber-400" />
-              ) : (
-                <Moon className="w-4 h-4 text-slate-700" />
-              )}
-            </button>
-
             <Link
               href="/inquiry"
               className="btn-primary !py-2 !px-4 rounded-full text-xs !font-extrabold flex items-center gap-1.5 shadow-md"
@@ -135,7 +110,7 @@ export const Header: React.FC<HeaderProps> = ({ onSelectSegment }) => {
             <button
               ref={toggleRef}
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 rounded-full text-steel-700 dark:text-steel-300 hover:bg-steel-100 dark:hover:bg-steel-800"
+              className="md:hidden p-2 rounded-full text-steel-700 hover:bg-steel-100"
               aria-label="Toggle Navigation"
               aria-expanded={mobileMenuOpen}
               aria-controls="mobile-navigation"
@@ -161,8 +136,8 @@ export const Header: React.FC<HeaderProps> = ({ onSelectSegment }) => {
                   onClick={() => setMobileMenuOpen(false)}
                   className={`px-4 py-3 rounded-2xl text-sm font-bold transition-all duration-200 ${
                     pathname === link.href
-                      ? 'bg-slate-200 dark:bg-white text-black font-black border border-slate-300 shadow-md'
-                      : 'text-steel-800 dark:text-slate-200 hover:bg-red-600 hover:text-white hover:font-black'
+                      ? 'bg-slate-200 text-black font-black border border-slate-300 shadow-md'
+                      : 'text-steel-800 hover:bg-red-600 hover:text-white hover:font-black'
                   }`}
                 >
                   {link.name}
