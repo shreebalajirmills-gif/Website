@@ -12,7 +12,6 @@ export const GrowthTimeline: React.FC = () => {
   const [selectedYear, setSelectedYear] = useState<string>(FINANCIAL_METRICS[0].year);
   const [chartMode, setChartMode] = useState<'revenue' | 'capacity' | 'ebitda'>('revenue');
   const [isManualSelection, setIsManualSelection] = useState<boolean>(false);
-  const [chartLocked, setChartLocked] = useState<boolean>(false);
 
   const sectionRef = useRef<HTMLDivElement>(null);
 
@@ -29,7 +28,6 @@ export const GrowthTimeline: React.FC = () => {
   });
 
   const visibleProgress = useTransform(smoothProgress, (value) => {
-    if (chartLocked) return 1;
     return Math.min(Math.max(value, 0), 1);
   });
 
@@ -102,11 +100,6 @@ export const GrowthTimeline: React.FC = () => {
 
   // Synchronize active year metric node with scroll progress
   useMotionValueEvent(smoothProgress, 'change', (latest) => {
-    if (chartLocked) {
-      setSelectedYear(FINANCIAL_METRICS[FINANCIAL_METRICS.length - 1].year);
-      return;
-    }
-
     if (isManualSelection) return;
     if (latest < 0.15) setSelectedYear(FINANCIAL_METRICS[0].year);
     else if (latest < 0.38) setSelectedYear(FINANCIAL_METRICS[1].year);
@@ -114,21 +107,16 @@ export const GrowthTimeline: React.FC = () => {
     else if (latest < 0.85) setSelectedYear(FINANCIAL_METRICS[3].year);
     else {
       setSelectedYear(FINANCIAL_METRICS[4].year);
-      if (latest >= 0.98) {
-        setChartLocked(true);
-      }
     }
   });
 
   const handleManualYearSelect = (year: string) => {
-    if (chartLocked) return;
     setIsManualSelection(true);
     setSelectedYear(year);
     setTimeout(() => setIsManualSelection(false), 5000);
   };
 
   const handleManualModeSelect = (mode: 'revenue' | 'capacity' | 'ebitda') => {
-    if (chartLocked) return;
     setIsManualSelection(true);
     setChartMode(mode);
     setTimeout(() => setIsManualSelection(false), 5000);
@@ -364,6 +352,7 @@ export const GrowthTimeline: React.FC = () => {
 
                       {/* Outer Pulse Circle */}
                       <motion.circle
+                        initial={{ cx: pt.cx, cy: pt.cy, r: isSelected ? 10 : 6 }}
                         animate={{ cx: pt.cx, cy: pt.cy, r: isSelected ? 10 : 6 }}
                         transition={{ type: 'spring', stiffness: 300, damping: 25 }}
                         className={`transition-colors duration-300 ${
@@ -375,6 +364,7 @@ export const GrowthTimeline: React.FC = () => {
 
                       {/* Inner Dot */}
                       <motion.circle
+                        initial={{ cx: pt.cx, cy: pt.cy, r: isSelected ? 4 : 2 }}
                         animate={{ cx: pt.cx, cy: pt.cy, r: isSelected ? 4 : 2 }}
                         transition={{ type: 'spring', stiffness: 300, damping: 25 }}
                         className={isSelected ? 'fill-slate-950' : 'fill-growth-600'}
@@ -382,6 +372,7 @@ export const GrowthTimeline: React.FC = () => {
 
                       {/* Hover / Active Badge Pill */}
                       <motion.text
+                        initial={{ x: pt.cx, y: pt.cy - 14 }}
                         animate={{ x: pt.cx, y: pt.cy - 14 }}
                         transition={{ type: 'spring', stiffness: 300, damping: 25 }}
                         textAnchor="middle"
