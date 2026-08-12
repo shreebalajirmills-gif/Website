@@ -1,5 +1,10 @@
 import type { NextConfig } from 'next'
 import type { WebpackConfigContext } from 'next/dist/server/config-shared'
+import bundleAnalyzer from '@next/bundle-analyzer'
+
+const withBundleAnalyzer = bundleAnalyzer({
+  enabled: process.env.ANALYZE === 'true',
+})
 
 const nextConfig: NextConfig = {
   // ─── Standalone output for Cloudflare / OpenNext ──────────────────
@@ -70,10 +75,7 @@ const nextConfig: NextConfig = {
     return config
   },
 
-  // ─── Experimental features ─────────────────────────────────────
   experimental: {
-    // Optimise CSS delivery (inline critical CSS)
-    optimizeCss: true,
     // Faster module resolution
     optimizePackageImports: [
       'lucide-react',
@@ -82,4 +84,4 @@ const nextConfig: NextConfig = {
   },
 }
 
-export default nextConfig
+export default withBundleAnalyzer(nextConfig)

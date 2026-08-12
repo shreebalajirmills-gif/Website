@@ -991,3 +991,31 @@ select {
   -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
+
+/* ═══════════════════════════════════════════════════════════════════════
+   SKELETON LOADER SYSTEM
+   Shimmer animation for perceived performance
+   ═══════════════════════════════════════════════════════════════════════ */
+
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.skeleton-shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--color-steel-200) 25%,
+    var(--color-steel-100) 50%,
+    var(--color-steel-200) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton-shimmer {
+    animation: none;
+    background: var(--color-steel-200);
+  }
+}
