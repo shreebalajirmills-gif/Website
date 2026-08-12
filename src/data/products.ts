@@ -18,8 +18,8 @@ export const PRODUCTS_DATA: ProductSpec[] = [
     capacity: {
       tpa: 36000,
       monthlyMT: 3000,
-      formatTpa: '[Insert Structural Capacity TPA]',
-      formatMonthly: '[Insert Monthly Capacity MT]',
+      formatTpa: '36,000 TPA',
+      formatMonthly: '3,000 MT/month',
     },
     leadTime: '2 – 4 Weeks',
     applications: [
@@ -48,8 +48,8 @@ export const PRODUCTS_DATA: ProductSpec[] = [
     capacity: {
       tpa: 144000,
       monthlyMT: 12000,
-      formatTpa: '[Insert TMT Expansion Capacity TPA]',
-      formatMonthly: '[Insert Monthly Capacity MT]',
+      formatTpa: '144,000 TPA',
+      formatMonthly: '12,000 MT/month',
     },
     leadTime: '1 – 3 Weeks',
     applications: [

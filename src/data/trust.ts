@@ -54,13 +54,13 @@ export const CLIENT_LOGOS: ClientLogo[] = [
 ];
 
 export const COMPANY_FACTS = {
-  revenueFY26: '[Baseline Annual Turnover]',
-  revenueGoalFY30: '[Target Expansion Turnover]',
-  existingCapacity: '[Current Structural Capacity TPA]',
-  expansionCapacity: '[Planned TMT Expansion TPA]',
-  totalCapacity: '[Total Combined Production Capacity TPA]',
-  factoryLocation: '[Insert Rolling Mill Facility Address / Location]',
-  headOfficeLocation: '[Insert Corporate Head Office Location]',
-  onTimeDeliveryRate: '[Insert Target Dispatch SLA %]',
-  distributorCount: '[Insert Channel Partner Network Count]',
+  revenueFY26: '₹203.03 Cr',
+  revenueGoalFY30: '₹1,006.40 Cr',
+  existingCapacity: '36,000 TPA',
+  expansionCapacity: '144,000 TPA',
+  totalCapacity: '180,000 TPA',
+  factoryLocation: 'Bhiwadi, Haryana',
+  headOfficeLocation: 'Delhi NCR',
+  onTimeDeliveryRate: '[Needs Confirmation: Target Dispatch SLA %]',
+  distributorCount: '[Needs Confirmation: Channel Partner Network Count]',
 };

@@ -23,7 +23,7 @@ export const TrustSection: React.FC = () => {
             Why Northern India’s Major Projects <span className="text-gradient-trust">Trust Shree Balaji</span>
           </h2>
           <p className="text-base text-steel-600 leading-relaxed font-normal">
-            From Bureau of Indian Standards (BIS) product certifications to our [Target Production Capacity TPA] manufacturing platform, we deliver institutional reliability without middleman delays.
+            From Bureau of Indian Standards (BIS) product certifications to our 180,000 TPA manufacturing platform, we deliver institutional reliability without middleman delays.
           </p>
         </div>
 
@@ -44,9 +44,9 @@ export const TrustSection: React.FC = () => {
             <div className="w-10 h-10 rounded-2xl bg-growth-50 text-growth-700 border border-growth-200 flex items-center justify-center">
               <Factory className="w-6 h-6" />
             </div>
-            <h3 className="text-lg font-bold text-steel-900">[TPA Production Scale]</h3>
+            <h3 className="text-lg font-bold text-steel-900">180,000 TPA Scale</h3>
             <p className="text-xs text-steel-600 leading-relaxed font-normal">
-              Manufacturing hub with structural steel and TMT bar rolling capacity [Insert Rolling Mill Capacity TPA].
+              Integrated manufacturing hub at Bhiwadi, Haryana with 36,000 TPA Structural Steel and 144,000 TPA TMT capacity.
             </p>
           </div>
 
@@ -54,9 +54,9 @@ export const TrustSection: React.FC = () => {
             <div className="w-10 h-10 rounded-2xl bg-authority-50 text-authority-700 border border-authority-200 flex items-center justify-center">
               <Truck className="w-6 h-6" />
             </div>
-            <h3 className="text-lg font-bold text-steel-900">[Dispatch SLA Target]</h3>
+            <h3 className="text-lg font-bold text-steel-900">Direct Mill Dispatch</h3>
             <p className="text-xs text-steel-600 leading-relaxed font-normal">
-              Dedicated regional logistics dispatch for regional construction sites [Insert SLA Delivery Rate %].
+              Streamlined regional logistics dispatch for infrastructure and commercial construction sites across Northern India.
             </p>
           </div>
 
@@ -66,7 +66,7 @@ export const TrustSection: React.FC = () => {
             </div>
             <h3 className="text-lg font-bold text-steel-900">Margin Resilience</h3>
             <p className="text-xs text-steel-600 leading-relaxed font-normal">
-              Proven gross margin stability across steel cycle contractions, giving distributors reliable pricing [Insert Margin %].
+              Proven 2.42% gross margin stability across steel cycle contractions, giving trade partners pricing discipline.
             </p>
           </div>
 

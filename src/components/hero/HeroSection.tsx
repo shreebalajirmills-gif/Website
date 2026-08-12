@@ -201,20 +201,20 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onSelectSegment }) => 
         {/* Live Mill Metric Telemetry Banner */}
         <div className="mt-16 max-w-5xl mx-auto rounded-3xl p-6 sm:p-8 liquid-glass-prominent grid grid-cols-2 md:grid-cols-4 gap-6 text-center shadow-xl border border-steel-200">
           <div className="border-r border-steel-200 last:border-none px-2">
-            <p className="text-xl md:text-2xl font-black text-steel-900 font-mono">[Baseline Revenue]</p>
-            <p className="text-xs text-steel-600 font-semibold mt-1">Operational Base</p>
+            <p className="text-xl md:text-2xl font-black text-steel-900 font-mono">₹203.03 Cr</p>
+            <p className="text-xs text-steel-600 font-semibold mt-1">FY26 Operational Base</p>
           </div>
           <div className="border-r border-steel-200 last:border-none px-2">
-            <p className="text-xl md:text-2xl font-black text-growth-700 font-mono">[Target TPA Output]</p>
-            <p className="text-xs text-steel-600 font-semibold mt-1">Target Annual Output</p>
+            <p className="text-xl md:text-2xl font-black text-growth-700 font-mono">180,000 TPA</p>
+            <p className="text-xs text-steel-600 font-semibold mt-1">Total Capacity Post-Expansion</p>
           </div>
           <div className="border-r border-steel-200 last:border-none px-2">
-            <p className="text-xl md:text-2xl font-black text-trust-700 font-mono">[Target Margin %]</p>
-            <p className="text-xs text-steel-600 font-semibold mt-1">Gross Margin Indicator</p>
+            <p className="text-xl md:text-2xl font-black text-trust-700 font-mono">2.42%</p>
+            <p className="text-xs text-steel-600 font-semibold mt-1">Resilient Gross Margin</p>
           </div>
           <div className="px-2">
-            <p className="text-xl md:text-2xl font-black text-authority-700 font-mono">[FY30 Scale Target]</p>
-            <p className="text-xs text-steel-600 font-semibold mt-1">Platform Goal</p>
+            <p className="text-xl md:text-2xl font-black text-authority-700 font-mono">₹1,006.40 Cr</p>
+            <p className="text-xs text-steel-600 font-semibold mt-1">FY30 Revenue Target</p>
           </div>
         </div>
 
