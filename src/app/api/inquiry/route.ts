@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { inquirySchema } from '@/lib/validation';
 import { ApiResponse, BuyerSegment } from '@/types';
 
+export const runtime = 'edge';
+
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
