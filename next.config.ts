@@ -2,8 +2,8 @@ import type { NextConfig } from 'next'
 import type { WebpackConfigContext } from 'next/dist/server/config-shared'
 
 const nextConfig: NextConfig = {
-  // ─── Static Export for Cloudflare Pages ─────────────────────────
-  output: 'export',
+  // ─── Standalone output for Cloudflare / OpenNext ──────────────────
+  output: 'standalone',
 
   // ─── Turbopack (dev only — production still uses SWC/webpack) ───
   turbopack: {
