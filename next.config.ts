@@ -2,6 +2,9 @@ import type { NextConfig } from 'next'
 import type { WebpackConfigContext } from 'next/dist/server/config-shared'
 
 const nextConfig: NextConfig = {
+  // ─── Static Export for Cloudflare Pages ─────────────────────────
+  output: 'export',
+
   // ─── Turbopack (dev only — production still uses SWC/webpack) ───
   turbopack: {
     // Resolve aliases matching tsconfig paths
@@ -20,6 +23,7 @@ const nextConfig: NextConfig = {
 
   // ─── Image optimization ────────────────────────────────────────
   images: {
+    unoptimized: true,
     formats: ['image/avif', 'image/webp'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920],
     imageSizes: [16, 32, 48, 64, 96, 128, 256],
@@ -28,24 +32,7 @@ const nextConfig: NextConfig = {
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
 
-  // ─── Headers for performance ───────────────────────────────────
-  async headers() {
-    return [
-      {
-        source: '/:all*(svg|jpg|jpeg|png|webp|avif|gif|ico)',
-        locale: false,
-        headers: [
-          { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
-        ],
-      },
-      {
-        source: '/_next/static/:path*',
-        headers: [
-          { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
-        ],
-      },
-    ]
-  },
+  // ─── Headers managed via public/_headers for Cloudflare Pages ───
 
   // ─── Bundle splitting (webpack — production builds) ────────────
   webpack(config, { isServer, dev }: WebpackConfigContext) {
