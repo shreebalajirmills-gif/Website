@@ -51,7 +51,7 @@ export const ProductHub: React.FC<ProductHubProps> = ({ onSelectSegment }) => {
             Structural Steel & <span className="text-gradient-growth">High-Ductility TMT Bars</span>
           </h2>
           <p className="text-base text-steel-600 leading-relaxed font-normal">
-            Manufactured to Bureau of Indian Standards (BIS) IS 2062 & IS 1786 at our Bhiwari rolling facility. Engineered for heavy infrastructure, commercial towers, and industrial framing.
+            Manufactured to Bureau of Indian Standards (BIS) IS 2062 & IS 1786 at our Bhiwadi rolling facility. Engineered for heavy infrastructure, commercial towers, and industrial framing.
           </p>
         </div>
 
@@ -202,7 +202,7 @@ export const ProductHub: React.FC<ProductHubProps> = ({ onSelectSegment }) => {
                         `Monthly Output: ${product.capacity.formatMonthly}`,
                         `Lead Time: ${product.leadTime}`,
                         `Certifications: ${product.specs.certifications.join(', ')}`,
-                        `Factory: Bhiwari, Haryana | Head Office: Delhi NCR`
+                        `Factory: Bhiwadi, Haryana | Head Office: Delhi NCR`
                       ]
                     );
                   }}
@@ -315,7 +315,7 @@ export const ProductHub: React.FC<ProductHubProps> = ({ onSelectSegment }) => {
                       `Monthly Output: ${activeModalProduct.capacity.formatMonthly}`,
                       `Delivery Lead Time: ${activeModalProduct.leadTime}`,
                       `Quality Certifications: ${activeModalProduct.specs.certifications.join(', ')}`,
-                      `Factory: Bhiwari, Haryana | Office: Delhi NCR`
+                      `Factory: Bhiwadi, Haryana | Office: Delhi NCR`
                     ]
                   );
                 }}

@@ -109,7 +109,7 @@ export default function TmtRebarsPage() {
         <div className="liquid-glass-contractor rounded-3xl p-8 border border-steel-200 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl">
           <div className="space-y-1">
             <h3 className="text-xl font-bold text-steel-900">Require Bulk Rebar Allocation or Site Delivery Schedules?</h3>
-            <p className="text-xs text-steel-600">Direct trailer load dispatch from Bhiwari rolling mill.</p>
+            <p className="text-xs text-steel-600">Direct trailer load dispatch from Bhiwadi rolling mill.</p>
           </div>
           <Link
             href="/inquiry?segment=contractor"

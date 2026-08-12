@@ -34,7 +34,7 @@ export default function StructuralSteelPage() {
           </h1>
 
           <p className="text-base text-steel-600 max-w-3xl font-normal leading-relaxed">
-            Manufactured from high-grade structural billets at our Bhiwari rolling facility. Engineered for heavy industrial framing, transmission line towers, warehousing sheds, and EPC infrastructure projects.
+            Manufactured from high-grade structural billets at our Bhiwadi rolling facility. Engineered for heavy industrial framing, transmission line towers, warehousing sheds, and EPC infrastructure projects.
           </p>
 
           <div className="flex flex-wrap gap-4 pt-2 text-xs font-mono">

@@ -1,8 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { inquirySchema } from '@/lib/validation';
 import { ApiResponse, BuyerSegment } from '@/types';
-
-
+import { sendInquiryEmails } from '@/lib/email';
 
 export async function POST(req: NextRequest) {
   try {
@@ -48,10 +47,24 @@ export async function POST(req: NextRequest) {
     // Generate unique inquiry ID
     const inquiryId = `INQ-${new Date().toISOString().slice(0, 10).replace(/-/g, '')}-${Math.floor(1000 + Math.random() * 9000)}`;
 
+    // Dispatch email notifications via Gmail SMTP App Password
+    await sendInquiryEmails({
+      contactName: data.contactName,
+      email: data.email,
+      phone: data.phone,
+      companyName: data.companyName,
+      segment: data.segment,
+      message: data.message,
+      specInterest: data.specInterest,
+      inquiryId,
+      crmTag,
+      assignedRole,
+    });
+
     const successResponse: ApiResponse = {
       status: 'success',
       inquiryId,
-      message: "Thank you. Your inquiry has been validated and routed to our team.",
+      message: "Thank you. Your inquiry has been validated, emailed to our sales desk, and a confirmation sent to your email.",
       crmTag,
       assignedRole,
     };

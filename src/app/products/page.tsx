@@ -45,7 +45,7 @@ export default function ProductsPage() {
               <h2 className="text-3xl font-black text-steel-900 mb-2">Structural Angles & Channels</h2>
               <p className="text-sm font-bold text-growth-700 mb-4">Industrial Framing, Transmission Towers & Sheds</p>
               <p className="text-xs sm:text-sm text-steel-600 leading-relaxed mb-6 font-normal">
-                Manufactured from premium steel billets in Bhiwari. Features high weldability (Carbon max 0.23%), uniform flange thickness, and zero internal lamination defects.
+                Manufactured from premium steel billets in Bhiwadi. Features high weldability (Carbon max 0.23%), uniform flange thickness, and zero internal lamination defects.
               </p>
 
               <div className="grid grid-cols-2 gap-3 p-4 rounded-2xl bg-steel-100/90 border border-steel-200 mb-6 text-xs font-mono">

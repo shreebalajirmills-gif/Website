@@ -38,6 +38,13 @@ const InquiryForm = dynamic(
   () => import('@/components/inquiry-form/InquiryForm').then(m => ({ default: m.InquiryForm }))
 )
 
+import { motion } from 'framer-motion';
+
+const sectionVariants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0 },
+};
+
 export default function Home() {
   const [selectedSegment, setSelectedSegment] = useState<BuyerSegment>('distributor');
 
@@ -51,29 +58,85 @@ export default function Home() {
       <Header onSelectSegment={handleSelectSegment} />
 
       {/* Hero Banner with 3D Steel Canvas & Segment Selection */}
-      <HeroSection onSelectSegment={handleSelectSegment} />
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.1 }}
+        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+        variants={sectionVariants}
+      >
+        <HeroSection onSelectSegment={handleSelectSegment} />
+      </motion.div>
 
       {/* Structural Steel & TMT Bar Product Hub with 3D Inspector & Matrix */}
-      <ProductHub onSelectSegment={handleSelectSegment} />
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.12 }}
+        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+        variants={sectionVariants}
+      >
+        <ProductHub onSelectSegment={handleSelectSegment} />
+      </motion.div>
 
       {/* Interactive Industrial Steel Weight & Bundle Calculator Tool */}
-      <SteelCalculatorWidget />
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.12 }}
+        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+        variants={sectionVariants}
+      >
+        <SteelCalculatorWidget />
+      </motion.div>
 
       {/* FY26–FY30 Path to ₹1,000 Crore Growth Timeline with 3D Sparks Engine */}
-      <Suspense fallback={<div className="py-28 bg-steel-base" aria-label="Loading growth timeline..." />}>
-        <GrowthTimeline />
-      </Suspense>
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.12 }}
+        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+        variants={sectionVariants}
+      >
+        <Suspense fallback={<div className="py-28 bg-steel-base" aria-label="Loading growth timeline..." />}>
+          <GrowthTimeline />
+        </Suspense>
+      </motion.div>
 
       {/* Context-Aware Buyer Inquiry Portal */}
-      <Suspense fallback={<div className="py-28 bg-steel-subtle" aria-label="Loading inquiry form..." />}>
-        <InquiryForm initialSegment={selectedSegment} />
-      </Suspense>
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.12 }}
+        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+        variants={sectionVariants}
+      >
+        <Suspense fallback={<div className="py-28 bg-steel-subtle" aria-label="Loading inquiry form..." />}>
+          <InquiryForm initialSegment={selectedSegment} />
+        </Suspense>
+      </motion.div>
 
       {/* Institutional Trust & Certifications Proof */}
-      <TrustSection />
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.12 }}
+        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+        variants={sectionVariants}
+      >
+        <TrustSection />
+      </motion.div>
 
       {/* Multi-Channel Contact & Regional Desk */}
-      <ContactSection onSelectSegment={handleSelectSegment} />
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.12 }}
+        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+        variants={sectionVariants}
+      >
+        <ContactSection onSelectSegment={handleSelectSegment} />
+      </motion.div>
 
       {/* Global Footer */}
       <Footer onSelectSegment={handleSelectSegment} />

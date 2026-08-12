@@ -164,20 +164,20 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onSelectSegment 
           <div className="space-y-4">
             <h3 className="text-2xl font-bold text-steel-900 flex items-center gap-2">
               <MapPin className="w-6 h-6 text-growth-600" />
-              <span>Office & Service Area</span>
+              <span>Factory & Business Locations</span>
             </h3>
             <p className="text-xs text-steel-600 leading-relaxed font-normal">
-              Use this space for your real office address, factory address, or service-area note once the MVP details are finalized.
+              Shree Balaji Rolling Mills Private Limited operates steel manufacturing and distribution facilities serving Northern India.
             </p>
 
             <div className="space-y-3 pt-2 text-xs">
               <div className="p-4 rounded-2xl bg-steel-50 border border-steel-200">
-                <strong className="text-growth-700 block font-bold mb-1">Primary Location:</strong>
-                Add your office or site address here.
+                <strong className="text-growth-700 block font-bold mb-1">Factory Location:</strong>
+                Bhiwadi, Haryana
               </div>
               <div className="p-4 rounded-2xl bg-steel-50 border border-steel-200">
-                <strong className="text-steel-900 block font-bold mb-1">Secondary Desk:</strong>
-                Add your regional desk or support location here.
+                <strong className="text-steel-900 block font-bold mb-1">Business Location:</strong>
+                Delhi NCR
               </div>
             </div>
           </div>
@@ -185,21 +185,21 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onSelectSegment 
           <div className="p-6 rounded-2xl bg-steel-50 border border-steel-200 space-y-4">
             <div className="flex items-center gap-2 text-sm font-bold text-steel-900 border-b border-steel-200 pb-3">
               <Clock className="w-4 h-4 text-growth-600" />
-              <span>Operating Hours</span>
+              <span>Mill Operations & Capacity</span>
             </div>
 
             <div className="space-y-2 text-xs">
               <div className="flex justify-between text-steel-700">
-                <span>Monday - Saturday:</span>
-                <span className="font-bold text-growth-700">To be confirmed</span>
+                <span>Total Post-Expansion Capacity:</span>
+                <span className="font-bold text-growth-700">180,000 TPA</span>
               </div>
               <div className="flex justify-between text-steel-700">
-                <span>Sunday:</span>
-                <span className="text-steel-500">To be confirmed</span>
+                <span>Structural Steel Line:</span>
+                <span className="font-bold text-steel-900">36,000 TPA (3,000 MT/mo)</span>
               </div>
               <div className="flex justify-between text-steel-700 pt-2 border-t border-steel-200">
-                <span>Guaranteed Response:</span>
-                <span className="font-bold text-trust-700">To be confirmed</span>
+                <span>TMT Bar Expansion Facility:</span>
+                <span className="font-bold text-trust-700">144,000 TPA (12,000 MT/mo)</span>
               </div>
             </div>
           </div>

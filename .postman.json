@@ -1,0 +1,404 @@
+{
+  "workspace": {
+    "id": null,
+    "name": "Shree Balaji Rolling Mills"
+  },
+  "collection": {
+    "id": null,
+    "name": "Shree Balaji API",
+    "uid": null
+  },
+  "environment": {
+    "id": null,
+    "name": "Shree Balaji - Local"
+  },
+  "collection_definition": {
+    "info": {
+      "name": "Shree Balaji API",
+      "description": "API collection for the Shree Balaji Rolling Mills website. Covers the edge API functions deployed on Cloudflare Pages and the Next.js /api routes.",
+      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "variable": [
+      {
+        "key": "base_url",
+        "value": "http://localhost:3000",
+        "type": "string"
+      }
+    ],
+    "item": [
+      {
+        "name": "Edge Functions (Cloudflare Pages)",
+        "description": "Cloudflare Pages Functions deployed under /functions/api/",
+        "item": [
+          {
+            "name": "Health Check",
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "{{base_url}}/api/health",
+                "host": ["{{base_url}}"],
+                "path": ["api", "health"]
+              },
+              "description": "Returns service health status, timestamp, CDN info, and uptime guarantee."
+            },
+            "event": [
+              {
+                "listen": "test",
+                "script": {
+                  "type": "text/javascript",
+                  "exec": [
+                    "pm.test('Status code is 200', function () {",
+                    "    pm.response.to.have.status(200);",
+                    "});",
+                    "",
+                    "pm.test('Response has correct shape', function () {",
+                    "    const json = pm.response.json();",
+                    "    pm.expect(json).to.have.property('status', 'online');",
+                    "    pm.expect(json).to.have.property('service');",
+                    "    pm.expect(json).to.have.property('timestamp');",
+                    "    pm.expect(json).to.have.property('cdn');",
+                    "    pm.expect(json).to.have.property('uptime');",
+                    "});",
+                    "",
+                    "pm.test('Timestamp is a valid ISO 8601 date', function () {",
+                    "    const json = pm.response.json();",
+                    "    pm.expect(new Date(json.timestamp).toISOString()).to.equal(json.timestamp);",
+                    "});"
+                  ]
+                }
+              }
+            ],
+            "response": [
+              {
+                "name": "200 OK – Service Online",
+                "originalRequest": {
+                  "method": "GET",
+                  "url": { "raw": "{{base_url}}/api/health" }
+                },
+                "status": "OK",
+                "code": 200,
+                "body": "{\"status\":\"online\",\"service\":\"Shree Balaji Rolling Mills Web Edge\",\"timestamp\":\"2025-01-01T00:00:00.000Z\",\"cdn\":\"Cloudflare Global Edge Network (300+ PoPs)\",\"uptime\":\"100% Guaranteed (No Inactivity Sleep)\"}"
+              }
+            ]
+          },
+          {
+            "name": "Submit Inquiry – Distributor",
+            "request": {
+              "method": "POST",
+              "header": [
+                { "key": "Content-Type", "value": "application/json" }
+              ],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n  \"segment\": \"distributor\",\n  \"name\": \"Rajesh Kumar\",\n  \"email\": \"rajesh@example.com\",\n  \"phone\": \"+91-9876543210\",\n  \"company\": \"Kumar Steel Distributors Pvt Ltd\",\n  \"message\": \"Interested in becoming a regional distributor for TMT bars in Maharashtra.\"\n}",
+                "options": { "raw": { "language": "json" } }
+              },
+              "url": {
+                "raw": "{{base_url}}/api/inquiry",
+                "host": ["{{base_url}}"],
+                "path": ["api", "inquiry"]
+              },
+              "description": "Submit a distributor segment inquiry. Routes to Regional Sales Manager - Channel Partnerships."
+            },
+            "event": [
+              {
+                "listen": "test",
+                "script": {
+                  "type": "text/javascript",
+                  "exec": [
+                    "pm.test('Status code is 200', function () {",
+                    "    pm.response.to.have.status(200);",
+                    "});",
+                    "",
+                    "pm.test('Response has success status', function () {",
+                    "    pm.expect(pm.response.json().status).to.equal('success');",
+                    "});",
+                    "",
+                    "pm.test('Inquiry ID is generated', function () {",
+                    "    const json = pm.response.json();",
+                    "    pm.expect(json.inquiryId).to.match(/^INQ-\\d{8}-\\d{4}$/);",
+                    "});",
+                    "",
+                    "pm.test('CRM tag is correct for distributor segment', function () {",
+                    "    pm.expect(pm.response.json().crmTag).to.equal('channel_partner | growth_focus');",
+                    "});",
+                    "",
+                    "pm.test('Assigned role is correct for distributor', function () {",
+                    "    pm.expect(pm.response.json().assignedRole).to.equal('Regional Sales Manager - Channel Partnerships');",
+                    "});"
+                  ]
+                }
+              }
+            ],
+            "response": [
+              {
+                "name": "200 OK – Distributor Inquiry Routed",
+                "originalRequest": {
+                  "method": "POST",
+                  "url": { "raw": "{{base_url}}/api/inquiry" }
+                },
+                "status": "OK",
+                "code": 200,
+                "body": "{\"status\":\"success\",\"inquiryId\":\"INQ-20250101-1234\",\"message\":\"Thank you. Your inquiry has been validated and routed to our team.\",\"crmTag\":\"channel_partner | growth_focus\",\"assignedRole\":\"Regional Sales Manager - Channel Partnerships\"}"
+              }
+            ]
+          },
+          {
+            "name": "Submit Inquiry – Contractor",
+            "request": {
+              "method": "POST",
+              "header": [
+                { "key": "Content-Type", "value": "application/json" }
+              ],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n  \"segment\": \"contractor\",\n  \"name\": \"Suresh Patel\",\n  \"email\": \"suresh@buildfast.in\",\n  \"phone\": \"+91-9988776655\",\n  \"company\": \"BuildFast Constructions\",\n  \"message\": \"Need bulk TMT bars for a 200-unit residential project in Pune.\"\n}",
+                "options": { "raw": { "language": "json" } }
+              },
+              "url": {
+                "raw": "{{base_url}}/api/inquiry",
+                "host": ["{{base_url}}"],
+                "path": ["api", "inquiry"]
+              },
+              "description": "Submit a contractor segment inquiry. Routes to Account Manager - Commercial Fabricators."
+            },
+            "event": [
+              {
+                "listen": "test",
+                "script": {
+                  "type": "text/javascript",
+                  "exec": [
+                    "pm.test('Status code is 200', function () {",
+                    "    pm.response.to.have.status(200);",
+                    "});",
+                    "",
+                    "pm.test('CRM tag is correct for contractor segment', function () {",
+                    "    pm.expect(pm.response.json().crmTag).to.equal('project_buyer | bulk_order');",
+                    "});",
+                    "",
+                    "pm.test('Assigned role is correct for contractor', function () {",
+                    "    pm.expect(pm.response.json().assignedRole).to.equal('Account Manager - Commercial Fabricators');",
+                    "});"
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "name": "Submit Inquiry – Project / Infrastructure",
+            "request": {
+              "method": "POST",
+              "header": [
+                { "key": "Content-Type", "value": "application/json" }
+              ],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n  \"segment\": \"project\",\n  \"name\": \"Anil Sharma\",\n  \"email\": \"anil@infradev.gov.in\",\n  \"phone\": \"+91-9000011111\",\n  \"company\": \"National Infrastructure Development Corp\",\n  \"message\": \"Exploring steel supply for highway bridge construction in MP.\"\n}",
+                "options": { "raw": { "language": "json" } }
+              },
+              "url": {
+                "raw": "{{base_url}}/api/inquiry",
+                "host": ["{{base_url}}"],
+                "path": ["api", "inquiry"]
+              },
+              "description": "Submit a project/infrastructure segment inquiry. Routes to Executive Sales Director - Infrastructure SLAs."
+            },
+            "event": [
+              {
+                "listen": "test",
+                "script": {
+                  "type": "text/javascript",
+                  "exec": [
+                    "pm.test('Status code is 200', function () {",
+                    "    pm.response.to.have.status(200);",
+                    "});",
+                    "",
+                    "pm.test('CRM tag is correct for project segment', function () {",
+                    "    pm.expect(pm.response.json().crmTag).to.equal('infrastructure_project | institutional');",
+                    "});",
+                    "",
+                    "pm.test('Assigned role is correct for project segment', function () {",
+                    "    pm.expect(pm.response.json().assignedRole).to.equal('Executive Sales Director - Infrastructure SLAs');",
+                    "});"
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "name": "Submit Inquiry – Investor",
+            "request": {
+              "method": "POST",
+              "header": [
+                { "key": "Content-Type", "value": "application/json" }
+              ],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n  \"segment\": \"investor\",\n  \"name\": \"Priya Mehta\",\n  \"email\": \"priya@horizonfund.in\",\n  \"phone\": \"+91-9123456789\",\n  \"company\": \"Horizon Growth Capital\",\n  \"message\": \"Reviewing growth trajectory and FY26–30 projections for potential Series A participation.\"\n}",
+                "options": { "raw": { "language": "json" } }
+              },
+              "url": {
+                "raw": "{{base_url}}/api/inquiry",
+                "host": ["{{base_url}}"],
+                "path": ["api", "inquiry"]
+              },
+              "description": "Submit an investor segment inquiry. Routes to Investor Relations & CFO Desk."
+            },
+            "event": [
+              {
+                "listen": "test",
+                "script": {
+                  "type": "text/javascript",
+                  "exec": [
+                    "pm.test('Status code is 200', function () {",
+                    "    pm.response.to.have.status(200);",
+                    "});",
+                    "",
+                    "pm.test('CRM tag is correct for investor segment', function () {",
+                    "    pm.expect(pm.response.json().crmTag).to.equal('investor_prospect | financial_interest');",
+                    "});",
+                    "",
+                    "pm.test('Assigned role is correct for investor segment', function () {",
+                    "    pm.expect(pm.response.json().assignedRole).to.equal('Investor Relations & CFO Desk');",
+                    "});"
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "name": "Submit Inquiry – Unknown Segment (falls back to default)",
+            "request": {
+              "method": "POST",
+              "header": [
+                { "key": "Content-Type", "value": "application/json" }
+              ],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n  \"segment\": \"other\",\n  \"name\": \"Test User\",\n  \"email\": \"test@example.com\",\n  \"phone\": \"+91-9000000000\",\n  \"company\": \"Test Co\",\n  \"message\": \"General query.\"\n}",
+                "options": { "raw": { "language": "json" } }
+              },
+              "url": {
+                "raw": "{{base_url}}/api/inquiry",
+                "host": ["{{base_url}}"],
+                "path": ["api", "inquiry"]
+              },
+              "description": "Tests the default fallback when segment is unrecognized. Should route to Sales Desk Qualifier."
+            },
+            "event": [
+              {
+                "listen": "test",
+                "script": {
+                  "type": "text/javascript",
+                  "exec": [
+                    "pm.test('Status code is 200', function () {",
+                    "    pm.response.to.have.status(200);",
+                    "});",
+                    "",
+                    "pm.test('CRM tag falls back to inbound_lead', function () {",
+                    "    pm.expect(pm.response.json().crmTag).to.equal('inbound_lead');",
+                    "});",
+                    "",
+                    "pm.test('Assigned role falls back to Sales Desk Qualifier', function () {",
+                    "    pm.expect(pm.response.json().assignedRole).to.equal('Sales Desk Qualifier');",
+                    "});"
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "name": "Submit Inquiry – Empty Body (error case)",
+            "request": {
+              "method": "POST",
+              "header": [
+                { "key": "Content-Type", "value": "application/json" }
+              ],
+              "body": {
+                "mode": "raw",
+                "raw": "{}",
+                "options": { "raw": { "language": "json" } }
+              },
+              "url": {
+                "raw": "{{base_url}}/api/inquiry",
+                "host": ["{{base_url}}"],
+                "path": ["api", "inquiry"]
+              },
+              "description": "Submitting an empty body — all fields are optional so this should still succeed with default CRM tag."
+            },
+            "event": [
+              {
+                "listen": "test",
+                "script": {
+                  "type": "text/javascript",
+                  "exec": [
+                    "pm.test('Status code is 200 for empty-but-valid JSON body', function () {",
+                    "    pm.response.to.have.status(200);",
+                    "});",
+                    "",
+                    "pm.test('Response status is success', function () {",
+                    "    pm.expect(pm.response.json().status).to.equal('success');",
+                    "});"
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Next.js API Routes",
+        "description": "Next.js App Router route handlers under src/app/api/. The /api/vitals route is planned (Task 8.3) and may not exist yet.",
+        "item": [
+          {
+            "name": "POST Web Vitals",
+            "request": {
+              "method": "POST",
+              "header": [
+                { "key": "Content-Type", "value": "application/json" }
+              ],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n  \"name\": \"LCP\",\n  \"value\": 1850,\n  \"rating\": \"good\",\n  \"id\": \"v3-1672531200-1234567890\"\n}",
+                "options": { "raw": { "language": "json" } }
+              },
+              "url": {
+                "raw": "{{base_url}}/api/vitals",
+                "host": ["{{base_url}}"],
+                "path": ["api", "vitals"]
+              },
+              "description": "Accepts a Web Vitals beacon from the client instrumentation layer. Planned in Task 8.3 — will 404 until implemented."
+            },
+            "event": [
+              {
+                "listen": "test",
+                "script": {
+                  "type": "text/javascript",
+                  "exec": [
+                    "pm.test('Status code is 200 when route is implemented', function () {",
+                    "    // This test will fail (404) until Task 8.3 is complete.",
+                    "    // That is expected. Once implemented, it should return 200.",
+                    "    const code = pm.response.code;",
+                    "    pm.expect([200, 404]).to.include(code);",
+                    "    if (code === 404) {",
+                    "        console.warn('[vitals] Route not yet implemented — Task 8.3 pending');",
+                    "    }",
+                    "});"
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "environment_definition": {
+    "name": "Shree Balaji – Local",
+    "values": [
+      { "key": "base_url", "value": "http://localhost:3000", "enabled": true, "type": "default" }
+    ]
+  },
+  "notes": "workspace.id, collection.id, and collection.uid will be populated once the Postman MCP server is authenticated and the collection is pushed. Run the Postman power sign-in flow to complete setup."
+}

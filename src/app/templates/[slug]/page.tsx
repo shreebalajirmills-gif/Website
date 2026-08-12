@@ -221,7 +221,7 @@ export default async function TemplatePage({ params }: { params: Promise<{ slug:
             {template.description}
           </p>
           <div className="pt-2 text-xs text-steel-500 font-mono">
-            Last Updated: {template.updatedAt} | Version: 1.0 (MVP Template)
+            Last Updated: {template.updatedAt} | Version: 1.0 (Official Document)
           </div>
         </div>
 

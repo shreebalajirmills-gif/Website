@@ -47,16 +47,20 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onSelectSegment }) => 
           </div>
         </div>
 
-        {/* Hero Subject Thesis Title */}
-        <div className="text-center max-w-4xl mx-auto space-y-6">
-          <h1 className="text-4xl sm:text-6xl md:text-7xl font-black tracking-tight text-steel-900 leading-[1.06]">
-            The Steel Rolling Platform. <br className="hidden sm:inline" />
-            <span className="text-gradient-growth">Built for Scaled Infrastructure.</span>
-          </h1>
+        {/* Hero Subject Thesis Title with Adaptive Contrast Liquid Glass Card */}
+        <div className="text-center max-w-4xl mx-auto space-y-6 relative z-20">
+          <div className="liquid-glass-prominent rounded-3xl p-6 sm:p-10 border border-slate-200/90 shadow-2xl backdrop-blur-2xl bg-white/85 transition-all duration-300">
+            <h1 className="text-4xl sm:text-6xl md:text-7xl font-black tracking-tight text-slate-950 leading-[1.06] drop-shadow-sm">
+              The Steel Rolling Platform. <br className="hidden sm:inline" />
+              <span className="text-gradient-growth">Built for Scaled Infrastructure.</span>
+            </h1>
 
-          <p className="text-base sm:text-xl text-steel-600 max-w-2xl mx-auto leading-relaxed font-normal">
-            Manufacturing IS 2062 structural steel profiles and expanding into 144,000 TPA IS 1786 Fe-500D TMT bar production across Northern India.
-          </p>
+            <div className="mt-6 inline-block max-w-3xl rounded-2xl bg-slate-950/90 text-white p-4 sm:p-5 backdrop-blur-md shadow-xl border border-amber-400/40 transition-colors">
+              <p className="text-sm sm:text-lg font-medium leading-relaxed tracking-wide text-slate-100">
+                Manufacturing <span className="text-amber-400 font-extrabold">IS 2062 structural steel profiles</span> and expanding into <span className="text-amber-400 font-extrabold">144,000 TPA IS 1786 Fe-500D TMT bar production</span> across Northern India.
+              </p>
+            </div>
+          </div>
         </div>
 
         {/* Studio Design Element: Interactive Rolling Mill Pass Terminal (Bespoke Hero Thesis) */}

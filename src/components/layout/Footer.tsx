@@ -25,17 +25,11 @@ export const Footer: React.FC<FooterProps> = ({ onSelectSegment = () => {} }) =>
           {/* Brand & Mission Column */}
           <div className="lg:col-span-2 space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center font-black text-slate-950 text-xl shadow-lg shadow-amber-500/20">
-                SB
-              </div>
-              <div className="flex flex-col">
-                <span className="font-extrabold text-lg tracking-wider text-slate-100 uppercase">
-                  Shree Balaji
-                </span>
-                <span className="text-[10px] text-slate-400 font-semibold tracking-widest uppercase">
-                  Rolling Mills Pvt. Ltd.
-                </span>
-              </div>
+              <img 
+                src="/logo.png" 
+                alt="Shree Balaji Rolling Mills Private Limited Logo" 
+                className="h-10 sm:h-12 w-auto object-contain transition-transform group-hover:scale-105"
+              />
             </div>
             <p className="text-xs sm:text-sm text-slate-300 max-w-md leading-relaxed font-normal">
               Premier steel manufacturing platform operating 36,000 TPA structural steel & 144,000 TPA TMT bar rolling mill in Bhiwadi, Haryana.
@@ -117,24 +111,24 @@ export const Footer: React.FC<FooterProps> = ({ onSelectSegment = () => {} }) =>
               <div className="flex items-start gap-2">
                 <MapPin className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
                 <div>
-                  <strong className="text-slate-200 block font-bold">Primary Location:</strong>
-                  Add your office or site address here.
+                  <strong className="text-slate-200 block font-bold">Factory Location:</strong>
+                  Bhiwadi, Haryana
                 </div>
               </div>
               <div className="flex items-start gap-2">
                 <MapPin className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
                 <div>
-                  <strong className="text-slate-200 block font-bold">Secondary Desk:</strong>
-                  Add your regional desk or support location here.
+                  <strong className="text-slate-200 block font-bold">Business Location:</strong>
+                  Delhi NCR
                 </div>
               </div>
               <div className="flex items-center gap-2 pt-1">
                 <Phone className="w-3.5 h-3.5 text-amber-400" />
-                <span>Contact number to be added</span>
+                <span>Bhiwadi Mill Sales Desk</span>
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="w-3.5 h-3.5 text-amber-400" />
-                <span>Email address to be added</span>
+                <span>Delhi NCR Corporate Desk</span>
               </div>
             </div>
           </div>
@@ -151,7 +145,7 @@ export const Footer: React.FC<FooterProps> = ({ onSelectSegment = () => {} }) =>
               rel="noopener noreferrer"
               className="hover:text-white transition-colors cursor-pointer"
             >
-              Privacy Template
+              Privacy Policy
             </a>
             <a
               href="/templates/terms"
@@ -159,7 +153,7 @@ export const Footer: React.FC<FooterProps> = ({ onSelectSegment = () => {} }) =>
               rel="noopener noreferrer"
               className="hover:text-white transition-colors cursor-pointer"
             >
-              Terms Template
+              Terms of Use
             </a>
             <a
               href="/templates/quality"
@@ -167,7 +161,7 @@ export const Footer: React.FC<FooterProps> = ({ onSelectSegment = () => {} }) =>
               rel="noopener noreferrer"
               className="hover:text-white transition-colors cursor-pointer"
             >
-              Quality Template
+              Quality Assurance
             </a>
             <a
               href="/templates/compliance"
@@ -175,7 +169,7 @@ export const Footer: React.FC<FooterProps> = ({ onSelectSegment = () => {} }) =>
               rel="noopener noreferrer"
               className="hover:text-white transition-colors cursor-pointer"
             >
-              Compliance Template
+              Regulatory Compliance
             </a>
           </div>
         </div>

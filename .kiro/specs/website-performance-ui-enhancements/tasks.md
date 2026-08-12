@@ -8,7 +8,7 @@ Implement the three-pillar enhancement strategy for the Shree Balaji Rolling Mil
 
 ## Tasks
 
-- [ ] 1. Optimize Next.js configuration and add bundle analyzer
+- [x] 1. Optimize Next.js configuration and add bundle analyzer
   - [x] 1.1 Rewrite `next.config.ts` with full performance configuration
     - Enable `turbopack` block with `resolveAlias: { '@': './src' }`
     - Add SWC `compiler.removeConsole` gated on `NODE_ENV === 'production'`
@@ -18,24 +18,24 @@ Implement the three-pillar enhancement strategy for the Shree Balaji Rolling Mil
     - Add `experimental.optimizePackageImports: ['lucide-react', 'framer-motion']` and `experimental.optimizeCss: true`
     - _Requirements: 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9_
 
-  - [-] 1.2 Add `@next/bundle-analyzer` as a dev dependency and wrap config
+  - [x] 1.2 Add `@next/bundle-analyzer` as a dev dependency and wrap config
     - Install `@next/bundle-analyzer` as a dev dependency in `website/package.json`
     - Wrap `nextConfig` with `withBundleAnalyzer({ enabled: process.env.ANALYZE === 'true' })` in `next.config.ts`
     - _Requirements: 22.1, 22.2_
 
-- [ ] 2. Implement dynamic import strategy in `src/app/page.tsx`
-  - [~] 2.1 Replace static imports with `next/dynamic` for Three.js canvases
+- [x] 2. Implement dynamic import strategy in `src/app/page.tsx`
+  - [x] 2.1 Replace static imports with `next/dynamic` for Three.js canvases
     - Import `SteelHeroCanvas`, `SteelSparksCanvas`, and `SteelProductViewer` via `dynamic()` with `ssr: false`
     - Each dynamic import should resolve the named export (`.then(m => ({ default: m.ComponentName }))`)
     - _Requirements: 2.1, 2.4_
 
-  - [~] 2.2 Add `next/dynamic` code-splitting for `GrowthTimeline` and `InquiryForm`
+  - [x] 2.2 Add `next/dynamic` code-splitting for `GrowthTimeline` and `InquiryForm`
     - Import `GrowthTimeline` and `InquiryForm` via `dynamic()` with SSR enabled (default)
     - Wrap each in a `<Suspense>` boundary with the matching skeleton component as the `fallback`
     - _Requirements: 2.2, 2.3_
 
 - [ ] 3. Build the skeleton loader system
-  - [~] 3.1 Create `SkeletonBase` component and add shimmer CSS to `globals.css`
+  - [x] 3.1 Create `SkeletonBase` component and add shimmer CSS to `globals.css`
     - Create `src/components/ui/skeleton/SkeletonBase.tsx` as a `'use client'` component
     - Accept `variant` (`text` | `rect` | `circle`), `className`, and `animate` props
     - Render a `role="status"` element with `aria-label="Loading..."`
@@ -54,23 +54,23 @@ Implement the three-pillar enhancement strategy for the Shree Balaji Rolling Mil
     - Each must mirror the real component's outer dimensions to prevent CLS
     - _Requirements: 3.6, 3.7_
 
-- [ ] 4. Create animation variant catalog and core hooks
-  - [-] 4.1 Create `src/lib/animation-variants.ts` with `ANIMATION_VARIANTS` record
+- [x] 4. Create animation variant catalog and core hooks
+  - [x] 4.1 Create `src/lib/animation-variants.ts` with `ANIMATION_VARIANTS` record
     - Export the `AnimationVariant` type and `ANIMATION_VARIANTS` constant
     - Include `fadeUp` (`y: 32→0`, 0.55s), `fadeIn` (opacity only, 0.45s), `slideLeft` (`x: -40→0`, 0.5s), `slideRight` (`x: 40→0`, 0.5s), `scaleIn` (`scale: 0.92→1`, 0.5s)
     - All use cubic-bezier `[0.16, 1, 0.3, 1]` except `fadeIn` which uses `easeOut`
     - _Requirements: 4.1, 4.2, 4.3, 4.4_
 
-  - [ ] 4.2 Create `src/hooks/useReducedMotion.ts`
+  - [x] 4.2 Create `src/hooks/useReducedMotion.ts`
     - Re-export `useReducedMotion` from `framer-motion` as a named export
     - _Requirements: 8.10_
 
-  - [~] 4.3 Create `src/hooks/useScrollAnimation.ts`
+  - [x] 4.3 Create `src/hooks/useScrollAnimation.ts`
     - Use Framer Motion's `useInView` with `amount`, `once`, and `margin` options
     - Return `{ ref, isInView }` with defaults `threshold=0.15`, `once=true`, `margin='-50px'`
     - _Requirements: 8.1, 5.3_
 
-  - [~] 4.4 Create `src/hooks/useAnimatedCounter.ts`
+  - [x] 4.4 Create `src/hooks/useAnimatedCounter.ts`
     - Accept `from`, `to`, `duration`, `decimals`, `easing`, `format`, and `startOnMount` props
     - Expose `{ value, display, start }` — `start()` cancels any in-flight animation before restarting
     - Gate with `useReducedMotion`: immediately set to `to` when reduced-motion is active
@@ -82,13 +82,13 @@ Implement the three-pillar enhancement strategy for the Shree Balaji Rolling Mil
     - Use `fast-check` to assert that for any finite `to ≥ from`, `value` is monotonically non-decreasing during animation and equals `to` after completion
     - **Validates: Requirements 8.6**
 
-  - [~] 4.6 Create `src/hooks/useMouseParallax.ts`
+  - [x] 4.6 Create `src/hooks/useMouseParallax.ts`
     - Track `mousemove` with a `requestAnimationFrame` lerp loop (factor 0.06), bounding output to `[-strength, strength]`
     - Return `{ x: 0, y: 0 }` immediately and skip rAF when `useReducedMotion` is active
     - Cancel rAF and remove listener on unmount
     - _Requirements: 8.2, 8.3, 8.4, 17.5_
 
-  - [~] 4.7 Create `src/hooks/useKeyboardNav.ts`
+  - [x] 4.7 Create `src/hooks/useKeyboardNav.ts`
     - Return a memoized `keydown` handler for `Enter`, `Escape`, `ArrowUp`, `ArrowDown`, `ArrowLeft`, `ArrowRight`
     - Call `e.preventDefault()` for each handled key; ignore all others
     - _Requirements: 8.9_
@@ -99,7 +99,7 @@ Implement the three-pillar enhancement strategy for the Shree Balaji Rolling Mil
     - **Validates: Requirements 7.2, 8.2**
 
 - [ ] 5. Build the MouseTracker context
-  - [~] 5.1 Create `src/contexts/MouseTrackerContext.tsx`
+  - [x] 5.1 Create `src/contexts/MouseTrackerContext.tsx`
     - `MouseTrackerProvider` registers exactly one `{ passive: true }` `mousemove` listener on `window`
     - Drive updates via a single `requestAnimationFrame` loop applying lerp factor 0.06
     - Expose `{ x, y, rawX, rawY }` where `x, y ∈ [-1, 1]`
