@@ -1,0 +1,35 @@
+.text-gradient-growth {
+  background: linear-gradient(90deg,#d97706,#f97316,#ef4444);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 800;
+}
+
+.text-trust {
+  color: #065f46; /* emerald-ish */
+  font-weight: 800;
+}
+
+.phase-block.scale-in {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+.phase-block {
+  transform: translateY(18px) scale(0.98);
+  opacity: 0;
+}
+
+.timeline.in-view .phase-block {
+  transition: transform 680ms cubic-bezier(.2,.9,.2,1), opacity 480ms ease;
+}
+
+/* glass-pill tint variants */
+.badge-steel { background: linear-gradient(180deg, rgba(255,255,255,0.6), rgba(241,245,249,0.6)); }
+.badge-growth { background: linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,250,240,0.8)); }
+.badge-emerald { background: linear-gradient(180deg, rgba(255,255,255,0.8), rgba(240,253,244,0.8)); }
+
+@media (max-width: 720px) {
+  .timeline { flex-direction: column; }
+}
