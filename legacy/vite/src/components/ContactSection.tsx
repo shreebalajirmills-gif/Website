@@ -4,7 +4,7 @@ import './ContactSection.module.css';
 type Props = {
   chatEnabled?: boolean;
   whatsappNumber?: string; // in international format, e.g. "919812345678"
-  phoneNumber?: string; // e.g. "+911244604500"
+  phoneNumber?: string; // e.g. "+91 88001 06726"
   email?: string;
   businessHours?: string;
 };
@@ -14,9 +14,9 @@ const defaultPrefillMessage =
 
 const ContactSection: React.FC<Props> = ({
   chatEnabled = true,
-  whatsappNumber = "919999999999",
-  phoneNumber = "+91-124-4604-500",
-  email = "inquiry@shreebalajicom",
+  whatsappNumber = "918800106726",
+  phoneNumber = "+91 88001 06726",
+  email = "shreebalajirmills@gmail.com",
   businessHours = "Mon–Sat, 9 AM–6 PM IST",
 }) => {
   const containerRef = useRef<HTMLElement | null>(null);

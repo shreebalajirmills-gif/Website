@@ -629,8 +629,8 @@ Acceptance Criteria:
 ║  │  Speak to our team          │  Detailed inquiry?         ││
 ║  │  Response: Immediate        │  Response: 24 hours        ││
 ║  │                             │                            ││
-║  │  +91-124-4604-500           │  [Send Message]            ││
-║  │  Ext: Sales (2) / Orders (1)│  inquiry@shreebalajicom    ││
+║  │  +91 88001 06726             │  [Send Message]            ││
+║  │  Ext: Sales (2) / Orders (1)│  shreebalajirmills@gmail.com││
 ║  └────────────────────────────┴────────────────────────────┘║
 ║                                                              ║
 ║  📍 OFFICE LOCATION                                          ║

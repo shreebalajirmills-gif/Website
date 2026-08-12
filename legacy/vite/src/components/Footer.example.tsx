@@ -18,7 +18,7 @@ const social: SocialLink[] = [
   { label: 'LinkedIn', href: 'https://www.linkedin.com/company/shree-balaji-rolling-mills' },
   { label: 'X', href: 'https://x.com/shreebalaji' },
   { label: 'Instagram', href: 'https://www.instagram.com/shreebalajicom' },
-  { label: 'WhatsApp', href: 'https://wa.me/911244604500?text=Hello%20Shree%20Balaji' },
+  { label: 'WhatsApp', href: 'https://wa.me/918800106726?text=Hello%20Shree%20Balaji' },
 ];
 
 export default function FooterExample() {

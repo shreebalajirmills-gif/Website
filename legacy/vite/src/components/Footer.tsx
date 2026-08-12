@@ -111,7 +111,7 @@ const defaultSocial: SocialLink[] = [
   },
   {
     label: 'WhatsApp',
-    href: 'https://wa.me/911244604500?text=Hello%20Shree%20Balaji',
+    href: 'https://wa.me/918800106726?text=Hello%20Shree%20Balaji',
     icon: (
       <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden>
         <path d="M20.52 3.48A11.94 11.94 0 0 0 12 0C5.37 0 .12 5.25.12 11.88c0 2.09.55 4.13 1.6 5.92L0 24l6.36-1.67A11.86 11.86 0 0 0 12 23.76c6.63 0 11.88-5.25 11.88-11.88 0-3.18-1.24-6.17-3.36-8.4zM12 21.76c-1.3 0-2.57-.34-3.7-.99l-.26-.15-3.78.99.99-3.69-.17-.27A8.4 8.4 0 0 1 3.12 11.88C3.12 7.06 7.18 3 12 3c2.2 0 4.26.68 5.95 1.95A8.31 8.31 0 0 1 20.88 11.9c0 4.82-4.06 8.86-8.88 8.86zM17.1 14.3c-.27-.14-1.6-.79-1.85-.88-.25-.09-.43-.14-.61.14-.18.27-.7.88-.86 1.06-.16.18-.33.2-.61.07-.27-.14-1.14-.42-2.17-1.34-.8-.71-1.34-1.58-1.5-1.86-.15-.27-.02-.42.12-.56.12-.12.27-.33.41-.5.14-.17.18-.28.27-.46.09-.18.04-.34-.02-.48-.07-.14-.61-1.5-.84-2.05-.22-.53-.45-.46-.61-.47-.16-.01-.35-.01-.54-.01-.18 0-.48.07-.73.34-.25.27-.95.93-.95 2.27 0 1.34.98 2.64 1.12 2.82.14.18 1.93 3.03 4.68 4.25 3.27 1.42 3.27 0.95 3.85.89.59-.07 1.92-.78 2.19-1.53.27-.74.27-1.38.19-1.53-.08-.16-.27-.27-.54-.41z" />
@@ -303,7 +303,7 @@ export default function Footer({ columns = defaultColumns, socialLinks = default
               </div>
 
               <div className="text-[rgba(203,213,225,0.85)] text-sm">
-                Contact: <a className="hover:text-[#f59e0b]" href="tel:+911244604500">+91-124-4604-500</a> | Email: <a className="hover:text-[#f59e0b]" href="mailto:inquiry@shreebalajicom">inquiry@shreebalajicom</a>
+                Contact: <a className="hover:text-[#f59e0b]" href="tel:+918800106726">+91 88001 06726</a> | Email: <a className="hover:text-[#f59e0b]" href="mailto:shreebalajirmills@gmail.com">shreebalajirmills@gmail.com</a>
               </div>
             </div>
           </div>

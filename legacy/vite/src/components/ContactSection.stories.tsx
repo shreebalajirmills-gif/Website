@@ -13,9 +13,9 @@ export const Default = () => (
     <CrispLoader websiteId={process.env.REACT_APP_CRISP_WEBSITE_ID || ''} />
     <ContactSection
       chatEnabled={true}
-      whatsappNumber="919999999999"
-      phoneNumber="+91-124-4604-500"
-      email="inquiry@shreebalajicom"
+      whatsappNumber="918800106726"
+      phoneNumber="+91 88001 06726"
+      email="shreebalajirmills@gmail.com"
       businessHours="Mon–Sat, 9 AM–6 PM IST"
     />
   </>

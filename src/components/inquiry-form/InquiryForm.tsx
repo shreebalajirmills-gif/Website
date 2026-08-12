@@ -144,7 +144,7 @@ export const InquiryForm: React.FC<InquiryFormProps> = ({ initialSegment = 'dist
               </div>
               <div className="w-full bg-steel-200 h-2 rounded-full overflow-hidden border border-steel-300">
                 <div
-                  className="bg-gradient-to-r from-growth-600 to-growth-500 h-full transition-all duration-300 rounded-full shadow-sm"
+                  className="bg-growth-600 h-full transition-all duration-300 rounded-full shadow-sm"
                   style={{ width: `${(step / 3) * 100}%` }}
                 />
               </div>

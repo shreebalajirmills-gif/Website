@@ -18,6 +18,11 @@ export const Header: React.FC<HeaderProps> = ({ onSelectSegment }) => {
   const mobileNavRef = useRef<HTMLDivElement | null>(null);
   const menuTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
+  const handleLogoClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+    window.location.assign('/');
+  };
+
   const handleMouseEnter = (menuName: string) => {
     if (menuTimeoutRef.current) clearTimeout(menuTimeoutRef.current);
     setActiveMegaMenu(menuName);
@@ -123,13 +128,13 @@ export const Header: React.FC<HeaderProps> = ({ onSelectSegment }) => {
         <div className="w-full liquid-glass rounded-full px-5 py-3 flex items-center justify-between border border-slate-200/90 shadow-xl relative z-50">
           
           {/* Logo & Brand */}
-          <Link href="/" className="flex items-center gap-3 group shrink-0">
+          <a href="/" onClick={handleLogoClick} className="flex items-center gap-3 group shrink-0">
             <img 
               src="/logo.png" 
               alt="Shree Balaji Rolling Mills Private Limited Logo" 
               className="h-10 sm:h-12 w-auto object-contain transition-transform group-hover:scale-105"
             />
-          </Link>
+          </a>
 
           {/* Navigation Links with Mega Menu Dropdowns */}
           <nav className="hidden lg:flex items-center gap-1 bg-steel-100/90 p-1 rounded-full border border-steel-200/90">
@@ -272,7 +277,7 @@ export const Header: React.FC<HeaderProps> = ({ onSelectSegment }) => {
                   <div className="grid grid-cols-12 gap-6 items-stretch">
                     
                     {/* Left Feature Card with Hot Steel Image Aesthetic */}
-                    <div className="col-span-5 bg-gradient-to-br from-slate-950 via-slate-900 to-amber-950 text-white rounded-2xl p-6 flex flex-col justify-between border border-amber-500/30 relative overflow-hidden group shadow-lg">
+                    <div className="col-span-5 bg-slate-950 text-white rounded-2xl p-6 flex flex-col justify-between border border-slate-700 relative overflow-hidden group shadow-lg">
                       <div className="ambient-liquid-glow ambient-glow-growth top-0 right-0 scale-75 opacity-40" />
                       
                       <div className="relative z-10 space-y-3">

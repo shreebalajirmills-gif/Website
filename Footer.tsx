@@ -63,7 +63,7 @@ const defaultSocial: SocialLink[] = [
   { name: 'LinkedIn', href: 'https://www.linkedin.com', ariaLabel: 'LinkedIn' },
   { name: 'X', href: 'https://twitter.com', ariaLabel: 'Twitter / X' },
   { name: 'Instagram', href: 'https://www.instagram.com', ariaLabel: 'Instagram' },
-  { name: 'WhatsApp', href: 'https://wa.me/911244604500', ariaLabel: 'WhatsApp' },
+  { name: 'WhatsApp', href: 'https://wa.me/918800106726', ariaLabel: 'WhatsApp' },
 ];
 
 const Footer: React.FC<Props> = ({ columns = defaultColumns, socialLinks = defaultSocial, newsletterOnSubmit }) => {
@@ -213,7 +213,7 @@ const Footer: React.FC<Props> = ({ columns = defaultColumns, socialLinks = defau
             </div>
 
             <div style={{ color: textSecondary }}>
-              Contact: <a href="tel:+911244604500" style={{ color: textSecondary }}>+91-124-4604-500</a> | Email: <a href="mailto:inquiry@shreebalajicom" style={{ color: textSecondary }}>inquiry@shreebalajicom</a>
+              Contact: <a href="tel:+918800106726" style={{ color: textSecondary }}>+91 88001 06726</a> | Email: <a href="mailto:shreebalajirmills@gmail.com" style={{ color: textSecondary }}>shreebalajirmills@gmail.com</a>
             </div>
           </div>
 

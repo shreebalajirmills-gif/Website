@@ -12,6 +12,7 @@ export const GrowthTimeline: React.FC = () => {
   const [selectedYear, setSelectedYear] = useState<string>(FINANCIAL_METRICS[0].year);
   const [chartMode, setChartMode] = useState<'revenue' | 'capacity' | 'ebitda'>('revenue');
   const [isManualSelection, setIsManualSelection] = useState<boolean>(false);
+  const [chartLocked, setChartLocked] = useState<boolean>(false);
 
   const sectionRef = useRef<HTMLDivElement>(null);
 
@@ -25,6 +26,11 @@ export const GrowthTimeline: React.FC = () => {
     stiffness: 90,
     damping: 20,
     restDelta: 0.001,
+  });
+
+  const visibleProgress = useTransform(smoothProgress, (value) => {
+    if (chartLocked) return 1;
+    return Math.min(Math.max(value, 0), 1);
   });
 
   const activeMetric: FinancialGrowthMetric =
@@ -80,37 +86,49 @@ export const GrowthTimeline: React.FC = () => {
   const areaD = `${pathD} L ${chartPoints[chartPoints.length - 1].cx} ${height - padBottom} L ${chartPoints[0].cx} ${height - padBottom} Z`;
 
   // Dynamic Scroll Clip-Path width (draws graph progressively from padLeft to width - padRight)
-  const clipWidth = useTransform(smoothProgress, [0, 1], [padLeft - 5, width - padRight + 10]);
+  const clipWidth = useTransform(visibleProgress, [0, 1], [padLeft - 5, width - padRight + 10]);
 
   // Dynamic Cursor Glow position synchronized to scroll
   const tracerCx = useTransform(
-    smoothProgress,
+    visibleProgress,
     [0, 0.25, 0.5, 0.75, 1],
     chartPoints.map((p) => p.cx)
   );
   const tracerCy = useTransform(
-    smoothProgress,
+    visibleProgress,
     [0, 0.25, 0.5, 0.75, 1],
     chartPoints.map((p) => p.cy)
   );
 
   // Synchronize active year metric node with scroll progress
   useMotionValueEvent(smoothProgress, 'change', (latest) => {
+    if (chartLocked) {
+      setSelectedYear(FINANCIAL_METRICS[FINANCIAL_METRICS.length - 1].year);
+      return;
+    }
+
     if (isManualSelection) return;
     if (latest < 0.15) setSelectedYear(FINANCIAL_METRICS[0].year);
     else if (latest < 0.38) setSelectedYear(FINANCIAL_METRICS[1].year);
     else if (latest < 0.62) setSelectedYear(FINANCIAL_METRICS[2].year);
     else if (latest < 0.85) setSelectedYear(FINANCIAL_METRICS[3].year);
-    else setSelectedYear(FINANCIAL_METRICS[4].year);
+    else {
+      setSelectedYear(FINANCIAL_METRICS[4].year);
+      if (latest >= 0.98) {
+        setChartLocked(true);
+      }
+    }
   });
 
   const handleManualYearSelect = (year: string) => {
+    if (chartLocked) return;
     setIsManualSelection(true);
     setSelectedYear(year);
     setTimeout(() => setIsManualSelection(false), 5000);
   };
 
   const handleManualModeSelect = (mode: 'revenue' | 'capacity' | 'ebitda') => {
+    if (chartLocked) return;
     setIsManualSelection(true);
     setChartMode(mode);
     setTimeout(() => setIsManualSelection(false), 5000);
