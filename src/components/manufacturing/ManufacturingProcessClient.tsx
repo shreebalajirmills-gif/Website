@@ -193,13 +193,23 @@ export function ManufacturingProcessClient() {
           </div>
 
           {/* Right: Technical Specs Card */}
-          <div className="lg:col-span-5 bg-slate-950 text-white rounded-3xl p-6 sm:p-8 border border-amber-400/30 shadow-xl space-y-5">
-            <div className="flex items-center justify-between border-b border-white/10 pb-4">
-              <span className="text-xs font-mono font-bold uppercase text-amber-400 tracking-wider">
-                Operational Parameters
-              </span>
-              <ShieldCheck className="w-5 h-5 text-amber-400" />
-            </div>
+          <div className="lg:col-span-5 bg-slate-950 text-white rounded-3xl p-6 sm:p-8 border border-amber-400/30 shadow-xl space-y-5 relative overflow-hidden group">
+            {/* Manufacturing Engine Background Image */}
+            <img
+              src="/assets/manufacturing-process-bg.jpg"
+              alt="Shree Balaji Rolling Mill Hot Pass Process"
+              className="absolute inset-0 w-full h-full object-cover object-center opacity-40 group-hover:scale-105 transition-transform duration-700 pointer-events-none"
+            />
+            {/* Dark Overlay Gradient */}
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/85 to-slate-950/60 pointer-events-none" />
+
+            <div className="relative z-10 space-y-5">
+              <div className="flex items-center justify-between border-b border-white/10 pb-4">
+                <span className="text-xs font-mono font-bold uppercase text-amber-400 tracking-wider">
+                  Operational Parameters
+                </span>
+                <ShieldCheck className="w-5 h-5 text-amber-400" />
+              </div>
 
             <div className="space-y-3 font-mono text-xs sm:text-sm">
               {Object.entries(processSteps[activeStep].specs).map(([key, val]) => (
@@ -220,9 +230,10 @@ export function ManufacturingProcessClient() {
               </Link>
             </div>
           </div>
-
         </div>
+
       </div>
+    </div>
     </>
   );
 }

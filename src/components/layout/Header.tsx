@@ -117,7 +117,7 @@ export const Header: React.FC<HeaderProps> = ({ onSelectSegment }) => {
       tagline: 'Thermex Quenching, Induction Heating & Continuous Pass Rolling',
       badge: 'Integrated IQMS System',
       icon: Activity,
-      bgImage: '/assets/products-menu-bg.jpg',
+      bgImage: '/assets/manufacturing-process-bg.jpg',
       col1: [
         { label: 'The Process', href: '/manufacturing-processes#process', desc: '5-Stage Thermo-Mechanical rolling pipeline' },
         { label: 'Commitment', href: '/manufacturing-processes#commitment', desc: 'Zero-defect mill engineering standards' },
