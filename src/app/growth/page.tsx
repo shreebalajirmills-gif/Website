@@ -1,13 +1,33 @@
-'use client';
-
 import React from 'react';
+import type { Metadata } from 'next';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { GrowthTimeline } from '@/components/timeline/GrowthTimeline';
+import { constructMetadata, getBreadcrumbJsonLd } from '@/lib/seo';
+import { JsonLd } from '@/components/seo/JsonLd';
+
+export const metadata: Metadata = constructMetadata({
+  title: 'FY26–FY30 Growth Roadmap | Path to ₹1,000 Crore Revenue',
+  description:
+    'Explore Shree Balaji Rolling Mills 5x capacity expansion roadmap (36,000 TPA to 180,000 TPA), gross margin resilience (2.42%), and projected ₹1,006.40 Cr turnover by FY30.',
+  canonicalUrl: '/growth',
+  keywords: [
+    'Shree Balaji Growth Roadmap',
+    'Steel Mill Financial Plan',
+    '180000 TPA Steel Expansion',
+    'Bhiwadi Rolling Mill Revenue Model',
+  ],
+});
 
 export default function GrowthPage() {
+  const breadcrumbJsonLd = getBreadcrumbJsonLd([
+    { name: 'Home', item: '/' },
+    { name: 'Growth Roadmap', item: '/growth' },
+  ]);
+
   return (
-    <main className="min-h-screen bg-slate-50 text-slate-900 flex flex-col">
+    <main id="main-content" className="min-h-screen bg-slate-50 text-slate-900 flex flex-col">
+      <JsonLd data={breadcrumbJsonLd} />
       <Header />
 
       <section className="pt-36 pb-12 bg-white border-b border-slate-200 steel-grid-pattern text-center">

@@ -83,7 +83,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onSelectSegment }) => 
                   <div className="w-10 h-10 rounded-2xl bg-authority-50 border border-authority-300 flex items-center justify-center text-authority-700 font-mono font-bold text-xs transition-transform duration-300 group-hover:scale-110">
                     P-01
                   </div>
-                  <span className="badge-distributor text-[10px] px-2.5 py-1 rounded-full font-mono border">
+                  <span className="badge-distributor text-[10px] sm:text-xs px-2.5 py-1 rounded-full font-mono border">
                     DISTRIBUTOR
                   </span>
                 </div>
@@ -95,7 +95,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onSelectSegment }) => 
                 </p>
               </div>
 
-              <div className="mt-6 flex items-center text-xs font-bold text-authority-700 group-hover:translate-x-1 transition-transform font-mono">
+              <div className="mt-6 flex items-center text-xs sm:text-sm font-bold text-authority-700 group-hover:translate-x-1 transition-transform font-mono">
                 <span>Pass 01 Inquiry</span>
                 <ArrowRight className="w-4 h-4 ml-1" />
               </div>

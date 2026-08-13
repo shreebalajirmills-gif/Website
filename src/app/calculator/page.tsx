@@ -1,13 +1,44 @@
-'use client';
-
 import React from 'react';
+import type { Metadata } from 'next';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { SteelCalculatorWidget } from '@/components/tools/SteelCalculatorWidget';
+import { constructMetadata, getBreadcrumbJsonLd } from '@/lib/seo';
+import { JsonLd } from '@/components/seo/JsonLd';
+
+export const metadata: Metadata = constructMetadata({
+  title: 'Steel Weight & Trailer Bundle Calculator | IS 1786 & IS 2062',
+  description:
+    'Calculate instant site steel tonnage, weight per meter (D²/162 formula), and trailer bundle requirements for procurement managers and site engineers.',
+  canonicalUrl: '/calculator',
+  keywords: [
+    'Steel Weight Calculator',
+    'TMT Bar Weight Formula D2/162',
+    'Steel Bundle Tonnage Calculator',
+    'Structural Steel Weight Per Meter',
+    'Trailer Load Calculator Steel',
+  ],
+});
 
 export default function CalculatorPage() {
+  const breadcrumbJsonLd = getBreadcrumbJsonLd([
+    { name: 'Home', item: '/' },
+    { name: 'Steel Calculator', item: '/calculator' },
+  ]);
+
+  const webAppJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebApplication',
+    name: 'Shree Balaji Industrial Steel Weight & Bundle Calculator',
+    url: 'https://shreebalajirollingmills.com/calculator',
+    applicationCategory: 'BusinessApplication',
+    operatingSystem: 'All',
+    description: 'Calculate site tonnage, weight per meter, and truckload trailer bundle requirements for IS 1786 Fe-500D TMT bars and IS 2062 structural profiles.',
+  };
+
   return (
-    <main className="min-h-screen bg-slate-50 text-slate-900 flex flex-col">
+    <main id="main-content" className="min-h-screen bg-slate-50 text-slate-900 flex flex-col">
+      <JsonLd data={[breadcrumbJsonLd, webAppJsonLd]} />
       <Header />
 
       <section className="pt-36 pb-12 bg-white border-b border-slate-200 steel-grid-pattern text-center">

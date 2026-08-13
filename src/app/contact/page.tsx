@@ -1,21 +1,71 @@
-'use client';
-
 import React from 'react';
+import type { Metadata } from 'next';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
-import { ContactSection } from '@/components/contact/ContactSection';
-import { useRouter } from 'next/navigation';
-import { BuyerSegment } from '@/types';
+import { ContactPageClient } from '@/components/contact/ContactPageClient';
+import { LocationMapSection } from '@/components/location/LocationMapSection';
+import { FAQSection, FAQ_DATA } from '@/components/faq/FAQSection';
+import { constructMetadata, getBreadcrumbJsonLd, getFaqJsonLd } from '@/lib/seo';
+import { JsonLd } from '@/components/seo/JsonLd';
+import { SITE_CONFIG } from '@/config/site';
+
+export const metadata: Metadata = constructMetadata({
+  title: 'Contact Desk & Bhiwadi Mill Locations',
+  description:
+    'Connect directly with Shree Balaji Rolling Mills sales desk in Bhiwadi, Haryana or corporate office in Delhi NCR for immediate quotes and dispatch schedules.',
+  canonicalUrl: '/contact',
+  keywords: [
+    'Contact Shree Balaji Rolling Mills',
+    'Bhiwadi Steel Mill Address',
+    'Delhi NCR Corporate Office Steel',
+    'Steel Dispatch Desk Haryana',
+  ],
+});
 
 export default function ContactPage() {
-  const router = useRouter();
+  const breadcrumbJsonLd = getBreadcrumbJsonLd([
+    { name: 'Home', item: '/' },
+    { name: 'Contact Us', item: '/contact' },
+  ]);
 
-  const handleSelectSegment = (segment: BuyerSegment) => {
-    router.push(`/inquiry?segment=${segment}`);
+  const faqJsonLd = getFaqJsonLd(FAQ_DATA);
+
+  const contactPageJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'ContactPage',
+    name: 'Shree Balaji Rolling Mills Contact Desk',
+    url: `${SITE_CONFIG.url}/contact`,
+    mainEntity: {
+      '@type': 'Corporation',
+      name: SITE_CONFIG.name,
+      email: SITE_CONFIG.contact.email,
+      location: [
+        {
+          '@type': 'Place',
+          name: 'Bhiwadi Manufacturing Facility',
+          address: {
+            '@type': 'PostalAddress',
+            addressLocality: 'Bhiwadi',
+            addressRegion: 'Haryana',
+            addressCountry: 'IN',
+          },
+        },
+        {
+          '@type': 'Place',
+          name: 'Delhi NCR Corporate Office',
+          address: {
+            '@type': 'PostalAddress',
+            addressLocality: 'Delhi NCR',
+            addressCountry: 'IN',
+          },
+        },
+      ],
+    },
   };
 
   return (
-    <main className="min-h-screen bg-slate-50 text-slate-900 flex flex-col">
+    <main id="main-content" className="min-h-screen bg-slate-50 text-slate-900 flex flex-col">
+      <JsonLd data={[breadcrumbJsonLd, contactPageJsonLd, faqJsonLd]} />
       <Header />
 
       <section className="pt-36 pb-12 bg-white border-b border-slate-200 steel-grid-pattern text-center">
@@ -32,7 +82,11 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <ContactSection onSelectSegment={handleSelectSegment} />
+      <ContactPageClient />
+
+      <LocationMapSection />
+
+      <FAQSection />
 
       <Footer />
     </main>

@@ -1,135 +1,69 @@
-'use client';
-
-import React, { useState } from 'react';
+import React from 'react';
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
+import { ManufacturingProcessClient } from '@/components/manufacturing/ManufacturingProcessClient';
+import { constructMetadata, getBreadcrumbJsonLd } from '@/lib/seo';
+import { JsonLd } from '@/components/seo/JsonLd';
 import { 
   Flame, 
-  ShieldCheck, 
-  Layers, 
-  Activity, 
-  CheckCircle2, 
-  Download, 
-  ArrowRight, 
-  Zap, 
   Scale, 
-  FileText,
-  Building2,
-  RefreshCw,
-  Award
+  Award,
 } from 'lucide-react';
 
-export default function ManufacturingProcessesPage() {
-  const [activeStep, setActiveStep] = useState(0);
+export const metadata: Metadata = constructMetadata({
+  title: 'Manufacturing Processes & IQMS Quality System | Thermex Rolling Mill',
+  description:
+    'Detailed 5-stage thermo-mechanical rolling process and IQMS system at Bhiwadi rolling mill. Optical spectrometer testing, 1200°C furnace, and Thermex water quenching.',
+  canonicalUrl: '/manufacturing-processes',
+  keywords: [
+    'TMT Manufacturing Process',
+    'Thermex Quenching Technology',
+    'Bhiwadi Rolling Mill Furnace',
+    'Spectrometer Steel Testing',
+    'TMT Bar Site Testing Guide',
+  ],
+});
 
-  const processSteps = [
-    {
-      id: 'step-1',
-      number: '01',
-      title: 'Raw Material Segregation & Spectrometer Testing',
-      tagline: 'Precision Chemical Control Before Rolling',
-      icon: Flame,
-      color: 'from-amber-500 to-orange-600',
-      description: 'Raw materials (MS Ingots & Billets) undergo rigorous chemical analysis using optical emission spectrometers. We enforce strict limits on Sulfur (≤0.040%) and Phosphorus (≤0.040%) to ensure superior weldability and ductile purity.',
-      highlights: [
-        'Optical emission spectrometer chemical verification',
-        'Strict Carbon Equivalent (CE) control for seismic ductility',
-        '100% traceably segregated prime grade billets',
-        'Zero inclusion raw material rejection protocol'
-      ],
-      specs: {
-        'Carbon Content': '0.15% – 0.25%',
-        'Sulfur (S)': 'Max 0.040%',
-        'Phosphorus (P)': 'Max 0.040%',
-        'S + P Combined': 'Max 0.075%'
-      }
-    },
-    {
-      id: 'step-2',
-      number: '02',
-      title: 'Continuous Billet Re-Heating Furnace',
-      tagline: 'Uniform Thermal Conditioning at 1,200°C',
-      icon: Zap,
-      color: 'from-red-500 to-amber-600',
-      description: 'Billets enter our fully automated continuous re-heating furnace, heated uniformly to 1,200°C. Precise temperature monitoring prevents scale loss and guarantees consistent plastic flow during high-speed rolling passes.',
-      highlights: [
-        'Automated multi-zone furnace temperature control',
-        'Minimal surface oxidation & scale formation',
-        'Optimized grain structure pre-rolling',
-        'Energy-efficient recuperative heating technology'
-      ],
-      specs: {
-        'Furnace Temp': '1,200°C ± 20°C',
-        'Soaking Time': 'Optimum 45–60 mins',
-        'Scale Loss': '< 1.2% Total Weight',
-        'Energy Source': 'Clean Fuel Recuperation'
-      }
-    },
-    {
-      id: 'step-3',
-      number: '03',
-      title: 'High-Speed Multi-Stand Rolling Mill',
-      tagline: 'Dimensional Precision Across Structural & Rebar Profiles',
-      icon: Layers,
-      color: 'from-blue-500 to-cyan-600',
-      description: 'Heated billets pass through our multi-stand roughing, intermediate, and finishing mill stands fitted with tungsten carbide rolls. This ensures razor-sharp section geometry for IS 2062 structural profiles and uniform rib height for TMT bars.',
-      highlights: [
-        'Computerized roll pass design for exact sectional tolerances',
-        'Tungsten carbide finishing rolls for flawless surface finish',
-        'Synchronized high-speed rolling up to 30 m/sec',
-        'Continuous automatic gauge control (AGC)'
-      ],
-      specs: {
-        'Tolerance Range': 'BIS IS 1852 & IS 1786 Strict Class',
-        'Structural Profiles': 'MS Angles, Channels, Joists',
-        'TMT Bar Range': '8mm to 32mm Diameter',
-        'Surface Finish': 'Smooth & Crack-Free'
-      }
-    },
-    {
-      id: 'step-4',
-      number: '04',
-      title: 'Thermex Water Quenching & Self-Tempering',
-      tagline: 'Composite Microstructure: Hard Surface, Ductile Core',
-      icon: RefreshCw,
-      color: 'from-emerald-500 to-teal-600',
-      description: 'Hot rolled bars immediately pass through the patented Thermex water quenching system. High-pressure water jets rapidly chill the outer layer into hard tempered martensite, while core heat self-tempers the bar into a ductile ferrite-pearlite core.',
-      highlights: [
-        'Patented Thermex water-quenching technology',
-        'Tempered martensitic outer rim for high yield strength (500+ MPa)',
-        'Ductile ferrite-pearlite core for maximum seismic elongation (>16%)',
-        'Superior bendability without micro-cracking'
-      ],
-      specs: {
-        'Quench Pressure': '12–18 Bar Water Jet',
-        'Self-Tempering Temp': '580°C – 620°C Core Transfer',
-        'Microstructure': 'Martensite Rim + Ferrite Core',
-        'Seismic Grade': 'BIS IS 1786 Fe-500D Compliant'
-      }
-    },
-    {
-      id: 'step-5',
-      number: '05',
-      title: 'Automatic Rake Cooling Bed & Bundle Bundling',
-      tagline: 'Controlled Atmospheric Stabilization & Dispatch Quality',
-      icon: Activity,
-      color: 'from-purple-500 to-indigo-600',
-      description: 'Quenched bars are sheared to standard 12-meter lengths and transferred onto an automatic rake cooling bed. Controlled air cooling ensures residual stress relief, uniform mechanical properties, and automatic bundle tagging for full batch traceability.',
-      highlights: [
-        'Automatic rake cooling bed for uniform cooling rate',
-        'Cold flying shear cutting for clean, burr-free ends',
-        'Automated counting, bundling, and metal strap tying',
-        'Barcode-tagged mill test certificate (MTC) attachment'
-      ],
-      specs: {
-        'Standard Length': '12.0 Meters (Custom Available)',
-        'Bundle Weight': 'Approx. 2.0 to 2.5 MT per Bundle',
-        'Traceability': 'Heat Number Tagged per Bundle',
-        'Packaging': 'Corrosion Inhibitor Strapped'
-      }
-    }
-  ];
+export default function ManufacturingProcessesPage() {
+  const breadcrumbJsonLd = getBreadcrumbJsonLd([
+    { name: 'Home', item: '/' },
+    { name: 'Manufacturing Processes', item: '/manufacturing-processes' },
+  ]);
+
+  const howToTestJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name: 'How to Test TMT Bar Quality on Site',
+    description: 'Quick 4-step contractor site protocol to verify TMT bar authenticity, weight tolerance, ductility, and rib geometry before pouring concrete.',
+    step: [
+      {
+        '@type': 'HowToStep',
+        position: 1,
+        name: 'Weight Per Meter Test',
+        text: 'Cut exactly 1-meter bar sample. Weigh on digital scale and verify against BIS IS 1786 nominal weights (e.g. 12mm bar = 0.888 kg/m ± 5%).',
+      },
+      {
+        '@type': 'HowToStep',
+        position: 2,
+        name: 'Mandrel Bend Test',
+        text: 'Bend the TMT bar cold to 180° using a standard bending mandrel. Inspect the outer bend radius for any hairline cracks or surface splits.',
+      },
+      {
+        '@type': 'HowToStep',
+        position: 3,
+        name: 'Embossing & Rib Check',
+        text: 'Verify clear mill embossing "SHREE BALAJI 500D" along the bar axis. Ensure sharp transverse ribs for high concrete bonding strength.',
+      },
+      {
+        '@type': 'HowToStep',
+        position: 4,
+        name: 'Mill Test Certificate (MTC) Verification',
+        text: 'Match the bundle tag Heat Number with the Mill Test Certificate (MTC) supplied with every truck dispatch from Bhiwadi.',
+      },
+    ],
+  };
 
   const qualityChecks = [
     {
@@ -155,7 +89,8 @@ export default function ManufacturingProcessesPage() {
   ];
 
   return (
-    <main className="min-h-screen bg-steel-base text-primary font-sans">
+    <main id="main-content" className="min-h-screen bg-steel-base text-primary font-sans">
+      <JsonLd data={[breadcrumbJsonLd, howToTestJsonLd]} />
       <Header />
 
       {/* Hero Section */}
@@ -165,7 +100,7 @@ export default function ManufacturingProcessesPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
           <div className="glass-pill px-5 py-2 inline-flex items-center gap-2.5 backdrop-blur-xl border-steel-300 mb-6 shadow-sm">
             <Flame className="w-4 h-4 text-growth-600 animate-pulse" />
-            <span className="text-xs font-mono font-bold text-growth-700 uppercase tracking-wider">
+            <span className="text-xs sm:text-sm font-mono font-bold text-growth-700 uppercase tracking-wider">
               THERMO-MECHANICAL MANUFACTURING ENGINE
             </span>
           </div>
@@ -180,17 +115,17 @@ export default function ManufacturingProcessesPage() {
           </p>
 
           {/* Quick Nav Anchors */}
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-            <a href="#process" className="btn-secondary text-xs !py-2.5 !px-5 rounded-full font-bold">
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-3 sm:gap-4 overflow-x-auto pb-2 sm:pb-0 -mx-4 px-4 sm:mx-0 sm:px-0">
+            <a href="#process" className="btn-secondary text-xs sm:text-xs !py-3 sm:!py-2.5 !px-5 rounded-full font-bold min-h-[48px] shrink-0 whitespace-nowrap">
               The 5-Step Process
             </a>
-            <a href="#iqms" className="btn-secondary text-xs !py-2.5 !px-5 rounded-full font-bold">
+            <a href="#iqms" className="btn-secondary text-xs sm:text-xs !py-3 sm:!py-2.5 !px-5 rounded-full font-bold min-h-[48px] shrink-0 whitespace-nowrap">
               IQMS System
             </a>
-            <a href="#quality-checks" className="btn-secondary text-xs !py-2.5 !px-5 rounded-full font-bold">
+            <a href="#quality-checks" className="btn-secondary text-xs sm:text-xs !py-3 sm:!py-2.5 !px-5 rounded-full font-bold min-h-[48px] shrink-0 whitespace-nowrap">
               Laboratory Checks
             </a>
-            <a href="#testing-guide" className="btn-secondary text-xs !py-2.5 !px-5 rounded-full font-bold">
+            <a href="#testing-guide" className="btn-secondary text-xs sm:text-xs !py-3 sm:!py-2.5 !px-5 rounded-full font-bold min-h-[48px] shrink-0 whitespace-nowrap">
               How to Test TMT Bar
             </a>
           </div>
@@ -200,7 +135,7 @@ export default function ManufacturingProcessesPage() {
       {/* SECTION 1: The 5-Step Thermo-Mechanical Process */}
       <section id="process" className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="glass-pill px-4 py-1.5 text-xs font-mono font-bold uppercase tracking-widest text-growth-700">
+          <span className="glass-pill px-4 py-1.5 text-xs sm:text-sm font-mono font-bold uppercase tracking-widest text-growth-700">
             Step-By-Step Engineering
           </span>
           <h2 className="text-3xl sm:text-5xl font-black text-slate-950 mt-4 tracking-tight">
@@ -211,103 +146,7 @@ export default function ManufacturingProcessesPage() {
           </p>
         </div>
 
-        {/* Process Step Selector Tabs */}
-        <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 mb-10">
-          {processSteps.map((step, idx) => {
-            const Icon = step.icon;
-            const isActive = activeStep === idx;
-            return (
-              <button
-                key={step.id}
-                onClick={() => setActiveStep(idx)}
-                className={`p-4 rounded-2xl text-left transition-all duration-300 border flex flex-col justify-between ${
-                  isActive
-                    ? 'bg-slate-950 text-white border-amber-400/50 shadow-xl scale-[1.02]'
-                    : 'liquid-glass text-slate-800 border-steel-200 hover:border-steel-400'
-                }`}
-              >
-                <div className="flex items-center justify-between">
-                  <span className={`text-xs font-mono font-bold ${isActive ? 'text-amber-400' : 'text-steel-500'}`}>
-                    PHASE {step.number}
-                  </span>
-                  <Icon className={`w-5 h-5 ${isActive ? 'text-amber-400' : 'text-steel-600'}`} />
-                </div>
-                <p className="mt-3 text-xs sm:text-sm font-extrabold line-clamp-2 leading-snug">
-                  {step.title.split('&')[0]}
-                </p>
-              </button>
-            );
-          })}
-        </div>
-
-        {/* Selected Step Detail Panel */}
-        <div className="liquid-glass-prominent rounded-3xl p-6 sm:p-10 border border-steel-200 shadow-2xl bg-white/90">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            
-            {/* Left: Description & Highlights */}
-            <div className="lg:col-span-7 space-y-6">
-              <div className="flex items-center gap-3">
-                <span className="w-12 h-12 rounded-2xl bg-slate-950 text-amber-400 flex items-center justify-center font-mono font-black text-lg border border-amber-400/30">
-                  {processSteps[activeStep].number}
-                </span>
-                <div>
-                  <h3 className="text-2xl sm:text-3xl font-black text-slate-950 tracking-tight">
-                    {processSteps[activeStep].title}
-                  </h3>
-                  <p className="text-xs font-mono font-bold text-growth-700 uppercase tracking-wider mt-0.5">
-                    {processSteps[activeStep].tagline}
-                  </p>
-                </div>
-              </div>
-
-              <p className="text-sm sm:text-base text-steel-700 leading-relaxed font-normal">
-                {processSteps[activeStep].description}
-              </p>
-
-              <div className="space-y-2.5 pt-2">
-                <p className="text-xs font-mono font-bold text-steel-900 uppercase tracking-widest">
-                  Key Technical Controls
-                </p>
-                {processSteps[activeStep].highlights.map((h, i) => (
-                  <div key={i} className="flex items-start gap-2.5 text-xs sm:text-sm text-steel-800">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                    <span>{h}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Right: Technical Specs Card */}
-            <div className="lg:col-span-5 bg-slate-950 text-white rounded-3xl p-6 sm:p-8 border border-amber-400/30 shadow-xl space-y-5">
-              <div className="flex items-center justify-between border-b border-white/10 pb-4">
-                <span className="text-xs font-mono font-bold uppercase text-amber-400 tracking-wider">
-                  Operational Parameters
-                </span>
-                <ShieldCheck className="w-5 h-5 text-amber-400" />
-              </div>
-
-              <div className="space-y-3 font-mono text-xs sm:text-sm">
-                {Object.entries(processSteps[activeStep].specs).map(([key, val]) => (
-                  <div key={key} className="flex items-center justify-between border-b border-white/5 pb-2">
-                    <span className="text-slate-400">{key}</span>
-                    <span className="font-bold text-white text-right">{val}</span>
-                  </div>
-                ))}
-              </div>
-
-              <div className="pt-2">
-                <Link
-                  href="/inquiry"
-                  className="w-full btn-primary !py-3 rounded-2xl text-xs font-extrabold flex items-center justify-center gap-2 shadow-lg"
-                >
-                  <span>Request Mill Spec Sheet</span>
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
-              </div>
-            </div>
-
-          </div>
-        </div>
+        <ManufacturingProcessClient />
       </section>
 
       {/* SECTION 2: Integrated Quality Management System (IQMS) */}
@@ -316,7 +155,7 @@ export default function ManufacturingProcessesPage() {
           
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-16">
             <div className="lg:col-span-6 space-y-4">
-              <span className="glass-pill px-4 py-1.5 text-xs font-mono font-bold uppercase tracking-widest text-authority-700">
+              <span className="glass-pill px-4 py-1.5 text-xs sm:text-sm font-mono font-bold uppercase tracking-widest text-authority-700">
                 Quality System (IQMS)
               </span>
               <h2 className="text-3xl sm:text-5xl font-black text-slate-950 tracking-tight">
@@ -330,19 +169,19 @@ export default function ManufacturingProcessesPage() {
             <div className="lg:col-span-6 grid grid-cols-2 gap-4">
               <div className="liquid-glass p-5 rounded-2xl border border-steel-200">
                 <p className="text-3xl font-black text-growth-700 font-mono">100%</p>
-                <p className="text-xs font-bold text-slate-800 mt-1">Spectrometer Heat Testing</p>
+                <p className="text-xs sm:text-sm font-bold text-slate-800 mt-1">Spectrometer Heat Testing</p>
               </div>
               <div className="liquid-glass p-5 rounded-2xl border border-steel-200">
                 <p className="text-3xl font-black text-authority-700 font-mono">Fe-500D</p>
-                <p className="text-xs font-bold text-slate-800 mt-1">High Ductility Grade</p>
+                <p className="text-xs sm:text-sm font-bold text-slate-800 mt-1">High Ductility Grade</p>
               </div>
               <div className="liquid-glass p-5 rounded-2xl border border-steel-200">
                 <p className="text-3xl font-black text-trust-700 font-mono">IS 2062</p>
-                <p className="text-xs font-bold text-slate-800 mt-1">BIS Structural License</p>
+                <p className="text-xs sm:text-sm font-bold text-slate-800 mt-1">BIS Structural License</p>
               </div>
               <div className="liquid-glass p-5 rounded-2xl border border-steel-200">
                 <p className="text-3xl font-black text-emerald-700 font-mono">0 Defect</p>
-                <p className="text-xs font-bold text-slate-800 mt-1">Mill Dispatch Standard</p>
+                <p className="text-xs sm:text-sm font-bold text-slate-800 mt-1">Mill Dispatch Standard</p>
               </div>
             </div>
           </div>
@@ -355,8 +194,8 @@ export default function ManufacturingProcessesPage() {
                   Q-0{i + 1}
                 </div>
                 <h3 className="text-lg font-bold text-slate-950">{qc.title}</h3>
-                <p className="text-xs text-steel-600 leading-relaxed">{qc.desc}</p>
-                <div className="pt-2 border-t border-steel-200/80 flex items-center justify-between text-xs font-mono font-bold text-growth-700">
+                <p className="text-xs sm:text-sm text-steel-600 leading-relaxed">{qc.desc}</p>
+                <div className="pt-2 border-t border-steel-200/80 flex items-center justify-between text-xs sm:text-sm font-mono font-bold text-growth-700">
                   <span>BENCHMARK</span>
                   <span>{qc.metric}</span>
                 </div>
@@ -370,7 +209,7 @@ export default function ManufacturingProcessesPage() {
       {/* SECTION 3: Quality Checks & Chemical / Mechanical Tolerance Tables */}
       <section id="quality-checks" className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <span className="glass-pill px-4 py-1.5 text-xs font-mono font-bold uppercase tracking-widest text-trust-700">
+          <span className="glass-pill px-4 py-1.5 text-xs sm:text-sm font-mono font-bold uppercase tracking-widest text-trust-700">
             BIS Specification Compliance
           </span>
           <h2 className="text-3xl sm:text-5xl font-black text-slate-950 mt-4 tracking-tight">
@@ -390,7 +229,7 @@ export default function ManufacturingProcessesPage() {
                 <Flame className="w-5 h-5 text-amber-600" />
                 Chemical Composition Limits
               </h3>
-              <span className="text-xs font-mono font-bold text-growth-700 bg-growth-50 px-3 py-1 rounded-full border border-growth-200">
+              <span className="text-xs sm:text-sm font-mono font-bold text-growth-700 bg-growth-50 px-3 py-1 rounded-full border border-growth-200">
                 IS 1786 Fe-500D
               </span>
             </div>
@@ -442,7 +281,7 @@ export default function ManufacturingProcessesPage() {
                 <Scale className="w-5 h-5 text-authority-600" />
                 Mechanical Performance Matrix
               </h3>
-              <span className="text-xs font-mono font-bold text-authority-700 bg-authority-50 px-3 py-1 rounded-full border border-authority-200">
+              <span className="text-xs sm:text-sm font-mono font-bold text-authority-700 bg-authority-50 px-3 py-1 rounded-full border border-authority-200">
                 Seismic Resistance
               </span>
             </div>
@@ -495,7 +334,7 @@ export default function ManufacturingProcessesPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="glass-pill px-4 py-1.5 text-xs font-mono font-bold uppercase tracking-widest text-amber-400 border border-amber-400/30">
+            <span className="glass-pill px-4 py-1.5 text-xs sm:text-sm font-mono font-bold uppercase tracking-widest text-amber-400 border border-amber-400/30">
               Contractor & Site Engineer Manual
             </span>
             <h2 className="text-3xl sm:text-5xl font-black text-white mt-4 tracking-tight">
@@ -514,7 +353,7 @@ export default function ManufacturingProcessesPage() {
                 01
               </div>
               <h3 className="text-lg font-bold text-white">Weight Per Meter Test</h3>
-              <p className="text-xs text-slate-400 leading-relaxed">
+              <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
                 Cut exactly 1-meter bar sample. Weigh on digital scale and verify against BIS IS 1786 nominal weights (e.g. 12mm bar = 0.888 kg/m ± 5%).
               </p>
             </div>
@@ -525,7 +364,7 @@ export default function ManufacturingProcessesPage() {
                 02
               </div>
               <h3 className="text-lg font-bold text-white">Mandrel Bend Test</h3>
-              <p className="text-xs text-slate-400 leading-relaxed">
+              <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
                 Bend the TMT bar cold to 180° using a standard bending mandrel. Inspect the outer bend radius for any hairline cracks or surface splits.
               </p>
             </div>
@@ -536,8 +375,8 @@ export default function ManufacturingProcessesPage() {
                 03
               </div>
               <h3 className="text-lg font-bold text-white">Embossing & Rib Check</h3>
-              <p className="text-xs text-slate-400 leading-relaxed">
-                Verify clear mill embossing "SHREE BALAJI 500D" along the bar axis. Ensure sharp transverse ribs for high concrete bonding strength.
+              <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
+                Verify clear mill embossing &quot;SHREE BALAJI 500D&quot; along the bar axis. Ensure sharp transverse ribs for high concrete bonding strength.
               </p>
             </div>
 
@@ -547,7 +386,7 @@ export default function ManufacturingProcessesPage() {
                 04
               </div>
               <h3 className="text-lg font-bold text-white">Mill Test Certificate (MTC)</h3>
-              <p className="text-xs text-slate-400 leading-relaxed">
+              <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
                 Match the bundle tag Heat Number with the Mill Test Certificate (MTC) supplied with every truck dispatch from Bhiwadi.
               </p>
             </div>
@@ -562,7 +401,7 @@ export default function ManufacturingProcessesPage() {
         <div className="liquid-glass-prominent rounded-3xl p-8 sm:p-12 border border-steel-200 shadow-2xl bg-white/90 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           
           <div className="lg:col-span-8 space-y-4">
-            <span className="glass-pill px-4 py-1.5 text-xs font-mono font-bold uppercase tracking-widest text-emerald-700">
+            <span className="glass-pill px-4 py-1.5 text-xs sm:text-sm font-mono font-bold uppercase tracking-widest text-emerald-700">
               Sustainable Rolling Excellence
             </span>
             <h2 className="text-3xl sm:text-4xl font-black text-slate-950 tracking-tight">
@@ -576,7 +415,7 @@ export default function ManufacturingProcessesPage() {
           <div className="lg:col-span-4 flex flex-col gap-3">
             <Link
               href="/inquiry"
-              className="btn-primary !py-3.5 !px-6 rounded-2xl text-xs font-extrabold text-center shadow-lg"
+              className="btn-primary !py-3.5 sm:!py-3 !px-6 rounded-2xl text-xs sm:text-sm font-extrabold text-center shadow-lg min-h-[48px]"
             >
               Request Custom Quality Report
             </Link>

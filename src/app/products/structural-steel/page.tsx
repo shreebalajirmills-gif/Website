@@ -1,13 +1,31 @@
-'use client';
-
 import React from 'react';
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { SteelProductViewer } from '@/components/3d/SteelProductViewer';
-import { ShieldCheck, Download, CheckCircle2, ArrowRight, FileText, Scale, Box } from 'lucide-react';
+import { ShieldCheck, ArrowRight, Scale, Box } from 'lucide-react';
+import { constructMetadata, getBreadcrumbJsonLd, getProductJsonLd } from '@/lib/seo';
+import { JsonLd } from '@/components/seo/JsonLd';
+import { PRODUCTS_DATA } from '@/data/products';
+
+export const metadata: Metadata = constructMetadata({
+  title: 'IS 2062 Structural Steel Angles & Channels Manufacturing | 36,000 TPA',
+  description:
+    'Manufactured per BIS IS 2062:2011 Grade E250 in Bhiwadi, Haryana. High-tensile equal angles & channels for industrial framing, transmission line towers, and bridges.',
+  canonicalUrl: '/products/structural-steel',
+  keywords: [
+    'IS 2062 Structural Steel',
+    'MS Angles Manufacturer Bhiwadi',
+    'Steel Channels IS 2062 Grade E250',
+    'Transmission Tower Angles Delhi NCR',
+    '36000 TPA Structural Mill',
+  ],
+});
 
 export default function StructuralSteelPage() {
+  const structuralProduct = PRODUCTS_DATA[0];
+
   const angleSizes = [
     { size: '40 x 40 x 5 mm', weightPerM: '2.97 kg/m', length: '12 Meters', app: 'Light Fabrication & Bracing' },
     { size: '50 x 50 x 6 mm', weightPerM: '4.47 kg/m', length: '12 Meters', app: 'Roof Trusses & Shed Framing' },
@@ -17,8 +35,24 @@ export default function StructuralSteelPage() {
     { size: '100 x 100 x 10 mm', weightPerM: '14.90 kg/m', length: '12 Meters', app: 'Bridge Columns & Cranes' },
   ];
 
+  const breadcrumbJsonLd = getBreadcrumbJsonLd([
+    { name: 'Home', item: '/' },
+    { name: 'Our Products', item: '/products' },
+    { name: 'Structural Steel', item: '/products/structural-steel' },
+  ]);
+
+  const productJsonLd = getProductJsonLd({
+    name: structuralProduct.name,
+    description: structuralProduct.description,
+    url: '/products/structural-steel',
+    standard: structuralProduct.specs.standard,
+    capacity: structuralProduct.capacity.formatTpa,
+    applications: structuralProduct.applications,
+  });
+
   return (
-    <main className="min-h-screen bg-steel-base text-steel-900 flex flex-col selection:bg-growth-500 selection:text-white">
+    <main id="main-content" className="min-h-screen bg-steel-base text-steel-900 flex flex-col selection:bg-growth-500 selection:text-white">
+      <JsonLd data={[breadcrumbJsonLd, productJsonLd]} />
       <Header />
 
       {/* Hero Section */}

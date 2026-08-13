@@ -1,9 +1,12 @@
 import React from 'react';
 import { notFound } from 'next/navigation';
+import type { Metadata } from 'next';
 import Link from 'next/link';
-import { ShieldCheck, ArrowLeft, FileText, CheckCircle2, Building, Printer } from 'lucide-react';
+import { ArrowLeft, FileText, CheckCircle2, Building } from 'lucide-react';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
+import { constructMetadata, getBreadcrumbJsonLd } from '@/lib/seo';
+import { JsonLd } from '@/components/seo/JsonLd';
 
 interface TemplateData {
   title: string;
@@ -178,6 +181,25 @@ export function generateStaticParams() {
   ];
 }
 
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const template = TEMPLATES[slug];
+
+  if (!template) {
+    return constructMetadata({
+      title: 'Document Not Found',
+      noIndex: true,
+    });
+  }
+
+  return constructMetadata({
+    title: `${template.title} | Institutional Governance`,
+    description: template.description,
+    canonicalUrl: `/templates/${slug}`,
+    type: 'article',
+  });
+}
+
 export default async function TemplatePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const template = TEMPLATES[slug];
@@ -186,11 +208,18 @@ export default async function TemplatePage({ params }: { params: Promise<{ slug:
     notFound();
   }
 
+  const breadcrumbJsonLd = getBreadcrumbJsonLd([
+    { name: 'Home', item: '/' },
+    { name: 'Legal & Governance', item: '/templates/privacy' },
+    { name: template.title, item: `/templates/${slug}` },
+  ]);
+
   return (
     <div className="min-h-screen bg-steel-base text-steel-900 flex flex-col">
+      <JsonLd data={breadcrumbJsonLd} />
       <Header />
 
-      <main className="flex-1 pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto w-full">
+      <main id="main-content" className="flex-1 pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto w-full">
         {/* Navigation Back Link */}
         <div className="mb-8 flex items-center justify-between">
           <Link

@@ -1,22 +1,32 @@
-'use client';
-
 import React from 'react';
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
+import { constructMetadata, getBreadcrumbJsonLd, getFaqJsonLd } from '@/lib/seo';
+import { JsonLd } from '@/components/seo/JsonLd';
+import { LocationMapSection } from '@/components/location/LocationMapSection';
+import { FAQSection, FAQ_DATA } from '@/components/faq/FAQSection';
 import { 
   Building2, 
-  TrendingUp, 
   ShieldCheck, 
-  Award, 
-  CheckCircle2, 
   Download, 
-  ArrowRight, 
-  MapPin,
   Users,
-  Leaf,
-  FileSpreadsheet
+  Leaf
 } from 'lucide-react';
+
+export const metadata: Metadata = constructMetadata({
+  title: 'About Us & Mill History | 180,000 TPA Capacity',
+  description:
+    'Discover the journey of Shree Balaji Rolling Mills Private Limited from a regional rolling mill in Bhiwadi, Haryana to a 180,000 TPA structural steel & Fe-500D TMT bar manufacturing platform.',
+  canonicalUrl: '/about',
+  keywords: [
+    'About Shree Balaji Rolling Mills',
+    'Bhiwadi Steel Mill Capacity',
+    'Green Steel Manufacturing Haryana',
+    'IS 2062 MS Angles Plant',
+  ],
+});
 
 export default function AboutPage() {
   const milestones = [
@@ -27,8 +37,16 @@ export default function AboutPage() {
     { year: 'FY30', title: '₹1,006.40 Cr Target Roadmap', desc: 'Scaling total mill throughput to 180,000 TPA to capture Northern India infrastructure boom.' },
   ];
 
+  const breadcrumbJsonLd = getBreadcrumbJsonLd([
+    { name: 'Home', item: '/' },
+    { name: 'About Us', item: '/about' },
+  ]);
+
+  const faqJsonLd = getFaqJsonLd(FAQ_DATA);
+
   return (
-    <main className="min-h-screen bg-steel-base text-primary font-sans">
+    <main id="main-content" className="min-h-screen bg-steel-base text-primary font-sans">
+      <JsonLd data={[breadcrumbJsonLd, faqJsonLd]} />
       <Header />
 
       {/* Hero Section */}
@@ -38,13 +56,13 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
           <div className="glass-pill px-5 py-2 inline-flex items-center gap-2.5 backdrop-blur-xl border-steel-300 mb-6 shadow-sm">
             <Building2 className="w-4 h-4 text-growth-600" />
-            <span className="text-xs font-mono font-bold text-growth-700 uppercase tracking-wider">
+            <span className="text-xs sm:text-sm font-mono font-bold text-growth-700 uppercase tracking-wider">
               SHREE BALAJI ROLLING MILLS PVT. LTD.
             </span>
           </div>
 
           <h1 className="text-4xl sm:text-6xl font-black text-slate-950 tracking-tight max-w-4xl mx-auto leading-tight">
-            Engineering Northern India's <br />
+            Engineering Northern India&apos;s <br />
             <span className="text-gradient-growth">Steel Infrastructure Foundation</span>
           </h1>
 
@@ -53,16 +71,16 @@ export default function AboutPage() {
           </p>
 
           <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-            <a href="#journey" className="btn-secondary text-xs !py-2.5 !px-5 rounded-full font-bold">
+            <a href="#journey" className="btn-secondary text-xs sm:text-sm !py-2.5 sm:!py-2 !px-5 rounded-full font-bold min-h-[48px] shrink-0 whitespace-nowrap">
               Know Our Journey
             </a>
-            <a href="#why-us" className="btn-secondary text-xs !py-2.5 !px-5 rounded-full font-bold">
+            <a href="#why-us" className="btn-secondary text-xs sm:text-sm !py-2.5 sm:!py-2 !px-5 rounded-full font-bold min-h-[48px] shrink-0 whitespace-nowrap">
               Why Choose Us
             </a>
-            <a href="#clients" className="btn-secondary text-xs !py-2.5 !px-5 rounded-full font-bold">
+            <a href="#clients" className="btn-secondary text-xs sm:text-sm !py-2.5 sm:!py-2 !px-5 rounded-full font-bold min-h-[48px] shrink-0 whitespace-nowrap">
               Our Clients
             </a>
-            <a href="#environment" className="btn-secondary text-xs !py-2.5 !px-5 rounded-full font-bold">
+            <a href="#environment" className="btn-secondary text-xs sm:text-sm !py-2.5 sm:!py-2 !px-5 rounded-full font-bold min-h-[48px] shrink-0 whitespace-nowrap">
               Environment & Sustainability
             </a>
           </div>
@@ -72,7 +90,7 @@ export default function AboutPage() {
       {/* SECTION 1: Know Our Journey */}
       <section id="journey" className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="glass-pill px-4 py-1.5 text-xs font-mono font-bold uppercase tracking-widest text-growth-700">
+          <span className="glass-pill px-4 py-1.5 text-xs sm:text-sm font-mono font-bold uppercase tracking-widest text-growth-700">
             Corporate History & Scale
           </span>
           <h2 className="text-3xl sm:text-5xl font-black text-slate-950 mt-4 tracking-tight">
@@ -83,11 +101,11 @@ export default function AboutPage() {
           </p>
         </div>
 
-        <div className="relative border-l-2 border-growth-500/30 ml-4 sm:ml-32 space-y-12 py-4">
+        <div className="relative border-l-2 border-growth-500/30 ml-2 sm:ml-8 md:ml-32 space-y-12 py-4">
           {milestones.map((m, idx) => (
             <div key={idx} className="relative pl-8 sm:pl-12 group">
               {/* Year Marker Pill */}
-              <div className="absolute -left-4 sm:-left-28 top-0 sm:top-1 font-mono font-black text-xs sm:text-sm text-growth-700 bg-growth-50 border border-growth-300 px-3 py-1 rounded-full shadow-sm">
+              <div className="absolute -left-2 sm:-left-6 md:-left-28 top-0 sm:top-1 font-mono font-black text-xs sm:text-sm text-growth-700 bg-growth-50 border border-growth-300 px-2 sm:px-3 py-1 rounded-full shadow-sm whitespace-nowrap min-h-[44px] flex items-center">
                 {m.year}
               </div>
               
@@ -107,7 +125,7 @@ export default function AboutPage() {
       <section id="why-us" className="py-24 bg-steel-subtle border-y border-steel-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="glass-pill px-4 py-1.5 text-xs font-mono font-bold uppercase tracking-widest text-authority-700">
+            <span className="glass-pill px-4 py-1.5 text-xs sm:text-sm font-mono font-bold uppercase tracking-widest text-authority-700">
               Institutional Advantage
             </span>
             <h2 className="text-3xl sm:text-5xl font-black text-slate-950 mt-4 tracking-tight">
@@ -157,7 +175,7 @@ export default function AboutPage() {
         <div className="liquid-glass-prominent rounded-3xl p-8 sm:p-12 border border-steel-200 shadow-2xl bg-slate-950 text-white grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           
           <div className="lg:col-span-8 space-y-4">
-            <span className="glass-pill px-4 py-1.5 text-xs font-mono font-bold uppercase tracking-widest text-amber-400 border border-amber-400/30">
+            <span className="glass-pill px-4 py-1.5 text-xs sm:text-sm font-mono font-bold uppercase tracking-widest text-amber-400 border border-amber-400/30">
               Corporate Downloads
             </span>
             <h2 className="text-3xl sm:text-4xl font-black text-white tracking-tight">
@@ -171,14 +189,14 @@ export default function AboutPage() {
           <div className="lg:col-span-4 flex flex-col gap-3">
             <Link
               href="/inquiry"
-              className="btn-primary !py-3.5 !px-6 rounded-2xl text-xs font-extrabold text-center flex items-center justify-center gap-2 shadow-lg"
+              className="btn-primary !py-3.5 sm:!py-3 !px-6 rounded-2xl text-xs sm:text-sm font-extrabold text-center flex items-center justify-center gap-2 shadow-lg min-h-[48px]"
             >
               <Download className="w-4 h-4" />
               <span>Download Corporate Profile</span>
             </Link>
             <Link
               href="/growth"
-              className="btn-secondary !py-3.5 !px-6 rounded-2xl text-xs font-extrabold text-center text-slate-950"
+              className="btn-secondary !py-3.5 sm:!py-3 !px-6 rounded-2xl text-xs sm:text-sm font-extrabold text-center text-slate-950 min-h-[48px]"
             >
               View FY26–FY30 Financial Plan
             </Link>
@@ -190,7 +208,7 @@ export default function AboutPage() {
       {/* SECTION 4: Environment & Sustainability */}
       <section id="environment" className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <span className="glass-pill px-4 py-1.5 text-xs font-mono font-bold uppercase tracking-widest text-emerald-700">
+          <span className="glass-pill px-4 py-1.5 text-xs sm:text-sm font-mono font-bold uppercase tracking-widest text-emerald-700">
             Green Steel Commitment
           </span>
           <h2 className="text-3xl sm:text-5xl font-black text-slate-950 mt-4 tracking-tight">
@@ -205,7 +223,7 @@ export default function AboutPage() {
           <div className="liquid-glass p-6 rounded-3xl border border-steel-200 space-y-3">
             <Leaf className="w-8 h-8 text-emerald-600" />
             <h3 className="text-lg font-bold text-slate-950">100% Scrap Recycling</h3>
-            <p className="text-xs text-steel-600 leading-relaxed">
+            <p className="text-xs sm:text-sm text-steel-600 leading-relaxed">
               Utilizing prime steel scrap to minimize iron ore depletion and reduce carbon footprint per metric ton produced.
             </p>
           </div>
@@ -213,7 +231,7 @@ export default function AboutPage() {
           <div className="liquid-glass p-6 rounded-3xl border border-steel-200 space-y-3">
             <Users className="w-8 h-8 text-growth-600" />
             <h3 className="text-lg font-bold text-slate-950">Zero Effluent Discharge</h3>
-            <p className="text-xs text-steel-600 leading-relaxed">
+            <p className="text-xs sm:text-sm text-steel-600 leading-relaxed">
               Recirculating Thermex quench water in closed-loop cooling towers, preventing industrial wastewater discharge.
             </p>
           </div>
@@ -221,12 +239,18 @@ export default function AboutPage() {
           <div className="liquid-glass p-6 rounded-3xl border border-steel-200 space-y-3">
             <ShieldCheck className="w-8 h-8 text-authority-600" />
             <h3 className="text-lg font-bold text-slate-950">Recuperative Heating</h3>
-            <p className="text-xs text-steel-600 leading-relaxed">
+            <p className="text-xs sm:text-sm text-steel-600 leading-relaxed">
               Continuous billet re-heating furnace equipped with waste-heat recuperators to reduce fuel consumption by 18%.
             </p>
           </div>
         </div>
       </section>
+
+      {/* Mill Location & Map Section */}
+      <LocationMapSection />
+
+      {/* Platform FAQ Section */}
+      <FAQSection />
 
       <Footer />
     </main>

@@ -47,11 +47,17 @@ export function useAnimatedCounter(options: UseAnimatedCounterOptions) {
   }, [from, to, duration, decimals, easing, isReducedMotion])
 
   useEffect(() => {
-    if (startOnMount) start()
-    return () => {
-      controlsRef.current?.stop()
+    let timer: number | undefined;
+    if (startOnMount) {
+      timer = window.setTimeout(() => {
+        start();
+      }, 0);
     }
-  }, [startOnMount, start])
+    return () => {
+      if (timer) clearTimeout(timer);
+      controlsRef.current?.stop();
+    };
+  }, [startOnMount, start]);
 
   const display = format ? format(value) : value.toLocaleString('en-IN')
   return { value, display, start }

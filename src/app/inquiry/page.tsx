@@ -1,23 +1,33 @@
-'use client';
-
-import React, { Suspense } from 'react';
-import { useSearchParams } from 'next/navigation';
+import React from 'react';
+import type { Metadata } from 'next';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
-import { InquiryForm } from '@/components/inquiry-form/InquiryForm';
-import { BuyerSegment } from '@/types';
+import { InquiryPageClient } from '@/components/inquiry-form/InquiryPageClient';
+import { constructMetadata, getBreadcrumbJsonLd } from '@/lib/seo';
+import { JsonLd } from '@/components/seo/JsonLd';
 
-function InquiryFormContent() {
-  const searchParams = useSearchParams();
-  const segmentParam = searchParams.get('segment') as BuyerSegment | null;
-  const initialSegment: BuyerSegment = segmentParam || 'distributor';
-
-  return <InquiryForm initialSegment={initialSegment} />;
-}
+export const metadata: Metadata = constructMetadata({
+  title: 'Direct Rolling Mill Inquiry Portal | Quotes & Distributorship',
+  description:
+    'Submit channel partnership terms, contractor bulk quote requests, or infrastructure tender proposals directly to Shree Balaji Rolling Mills sales desk in Bhiwadi.',
+  canonicalUrl: '/inquiry',
+  keywords: [
+    'Steel Quotation Request',
+    'Bhiwadi Rolling Mill Direct Quote',
+    'TMT Bar Bulk Inquiry',
+    'Structural Steel Distributorship',
+  ],
+});
 
 export default function InquiryPage() {
+  const breadcrumbJsonLd = getBreadcrumbJsonLd([
+    { name: 'Home', item: '/' },
+    { name: 'Inquiry Portal', item: '/inquiry' },
+  ]);
+
   return (
-    <main className="min-h-screen bg-slate-50 text-slate-900 flex flex-col">
+    <main id="main-content" className="min-h-screen bg-slate-50 text-slate-900 flex flex-col">
+      <JsonLd data={breadcrumbJsonLd} />
       <Header />
 
       <section className="pt-36 pb-12 bg-white border-b border-slate-200 steel-grid-pattern text-center">
@@ -34,9 +44,7 @@ export default function InquiryPage() {
         </div>
       </section>
 
-      <Suspense fallback={<div className="text-center py-20 text-xs font-mono text-slate-500">Loading Inquiry Portal...</div>}>
-        <InquiryFormContent />
-      </Suspense>
+      <InquiryPageClient />
 
       <Footer />
     </main>

@@ -1,12 +1,45 @@
 'use client';
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
 
 export const SteelHeroCanvas: React.FC = () => {
   const mountRef = useRef<HTMLDivElement>(null);
+  const [isWebGLAvailable, setIsWebGLAvailable] = useState(true);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(() => {
+    if (typeof window === 'undefined') return false;
+    return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  });
 
   useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    
+    const handleMotionChange = (e: MediaQueryListEvent) => {
+      setPrefersReducedMotion(e.matches);
+    };
+    mediaQuery.addEventListener('change', handleMotionChange);
+
+    // Check WebGL availability
+    const checkWebGL = () => {
+      try {
+        const canvas = document.createElement('canvas');
+        const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+        if (!gl) {
+          setIsWebGLAvailable(false);
+          return false;
+        }
+        return true;
+      } catch (e) {
+        setIsWebGLAvailable(false);
+        return false;
+      }
+    };
+
+    if (!checkWebGL()) {
+      mediaQuery.removeEventListener('change', handleMotionChange);
+      return;
+    }
+
     const container = mountRef.current;
     if (!container) return;
 
@@ -20,9 +53,15 @@ export const SteelHeroCanvas: React.FC = () => {
     );
     camera.position.set(0, 0, 10);
 
-    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+    const renderer = new THREE.WebGLRenderer({ 
+      alpha: true, 
+      antialias: true,
+      powerPreference: 'high-performance'
+    });
     renderer.setSize(container.clientWidth, container.clientHeight);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    // Cap pixel ratio for mobile performance
+    const pixelRatio = Math.min(window.devicePixelRatio, 1.5);
+    renderer.setPixelRatio(pixelRatio);
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
     renderer.toneMappingExposure = 1.2;
     container.appendChild(renderer.domElement);
@@ -55,7 +94,7 @@ export const SteelHeroCanvas: React.FC = () => {
     const extrudeSettings = {
       depth: 6,
       bevelEnabled: true,
-      bevelSegments: 3,
+      bevelSegments: 2, // Reduced for mobile performance
       steps: 1,
       bevelSize: 0.04,
       bevelThickness: 0.04,
@@ -78,7 +117,7 @@ export const SteelHeroCanvas: React.FC = () => {
 
     // 2. Create Metallic TMT Rebar (Cylinder with rib rings)
     const rebarGroup = new THREE.Group();
-    const rodGeo = new THREE.CylinderGeometry(0.35, 0.35, 6.5, 32);
+    const rodGeo = new THREE.CylinderGeometry(0.35, 0.35, 6.5, 24); // Reduced segments for mobile
     const goldSteelMaterial = new THREE.MeshStandardMaterial({
       color: 0xF59E0B,
       metalness: 0.9,
@@ -88,7 +127,7 @@ export const SteelHeroCanvas: React.FC = () => {
     rebarGroup.add(mainRod);
 
     // Add TMT rib rings
-    const ringGeo = new THREE.TorusGeometry(0.37, 0.04, 12, 24);
+    const ringGeo = new THREE.TorusGeometry(0.37, 0.04, 8, 16); // Reduced segments for mobile
     const ringMat = new THREE.MeshStandardMaterial({
       color: 0xD97706,
       metalness: 0.95,
@@ -105,45 +144,52 @@ export const SteelHeroCanvas: React.FC = () => {
     rebarGroup.rotation.set(-0.3, -0.5, 0.3);
     group.add(rebarGroup);
 
-    // Lighting
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
+    // Lighting - Simplified for mobile
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
     scene.add(ambientLight);
 
-    const mainLight = new THREE.DirectionalLight(0xfff0dd, 2.5);
+    const mainLight = new THREE.DirectionalLight(0xfff0dd, 2.0);
     mainLight.position.set(5, 8, 5);
     scene.add(mainLight);
 
-    const blueLight = new THREE.PointLight(0x2563eb, 3, 20);
-    blueLight.position.set(-5, -3, 3);
-    scene.add(blueLight);
-
-    const amberLight = new THREE.PointLight(0xf59e0b, 4, 20);
-    amberLight.position.set(5, 3, 4);
-    scene.add(amberLight);
-
-    // Mouse Interaction
+    // Mouse/Touch Interaction
     let mouseX = 0;
     let mouseY = 0;
+    
     const handleMouseMove = (e: MouseEvent) => {
       mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
       mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
     };
+    
+    const handleTouchMove = (e: TouchEvent) => {
+      if (e.touches.length > 0) {
+        mouseX = (e.touches[0].clientX / window.innerWidth - 0.5) * 2;
+        mouseY = (e.touches[0].clientY / window.innerHeight - 0.5) * 2;
+      }
+    };
+
     window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('touchmove', handleTouchMove, { passive: true });
 
     // Animation Loop
     let reqId: number;
     const animate = () => {
       reqId = requestAnimationFrame(animate);
 
-      steelBeam.rotation.y += 0.005;
-      steelBeam.rotation.x += 0.002;
+      // Reduce animation speed for reduced motion
+      const rotationSpeed = prefersReducedMotion ? 0.001 : 0.005;
+      
+      steelBeam.rotation.y += rotationSpeed;
+      steelBeam.rotation.x += rotationSpeed * 0.4;
 
-      rebarGroup.rotation.y -= 0.006;
-      rebarGroup.rotation.z += 0.003;
+      rebarGroup.rotation.y -= rotationSpeed * 1.2;
+      rebarGroup.rotation.z += rotationSpeed * 0.6;
 
-      // Parallax smooth camera movement
-      group.rotation.y += (mouseX * 0.3 - group.rotation.y) * 0.05;
-      group.rotation.x += (-mouseY * 0.3 - group.rotation.x) * 0.05;
+      // Parallax smooth camera movement (disabled for reduced motion)
+      if (!prefersReducedMotion) {
+        group.rotation.y += (mouseX * 0.3 - group.rotation.y) * 0.05;
+        group.rotation.x += (-mouseY * 0.3 - group.rotation.x) * 0.05;
+      }
 
       renderer.render(scene, camera);
     };
@@ -162,7 +208,9 @@ export const SteelHeroCanvas: React.FC = () => {
     return () => {
       cancelAnimationFrame(reqId);
       window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('touchmove', handleTouchMove);
       window.removeEventListener('resize', handleResize);
+      mediaQuery.removeEventListener('change', handleMotionChange);
       beamGeo.dispose();
       steelMaterial.dispose();
       rodGeo.dispose();
@@ -174,7 +222,21 @@ export const SteelHeroCanvas: React.FC = () => {
         container.removeChild(renderer.domElement);
       }
     };
-  }, []);
+  }, [prefersReducedMotion]);
+
+  // Fallback for WebGL unavailable
+  if (!isWebGLAvailable) {
+    return (
+      <div aria-hidden="true" className="absolute inset-0 pointer-events-none z-0 opacity-85 overflow-hidden bg-gradient-to-br from-slate-100 to-slate-200">
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="text-center">
+            <div className="w-32 h-32 mx-auto mb-4 bg-gradient-to-br from-slate-300 to-slate-400 rounded-full opacity-50" />
+            <p className="text-slate-500 text-sm">3D visualization not available</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div aria-hidden="true" className="absolute inset-0 pointer-events-none z-0 opacity-85 overflow-hidden">

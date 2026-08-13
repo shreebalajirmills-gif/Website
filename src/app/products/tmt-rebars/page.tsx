@@ -1,13 +1,31 @@
-'use client';
-
 import React from 'react';
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { SteelProductViewer } from '@/components/3d/SteelProductViewer';
-import { ShieldCheck, Download, CheckCircle2, ArrowRight, Scale, Box, Activity } from 'lucide-react';
+import { ShieldCheck, ArrowRight, Scale, Box } from 'lucide-react';
+import { constructMetadata, getBreadcrumbJsonLd, getProductJsonLd } from '@/lib/seo';
+import { JsonLd } from '@/components/seo/JsonLd';
+import { PRODUCTS_DATA } from '@/data/products';
+
+export const metadata: Metadata = constructMetadata({
+  title: 'Fe-500D High-Ductility TMT Rebars | IS 1786 Seismic Grade',
+  description:
+    'Thermex quenched Fe-500D high-ductility TMT bars (8mm-32mm) manufactured per BIS IS 1786:2018. Engineered for high-rise towers, civil bridges, and seismic Zone IV/V.',
+  canonicalUrl: '/products/tmt-rebars',
+  keywords: [
+    'IS 1786 Fe 500D TMT Bar',
+    'High Ductility Rebars India',
+    'Thermex Quenched Rebars Bhiwadi',
+    'Seismic Resistant TMT Steel',
+    '144000 TPA TMT Facility',
+  ],
+});
 
 export default function TmtRebarsPage() {
+  const tmtProduct = PRODUCTS_DATA[1];
+
   const rebarSizes = [
     { size: '8 mm', weightPerM: '0.395 kg/m', bundlePcs: '10 Pcs', app: 'Slab reinforcement & Stirrups' },
     { size: '10 mm', weightPerM: '0.617 kg/m', bundlePcs: '7 Pcs', app: 'Residential beams & Floor slabs' },
@@ -18,8 +36,24 @@ export default function TmtRebarsPage() {
     { size: '32 mm', weightPerM: '6.310 kg/m', bundlePcs: '1 Pc', app: 'Industrial plant foundations & Power plants' },
   ];
 
+  const breadcrumbJsonLd = getBreadcrumbJsonLd([
+    { name: 'Home', item: '/' },
+    { name: 'Our Products', item: '/products' },
+    { name: 'TMT Rebars', item: '/products/tmt-rebars' },
+  ]);
+
+  const productJsonLd = getProductJsonLd({
+    name: tmtProduct.name,
+    description: tmtProduct.description,
+    url: '/products/tmt-rebars',
+    standard: tmtProduct.specs.standard,
+    capacity: tmtProduct.capacity.formatTpa,
+    applications: tmtProduct.applications,
+  });
+
   return (
-    <main className="min-h-screen bg-steel-base text-steel-900 flex flex-col selection:bg-growth-500 selection:text-white">
+    <main id="main-content" className="min-h-screen bg-steel-base text-steel-900 flex flex-col selection:bg-growth-500 selection:text-white">
+      <JsonLd data={[breadcrumbJsonLd, productJsonLd]} />
       <Header />
 
       {/* Hero Section */}

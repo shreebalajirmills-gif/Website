@@ -1,16 +1,35 @@
-'use client';
-
 import React from 'react';
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
-import { PRODUCTS_DATA } from '@/data/products';
-import { ShieldCheck, Clock, CheckCircle2, ArrowRight, Box, FileText } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { SteelComparisonMatrix } from '@/components/products/SteelComparisonMatrix';
+import { constructMetadata, getBreadcrumbJsonLd } from '@/lib/seo';
+import { JsonLd } from '@/components/seo/JsonLd';
+
+export const metadata: Metadata = constructMetadata({
+  title: 'Products Suite | Structural Steel & TMT Bars (BIS Certified)',
+  description:
+    'Explore Shree Balaji Rolling Mills product catalog: IS 2062 Structural Steel Angles & Channels (36,000 TPA) and IS 1786 Fe-500D High-Ductility TMT Rebars (144,000 TPA).',
+  canonicalUrl: '/products',
+  keywords: [
+    'IS 2062 Angles and Channels',
+    'Fe 500D TMT Bar Catalog',
+    'Structural Steel Specifications India',
+    'Bhiwadi Rolling Mill Products',
+  ],
+});
 
 export default function ProductsPage() {
+  const breadcrumbJsonLd = getBreadcrumbJsonLd([
+    { name: 'Home', item: '/' },
+    { name: 'Our Products', item: '/products' },
+  ]);
+
   return (
-    <main className="min-h-screen bg-steel-base text-steel-900 flex flex-col selection:bg-growth-500 selection:text-white">
+    <main id="main-content" className="min-h-screen bg-steel-base text-steel-900 flex flex-col selection:bg-growth-500 selection:text-white">
+      <JsonLd data={breadcrumbJsonLd} />
       <Header />
 
       {/* Hero Section */}

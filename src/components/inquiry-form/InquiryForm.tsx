@@ -1,15 +1,19 @@
 'use client';
 
 import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { BuyerSegment, InquiryFormData, ApiResponse } from '@/types';
 import { inquirySchema } from '@/lib/validation';
 import { Briefcase, Layers, Building2, TrendingUp, CheckCircle, ArrowRight, ArrowLeft, Send, ShieldCheck, Loader2 } from 'lucide-react';
+import { getWhatsAppUrl } from '@/config/site';
+import { SocialIcon } from '@/components/social/SocialLinks';
 
 interface InquiryFormProps {
   initialSegment?: BuyerSegment;
 }
 
 export const InquiryForm: React.FC<InquiryFormProps> = ({ initialSegment = 'distributor' }) => {
+  const router = useRouter();
   const [segment, setSegment] = useState<BuyerSegment>(initialSegment);
   const [step, setStep] = useState<number>(1);
   const [loading, setLoading] = useState<boolean>(false);
@@ -59,7 +63,6 @@ export const InquiryForm: React.FC<InquiryFormProps> = ({ initialSegment = 'dist
 
     const validation = inquirySchema.safeParse(formData);
     if (!validation.success) {
-      // Build a map of field-specific errors
       const errors: Record<string, string> = {};
       validation.error.issues.forEach((issue) => {
         const field = String(issue.path?.[0] || '');
@@ -67,74 +70,79 @@ export const InquiryForm: React.FC<InquiryFormProps> = ({ initialSegment = 'dist
       });
 
       setFieldErrors(errors);
-
-      // Set a generic error message for top-level alert
-      const firstError = validation.error.issues[0]?.message || 'Please check form fields';
-      setErrorMessage(firstError);
+      setErrorMessage('Please fix the highlighted errors before submitting.');
       setLoading(false);
-
-      // Focus the first invalid field if present
-      const firstField = Object.keys(errors)[0];
-      if (firstField) {
-        const el = document.getElementById(firstField) as HTMLElement | null;
-        if (el && typeof el.focus === 'function') {
-          el.focus();
-          el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
-      }
-
       return;
     }
 
     try {
-      const res = await fetch('/api/inquiry', {
+      const response = await fetch('/api/inquiry', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       });
 
-      const data: ApiResponse = await res.json();
+      const data: ApiResponse = await response.json();
+      setSubmissionResult(data);
 
-      if (res.ok && data.status === 'success') {
-        setSubmissionResult(data);
-        setStep(4);
+      if (response.ok && data.status === 'success') {
+        router.push(`/thank-you${data.inquiryId ? `?inquiryId=${data.inquiryId}` : ''}`);
       } else {
         setErrorMessage(data.message || 'Submission failed. Please try again.');
       }
-    } catch (err) {
-      setErrorMessage('Network error occurred. Please check connection and try again.');
+    } catch {
+      setErrorMessage('Network error occurred. Please try again later.');
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <section id="inquiry-portal" className="py-28 bg-steel-base border-b border-steel-200 relative overflow-hidden">
-      
-      <div className="ambient-liquid-glow ambient-glow-authority top-1/4 left-1/2 -translate-x-1/2" />
+    <section id="inquiry-portal" className="py-20 bg-steel-50 border-b border-steel-200 relative overflow-hidden">
+      <div className="ambient-liquid-glow ambient-glow-growth top-1/4 left-1/4 scale-125" />
 
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
-        {/* Section Header */}
-        <div className="text-center space-y-4 mb-14">
-          <div className="glass-pill px-4 py-1.5 inline-flex items-center gap-2 text-authority-700 text-xs font-bold uppercase tracking-wider">
-            Context Lead Routing Engine
-          </div>
-          <h2 className="text-3xl sm:text-5xl font-black text-steel-900 tracking-tight">
-            Direct Buyer <span className="text-gradient-growth">Inquiry Portal</span>
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 relative z-10">
+        <div className="text-center space-y-4 mb-12">
+          <span className="glass-pill px-4 py-1.5 text-xs font-bold text-growth-700 uppercase tracking-wider inline-block">
+            COMMERCIAL DESK PORTAL
+          </span>
+          <h2 className="text-3xl sm:text-4xl font-black text-steel-900 tracking-tight">
+            Commercial Inquiry & <span className="text-gradient-growth">Rolling Allocation Portal</span>
           </h2>
           <p className="text-sm text-steel-600 max-w-xl mx-auto font-normal">
-            Your inquiry is validated and routed directly to our regional channel managers, account managers, or executive sales team within 24 hours.
+            Submit your structural steel, TMT bar, distribution, or project tender requirements for verified commercial response within 24 hours.
           </p>
         </div>
 
         {/* Liquid Glass Form Card */}
         <div className="liquid-glass-prominent rounded-3xl p-6 sm:p-12 border border-steel-200 shadow-xl relative">
           
+          {/* Instant WhatsApp Option Banner */}
+          <div className="mb-8 p-4 rounded-2xl bg-emerald-50 border border-emerald-200 flex flex-col sm:flex-row items-center justify-between gap-3 shadow-sm">
+            <div className="flex items-center gap-3 text-emerald-950 text-xs">
+              <div className="w-8 h-8 rounded-xl bg-emerald-600 text-white flex items-center justify-center shrink-0">
+                <SocialIcon platform="whatsapp" className="w-4 h-4 fill-current" />
+              </div>
+              <div>
+                <strong className="font-bold text-sm block text-emerald-900">Need an Instant Quotation?</strong>
+                <span className="text-emerald-800">Talk directly with our Bhiwadi mill sales desk on WhatsApp right now.</span>
+              </div>
+            </div>
+            <a
+              href={getWhatsAppUrl()}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold py-2.5 px-4 rounded-xl whitespace-nowrap transition-all shadow-sm border border-emerald-400/30 flex items-center gap-2"
+            >
+              <SocialIcon platform="whatsapp" className="w-3.5 h-3.5 fill-current" />
+              <span>Talk for Quotation</span>
+            </a>
+          </div>
+
           {/* Step Progress Bar */}
           {step < 4 && (
             <div className="mb-10 border-b border-steel-200 pb-6">
-              <div className="flex items-center justify-between text-xs font-bold text-steel-700 mb-2">
+              <div className="flex items-center justify-between text-xs sm:text-sm font-bold text-steel-700 mb-2">
                 <span>Step {step} of 3</span>
                 <span className="text-growth-700 uppercase tracking-widest font-extrabold font-mono">
                   {step === 1 && 'Select Segment Role'}
@@ -165,7 +173,7 @@ export const InquiryForm: React.FC<InquiryFormProps> = ({ initialSegment = 'dist
                   type="button"
                   onClick={() => handleSegmentSelect('distributor')}
                   aria-pressed={segment === 'distributor'}
-                  className={`p-6 rounded-2xl text-left transition-all duration-300 transform group flex items-start gap-4 cursor-pointer ${
+                  className={`p-6 sm:p-5 rounded-2xl text-left transition-all duration-300 transform group flex items-start gap-4 cursor-pointer min-h-[48px] ${
                     segment === 'distributor'
                       ? 'liquid-glass liquid-glass-distributor border-authority-500 shadow-xl ring-2 ring-authority-500/40 -translate-y-1'
                       : 'liquid-glass border-steel-200 hover:border-authority-400 hover:bg-authority-50/30 hover:-translate-y-1 hover:shadow-xl hover:shadow-authority-500/10'
@@ -189,7 +197,7 @@ export const InquiryForm: React.FC<InquiryFormProps> = ({ initialSegment = 'dist
                   type="button"
                   onClick={() => handleSegmentSelect('contractor')}
                   aria-pressed={segment === 'contractor'}
-                  className={`p-6 rounded-2xl text-left transition-all duration-300 transform group flex items-start gap-4 cursor-pointer ${
+                  className={`p-6 sm:p-5 rounded-2xl text-left transition-all duration-300 transform group flex items-start gap-4 cursor-pointer min-h-[48px] ${
                     segment === 'contractor'
                       ? 'liquid-glass liquid-glass-contractor border-growth-500 shadow-xl ring-2 ring-growth-500/40 -translate-y-1'
                       : 'liquid-glass border-steel-200 hover:border-growth-400 hover:bg-growth-50/30 hover:-translate-y-1 hover:shadow-xl hover:shadow-growth-500/10'
@@ -213,7 +221,7 @@ export const InquiryForm: React.FC<InquiryFormProps> = ({ initialSegment = 'dist
                   type="button"
                   onClick={() => handleSegmentSelect('project')}
                   aria-pressed={segment === 'project'}
-                  className={`p-6 rounded-2xl text-left transition-all duration-300 transform group flex items-start gap-4 cursor-pointer ${
+                  className={`p-6 sm:p-5 rounded-2xl text-left transition-all duration-300 transform group flex items-start gap-4 cursor-pointer min-h-[48px] ${
                     segment === 'project'
                       ? 'liquid-glass liquid-glass-project border-trust-500 shadow-xl ring-2 ring-trust-500/40 -translate-y-1'
                       : 'liquid-glass border-steel-200 hover:border-trust-400 hover:bg-trust-50/30 hover:-translate-y-1 hover:shadow-xl hover:shadow-trust-500/10'
@@ -237,7 +245,7 @@ export const InquiryForm: React.FC<InquiryFormProps> = ({ initialSegment = 'dist
                   type="button"
                   onClick={() => handleSegmentSelect('investor')}
                   aria-pressed={segment === 'investor'}
-                  className={`p-6 rounded-2xl text-left transition-all duration-300 transform group flex items-start gap-4 cursor-pointer ${
+                  className={`p-6 sm:p-5 rounded-2xl text-left transition-all duration-300 transform group flex items-start gap-4 cursor-pointer min-h-[48px] ${
                     segment === 'investor'
                       ? 'liquid-glass liquid-glass-investor border-amber-500 shadow-xl ring-2 ring-amber-600/40 -translate-y-1'
                       : 'liquid-glass border-steel-200 hover:border-amber-400 hover:bg-amber-50/30 hover:-translate-y-1 hover:shadow-xl hover:shadow-amber-500/10'
@@ -265,13 +273,13 @@ export const InquiryForm: React.FC<InquiryFormProps> = ({ initialSegment = 'dist
             <div className="space-y-6">
               
               <div className="flex items-center justify-between border-b border-steel-200 pb-4">
-                <span className="text-xs font-black text-growth-700 uppercase tracking-widest font-mono">
+                <span className="text-xs sm:text-sm font-black text-growth-700 uppercase tracking-widest font-mono">
                   Segment Role: {segment}
                 </span>
                 <button
                   type="button"
                   onClick={() => setStep(1)}
-                  className="glass-pill px-3 py-1 text-xs text-steel-700 hover:text-steel-900 flex items-center gap-1"
+                  className="glass-pill px-3 py-1 text-xs sm:text-sm text-steel-700 hover:text-steel-900 flex items-center gap-1 min-h-[44px]"
                 >
                   <ArrowLeft className="w-3.5 h-3.5" /> Change Role
                 </button>
@@ -279,7 +287,7 @@ export const InquiryForm: React.FC<InquiryFormProps> = ({ initialSegment = 'dist
 
               {/* Product Interest Selector */}
               <div>
-                <label className="block text-xs font-bold text-steel-700 uppercase tracking-wider mb-2">
+                <label className="block text-xs sm:text-sm font-bold text-steel-700 uppercase tracking-wider mb-2">
                   Product Line Interest *
                 </label>
                 <div className="grid grid-cols-3 gap-3">
@@ -287,7 +295,7 @@ export const InquiryForm: React.FC<InquiryFormProps> = ({ initialSegment = 'dist
                     type="button"
                     onClick={() => setFormData((p) => ({ ...p, specInterest: 'structural_steel' }))}
                     aria-pressed={formData.specInterest === 'structural_steel'}
-                    className={`p-3.5 rounded-2xl text-xs transition-all border ${
+                    className={`p-3.5 sm:p-3 rounded-2xl text-xs sm:text-sm transition-all border min-h-[48px] ${
                       formData.specInterest === 'structural_steel'
                         ? 'bg-white text-black font-black border-steel-300 shadow-md'
                         : 'btn-secondary text-steel-700 hover:text-black font-bold'
@@ -299,7 +307,7 @@ export const InquiryForm: React.FC<InquiryFormProps> = ({ initialSegment = 'dist
                     type="button"
                     onClick={() => setFormData((p) => ({ ...p, specInterest: 'tmt_bar' }))}
                     aria-pressed={formData.specInterest === 'tmt_bar'}
-                    className={`p-3.5 rounded-2xl text-xs transition-all border ${
+                    className={`p-3.5 sm:p-3 rounded-2xl text-xs sm:text-sm transition-all border min-h-[48px] ${
                       formData.specInterest === 'tmt_bar'
                         ? 'bg-white text-black font-black border-steel-300 shadow-md'
                         : 'btn-secondary text-steel-700 hover:text-black font-bold'
@@ -311,7 +319,7 @@ export const InquiryForm: React.FC<InquiryFormProps> = ({ initialSegment = 'dist
                     type="button"
                     onClick={() => setFormData((p) => ({ ...p, specInterest: 'both' }))}
                     aria-pressed={formData.specInterest === 'both'}
-                    className={`p-3.5 rounded-2xl text-xs transition-all border ${
+                    className={`p-3.5 sm:p-3 rounded-2xl text-xs sm:text-sm transition-all border min-h-[48px] ${
                       formData.specInterest === 'both'
                         ? 'bg-white text-black font-black border-steel-300 shadow-md'
                         : 'btn-secondary text-steel-700 hover:text-black font-bold'
@@ -326,7 +334,7 @@ export const InquiryForm: React.FC<InquiryFormProps> = ({ initialSegment = 'dist
               {segment === 'distributor' && (
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="currentSuppliers" className="block text-xs font-bold text-steel-700 uppercase tracking-wider mb-1.5">
+                    <label htmlFor="currentSuppliers" className="block text-xs sm:text-sm font-bold text-steel-700 uppercase tracking-wider mb-1.5">
                       Current Primary Steel Suppliers
                     </label>
                     <input
@@ -337,7 +345,7 @@ export const InquiryForm: React.FC<InquiryFormProps> = ({ initialSegment = 'dist
                       value={formData.currentSuppliers || ''}
                       onChange={handleInputChange}
                       placeholder="e.g., Regional mills, Kamdhenu, Tata"
-                      className="w-full px-4 py-3 glass-input rounded-2xl text-sm focus:outline-none"
+                      className="w-full px-4 py-4 sm:py-3 glass-input rounded-2xl text-sm min-h-[48px] focus:outline-none"
                     />
                     {fieldErrors.currentSuppliers && (
                       <p id="error-currentSuppliers" role="alert" className="text-xs font-semibold mt-1" style={{ color: 'var(--color-alert-700)' }}>
@@ -358,7 +366,7 @@ export const InquiryForm: React.FC<InquiryFormProps> = ({ initialSegment = 'dist
                       value={formData.annualVolumeMT || ''}
                       onChange={handleInputChange}
                       placeholder="e.g., 500 – 2,000 MT / year"
-                      className="w-full px-4 py-3 glass-input rounded-2xl text-sm focus:outline-none"
+                      className="w-full px-4 py-4 sm:py-3 glass-input rounded-2xl text-sm min-h-[48px] focus:outline-none"
                     />
                     {fieldErrors.annualVolumeMT && (
                       <p id="error-annualVolumeMT" role="alert" className="text-xs font-semibold mt-1" style={{ color: 'var(--color-alert-700)' }}>
@@ -383,7 +391,7 @@ export const InquiryForm: React.FC<InquiryFormProps> = ({ initialSegment = 'dist
                       value={formData.projectScope || ''}
                       onChange={handleInputChange}
                       placeholder="e.g., City, region, or project area"
-                      className="w-full px-4 py-3 glass-input rounded-2xl text-sm focus:outline-none"
+                      className="w-full px-4 py-4 sm:py-3 glass-input rounded-2xl text-sm min-h-[48px] focus:outline-none"
                     />
                     {fieldErrors.projectScope && (
                       <p id="error-projectScope" role="alert" className="text-xs font-semibold mt-1" style={{ color: 'var(--color-alert-700)' }}>
@@ -404,7 +412,7 @@ export const InquiryForm: React.FC<InquiryFormProps> = ({ initialSegment = 'dist
                       value={formData.requiredVolumeMT || ''}
                       onChange={handleInputChange}
                       placeholder="e.g., 100 MT initial batch"
-                      className="w-full px-4 py-3 glass-input rounded-2xl text-sm focus:outline-none"
+                      className="w-full px-4 py-4 sm:py-3 glass-input rounded-2xl text-sm min-h-[48px] focus:outline-none"
                     />
                     {fieldErrors.requiredVolumeMT && (
                       <p id="error-requiredVolumeMT" role="alert" className="text-xs font-semibold mt-1" style={{ color: 'var(--color-alert-700)' }}>
@@ -428,7 +436,7 @@ export const InquiryForm: React.FC<InquiryFormProps> = ({ initialSegment = 'dist
                     value={formData.investmentScale || ''}
                     onChange={handleInputChange}
                     placeholder="e.g., PE Institutional Growth Fund / Strategic Co-Investment"
-                    className="w-full px-4 py-3 glass-input rounded-2xl text-sm focus:outline-none"
+                    className="w-full px-4 py-4 sm:py-3 glass-input rounded-2xl text-sm min-h-[48px] focus:outline-none"
                   />
                   {fieldErrors.investmentScale && (
                     <p id="error-investmentScale" role="alert" className="text-xs font-semibold mt-1" style={{ color: 'var(--color-alert-700)' }}>
@@ -442,14 +450,14 @@ export const InquiryForm: React.FC<InquiryFormProps> = ({ initialSegment = 'dist
                 <button
                   type="button"
                   onClick={() => setStep(1)}
-                  className="btn-secondary px-5 py-2.5 rounded-full text-xs font-bold"
+                  className="btn-secondary px-5 py-2.5 sm:py-2 rounded-full text-xs sm:text-sm font-bold min-h-[48px]"
                 >
                   Back
                 </button>
                 <button
                   type="button"
                   onClick={() => setStep(3)}
-                  className="btn-primary px-6 py-2.5 rounded-full text-xs font-bold flex items-center gap-2"
+                  className="btn-primary px-6 py-2.5 sm:py-2 rounded-full text-xs sm:text-sm font-bold flex items-center gap-2 min-h-[48px]"
                 >
                   <span>Next: Contact Details</span>
                   <ArrowRight className="w-4 h-4" />
@@ -464,13 +472,13 @@ export const InquiryForm: React.FC<InquiryFormProps> = ({ initialSegment = 'dist
             <form onSubmit={handleSubmit} className="space-y-4">
               
               <div className="flex items-center justify-between border-b border-steel-200 pb-4">
-                <span className="text-xs font-black text-growth-700 uppercase tracking-widest font-mono">
+                <span className="text-xs sm:text-sm font-black text-growth-700 uppercase tracking-widest font-mono">
                   Contact Information
                 </span>
                 <button
                   type="button"
                   onClick={() => setStep(2)}
-                  className="glass-pill px-3 py-1 text-xs text-steel-700 hover:text-steel-900 flex items-center gap-1"
+                  className="glass-pill px-3 py-1 text-xs sm:text-sm text-steel-700 hover:text-steel-900 flex items-center gap-1 min-h-[44px]"
                 >
                   <ArrowLeft className="w-3.5 h-3.5" /> Back to Specs
                 </button>
@@ -496,7 +504,7 @@ export const InquiryForm: React.FC<InquiryFormProps> = ({ initialSegment = 'dist
                     value={formData.companyName}
                     onChange={handleInputChange}
                     placeholder="Company or Business Name"
-                    className="w-full px-4 py-3 glass-input rounded-2xl text-sm focus:outline-none"
+                    className="w-full px-4 py-4 sm:py-3 glass-input rounded-2xl text-sm min-h-[48px] focus:outline-none"
                   />
                   {fieldErrors.companyName && (
                     <p id="error-companyName" role="alert" className="text-xs font-semibold mt-1" style={{ color: 'var(--color-alert-700)' }}>
@@ -518,7 +526,7 @@ export const InquiryForm: React.FC<InquiryFormProps> = ({ initialSegment = 'dist
                     value={formData.contactName}
                     onChange={handleInputChange}
                     placeholder="Full Name"
-                    className="w-full px-4 py-3 glass-input rounded-2xl text-sm focus:outline-none"
+                    className="w-full px-4 py-4 sm:py-3 glass-input rounded-2xl text-sm min-h-[48px] focus:outline-none"
                   />
                   {fieldErrors.contactName && (
                     <p id="error-contactName" role="alert" className="text-xs font-semibold mt-1" style={{ color: 'var(--color-alert-700)' }}>
@@ -540,7 +548,7 @@ export const InquiryForm: React.FC<InquiryFormProps> = ({ initialSegment = 'dist
                     value={formData.email}
                     onChange={handleInputChange}
                     placeholder="name@company.com"
-                    className="w-full px-4 py-3 glass-input rounded-2xl text-sm focus:outline-none"
+                    className="w-full px-4 py-4 sm:py-3 glass-input rounded-2xl text-sm min-h-[48px] focus:outline-none"
                   />
                   {fieldErrors.email && (
                     <p id="error-email" role="alert" className="text-xs font-semibold mt-1" style={{ color: 'var(--color-alert-700)' }}>
@@ -562,7 +570,7 @@ export const InquiryForm: React.FC<InquiryFormProps> = ({ initialSegment = 'dist
                     value={formData.phone}
                     onChange={handleInputChange}
                     placeholder="+91 98765 43210"
-                    className="w-full px-4 py-3 glass-input rounded-2xl text-sm focus:outline-none"
+                    className="w-full px-4 py-4 sm:py-3 glass-input rounded-2xl text-sm min-h-[48px] focus:outline-none"
                   />
                   {fieldErrors.phone && (
                     <p id="error-phone" role="alert" className="text-xs font-semibold mt-1" style={{ color: 'var(--color-alert-700)' }}>
@@ -585,7 +593,7 @@ export const InquiryForm: React.FC<InquiryFormProps> = ({ initialSegment = 'dist
                   value={formData.message}
                   onChange={handleInputChange}
                   placeholder="Describe your steel requirements, delivery schedule, or partnership interest..."
-                  className="w-full px-4 py-3 glass-textarea rounded-2xl text-sm focus:outline-none"
+                  className="w-full px-4 py-3 glass-textarea rounded-2xl text-sm focus:outline-none min-h-[48px]"
                 />
                 {fieldErrors.message && (
                   <p id="error-message" role="alert" className="text-xs font-semibold mt-1" style={{ color: 'var(--color-alert-700)' }}>
@@ -603,7 +611,7 @@ export const InquiryForm: React.FC<InquiryFormProps> = ({ initialSegment = 'dist
                 <button
                   type="button"
                   onClick={() => setStep(2)}
-                  className="btn-secondary px-5 py-2.5 rounded-full text-xs font-bold"
+                  className="btn-secondary px-5 py-2.5 sm:py-2 rounded-full text-xs sm:text-sm font-bold min-h-[48px]"
                 >
                   Back
                 </button>
@@ -611,7 +619,7 @@ export const InquiryForm: React.FC<InquiryFormProps> = ({ initialSegment = 'dist
                 <button
                   type="submit"
                   disabled={loading}
-                  className="btn-primary px-8 py-3 rounded-full text-xs font-extrabold flex items-center gap-2 transition-all disabled:opacity-50"
+                  className="btn-primary px-8 py-3 sm:py-2.5 rounded-full text-xs sm:text-sm font-extrabold flex items-center gap-2 transition-all disabled:opacity-50 min-h-[48px]"
                 >
                   {loading ? (
                     <>

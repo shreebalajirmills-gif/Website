@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { FINANCIAL_METRICS } from '@/data/financial';
 import { FinancialGrowthMetric } from '@/types';
 import { BarChart3, Zap, Award, Download, TrendingUp, Layers, Activity } from 'lucide-react';
@@ -12,8 +12,29 @@ export const GrowthTimeline: React.FC = () => {
   const [selectedYear, setSelectedYear] = useState<string>(FINANCIAL_METRICS[0].year);
   const [chartMode, setChartMode] = useState<'revenue' | 'capacity' | 'ebitda'>('revenue');
   const [isManualSelection, setIsManualSelection] = useState<boolean>(false);
+  const [chartDimensions, setChartDimensions] = useState({ width: 560, height: 240, padLeft: 55, padRight: 35, padTop: 30, padBottom: 40 });
 
   const sectionRef = useRef<HTMLDivElement>(null);
+
+  // Handle responsive chart dimensions
+  useEffect(() => {
+    const handleResize = () => {
+      const screenWidth = window.innerWidth;
+      let newDimensions;
+      if (screenWidth < 640) {
+        newDimensions = { width: 320, height: 180, padLeft: 35, padRight: 25, padTop: 25, padBottom: 35 };
+      } else if (screenWidth < 1024) {
+        newDimensions = { width: 480, height: 220, padLeft: 45, padRight: 30, padTop: 28, padBottom: 38 };
+      } else {
+        newDimensions = { width: 560, height: 240, padLeft: 55, padRight: 35, padTop: 30, padBottom: 40 };
+      }
+      setChartDimensions(newDimensions);
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   // Scroll Driven Progression
   const { scrollYProgress } = useScroll({
@@ -34,15 +55,9 @@ export const GrowthTimeline: React.FC = () => {
   const activeMetric: FinancialGrowthMetric =
     FINANCIAL_METRICS.find((m) => m.year === selectedYear) || FINANCIAL_METRICS[0];
 
-  // SVG Chart Geometry Constants
-  const width = 560;
-  const height = 240;
-  const padLeft = 55;
-  const padRight = 35;
-  const padTop = 30;
-  const padBottom = 40;
-  const chartW = width - padLeft - padRight; // 470
-  const chartH = height - padTop - padBottom; // 170
+  const { width, height, padLeft, padRight, padTop, padBottom } = chartDimensions;
+  const chartW = width - padLeft - padRight;
+  const chartH = height - padTop - padBottom;
 
   // Calculate points dynamically based on chartMode
   const chartPoints = FINANCIAL_METRICS.map((item, idx) => {
@@ -138,7 +153,7 @@ export const GrowthTimeline: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-          <div className="glass-pill px-4 py-1.5 inline-flex items-center gap-2 text-growth-800 text-xs font-bold uppercase tracking-wider">
+          <div className="glass-pill px-4 py-1.5 inline-flex items-center gap-2 text-growth-800 text-xs sm:text-sm font-bold uppercase tracking-wider">
             Institutional Growth Roadmap
           </div>
           <h2 className="text-3xl sm:text-5xl font-black text-steel-900 tracking-tight">
@@ -153,32 +168,32 @@ export const GrowthTimeline: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14">
           <div className="liquid-glass p-6 rounded-3xl border border-steel-200 relative space-y-3 shadow-md">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-bold text-steel-500 uppercase tracking-widest font-mono">Phase 1</span>
-              <span className="glass-pill px-2.5 py-0.5 text-xs font-semibold text-steel-700">Baseline</span>
+              <span className="text-xs sm:text-sm font-bold text-steel-500 uppercase tracking-widest font-mono">Phase 1</span>
+              <span className="glass-pill px-2.5 py-0.5 text-xs sm:text-sm font-semibold text-steel-700">Baseline</span>
             </div>
             <h3 className="text-xl font-bold text-steel-900">Baseline Foundation</h3>
             <p className="text-2xl font-black text-steel-900 font-mono">₹200 Cr Base</p>
-            <p className="text-xs text-steel-600 font-normal">Initial production platform stabilization & foundation</p>
+            <p className="text-xs sm:text-sm text-steel-600 font-normal">Initial production platform stabilization & foundation</p>
           </div>
 
           <div className="liquid-glass liquid-glass-contractor p-6 rounded-3xl border border-growth-400/40 relative space-y-3 shadow-xl">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-extrabold text-growth-800 uppercase tracking-widest font-mono">Phase 3</span>
-              <span className="badge-contractor px-2.5 py-0.5 text-xs font-bold rounded-full border">Inflection</span>
+              <span className="text-xs sm:text-sm font-extrabold text-growth-800 uppercase tracking-widest font-mono">Phase 3</span>
+              <span className="badge-contractor px-2.5 py-0.5 text-xs sm:text-sm font-bold rounded-full border">Inflection</span>
             </div>
             <h3 className="text-xl font-bold text-steel-900">Capacity Inflection</h3>
             <p className="text-2xl font-black text-growth-700 font-mono">₹600 Cr Milestone</p>
-            <p className="text-xs text-steel-700 font-normal">Revenue leap driven by TMT facility expansion & ramp-up</p>
+            <p className="text-xs sm:text-sm text-steel-700 font-normal">Revenue leap driven by TMT facility expansion & ramp-up</p>
           </div>
 
           <div className="liquid-glass liquid-glass-investor p-6 rounded-3xl border border-growth-600/40 relative space-y-3 shadow-md">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-extrabold text-growth-900 uppercase tracking-widest font-mono">Phase 5</span>
-              <span className="badge-investor px-2.5 py-0.5 text-xs font-bold rounded-full border">Scale</span>
+              <span className="text-xs sm:text-sm font-extrabold text-growth-900 uppercase tracking-widest font-mono">Phase 5</span>
+              <span className="badge-investor px-2.5 py-0.5 text-xs sm:text-sm font-bold rounded-full border">Scale</span>
             </div>
             <h3 className="text-xl font-bold text-steel-900">Scale & PAT Expansion</h3>
             <p className="text-2xl font-black text-growth-800 font-mono">₹1,000 Cr Target</p>
-            <p className="text-xs text-steel-700 font-normal">Sustained market growth & profitability expansion milestone</p>
+            <p className="text-xs sm:text-sm text-steel-700 font-normal">Sustained market growth & profitability expansion milestone</p>
           </div>
         </div>
 
@@ -190,7 +205,7 @@ export const GrowthTimeline: React.FC = () => {
               <button
                 key={metric.year}
                 onClick={() => handleManualYearSelect(metric.year)}
-                className={`glass-pill px-6 py-2.5 text-xs font-black transition-all flex items-center gap-2 cursor-pointer ${
+                className={`glass-pill px-6 py-2.5 text-xs sm:text-sm font-black transition-all flex items-center gap-2 cursor-pointer min-h-[48px] ${
                   isSelected
                     ? 'bg-slate-950 text-amber-400 font-black border border-slate-700 shadow-md scale-105 ring-2 ring-amber-500/30'
                     : 'text-steel-600 hover:text-steel-900 hover:bg-steel-100'
@@ -199,7 +214,7 @@ export const GrowthTimeline: React.FC = () => {
                 <span>{metric.year}</span>
                 {metric.year === 'Phase 3' && (
                   <span
-                    className={`text-[9px] px-1.5 py-0.5 rounded font-black uppercase ${
+                    className={`text-[9px] sm:text-[10px] px-1.5 py-0.5 rounded font-black uppercase ${
                       isSelected ? 'bg-amber-400 text-slate-950' : 'bg-growth-100 text-growth-800'
                     }`}
                   >
@@ -265,7 +280,7 @@ export const GrowthTimeline: React.FC = () => {
 
             {/* Responsive Vector SVG Graph */}
             <div className="w-full bg-steel-50/80 rounded-2xl p-4 border border-steel-200 relative overflow-hidden shadow-inner">
-              <svg viewBox={`0 0 ${width} ${height}`} className="w-full h-auto overflow-visible">
+              <svg viewBox={`0 0 ${width} ${height}`} className="w-full h-auto overflow-visible" preserveAspectRatio="xMidYMid meet">
                 <defs>
                   <linearGradient id="growthGradient" x1="0" y1="0" x2="0" y2="1">
                     <stop offset="0%" stopColor="#059669" stopOpacity="0.45" />
@@ -407,7 +422,7 @@ export const GrowthTimeline: React.FC = () => {
           <div className="lg:col-span-5 liquid-glass p-6 rounded-2xl border border-steel-200 space-y-5 bg-white shadow-md">
             <div className="flex items-center justify-between border-b border-steel-200 pb-4">
               <div>
-                <span className="text-xs font-bold text-growth-700 uppercase tracking-widest block font-mono">
+                <span className="text-xs sm:text-sm font-bold text-growth-700 uppercase tracking-widest block font-mono">
                   Phase: {activeMetric.phase}
                 </span>
                 <h3 className="text-3xl font-black text-steel-900 mt-0.5">
@@ -415,32 +430,32 @@ export const GrowthTimeline: React.FC = () => {
                 </h3>
               </div>
               <div className="text-right">
-                <span className="text-[10px] text-steel-500 font-bold uppercase tracking-wider block">Total Platform</span>
+                <span className="text-[10px] sm:text-xs text-steel-500 font-bold uppercase tracking-wider block">Total Platform</span>
                 <span className="text-sm font-black text-trust-700 block mt-0.5">
                   {activeMetric.capacityTpa.toLocaleString()} TPA
                 </span>
               </div>
             </div>
 
-            <p className="text-xs text-steel-700 leading-relaxed italic p-3.5 rounded-xl bg-steel-50 border border-steel-200">
+            <p className="text-xs sm:text-sm text-steel-700 leading-relaxed italic p-3.5 rounded-xl bg-steel-50 border border-steel-200">
               &ldquo;{activeMetric.phaseDescription}&rdquo;
             </p>
 
             <div className="grid grid-cols-2 gap-3 text-sm">
               <div className="p-3.5 rounded-xl bg-steel-50 border border-steel-200">
-                <span className="text-[10px] text-steel-500 uppercase tracking-wider font-bold block">Revenue</span>
+                <span className="text-[10px] sm:text-xs text-steel-500 uppercase tracking-wider font-bold block">Revenue</span>
                 <span className="text-xl font-black text-steel-900 mt-0.5 block">₹{activeMetric.revenueCr} Cr</span>
               </div>
               <div className="p-3.5 rounded-xl bg-steel-50 border border-steel-200">
-                <span className="text-[10px] text-steel-500 uppercase tracking-wider font-bold block">EBITDA Margin</span>
+                <span className="text-[10px] sm:text-xs text-steel-500 uppercase tracking-wider font-bold block">EBITDA Margin</span>
                 <span className="text-xl font-black text-growth-700 mt-0.5 block">{activeMetric.ebitdaMarginPct}%</span>
               </div>
               <div className="p-3.5 rounded-xl bg-steel-50 border border-steel-200">
-                <span className="text-[10px] text-steel-500 uppercase tracking-wider font-bold block">PAT Net Profit</span>
+                <span className="text-[10px] sm:text-xs text-steel-500 uppercase tracking-wider font-bold block">PAT Net Profit</span>
                 <span className="text-xl font-black text-trust-700 mt-0.5 block">₹{activeMetric.patCr} Cr</span>
               </div>
               <div className="p-3.5 rounded-xl bg-steel-50 border border-steel-200">
-                <span className="text-[10px] text-steel-500 uppercase tracking-wider font-bold block">PAT Margin</span>
+                <span className="text-[10px] sm:text-xs text-steel-500 uppercase tracking-wider font-bold block">PAT Margin</span>
                 <span className="text-xl font-black text-authority-700 mt-0.5 block">{activeMetric.patMarginPct}%</span>
               </div>
             </div>
@@ -448,7 +463,7 @@ export const GrowthTimeline: React.FC = () => {
             <div className="pt-2 border-t border-steel-200">
               <div className="flex items-start gap-2.5">
                 <Zap className="w-4 h-4 text-growth-600 shrink-0 mt-0.5" />
-                <p className="text-xs text-steel-700 leading-snug">
+                <p className="text-xs sm:text-sm text-steel-700 leading-snug">
                   <strong className="text-steel-900 font-bold block mb-0.5">Execution Highlight:</strong>
                   {activeMetric.keyHighlight}
                 </p>

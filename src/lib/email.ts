@@ -3,7 +3,7 @@ import nodemailer from 'nodemailer';
 const smtpHost = process.env.SMTP_HOST || 'smtp.gmail.com';
 const smtpPort = Number(process.env.SMTP_PORT) || 465;
 const smtpUser = process.env.SMTP_USER || 'shreebalajirmills@gmail.com';
-const smtpPass = process.env.SMTP_PASS || 'pakooxzoordmncoz';
+const smtpPass = process.env.SMTP_PASS || '';
 const notificationEmail = process.env.NOTIFICATION_EMAIL || smtpUser;
 
 const transporter = nodemailer.createTransport({

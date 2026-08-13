@@ -15,10 +15,16 @@ export const SteelComparisonMatrix: React.FC = () => {
         </h3>
       </div>
 
-      <div className="liquid-glass-prominent rounded-3xl p-6 sm:p-8 border border-steel-200 shadow-xl overflow-x-auto">
-        <table className="w-full text-left text-xs sm:text-sm border-collapse min-w-[600px]">
+      <div className="liquid-glass-prominent rounded-3xl p-6 sm:p-8 border border-steel-200 shadow-xl relative overflow-hidden">
+        {/* Scroll indicator for mobile */}
+        <div className="sm:hidden absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-steel-100/80 to-transparent pointer-events-none z-10 flex items-center justify-center">
+          <span className="text-xs text-steel-400 font-mono">→</span>
+        </div>
+
+        <div className="overflow-x-auto scroll-smooth scrollbar-thin scrollbar-thumb-steel-300 scrollbar-track-steel-100">
+          <table className="w-full text-left text-xs sm:text-sm border-collapse min-w-[600px]">
           <thead>
-            <tr className="border-b border-steel-200 text-steel-700 font-extrabold uppercase tracking-wider text-[11px]">
+            <tr className="border-b border-steel-200 text-steel-700 font-extrabold uppercase tracking-wider text-[11px] sm:text-xs">
               <th className="py-4 px-4 w-1/3">Technical Criterion</th>
               <th className="py-4 px-4 text-authority-700 bg-authority-50 rounded-tl-2xl border-l border-steel-200">IS 2062 Structural Steel</th>
               <th className="py-4 px-4 text-growth-700 bg-growth-50 rounded-tr-2xl border-l border-steel-200">IS 1786 Fe-500D TMT Bars</th>
@@ -61,6 +67,7 @@ export const SteelComparisonMatrix: React.FC = () => {
             </tr>
           </tbody>
         </table>
+        </div>
       </div>
     </div>
   );
