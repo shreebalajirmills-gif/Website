@@ -6,7 +6,7 @@ import { FinancialGrowthMetric } from '@/types';
 import { BarChart3, Zap, Award, Download, TrendingUp, Layers, Activity } from 'lucide-react';
 import { downloadDynamicPdf } from '@/lib/pdf-generator';
 import { SteelSparksCanvas } from '@/components/3d/SteelSparksCanvas';
-import { motion, useScroll, useTransform, useSpring, useMotionValueEvent, AnimatePresence } from 'framer-motion';
+import { motion, useScroll, useSpring, useMotionValueEvent } from 'framer-motion';
 
 export const GrowthTimeline: React.FC = () => {
   const [selectedYear, setSelectedYear] = useState<string>(FINANCIAL_METRICS[0].year);
@@ -46,10 +46,6 @@ export const GrowthTimeline: React.FC = () => {
     stiffness: 90,
     damping: 20,
     restDelta: 0.001,
-  });
-
-  const visibleProgress = useTransform(smoothProgress, (value) => {
-    return Math.min(Math.max(value, 0), 1);
   });
 
   const activeMetric: FinancialGrowthMetric =
@@ -98,20 +94,13 @@ export const GrowthTimeline: React.FC = () => {
 
   const areaD = `${pathD} L ${chartPoints[chartPoints.length - 1].cx} ${height - padBottom} L ${chartPoints[0].cx} ${height - padBottom} Z`;
 
-  // Dynamic Scroll Clip-Path width (draws graph progressively from padLeft to width - padRight)
-  const clipWidth = useTransform(visibleProgress, [0, 1], [padLeft - 5, width - padRight + 10]);
+  // Active metric node calculation
+  const selectedIndex = FINANCIAL_METRICS.findIndex((m) => m.year === selectedYear);
+  const activeIndex = selectedIndex >= 0 ? selectedIndex : 0;
+  const activePoint = chartPoints[activeIndex] || chartPoints[0];
 
-  // Dynamic Cursor Glow position synchronized to scroll
-  const tracerCx = useTransform(
-    visibleProgress,
-    [0, 0.25, 0.5, 0.75, 1],
-    chartPoints.map((p) => p.cx)
-  );
-  const tracerCy = useTransform(
-    visibleProgress,
-    [0, 0.25, 0.5, 0.75, 1],
-    chartPoints.map((p) => p.cy)
-  );
+  // Dynamic Clip-Path width for green underbar (animates smoothly to selected dot's cx)
+  const targetClipWidth = activeIndex === chartPoints.length - 1 ? width : activePoint.cx + 8;
 
   // Synchronize active year metric node with scroll progress
   useMotionValueEvent(smoothProgress, 'change', (latest) => {
@@ -294,7 +283,13 @@ export const GrowthTimeline: React.FC = () => {
 
                   {/* Scroll Reveal Dynamic Clip Path */}
                   <clipPath id="scrollCurveClip">
-                    <motion.rect x="0" y="0" height={height} style={{ width: clipWidth }} />
+                    <motion.rect
+                      x="0"
+                      y="0"
+                      height={height}
+                      animate={{ width: targetClipWidth }}
+                      transition={{ type: 'spring', stiffness: 120, damping: 20, restDelta: 0.01 }}
+                    />
                   </clipPath>
                 </defs>
 
@@ -315,7 +310,7 @@ export const GrowthTimeline: React.FC = () => {
                   );
                 })}
 
-                {/* Fill Area Gradient (Clipped to Scroll Progress) */}
+                {/* Fill Area Gradient (Clipped to Active Point Progress) */}
                 <motion.path
                   d={areaD}
                   fill="url(#growthGradient)"
@@ -324,7 +319,7 @@ export const GrowthTimeline: React.FC = () => {
                   transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
                 />
 
-                {/* Smooth Vector Curve Line (Clipped to Scroll Progress) */}
+                {/* Smooth Vector Curve Line (Clipped to Active Point Progress) */}
                 <motion.path
                   d={pathD}
                   fill="none"
@@ -337,9 +332,12 @@ export const GrowthTimeline: React.FC = () => {
                   transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
                 />
 
-                {/* Traveling Scroll Glow Cursor Point */}
-                <motion.g style={{ x: tracerCx, y: tracerCy }} clipPath="url(#scrollCurveClip)">
-                  <circle r="12" className="fill-growth-500/30 animate-ping" />
+                {/* Traveling Glow Cursor Point (Animates to Active Dot) */}
+                <motion.g
+                  animate={{ x: activePoint.cx, y: activePoint.cy }}
+                  transition={{ type: 'spring', stiffness: 160, damping: 22 }}
+                >
+                  <circle r="14" className="fill-growth-500/30 animate-ping" />
                   <circle r="6" className="fill-growth-600 stroke-white stroke-2 shadow-lg" />
                 </motion.g>
 

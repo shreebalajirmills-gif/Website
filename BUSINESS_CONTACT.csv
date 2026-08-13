@@ -1,0 +1,12 @@
+Channel,Value / Link,Description,Site Usage Location
+Email,shreebalajirmills@gmail.com,Official Business Email,Header / Footer / Contact Page / Mailto links
+Phone Call,+91 8800106726,Mill Sales Desk Direct Line,Header / Footer / Contact Page / Call buttons
+Phone Dialer Raw,+918800106726,Raw Phone Number for tel: href,tel:+918800106726
+WhatsApp Raw,918800106726,WhatsApp Number without + sign,wa.me URL builder
+WhatsApp Prefilled Message,"Hey, I'd like to Talk for Quotation ....",Default chat message text,WhatsApp CTA buttons & floating widget
+Instagram,https://www.instagram.com/sbrm.2026/,Official Instagram Profile,@sbrm.2026 brand card & Schema
+Facebook,https://www.facebook.com/profile.php?id=61592632001035,Official Facebook Page,Shree Balaji Roll Mill brand card & Schema
+X (Twitter),https://x.com/SBRM2026,Official X Handle,@SBRM2026 brand card & Schema
+Reddit,https://www.reddit.com/user/ShreeBalajiRollMill/,Official Reddit Profile,u/ShreeBalajiRollMill brand card & Schema
+Factory Address,"Bhiwadi Industrial Area, Bhiwadi, Haryana, India",Factory Location,Footer & Contact Page
+Corporate Office,"Delhi NCR, India",Business Location,Footer & Contact Page

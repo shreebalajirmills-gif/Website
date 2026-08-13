@@ -20,6 +20,7 @@ export const InquiryForm: React.FC<InquiryFormProps> = ({ initialSegment = 'dist
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [submissionResult, setSubmissionResult] = useState<ApiResponse | null>(null);
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
+  const [honeypot, setHoneypot] = useState<string>('');
 
   const [formData, setFormData] = useState<InquiryFormData>({
     segment: initialSegment,
@@ -79,7 +80,7 @@ export const InquiryForm: React.FC<InquiryFormProps> = ({ initialSegment = 'dist
       const response = await fetch('/api/inquiry', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, website_hp: honeypot }),
       });
 
       const data: ApiResponse = await response.json();
@@ -600,6 +601,20 @@ export const InquiryForm: React.FC<InquiryFormProps> = ({ initialSegment = 'dist
                     {fieldErrors.message}
                   </p>
                 )}
+              </div>
+
+              {/* Invisible Honeypot Field for Bot Spam Trap */}
+              <div className="hidden" aria-hidden="true" style={{ display: 'none' }}>
+                <label htmlFor="website_hp">Do not fill this field</label>
+                <input
+                  type="text"
+                  id="website_hp"
+                  name="website_hp"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  value={honeypot}
+                  onChange={(e) => setHoneypot(e.target.value)}
+                />
               </div>
 
               <div className="flex items-center gap-2 text-xs text-steel-600 pt-1">
