@@ -8,6 +8,8 @@ import { ProductHub } from '@/components/products/ProductHub';
 import { SteelCalculatorWidget } from '@/components/tools/SteelCalculatorWidget';
 import { TrustSection } from '@/components/trust/TrustSection';
 import { ContactSection } from '@/components/contact/ContactSection';
+import { LocationMapSection } from '@/components/location/LocationMapSection';
+import { FAQSection } from '@/components/faq/FAQSection';
 import { Footer } from '@/components/layout/Footer';
 import { BuyerSegment } from '@/types';
 import { motion } from 'framer-motion';
@@ -117,6 +119,12 @@ export function HomePageClient() {
       >
         <ContactSection onSelectSegment={handleSelectSegment} />
       </motion.div>
+
+      {/* Bhiwadi Mill Location Map & Route Directions */}
+      <LocationMapSection />
+
+      {/* Institutional Steel FAQ Section */}
+      <FAQSection />
 
       {/* Global Footer */}
       <Footer onSelectSegment={handleSelectSegment} />
