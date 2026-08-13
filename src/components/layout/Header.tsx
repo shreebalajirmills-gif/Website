@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation';
 import { Menu, X, ArrowRight, ChevronDown, Flame, Layers, ShieldCheck, TrendingUp, Activity, FileText } from 'lucide-react';
 import { BuyerSegment } from '@/types';
 import { SocialIcon, SocialLinks } from '@/components/social/SocialLinks';
+import { AnimatedGrowthGraphBackground } from '@/components/3d/AnimatedGrowthGraphBackground';
 import { SITE_CONFIG, getWhatsAppUrl } from '@/config/site';
 
 interface HeaderProps {
@@ -321,14 +322,19 @@ export const Header: React.FC<HeaderProps> = ({ onSelectSegment }) => {
                     <div className="col-span-12 lg:col-span-5 bg-slate-950 text-white rounded-xl sm:rounded-2xl p-4 sm:p-6 flex flex-col justify-between border border-slate-700 relative overflow-hidden group shadow-lg">
                       <div className="ambient-liquid-glow ambient-glow-growth top-0 right-0 scale-75 opacity-40" />
                       
-                      {/* Industrial Steel Plant Background Image */}
-                      <img
-                        src={menu.bgImage || '/assets/about-menu-bg.jpg'}
-                        alt={`${menu.title} - Shree Balaji Industrial Facility`}
-                        className="absolute inset-0 w-full h-full object-cover object-right opacity-50 group-hover:scale-105 transition-transform duration-700 pointer-events-none"
-                      />
-                      {/* Gradient Overlay for Legibility */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/75 to-slate-950/40 pointer-events-none" />
+                      {/* Background Video / Graph Engine Animation for Media & Growth Card */}
+                      {activeMegaMenu === 'media' ? (
+                        <AnimatedGrowthGraphBackground />
+                      ) : (
+                        <>
+                          <img
+                            src={menu.bgImage || '/assets/about-menu-bg.jpg'}
+                            alt={`${menu.title} - Shree Balaji Industrial Facility`}
+                            className="absolute inset-0 w-full h-full object-cover object-right opacity-50 group-hover:scale-105 transition-transform duration-700 pointer-events-none"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/75 to-slate-950/40 pointer-events-none" />
+                        </>
+                      )}
 
                       <div className="relative z-10 space-y-2 sm:space-y-3">
                         <div className="flex items-center justify-between">
