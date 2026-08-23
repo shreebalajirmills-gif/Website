@@ -253,15 +253,15 @@ export const SteelProductViewer: React.FC<SteelProductViewerProps> = ({ productT
   // Fallback for WebGL unavailable
   if (!isWebGLAvailable) {
     return (
-      <div className="relative w-full h-72 sm:h-80 md:h-96 liquid-glass bg-slate-950/80 overflow-hidden border border-white/15 my-4">
+      <div className="relative w-full h-72 sm:h-80 md:h-96 liquid-glass bg-steel-50/80 overflow-hidden border border-black my-4">
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="text-center">
-            <div className="w-24 h-24 mx-auto mb-4 bg-gradient-to-br from-slate-300 to-slate-400 opacity-50" />
-            <p className="text-slate-400 text-sm">3D viewer not available</p>
-            <p className="text-slate-500 text-xs mt-2">WebGL not supported on this device</p>
+            <div className="w-24 h-24 mx-auto mb-4 bg-gradient-to-br from-steel-200 to-steel-300 opacity-50" />
+            <p className="text-steel-600 text-sm">3D viewer not available</p>
+            <p className="text-steel-500 text-xs mt-2">WebGL not supported on this device</p>
           </div>
         </div>
-        <div className="absolute top-3 left-3 badge-base px-3 py-1 text-[10px] font-bold text-amber-300 flex items-center gap-1.5 backdrop-blur-md">
+        <div className="absolute top-3 left-3 badge-base px-3 py-1 text-[10px] font-bold text-growth-700 flex items-center gap-1.5 backdrop-blur-md">
           <span>Product Inspection</span>
         </div>
       </div>
@@ -269,13 +269,13 @@ export const SteelProductViewer: React.FC<SteelProductViewerProps> = ({ productT
   }
 
   return (
-    <div className="relative w-full h-72 sm:h-80 md:h-96 liquid-glass bg-slate-950/80 overflow-hidden border border-white/15 my-4">
+    <div className="relative w-full h-72 sm:h-80 md:h-96 liquid-glass bg-steel-50/80 overflow-hidden border border-black my-4">
       
       {/* 3D Canvas Mount */}
       <div ref={mountRef} className="w-full h-full" />
 
       {/* 3D Overlay Badge */}
-      <div className="absolute top-3 left-3 badge-base px-3 py-1 text-[10px] font-bold text-amber-300 flex items-center gap-1.5 backdrop-blur-md">
+      <div className="absolute top-3 left-3 badge-base px-3 py-1 text-[10px] font-bold text-growth-700 flex items-center gap-1.5 backdrop-blur-md bg-white/50 border border-black">
         <span>3D Interactive Inspection</span>
       </div>
 
@@ -284,15 +284,15 @@ export const SteelProductViewer: React.FC<SteelProductViewerProps> = ({ productT
         <button
           type="button"
           onClick={() => setIsRotating(!isRotating)}
-          className={`badge-base px-3 py-1 text-[10px] font-bold transition-all flex items-center gap-1 ${
-            isRotating ? 'text-amber-300 bg-transparent group-hover:bg-transparent group-hover:bg-growth-500/20' : 'text-slate-300'
+          className={`badge-base px-3 py-1 text-[10px] font-bold transition-all flex items-center gap-1 bg-white/50 border border-black ${
+            isRotating ? 'text-growth-700 bg-growth-50 group-hover:bg-growth-100' : 'text-steel-600'
           }`}
         >
           <Rotate3D className="w-3.5 h-3.5" />
           <span>{isRotating ? 'Auto-Orbiting' : 'Paused'}</span>
         </button>
-        <div className="badge-base px-2.5 py-1 text-[10px] text-slate-300 flex items-center gap-1">
-          <Eye className="w-3.5 h-3.5 text-blue-400" />
+        <div className="badge-base px-2.5 py-1 text-[10px] text-steel-600 flex items-center gap-1 bg-white/50 border border-black">
+          <Eye className="w-3.5 h-3.5 text-growth-600" />
           <span>Drag to Rotate 360°</span>
         </div>
       </div>
