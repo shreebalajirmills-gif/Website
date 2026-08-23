@@ -19,7 +19,7 @@ export const AnimatedGrowthGraphBackground: React.FC = () => {
   const secondaryCurveD = "M 30 185 C 80 180, 140 145, 190 115 C 240 85, 300 95, 360 50";
 
   return (
-    <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none rounded-2xl bg-slate-950">
+    <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none bg-slate-950">
       {/* Dynamic Animated Grid Pattern */}
       <svg
         viewBox="0 0 400 240"

@@ -230,7 +230,7 @@ export const SteelHeroCanvas: React.FC = () => {
       <div aria-hidden="true" className="absolute inset-0 pointer-events-none z-0 opacity-85 overflow-hidden bg-gradient-to-br from-slate-100 to-slate-200">
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="text-center">
-            <div className="w-32 h-32 mx-auto mb-4 bg-gradient-to-br from-slate-300 to-slate-400 rounded-full opacity-50" />
+            <div className="w-32 h-32 mx-auto mb-4 bg-gradient-to-br from-slate-300 to-slate-400 opacity-50" />
             <p className="text-slate-500 text-sm">3D visualization not available</p>
           </div>
         </div>

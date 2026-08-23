@@ -51,15 +51,15 @@ export default function StructuralSteelPage() {
   });
 
   return (
-    <main id="main-content" className="min-h-screen bg-steel-base text-steel-900 flex flex-col selection:bg-growth-500 selection:text-white">
+    <main id="main-content" className="min-h-screen bg-steel-base text-steel-900 flex flex-col selection:bg-transparent group-hover:bg-growth-500 selection:text-white">
       <JsonLd data={[breadcrumbJsonLd, productJsonLd]} />
       <Header />
 
       {/* Hero Section */}
       <section className="pt-36 pb-20 bg-steel-base border-b border-steel-200 steel-grid-pattern relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full badge-distributor text-xs font-mono font-bold">
-            <ShieldCheck className="w-4 h-4 text-authority-700" /> BIS IS 2062 GRADE E250 CERTIFIED
+          <div className="inline-flex items-center gap-2 px-3 py-1 badge-distributor text-xs font-mono font-bold">
+            <ShieldCheck className="w-4 h-4 text-steel-900" /> BIS IS 2062 GRADE E250 CERTIFIED
           </div>
 
           <h1 className="text-4xl sm:text-6xl font-black text-steel-900 tracking-tight">
@@ -72,10 +72,10 @@ export default function StructuralSteelPage() {
           </p>
 
           <div className="flex flex-wrap gap-4 pt-2 text-xs font-mono">
-            <span className="bg-steel-100 border border-steel-200 px-3.5 py-1.5 rounded-full font-bold text-steel-900">
+            <span className="bg-steel-100 border border-steel-200 px-3.5 py-1.5 font-bold text-steel-900">
               Annual Platform Capacity: 36,000 TPA
             </span>
-            <span className="bg-steel-100 border border-steel-200 px-3.5 py-1.5 rounded-full font-bold text-authority-700">
+            <span className="bg-steel-100 border border-steel-200 px-3.5 py-1.5 font-bold text-steel-900">
               Weldability Rating: Carbon Equivalent Max 0.38%
             </span>
           </div>
@@ -86,7 +86,7 @@ export default function StructuralSteelPage() {
       <section className="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
         
         {/* 3D Model Inspection Card */}
-        <div className="liquid-glass-prominent rounded-3xl p-8 border border-steel-200 shadow-xl space-y-6">
+        <div className="card-base card-product p-8 border border-steel-200 space-y-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
               <Box className="w-5 h-5 text-growth-600" />
@@ -103,13 +103,13 @@ export default function StructuralSteelPage() {
         </div>
 
         {/* Dimension & Weight Schedule Table */}
-        <div className="liquid-glass-prominent rounded-3xl p-8 border border-steel-200 shadow-xl space-y-6">
+        <div className="card-base card-product p-8 border border-steel-200 space-y-6">
           <div className="flex items-center justify-between border-b border-steel-200 pb-4">
             <div className="flex items-center gap-2">
               <Scale className="w-5 h-5 text-growth-600" />
               <h2 className="text-xl font-bold text-steel-900">Standard Equal Angle Section Schedule</h2>
             </div>
-            <span className="text-xs font-mono font-bold text-growth-700 bg-growth-50 px-3 py-1 rounded-full border border-growth-200">
+            <span className="text-xs font-mono font-bold text-steel-900 bg-transparent group-hover:bg-growth-50 px-3 py-1 border border-steel-200 group-hover:border-growth-400">
               IS 2062 Dimensions
             </span>
           </div>
@@ -128,7 +128,7 @@ export default function StructuralSteelPage() {
                 {angleSizes.map((item, i) => (
                   <tr key={i} className="hover:bg-steel-50 transition-colors">
                     <td className="py-3.5 px-4 font-bold text-steel-900">{item.size}</td>
-                    <td className="py-3.5 px-4 font-bold text-growth-700">{item.weightPerM}</td>
+                    <td className="py-3.5 px-4 font-bold text-steel-900">{item.weightPerM}</td>
                     <td className="py-3.5 px-4 text-steel-600">{item.length}</td>
                     <td className="py-3.5 px-4 font-sans text-steel-600">{item.app}</td>
                   </tr>
@@ -139,14 +139,14 @@ export default function StructuralSteelPage() {
         </div>
 
         {/* CTA Banner */}
-        <div className="liquid-glass-contractor rounded-3xl p-8 border border-steel-200 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl">
+        <div className="card-base-contractor p-8 border border-steel-200 flex flex-col sm:flex-row items-center justify-between gap-6">
           <div className="space-y-1">
             <h3 className="text-xl font-bold text-steel-900">Require Custom Section Modulus or Bulk Freight Delivery?</h3>
             <p className="text-xs text-steel-600">Direct dispatch available across Delhi NCR, Haryana, UP, and Punjab.</p>
           </div>
           <Link
             href="/inquiry?segment=contractor"
-            className="btn-primary py-3.5 px-6 rounded-2xl text-xs font-extrabold flex items-center gap-2 shrink-0"
+            className="btn-primary py-3.5 px-6 text-xs font-extrabold flex items-center gap-2 shrink-0"
           >
             <span>Request Structural Quote</span>
             <ArrowRight className="w-4 h-4" />

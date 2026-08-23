@@ -152,7 +152,7 @@ export const Header: React.FC<HeaderProps> = ({ onSelectSegment }) => {
       <div className="max-w-7xl mx-auto flex items-center justify-between pointer-events-auto relative">
         
         {/* Floating Architectural Navigation Dock */}
-        <div className="w-full liquid-glass rounded-full px-3 sm:px-5 py-2.5 sm:py-3 flex items-center justify-between border border-slate-200/90 shadow-xl relative z-50">
+        <div className="w-full liquid-glass px-3 sm:px-5 py-2.5 sm:py-3 flex items-center justify-between border border-slate-200/90 relative z-50">
           
           {/* Logo & Brand */}
           <Link href="/" onClick={handleLogoClick} className="flex items-center gap-2 sm:gap-3 group shrink-0">
@@ -167,12 +167,12 @@ export const Header: React.FC<HeaderProps> = ({ onSelectSegment }) => {
           </Link>
 
           {/* Navigation Links with Mega Menu Dropdowns - Hidden on mobile */}
-          <nav className="hidden lg:flex items-center gap-0.5 sm:gap-1 bg-steel-100/90 p-1 rounded-full border border-steel-200/90">
+          <nav className="hidden lg:flex items-center gap-0.5 sm:gap-1 bg-steel-100/90 p-1 border border-steel-200/90">
             
             {/* Overview / Home */}
             <Link
               href="/"
-              className={`px-3 sm:px-4 py-1.5 rounded-full text-[10px] sm:text-xs font-bold transition-all duration-200 min-h-[44px] flex items-center ${
+              className={`px-3 sm:px-4 py-1.5  text-[10px] sm:text-xs font-bold transition-all duration-200 min-h-[44px] flex items-center ${
                 pathname === '/' ? 'bg-slate-200 text-black font-black border border-slate-300' : 'text-slate-800 hover:bg-red-600 hover:text-white'
               }`}
             >
@@ -187,7 +187,7 @@ export const Header: React.FC<HeaderProps> = ({ onSelectSegment }) => {
             >
               <Link
                 href="/about"
-                className={`px-3 sm:px-4 py-1.5 rounded-full text-[10px] sm:text-xs font-bold inline-flex items-center gap-1 transition-all duration-200 min-h-[44px] ${
+                className={`px-3 sm:px-4 py-1.5  text-[10px] sm:text-xs font-bold inline-flex items-center gap-1 transition-all duration-200 min-h-[44px] ${
                   pathname.startsWith('/about') || activeMegaMenu === 'about'
                     ? 'bg-slate-200 text-black font-black border border-slate-300'
                     : 'text-slate-800 hover:bg-red-600 hover:text-white'
@@ -206,7 +206,7 @@ export const Header: React.FC<HeaderProps> = ({ onSelectSegment }) => {
             >
               <Link
                 href="/products"
-                className={`px-3 sm:px-4 py-1.5 rounded-full text-[10px] sm:text-xs font-bold inline-flex items-center gap-1 transition-all duration-200 min-h-[44px] ${
+                className={`px-3 sm:px-4 py-1.5  text-[10px] sm:text-xs font-bold inline-flex items-center gap-1 transition-all duration-200 min-h-[44px] ${
                   pathname.startsWith('/products') || activeMegaMenu === 'products'
                     ? 'bg-slate-200 text-black font-black border border-slate-300'
                     : 'text-slate-800 hover:bg-red-600 hover:text-white'
@@ -225,7 +225,7 @@ export const Header: React.FC<HeaderProps> = ({ onSelectSegment }) => {
             >
               <Link
                 href="/manufacturing-processes"
-                className={`px-3 sm:px-4 py-1.5 rounded-full text-[10px] sm:text-xs font-bold inline-flex items-center gap-1 transition-all duration-200 min-h-[44px] ${
+                className={`px-3 sm:px-4 py-1.5  text-[10px] sm:text-xs font-bold inline-flex items-center gap-1 transition-all duration-200 min-h-[44px] ${
                   pathname.startsWith('/manufacturing-processes') || activeMegaMenu === 'processes'
                     ? 'bg-slate-200 text-black font-black border border-slate-300'
                     : 'text-slate-800 hover:bg-red-600 hover:text-white'
@@ -244,7 +244,7 @@ export const Header: React.FC<HeaderProps> = ({ onSelectSegment }) => {
             >
               <Link
                 href="/growth"
-                className={`px-3 sm:px-4 py-1.5 rounded-full text-[10px] sm:text-xs font-bold inline-flex items-center gap-1 transition-all duration-200 min-h-[44px] ${
+                className={`px-3 sm:px-4 py-1.5  text-[10px] sm:text-xs font-bold inline-flex items-center gap-1 transition-all duration-200 min-h-[44px] ${
                   pathname.startsWith('/growth') || activeMegaMenu === 'media'
                     ? 'bg-slate-200 text-black font-black border border-slate-300'
                     : 'text-slate-800 hover:bg-red-600 hover:text-white'
@@ -258,7 +258,7 @@ export const Header: React.FC<HeaderProps> = ({ onSelectSegment }) => {
             {/* Our Certificates */}
             <Link
               href="/trust"
-              className={`px-3 sm:px-4 py-1.5 rounded-full text-[10px] sm:text-xs font-bold transition-all duration-200 min-h-[44px] flex items-center ${
+              className={`px-3 sm:px-4 py-1.5  text-[10px] sm:text-xs font-bold transition-all duration-200 min-h-[44px] flex items-center ${
                 pathname === '/trust' ? 'bg-slate-200 text-black font-black border border-slate-300' : 'text-slate-800 hover:bg-red-600 hover:text-white'
               }`}
             >
@@ -273,7 +273,7 @@ export const Header: React.FC<HeaderProps> = ({ onSelectSegment }) => {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Direct WhatsApp Quote Chat with Mill Sales Desk"
-              className="hidden sm:inline-flex items-center gap-1.5 bg-emerald-600 hover:bg-emerald-500 text-white font-mono font-bold text-[10px] sm:text-xs px-3 py-1.5 sm:py-2 rounded-full shadow-md transition-all border border-emerald-400/40 shrink-0"
+              className="hidden sm:inline-flex items-center gap-1.5 bg-emerald-600 hover:bg-emerald-500 text-white font-mono font-bold text-[10px] sm:text-xs px-3 py-1.5 sm:py-2 transition-all border border-emerald-400/40 shrink-0"
             >
               <SocialIcon platform="whatsapp" className="w-3.5 h-3.5 fill-current" />
               <span>WhatsApp Quote</span>
@@ -281,7 +281,7 @@ export const Header: React.FC<HeaderProps> = ({ onSelectSegment }) => {
 
             <Link
               href="/inquiry"
-              className="btn-primary !py-1.5 sm:!py-2 !px-3 sm:!px-4 rounded-full text-[10px] sm:text-xs !font-extrabold flex items-center gap-1 sm:gap-1.5 shadow-md"
+              className="btn-primary !py-1.5 sm:!py-2 !px-3 sm:!px-4 text-[10px] sm:text-xs !font-extrabold flex items-center gap-1 sm:gap-1.5"
             >
               <span className="hidden sm:inline">Inquire Now</span>
               <span className="sm:hidden">Inquire</span>
@@ -291,7 +291,7 @@ export const Header: React.FC<HeaderProps> = ({ onSelectSegment }) => {
             <button
               ref={toggleRef}
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-4 rounded-full text-steel-700 hover:bg-steel-100 min-h-[44px] min-w-[44px]"
+              className="lg:hidden p-4 text-steel-700 hover:bg-steel-100 min-h-[44px] min-w-[44px]"
               aria-label="Toggle Navigation"
               aria-expanded={mobileMenuOpen}
               aria-controls="mobile-navigation"
@@ -309,7 +309,7 @@ export const Header: React.FC<HeaderProps> = ({ onSelectSegment }) => {
             onMouseEnter={() => handleMouseEnter(activeMegaMenu)}
             onMouseLeave={handleMouseLeave}
           >
-            <div className="liquid-glass-prominent rounded-2xl sm:rounded-3xl p-4 sm:p-6 border border-slate-200 shadow-2xl bg-white/95 backdrop-blur-2xl animate-in fade-in slide-in-from-top-2 duration-200 max-w-4xl sm:max-w-5xl mx-auto">
+            <div className="card-base card-product sm: p-4 sm:p-6 border border-slate-200 bg-white/95 backdrop-blur-2xl animate-in fade-in slide-in-from-top-2 duration-200 max-w-4xl sm:max-w-5xl mx-auto">
               {(() => {
                 const menu = megaMenus[activeMegaMenu as keyof typeof megaMenus];
                 if (!menu) return null;
@@ -319,7 +319,7 @@ export const Header: React.FC<HeaderProps> = ({ onSelectSegment }) => {
                   <div className="grid grid-cols-12 gap-4 sm:gap-6 items-stretch">
                     
                     {/* Left Feature Card with Hot Steel Image Aesthetic */}
-                    <div className="col-span-12 lg:col-span-5 bg-slate-950 text-white rounded-xl sm:rounded-2xl p-4 sm:p-6 flex flex-col justify-between border border-slate-700 relative overflow-hidden group shadow-lg">
+                    <div className="col-span-12 lg:col-span-5 bg-slate-950 text-white sm: p-4 sm:p-6 flex flex-col justify-between border border-slate-700 relative overflow-hidden group">
                       <div className="ambient-liquid-glow ambient-glow-growth top-0 right-0 scale-75 opacity-40" />
                       
                       {/* Background Video / Graph Engine Animation for Media & Growth Card */}
@@ -338,7 +338,7 @@ export const Header: React.FC<HeaderProps> = ({ onSelectSegment }) => {
 
                       <div className="relative z-10 space-y-2 sm:space-y-3">
                         <div className="flex items-center justify-between">
-                          <span className="glass-pill px-2 sm:px-3 py-1 text-[9px] sm:text-[10px] font-mono font-bold uppercase tracking-wider text-amber-400 border border-amber-400/30">
+                          <span className="badge-base px-2 sm:px-3 py-1 text-[9px] sm:text-[10px] font-mono font-bold uppercase tracking-wider text-amber-400 border border-amber-400/30">
                             {menu.badge}
                           </span>
                           <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-amber-400" />
@@ -373,7 +373,7 @@ export const Header: React.FC<HeaderProps> = ({ onSelectSegment }) => {
                             key={idx}
                             href={item.href}
                             onClick={() => setActiveMegaMenu(null)}
-                            className="block p-2.5 sm:p-3 rounded-xl hover:bg-steel-100/80 transition-colors group/link border border-transparent hover:border-steel-200"
+                            className="block p-2.5 sm:p-3 hover:bg-steel-100/80 transition-colors group/link border border-transparent hover:border-steel-200"
                           >
                             <div className="text-[10px] sm:text-xs font-bold text-slate-950 group-hover/link:text-red-600 transition-colors flex items-center justify-between">
                               <span>{item.label}</span>
@@ -393,7 +393,7 @@ export const Header: React.FC<HeaderProps> = ({ onSelectSegment }) => {
                             key={idx}
                             href={item.href}
                             onClick={() => setActiveMegaMenu(null)}
-                            className="block p-2.5 sm:p-3 rounded-xl hover:bg-steel-100/80 transition-colors group/link border border-transparent hover:border-steel-200"
+                            className="block p-2.5 sm:p-3 hover:bg-steel-100/80 transition-colors group/link border border-transparent hover:border-steel-200"
                           >
                             <div className="text-[10px] sm:text-xs font-bold text-slate-950 group-hover/link:text-red-600 transition-colors flex items-center justify-between">
                               <span>{item.label}</span>
@@ -420,13 +420,13 @@ export const Header: React.FC<HeaderProps> = ({ onSelectSegment }) => {
       {/* Mobile Navigation Drawer */}
       {mobileMenuOpen && (
         <div id="mobile-navigation" ref={mobileNavRef} role="navigation" aria-label="Primary mobile navigation" className="lg:hidden pointer-events-auto mt-2 max-w-7xl mx-auto px-3 sm:px-4">
-          <div className="liquid-glass rounded-2xl sm:rounded-3xl p-4 sm:p-6 space-y-4 sm:space-y-5 border border-slate-200 shadow-2xl animate-in slide-in-from-top duration-200 bg-white/95">
+          <div className="card-base sm: p-4 sm:p-6 space-y-4 sm:space-y-5 border border-slate-200 animate-in slide-in-from-top duration-200 bg-white/95">
             <nav className="flex flex-col space-y-2 sm:space-y-3">
 
               <Link
                 href="/"
                 onClick={() => setMobileMenuOpen(false)}
-                className="px-3 sm:px-4 py-3 sm:py-2.5 rounded-xl text-xs sm:text-sm font-bold text-slate-900 hover:bg-red-600 hover:text-white min-h-[48px] flex items-center"
+                className="px-3 sm:px-4 py-3 sm:py-2.5 text-xs sm:text-sm font-bold text-slate-900 hover:bg-red-600 hover:text-white min-h-[48px] flex items-center"
               >
                 Home
               </Link>
@@ -436,7 +436,7 @@ export const Header: React.FC<HeaderProps> = ({ onSelectSegment }) => {
                   <Link
                     href={menu.href}
                     onClick={() => setMobileMenuOpen(false)}
-                    className="px-3 sm:px-4 py-3 sm:py-2 rounded-xl text-xs sm:text-sm font-extrabold text-slate-950 flex items-center justify-between bg-steel-100/80 min-h-[48px]"
+                    className="px-3 sm:px-4 py-3 sm:py-2 text-xs sm:text-sm font-extrabold text-slate-950 flex items-center justify-between bg-steel-100/80 min-h-[48px]"
                   >
                     <span>{menu.title}</span>
                     <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-red-600" />
@@ -460,7 +460,7 @@ export const Header: React.FC<HeaderProps> = ({ onSelectSegment }) => {
               <Link
                 href="/trust"
                 onClick={() => setMobileMenuOpen(false)}
-                className="px-3 sm:px-4 py-3 sm:py-2.5 rounded-xl text-xs sm:text-sm font-bold text-slate-900 hover:bg-red-600 hover:text-white min-h-[48px] flex items-center"
+                className="px-3 sm:px-4 py-3 sm:py-2.5 text-xs sm:text-sm font-bold text-slate-900 hover:bg-red-600 hover:text-white min-h-[48px] flex items-center"
               >
                 Our Certificates
               </Link>
@@ -470,7 +470,7 @@ export const Header: React.FC<HeaderProps> = ({ onSelectSegment }) => {
                 <div className="flex items-center justify-between gap-2">
                   <a
                     href={`tel:${SITE_CONFIG.contact.phoneRaw}`}
-                    className="flex-1 py-2 px-3 bg-steel-100 text-slate-900 rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 border border-slate-200"
+                    className="flex-1 py-2 px-3 bg-steel-100 text-slate-900 text-xs font-bold flex items-center justify-center gap-1.5 border border-slate-200"
                   >
                     <SocialIcon platform="phone" className="w-3.5 h-3.5 text-amber-600" />
                     <span>{SITE_CONFIG.contact.phone}</span>
@@ -479,7 +479,7 @@ export const Header: React.FC<HeaderProps> = ({ onSelectSegment }) => {
                     href={getWhatsAppUrl()}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 py-2 px-3 bg-emerald-600 text-white rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 shadow-sm"
+                    className="flex-1 py-2 px-3 bg-emerald-600 text-white text-xs font-bold flex items-center justify-center gap-1.5"
                   >
                     <SocialIcon platform="whatsapp" className="w-3.5 h-3.5 fill-current" />
                     <span>WhatsApp Quote</span>
@@ -488,7 +488,7 @@ export const Header: React.FC<HeaderProps> = ({ onSelectSegment }) => {
                 <div className="flex items-center justify-center pt-1">
                   <SocialLinks
                     className="flex items-center justify-center gap-3"
-                    itemClassName="p-2 rounded-full text-slate-600 hover:text-slate-950 hover:bg-slate-100 transition-colors"
+                    itemClassName="p-2  text-slate-600 hover:text-slate-950 hover:bg-slate-100 transition-colors"
                   />
                 </div>
               </div>

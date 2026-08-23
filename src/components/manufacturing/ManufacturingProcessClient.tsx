@@ -135,9 +135,9 @@ export function ManufacturingProcessClient() {
             <button
               key={step.id}
               onClick={() => setActiveStep(idx)}
-              className={`p-4 rounded-2xl text-left transition-all duration-300 border flex flex-col justify-between ${
+              className={`p-4  text-left transition-all duration-300 border flex flex-col justify-between ${
                 isActive
-                  ? 'bg-slate-950 text-white border-amber-400/50 shadow-xl scale-[1.02]'
+                  ? 'bg-slate-950 text-white border-amber-400/50  scale-[1.02]'
                   : 'liquid-glass text-slate-800 border-steel-200 hover:border-steel-400'
               }`}
             >
@@ -156,20 +156,20 @@ export function ManufacturingProcessClient() {
       </div>
 
       {/* Selected Step Detail Panel */}
-      <div className="liquid-glass-prominent rounded-3xl p-6 sm:p-10 border border-steel-200 shadow-2xl bg-white/90">
+      <div className="card-base card-product p-6 sm:p-10 border border-steel-200 bg-white/90">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           
           {/* Left: Description & Highlights */}
           <div className="lg:col-span-7 space-y-6">
             <div className="flex items-center gap-3">
-              <span className="w-12 h-12 rounded-2xl bg-slate-950 text-amber-400 flex items-center justify-center font-mono font-black text-lg border border-amber-400/30">
+              <span className="w-12 h-12 bg-slate-950 text-amber-400 flex items-center justify-center font-mono font-black text-lg border border-amber-400/30">
                 {processSteps[activeStep].number}
               </span>
               <div>
                 <h3 className="text-2xl sm:text-3xl font-black text-slate-950 tracking-tight">
                   {processSteps[activeStep].title}
                 </h3>
-                <p className="text-xs font-mono font-bold text-growth-700 uppercase tracking-wider mt-0.5">
+                <p className="text-xs font-mono font-bold text-steel-900 uppercase tracking-wider mt-0.5">
                   {processSteps[activeStep].tagline}
                 </p>
               </div>
@@ -193,7 +193,7 @@ export function ManufacturingProcessClient() {
           </div>
 
           {/* Right: Technical Specs Card */}
-          <div className="lg:col-span-5 bg-slate-950 text-white rounded-3xl p-6 sm:p-8 border border-amber-400/30 shadow-xl space-y-5 relative overflow-hidden group">
+          <div className="lg:col-span-5 bg-slate-950 text-white p-6 sm:p-8 border border-amber-400/30 space-y-5 relative overflow-hidden group">
             {/* Manufacturing Engine Background Image */}
             <img
               src="/assets/manufacturing-process-bg.jpg"
@@ -223,7 +223,7 @@ export function ManufacturingProcessClient() {
             <div className="pt-2">
               <Link
                 href="/inquiry"
-                className="w-full btn-primary !py-3 rounded-2xl text-xs font-extrabold flex items-center justify-center gap-2 shadow-lg"
+                className="w-full btn-primary !py-3 text-xs font-extrabold flex items-center justify-center gap-2"
               >
                 <span>Request Mill Spec Sheet</span>
                 <ArrowRight className="w-4 h-4" />

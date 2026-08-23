@@ -98,9 +98,9 @@ export default function ManufacturingProcessesPage() {
         <div className="ambient-liquid-glow ambient-glow-growth top-1/3 left-1/2 -translate-x-1/2" />
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-          <div className="glass-pill px-5 py-2 inline-flex items-center gap-2.5 backdrop-blur-xl border-steel-300 mb-6 shadow-sm">
+          <div className="badge-base px-5 py-2 inline-flex items-center gap-2.5 backdrop-blur-xl border-steel-300 mb-6">
             <Flame className="w-4 h-4 text-growth-600 animate-pulse" />
-            <span className="text-xs sm:text-sm font-mono font-bold text-growth-700 uppercase tracking-wider">
+            <span className="text-xs sm:text-sm font-mono font-bold text-steel-900 uppercase tracking-wider">
               THERMO-MECHANICAL MANUFACTURING ENGINE
             </span>
           </div>
@@ -116,16 +116,16 @@ export default function ManufacturingProcessesPage() {
 
           {/* Quick Nav Anchors */}
           <div className="mt-10 flex flex-wrap items-center justify-center gap-3 sm:gap-4 overflow-x-auto pb-2 sm:pb-0 -mx-4 px-4 sm:mx-0 sm:px-0">
-            <a href="#process" className="btn-secondary text-xs sm:text-xs !py-3 sm:!py-2.5 !px-5 rounded-full font-bold min-h-[48px] shrink-0 whitespace-nowrap">
+            <a href="#process" className="btn-secondary text-xs sm:text-xs !py-3 sm:!py-2.5 !px-5 font-bold min-h-[48px] shrink-0 whitespace-nowrap">
               The 5-Step Process
             </a>
-            <a href="#iqms" className="btn-secondary text-xs sm:text-xs !py-3 sm:!py-2.5 !px-5 rounded-full font-bold min-h-[48px] shrink-0 whitespace-nowrap">
+            <a href="#iqms" className="btn-secondary text-xs sm:text-xs !py-3 sm:!py-2.5 !px-5 font-bold min-h-[48px] shrink-0 whitespace-nowrap">
               IQMS System
             </a>
-            <a href="#quality-checks" className="btn-secondary text-xs sm:text-xs !py-3 sm:!py-2.5 !px-5 rounded-full font-bold min-h-[48px] shrink-0 whitespace-nowrap">
+            <a href="#quality-checks" className="btn-secondary text-xs sm:text-xs !py-3 sm:!py-2.5 !px-5 font-bold min-h-[48px] shrink-0 whitespace-nowrap">
               Laboratory Checks
             </a>
-            <a href="#testing-guide" className="btn-secondary text-xs sm:text-xs !py-3 sm:!py-2.5 !px-5 rounded-full font-bold min-h-[48px] shrink-0 whitespace-nowrap">
+            <a href="#testing-guide" className="btn-secondary text-xs sm:text-xs !py-3 sm:!py-2.5 !px-5 font-bold min-h-[48px] shrink-0 whitespace-nowrap">
               How to Test TMT Bar
             </a>
           </div>
@@ -135,7 +135,7 @@ export default function ManufacturingProcessesPage() {
       {/* SECTION 1: The 5-Step Thermo-Mechanical Process */}
       <section id="process" className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="glass-pill px-4 py-1.5 text-xs sm:text-sm font-mono font-bold uppercase tracking-widest text-growth-700">
+          <span className="badge-base px-4 py-1.5 text-xs sm:text-sm font-mono font-bold uppercase tracking-widest text-steel-900">
             Step-By-Step Engineering
           </span>
           <h2 className="text-3xl sm:text-5xl font-black text-slate-950 mt-4 tracking-tight">
@@ -155,7 +155,7 @@ export default function ManufacturingProcessesPage() {
           
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-16">
             <div className="lg:col-span-6 space-y-4">
-              <span className="glass-pill px-4 py-1.5 text-xs sm:text-sm font-mono font-bold uppercase tracking-widest text-authority-700">
+              <span className="badge-base px-4 py-1.5 text-xs sm:text-sm font-mono font-bold uppercase tracking-widest text-steel-900">
                 Quality System (IQMS)
               </span>
               <h2 className="text-3xl sm:text-5xl font-black text-slate-950 tracking-tight">
@@ -167,19 +167,19 @@ export default function ManufacturingProcessesPage() {
             </div>
             
             <div className="lg:col-span-6 grid grid-cols-2 gap-4">
-              <div className="liquid-glass p-5 rounded-2xl border border-steel-200">
-                <p className="text-3xl font-black text-growth-700 font-mono">100%</p>
+              <div className="card-base p-5 border border-steel-200">
+                <p className="text-3xl font-black text-steel-900 font-mono">100%</p>
                 <p className="text-xs sm:text-sm font-bold text-slate-800 mt-1">Spectrometer Heat Testing</p>
               </div>
-              <div className="liquid-glass p-5 rounded-2xl border border-steel-200">
-                <p className="text-3xl font-black text-authority-700 font-mono">Fe-500D</p>
+              <div className="card-base p-5 border border-steel-200">
+                <p className="text-3xl font-black text-steel-900 font-mono">Fe-500D</p>
                 <p className="text-xs sm:text-sm font-bold text-slate-800 mt-1">High Ductility Grade</p>
               </div>
-              <div className="liquid-glass p-5 rounded-2xl border border-steel-200">
-                <p className="text-3xl font-black text-trust-700 font-mono">IS 2062</p>
+              <div className="card-base p-5 border border-steel-200">
+                <p className="text-3xl font-black text-steel-900 font-mono">IS 2062</p>
                 <p className="text-xs sm:text-sm font-bold text-slate-800 mt-1">BIS Structural License</p>
               </div>
-              <div className="liquid-glass p-5 rounded-2xl border border-steel-200">
+              <div className="card-base p-5 border border-steel-200">
                 <p className="text-3xl font-black text-emerald-700 font-mono">0 Defect</p>
                 <p className="text-xs sm:text-sm font-bold text-slate-800 mt-1">Mill Dispatch Standard</p>
               </div>
@@ -189,13 +189,13 @@ export default function ManufacturingProcessesPage() {
           {/* IQMS 4 Pillars Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {qualityChecks.map((qc, i) => (
-              <div key={i} className="liquid-glass p-6 rounded-3xl border border-steel-200 hover:border-growth-400 transition-all space-y-3">
-                <div className="w-10 h-10 rounded-2xl bg-amber-100 border border-amber-300 flex items-center justify-center text-amber-800 font-mono font-bold text-sm">
+              <div key={i} className="card-base p-6 border border-steel-200 hover:border-growth-400 transition-all space-y-3">
+                <div className="w-10 h-10 bg-amber-100 border border-steel-300 group-hover:border-growth-400 flex items-center justify-center text-amber-800 font-mono font-bold text-sm">
                   Q-0{i + 1}
                 </div>
                 <h3 className="text-lg font-bold text-slate-950">{qc.title}</h3>
                 <p className="text-xs sm:text-sm text-steel-600 leading-relaxed">{qc.desc}</p>
-                <div className="pt-2 border-t border-steel-200/80 flex items-center justify-between text-xs sm:text-sm font-mono font-bold text-growth-700">
+                <div className="pt-2 border-t border-steel-200/80 flex items-center justify-between text-xs sm:text-sm font-mono font-bold text-steel-900">
                   <span>BENCHMARK</span>
                   <span>{qc.metric}</span>
                 </div>
@@ -209,7 +209,7 @@ export default function ManufacturingProcessesPage() {
       {/* SECTION 3: Quality Checks & Chemical / Mechanical Tolerance Tables */}
       <section id="quality-checks" className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <span className="glass-pill px-4 py-1.5 text-xs sm:text-sm font-mono font-bold uppercase tracking-widest text-trust-700">
+          <span className="badge-base px-4 py-1.5 text-xs sm:text-sm font-mono font-bold uppercase tracking-widest text-steel-900">
             BIS Specification Compliance
           </span>
           <h2 className="text-3xl sm:text-5xl font-black text-slate-950 mt-4 tracking-tight">
@@ -223,13 +223,13 @@ export default function ManufacturingProcessesPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           
           {/* Chemical Composition Table */}
-          <div className="liquid-glass p-6 sm:p-8 rounded-3xl border border-steel-200 shadow-xl space-y-4">
+          <div className="card-base p-6 sm:p-8 border border-steel-200 space-y-4">
             <div className="flex items-center justify-between border-b border-steel-200 pb-3">
               <h3 className="text-lg font-black text-slate-950 flex items-center gap-2">
                 <Flame className="w-5 h-5 text-amber-600" />
                 Chemical Composition Limits
               </h3>
-              <span className="text-xs sm:text-sm font-mono font-bold text-growth-700 bg-growth-50 px-3 py-1 rounded-full border border-growth-200">
+              <span className="text-xs sm:text-sm font-mono font-bold text-steel-900 bg-transparent group-hover:bg-growth-50 px-3 py-1 border border-steel-200 group-hover:border-growth-400">
                 IS 1786 Fe-500D
               </span>
             </div>
@@ -240,34 +240,34 @@ export default function ManufacturingProcessesPage() {
                   <tr className="border-b border-steel-200 text-steel-600 font-mono uppercase">
                     <th className="py-2.5 font-bold">Element</th>
                     <th className="py-2.5 font-bold">BIS IS 1786 Max</th>
-                    <th className="py-2.5 font-bold text-growth-700">SBF Mill Standard</th>
+                    <th className="py-2.5 font-bold text-steel-900">SBF Mill Standard</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-steel-200/60 font-mono text-steel-800">
                   <tr>
                     <td className="py-2.5 font-semibold">Carbon (C)</td>
                     <td className="py-2.5 text-steel-600">0.25% Max</td>
-                    <td className="py-2.5 font-bold text-growth-700">0.18% – 0.22%</td>
+                    <td className="py-2.5 font-bold text-steel-900">0.18% – 0.22%</td>
                   </tr>
                   <tr>
                     <td className="py-2.5 font-semibold">Sulfur (S)</td>
                     <td className="py-2.5 text-steel-600">0.040% Max</td>
-                    <td className="py-2.5 font-bold text-growth-700">≤ 0.035%</td>
+                    <td className="py-2.5 font-bold text-steel-900">≤ 0.035%</td>
                   </tr>
                   <tr>
                     <td className="py-2.5 font-semibold">Phosphorus (P)</td>
                     <td className="py-2.5 text-steel-600">0.040% Max</td>
-                    <td className="py-2.5 font-bold text-growth-700">≤ 0.035%</td>
+                    <td className="py-2.5 font-bold text-steel-900">≤ 0.035%</td>
                   </tr>
                   <tr>
                     <td className="py-2.5 font-semibold">S + P Combined</td>
                     <td className="py-2.5 text-steel-600">0.075% Max</td>
-                    <td className="py-2.5 font-bold text-growth-700">≤ 0.068%</td>
+                    <td className="py-2.5 font-bold text-steel-900">≤ 0.068%</td>
                   </tr>
                   <tr>
                     <td className="py-2.5 font-semibold">Carbon Equivalent (CE)</td>
                     <td className="py-2.5 text-steel-600">0.42% Max</td>
-                    <td className="py-2.5 font-bold text-growth-700">0.36% – 0.39%</td>
+                    <td className="py-2.5 font-bold text-steel-900">0.36% – 0.39%</td>
                   </tr>
                 </tbody>
               </table>
@@ -275,13 +275,13 @@ export default function ManufacturingProcessesPage() {
           </div>
 
           {/* Mechanical Properties Table */}
-          <div className="liquid-glass p-6 sm:p-8 rounded-3xl border border-steel-200 shadow-xl space-y-4">
+          <div className="card-base p-6 sm:p-8 border border-steel-200 space-y-4">
             <div className="flex items-center justify-between border-b border-steel-200 pb-3">
               <h3 className="text-lg font-black text-slate-950 flex items-center gap-2">
                 <Scale className="w-5 h-5 text-authority-600" />
                 Mechanical Performance Matrix
               </h3>
-              <span className="text-xs sm:text-sm font-mono font-bold text-authority-700 bg-authority-50 px-3 py-1 rounded-full border border-authority-200">
+              <span className="text-xs sm:text-sm font-mono font-bold text-steel-900 bg-transparent group-hover:bg-transparent group-hover:bg-growth-50 px-3 py-1 border border-steel-200 group-hover:border-growth-400">
                 Seismic Resistance
               </span>
             </div>
@@ -292,34 +292,34 @@ export default function ManufacturingProcessesPage() {
                   <tr className="border-b border-steel-200 text-steel-600 font-mono uppercase">
                     <th className="py-2.5 font-bold">Property</th>
                     <th className="py-2.5 font-bold">BIS Standard</th>
-                    <th className="py-2.5 font-bold text-authority-700">SBF Tested Avg</th>
+                    <th className="py-2.5 font-bold text-steel-900">SBF Tested Avg</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-steel-200/60 font-mono text-steel-800">
                   <tr>
                     <td className="py-2.5 font-semibold">Yield Stress (YS)</td>
                     <td className="py-2.5 text-steel-600">500 N/mm² Min</td>
-                    <td className="py-2.5 font-bold text-authority-700">525 – 540 N/mm²</td>
+                    <td className="py-2.5 font-bold text-steel-900">525 – 540 N/mm²</td>
                   </tr>
                   <tr>
                     <td className="py-2.5 font-semibold">Ultimate Tensile (UTS)</td>
                     <td className="py-2.5 text-steel-600">565 N/mm² Min</td>
-                    <td className="py-2.5 font-bold text-authority-700">600 – 625 N/mm²</td>
+                    <td className="py-2.5 font-bold text-steel-900">600 – 625 N/mm²</td>
                   </tr>
                   <tr>
                     <td className="py-2.5 font-semibold">UTS / YS Ratio</td>
                     <td className="py-2.5 text-steel-600">≥ 1.10 Min</td>
-                    <td className="py-2.5 font-bold text-authority-700">1.15 – 1.18</td>
+                    <td className="py-2.5 font-bold text-steel-900">1.15 – 1.18</td>
                   </tr>
                   <tr>
                     <td className="py-2.5 font-semibold">Total Elongation</td>
                     <td className="py-2.5 text-steel-600">16.0% Min</td>
-                    <td className="py-2.5 font-bold text-authority-700">18.5% – 21.0%</td>
+                    <td className="py-2.5 font-bold text-steel-900">18.5% – 21.0%</td>
                   </tr>
                   <tr>
                     <td className="py-2.5 font-semibold">180° Cold Bend</td>
                     <td className="py-2.5 text-steel-600">No Rupture</td>
-                    <td className="py-2.5 font-bold text-authority-700">100% Pass Rate</td>
+                    <td className="py-2.5 font-bold text-steel-900">100% Pass Rate</td>
                   </tr>
                 </tbody>
               </table>
@@ -334,7 +334,7 @@ export default function ManufacturingProcessesPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="glass-pill px-4 py-1.5 text-xs sm:text-sm font-mono font-bold uppercase tracking-widest text-amber-400 border border-amber-400/30">
+            <span className="badge-base px-4 py-1.5 text-xs sm:text-sm font-mono font-bold uppercase tracking-widest text-amber-400 border border-amber-400/30">
               Contractor & Site Engineer Manual
             </span>
             <h2 className="text-3xl sm:text-5xl font-black text-white mt-4 tracking-tight">
@@ -348,8 +348,8 @@ export default function ManufacturingProcessesPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             
             {/* Guide Step 1 */}
-            <div className="bg-slate-900/90 border border-white/10 rounded-3xl p-6 space-y-4 hover:border-amber-400/50 transition-all">
-              <div className="w-10 h-10 rounded-2xl bg-amber-500/20 text-amber-400 flex items-center justify-center font-mono font-bold text-sm border border-amber-500/30">
+            <div className="bg-slate-900/90 border border-white/10 p-6 space-y-4 hover:border-growth-400/50 transition-all">
+              <div className="w-10 h-10 bg-transparent group-hover:bg-transparent group-hover:bg-growth-500/20 text-amber-400 flex items-center justify-center font-mono font-bold text-sm border border-growth-500/30">
                 01
               </div>
               <h3 className="text-lg font-bold text-white">Weight Per Meter Test</h3>
@@ -359,8 +359,8 @@ export default function ManufacturingProcessesPage() {
             </div>
 
             {/* Guide Step 2 */}
-            <div className="bg-slate-900/90 border border-white/10 rounded-3xl p-6 space-y-4 hover:border-amber-400/50 transition-all">
-              <div className="w-10 h-10 rounded-2xl bg-amber-500/20 text-amber-400 flex items-center justify-center font-mono font-bold text-sm border border-amber-500/30">
+            <div className="bg-slate-900/90 border border-white/10 p-6 space-y-4 hover:border-growth-400/50 transition-all">
+              <div className="w-10 h-10 bg-transparent group-hover:bg-transparent group-hover:bg-growth-500/20 text-amber-400 flex items-center justify-center font-mono font-bold text-sm border border-growth-500/30">
                 02
               </div>
               <h3 className="text-lg font-bold text-white">Mandrel Bend Test</h3>
@@ -370,8 +370,8 @@ export default function ManufacturingProcessesPage() {
             </div>
 
             {/* Guide Step 3 */}
-            <div className="bg-slate-900/90 border border-white/10 rounded-3xl p-6 space-y-4 hover:border-amber-400/50 transition-all">
-              <div className="w-10 h-10 rounded-2xl bg-amber-500/20 text-amber-400 flex items-center justify-center font-mono font-bold text-sm border border-amber-500/30">
+            <div className="bg-slate-900/90 border border-white/10 p-6 space-y-4 hover:border-growth-400/50 transition-all">
+              <div className="w-10 h-10 bg-transparent group-hover:bg-transparent group-hover:bg-growth-500/20 text-amber-400 flex items-center justify-center font-mono font-bold text-sm border border-growth-500/30">
                 03
               </div>
               <h3 className="text-lg font-bold text-white">Embossing & Rib Check</h3>
@@ -381,8 +381,8 @@ export default function ManufacturingProcessesPage() {
             </div>
 
             {/* Guide Step 4 */}
-            <div className="bg-slate-900/90 border border-white/10 rounded-3xl p-6 space-y-4 hover:border-amber-400/50 transition-all">
-              <div className="w-10 h-10 rounded-2xl bg-amber-500/20 text-amber-400 flex items-center justify-center font-mono font-bold text-sm border border-amber-500/30">
+            <div className="bg-slate-900/90 border border-white/10 p-6 space-y-4 hover:border-growth-400/50 transition-all">
+              <div className="w-10 h-10 bg-transparent group-hover:bg-transparent group-hover:bg-growth-500/20 text-amber-400 flex items-center justify-center font-mono font-bold text-sm border border-growth-500/30">
                 04
               </div>
               <h3 className="text-lg font-bold text-white">Mill Test Certificate (MTC)</h3>
@@ -398,10 +398,10 @@ export default function ManufacturingProcessesPage() {
 
       {/* SECTION 5: Commitment to Quality & Environment */}
       <section id="commitment" className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="liquid-glass-prominent rounded-3xl p-8 sm:p-12 border border-steel-200 shadow-2xl bg-white/90 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div className="card-base card-product p-8 sm:p-12 border border-steel-200 bg-white/90 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           
           <div className="lg:col-span-8 space-y-4">
-            <span className="glass-pill px-4 py-1.5 text-xs sm:text-sm font-mono font-bold uppercase tracking-widest text-emerald-700">
+            <span className="badge-base px-4 py-1.5 text-xs sm:text-sm font-mono font-bold uppercase tracking-widest text-emerald-700">
               Sustainable Rolling Excellence
             </span>
             <h2 className="text-3xl sm:text-4xl font-black text-slate-950 tracking-tight">
@@ -415,15 +415,15 @@ export default function ManufacturingProcessesPage() {
           <div className="lg:col-span-4 flex flex-col gap-3">
             <Link
               href="/inquiry"
-              className="btn-primary !py-3.5 sm:!py-3 !px-6 rounded-2xl text-xs sm:text-sm font-extrabold text-center shadow-lg min-h-[48px]"
+              className="btn-primary !py-3.5 sm:!py-3 !px-6 text-xs sm:text-sm font-extrabold text-center min-h-[48px]"
             >
               Request Custom Quality Report
             </Link>
             <Link
               href="/trust"
-              className="btn-secondary !py-3.5 !px-6 rounded-2xl text-xs font-extrabold text-center flex items-center justify-center gap-2"
+              className="btn-secondary !py-3.5 !px-6 text-xs font-extrabold text-center flex items-center justify-center gap-2"
             >
-              <Award className="w-4 h-4 text-growth-700" />
+              <Award className="w-4 h-4 text-steel-900" />
               <span>View BIS Certificates</span>
             </Link>
           </div>

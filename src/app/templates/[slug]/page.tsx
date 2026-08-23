@@ -224,22 +224,22 @@ export default async function TemplatePage({ params }: { params: Promise<{ slug:
         <div className="mb-8 flex items-center justify-between">
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-xs font-bold text-steel-600 hover:text-growth-700 transition-colors glass-pill px-4 py-2"
+            className="inline-flex items-center gap-2 text-xs font-bold text-steel-600 hover:text-growth-700 transition-colors badge-base px-4 py-2"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Return to Main Website</span>
           </Link>
           
           <div className="flex items-center gap-2">
-            <span className="badge-contractor text-xs font-mono px-3 py-1 rounded-full border font-bold">
+            <span className="badge-contractor text-xs font-mono px-3 py-1 border font-bold">
               {template.badge}
             </span>
           </div>
         </div>
 
         {/* Hero Title Container */}
-        <div className="liquid-glass-prominent rounded-3xl p-8 sm:p-10 mb-10 border border-steel-200 shadow-xl space-y-4">
-          <div className="flex items-center gap-2 text-xs font-mono font-bold text-growth-700">
+        <div className="card-base card-product p-8 sm:p-10 mb-10 border border-steel-200 space-y-4">
+          <div className="flex items-center gap-2 text-xs font-mono font-bold text-steel-900">
             <FileText className="w-4 h-4 text-growth-600" />
             <span>OFFICIAL TEMPLATE DOCUMENT — OPENED IN NEW TAB</span>
           </div>
@@ -259,7 +259,7 @@ export default async function TemplatePage({ params }: { params: Promise<{ slug:
           {template.sections.map((section, idx) => (
             <div
               key={idx}
-              className="liquid-glass rounded-3xl p-6 sm:p-8 border border-steel-200 space-y-4 shadow-md"
+              className="card-base p-6 sm:p-8 border border-steel-200 space-y-4"
             >
               <h2 className="text-xl font-bold text-steel-900 border-b border-steel-200 pb-3 flex items-center gap-2">
                 <CheckCircle2 className="w-5 h-5 text-growth-600 shrink-0" />
@@ -269,7 +269,7 @@ export default async function TemplatePage({ params }: { params: Promise<{ slug:
               <ul className="space-y-3 text-sm text-steel-700 font-normal leading-relaxed">
                 {section.content.map((bullet, bIdx) => (
                   <li key={bIdx} className="flex items-start gap-2.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-growth-600 mt-2 shrink-0" />
+                    <span className="w-1.5 h-1.5 bg-growth-600 mt-2 shrink-0" />
                     <span>{bullet}</span>
                   </li>
                 ))}
@@ -279,7 +279,7 @@ export default async function TemplatePage({ params }: { params: Promise<{ slug:
         </div>
 
         {/* Action Footer Callout */}
-        <div className="mt-12 p-6 rounded-2xl bg-steel-100 border border-steel-300 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-medium">
+        <div className="mt-12 p-6 bg-steel-100 border border-steel-300 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-medium">
           <div className="flex items-center gap-2 text-steel-700">
             <Building className="w-4 h-4 text-growth-600 shrink-0" />
             <span>Shree Balaji Rolling Mills Private Limited — Official Digital Document Platform</span>

@@ -41,10 +41,10 @@ export const Footer: React.FC<FooterProps> = ({ onSelectSegment = () => {} }) =>
               Premier steel manufacturing platform operating 36,000 TPA structural steel & 144,000 TPA TMT bar rolling mill in Bhiwadi, Haryana.
             </p>
             <div className="flex flex-wrap items-center gap-3 pt-2 text-xs sm:text-sm font-semibold">
-              <span className="glass-pill px-3 py-1 text-emerald-300 inline-flex items-center gap-1.5 border-emerald-500/30">
+              <span className="badge-base px-3 py-1 text-emerald-300 inline-flex items-center gap-1.5 border-emerald-500/30">
                 <ShieldCheck className="w-4 h-4 text-emerald-400" /> BIS IS 2062 & IS 1786 Certified
               </span>
-              <span className="glass-pill px-3 py-1 text-slate-200">
+              <span className="badge-base px-3 py-1 text-slate-200">
                 180,000 TPA Rolling Capacity
               </span>
             </div>
@@ -56,7 +56,7 @@ export const Footer: React.FC<FooterProps> = ({ onSelectSegment = () => {} }) =>
               </span>
               <SocialLinks
                 className="flex items-center flex-wrap gap-2.5"
-                itemClassName="p-2 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 hover:text-amber-400 hover:border-amber-400/50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400"
+                itemClassName="p-2  bg-slate-900 border border-slate-800 text-slate-300 hover:text-amber-400 hover:border-growth-400/50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400"
                 iconClassName="w-4 h-4"
               />
             </div>

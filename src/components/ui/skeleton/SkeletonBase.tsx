@@ -20,9 +20,9 @@ export function SkeletonBase({
       className={cn(
         'bg-[var(--color-steel-200)]',
         animate && 'skeleton-shimmer',
-        variant === 'circle' && 'rounded-full',
+        variant === 'circle' && '',
         variant === 'text' && 'rounded h-4',
-        variant === 'rect' && 'rounded-2xl',
+        variant === 'rect' && '',
         className
       )}
     />

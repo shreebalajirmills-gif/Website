@@ -70,7 +70,7 @@ export interface SocialLinksProps {
 
 export const SocialLinks: React.FC<SocialLinksProps> = ({
   className = 'flex items-center gap-3',
-  itemClassName = 'p-2 rounded-full text-slate-400 hover:text-white hover:bg-slate-800 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400',
+  itemClassName = 'p-2  text-slate-400 hover:text-white hover:bg-slate-800 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400',
   iconClassName = 'w-4 h-4',
   showLabels = false,
   whatsappMessage,

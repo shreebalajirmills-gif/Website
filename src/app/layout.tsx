@@ -55,7 +55,7 @@ export default function RootLayout({
         {/* Accessible Skip Link */}
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 bg-white text-black px-4 py-2.5 rounded-lg shadow-lg font-bold text-xs"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 bg-white text-black px-4 py-2.5 font-bold text-xs"
         >
           Skip to main content
         </a>

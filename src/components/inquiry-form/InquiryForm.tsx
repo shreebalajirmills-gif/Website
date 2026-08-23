@@ -104,7 +104,7 @@ export const InquiryForm: React.FC<InquiryFormProps> = ({ initialSegment = 'dist
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 relative z-10">
         <div className="text-center space-y-4 mb-12">
-          <span className="glass-pill px-4 py-1.5 text-xs font-bold text-growth-700 uppercase tracking-wider inline-block">
+          <span className="badge-base px-4 py-1.5 text-xs font-bold text-steel-900 uppercase tracking-wider inline-block">
             COMMERCIAL DESK PORTAL
           </span>
           <h2 className="text-3xl sm:text-4xl font-black text-steel-900 tracking-tight">
@@ -116,12 +116,12 @@ export const InquiryForm: React.FC<InquiryFormProps> = ({ initialSegment = 'dist
         </div>
 
         {/* Liquid Glass Form Card */}
-        <div className="liquid-glass-prominent rounded-3xl p-6 sm:p-12 border border-steel-200 shadow-xl relative">
+        <div className="card-base card-product p-6 sm:p-12 border border-steel-200 relative">
           
           {/* Instant WhatsApp Option Banner */}
-          <div className="mb-8 p-4 rounded-2xl bg-emerald-50 border border-emerald-200 flex flex-col sm:flex-row items-center justify-between gap-3 shadow-sm">
+          <div className="mb-8 p-4 bg-emerald-50 border border-emerald-200 flex flex-col sm:flex-row items-center justify-between gap-3">
             <div className="flex items-center gap-3 text-emerald-950 text-xs">
-              <div className="w-8 h-8 rounded-xl bg-emerald-600 text-white flex items-center justify-center shrink-0">
+              <div className="w-8 h-8 bg-emerald-600 text-white flex items-center justify-center shrink-0">
                 <SocialIcon platform="whatsapp" className="w-4 h-4 fill-current" />
               </div>
               <div>
@@ -133,7 +133,7 @@ export const InquiryForm: React.FC<InquiryFormProps> = ({ initialSegment = 'dist
               href={getWhatsAppUrl()}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold py-2.5 px-4 rounded-xl whitespace-nowrap transition-all shadow-sm border border-emerald-400/30 flex items-center gap-2"
+              className="bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold py-2.5 px-4 whitespace-nowrap transition-all border border-emerald-400/30 flex items-center gap-2"
             >
               <SocialIcon platform="whatsapp" className="w-3.5 h-3.5 fill-current" />
               <span>Talk for Quotation</span>
@@ -145,15 +145,15 @@ export const InquiryForm: React.FC<InquiryFormProps> = ({ initialSegment = 'dist
             <div className="mb-10 border-b border-steel-200 pb-6">
               <div className="flex items-center justify-between text-xs sm:text-sm font-bold text-steel-700 mb-2">
                 <span>Step {step} of 3</span>
-                <span className="text-growth-700 uppercase tracking-widest font-extrabold font-mono">
+                <span className="text-steel-900 uppercase tracking-widest font-extrabold font-mono">
                   {step === 1 && 'Select Segment Role'}
                   {step === 2 && `${segment.toUpperCase()} Specifics & Products`}
                   {step === 3 && 'Contact & Logistics'}
                 </span>
               </div>
-              <div className="w-full bg-steel-200 h-2 rounded-full overflow-hidden border border-steel-300">
+              <div className="w-full bg-steel-200 h-2 overflow-hidden border border-steel-300">
                 <div
-                  className="bg-growth-600 h-full transition-all duration-300 rounded-full shadow-sm"
+                  className="bg-growth-600 h-full transition-all duration-300"
                   style={{ width: `${(step / 3) * 100}%` }}
                 />
               </div>
@@ -174,17 +174,17 @@ export const InquiryForm: React.FC<InquiryFormProps> = ({ initialSegment = 'dist
                   type="button"
                   onClick={() => handleSegmentSelect('distributor')}
                   aria-pressed={segment === 'distributor'}
-                  className={`p-6 sm:p-5 rounded-2xl text-left transition-all duration-300 transform group flex items-start gap-4 cursor-pointer min-h-[48px] ${
+                  className={`p-6 sm:p-5  text-left transition-all duration-300 transform group flex items-start gap-4 cursor-pointer min-h-[48px] ${
                     segment === 'distributor'
-                      ? 'liquid-glass liquid-glass-distributor border-authority-500 shadow-xl ring-2 ring-authority-500/40 -translate-y-1'
-                      : 'liquid-glass border-steel-200 hover:border-authority-400 hover:bg-authority-50/30 hover:-translate-y-1 hover:shadow-xl hover:shadow-authority-500/10'
+                      ? 'liquid-glass liquid-glass-distributor border-growth-500  ring-2 ring-growth-500/40 -translate-y-1'
+                      : 'liquid-glass border-steel-200 hover:border-growth-400 hover:bg-transparent group-hover:bg-transparent group-hover:bg-growth-50/30 hover:-translate-y-1 hover: hover:shadow-growth-500/10'
                   }`}
                 >
-                  <div className="p-3 rounded-xl bg-authority-50 text-authority-700 border border-authority-200 shrink-0 transition-transform duration-300 group-hover:scale-110 group-hover:bg-authority-100">
+                  <div className="p-3 bg-transparent group-hover:bg-transparent group-hover:bg-growth-50 text-steel-900 border border-steel-200 group-hover:border-growth-400 shrink-0 transition-transform duration-300 group-hover:scale-110 group-hover:bg-authority-100">
                     <Briefcase className="w-6 h-6" />
                   </div>
                   <div>
-                    <h4 className="font-extrabold text-base text-steel-900 group-hover:text-authority-700 transition-colors">
+                    <h4 className="font-extrabold text-base text-steel-900 group-hover:text-growth-700 transition-colors">
                       Steel Distributor / Dealer
                     </h4>
                     <p className="text-xs text-steel-600 mt-1 leading-relaxed font-normal">
@@ -198,13 +198,13 @@ export const InquiryForm: React.FC<InquiryFormProps> = ({ initialSegment = 'dist
                   type="button"
                   onClick={() => handleSegmentSelect('contractor')}
                   aria-pressed={segment === 'contractor'}
-                  className={`p-6 sm:p-5 rounded-2xl text-left transition-all duration-300 transform group flex items-start gap-4 cursor-pointer min-h-[48px] ${
+                  className={`p-6 sm:p-5  text-left transition-all duration-300 transform group flex items-start gap-4 cursor-pointer min-h-[48px] ${
                     segment === 'contractor'
-                      ? 'liquid-glass liquid-glass-contractor border-growth-500 shadow-xl ring-2 ring-growth-500/40 -translate-y-1'
-                      : 'liquid-glass border-steel-200 hover:border-growth-400 hover:bg-growth-50/30 hover:-translate-y-1 hover:shadow-xl hover:shadow-growth-500/10'
+                      ? 'liquid-glass liquid-glass-contractor border-growth-500  ring-2 ring-growth-500/40 -translate-y-1'
+                      : 'liquid-glass border-steel-200 hover:border-growth-400 hover:bg-transparent group-hover:bg-growth-50/30 hover:-translate-y-1 hover: hover:shadow-growth-500/10'
                   }`}
                 >
-                  <div className="p-3 rounded-xl bg-growth-50 text-growth-700 border border-growth-200 shrink-0 transition-transform duration-300 group-hover:scale-110 group-hover:bg-growth-100">
+                  <div className="p-3 bg-transparent group-hover:bg-growth-50 text-steel-900 border border-steel-200 group-hover:border-growth-400 shrink-0 transition-transform duration-300 group-hover:scale-110 group-hover:bg-growth-100">
                     <Layers className="w-6 h-6" />
                   </div>
                   <div>
@@ -222,17 +222,17 @@ export const InquiryForm: React.FC<InquiryFormProps> = ({ initialSegment = 'dist
                   type="button"
                   onClick={() => handleSegmentSelect('project')}
                   aria-pressed={segment === 'project'}
-                  className={`p-6 sm:p-5 rounded-2xl text-left transition-all duration-300 transform group flex items-start gap-4 cursor-pointer min-h-[48px] ${
+                  className={`p-6 sm:p-5  text-left transition-all duration-300 transform group flex items-start gap-4 cursor-pointer min-h-[48px] ${
                     segment === 'project'
-                      ? 'liquid-glass liquid-glass-project border-trust-500 shadow-xl ring-2 ring-trust-500/40 -translate-y-1'
-                      : 'liquid-glass border-steel-200 hover:border-trust-400 hover:bg-trust-50/30 hover:-translate-y-1 hover:shadow-xl hover:shadow-trust-500/10'
+                      ? 'liquid-glass liquid-glass-project border-growth-500  ring-2 ring-growth-500/40 -translate-y-1'
+                      : 'liquid-glass border-steel-200 hover:border-growth-400 hover:bg-transparent group-hover:bg-transparent group-hover:bg-growth-50/30 hover:-translate-y-1 hover: hover:shadow-growth-500/10'
                   }`}
                 >
-                  <div className="p-3 rounded-xl bg-trust-50 text-trust-700 border border-trust-200 shrink-0 transition-transform duration-300 group-hover:scale-110 group-hover:bg-trust-100">
+                  <div className="p-3 bg-transparent group-hover:bg-transparent group-hover:bg-growth-50 text-steel-900 border border-steel-200 group-hover:border-growth-400 shrink-0 transition-transform duration-300 group-hover:scale-110 group-hover:bg-trust-100">
                     <Building2 className="w-6 h-6" />
                   </div>
                   <div>
-                    <h4 className="font-extrabold text-base text-steel-900 group-hover:text-trust-700 transition-colors">
+                    <h4 className="font-extrabold text-base text-steel-900 group-hover:text-growth-700 transition-colors">
                       Infrastructure Project
                     </h4>
                     <p className="text-xs text-steel-600 mt-1 leading-relaxed font-normal">
@@ -246,17 +246,17 @@ export const InquiryForm: React.FC<InquiryFormProps> = ({ initialSegment = 'dist
                   type="button"
                   onClick={() => handleSegmentSelect('investor')}
                   aria-pressed={segment === 'investor'}
-                  className={`p-6 sm:p-5 rounded-2xl text-left transition-all duration-300 transform group flex items-start gap-4 cursor-pointer min-h-[48px] ${
+                  className={`p-6 sm:p-5  text-left transition-all duration-300 transform group flex items-start gap-4 cursor-pointer min-h-[48px] ${
                     segment === 'investor'
-                      ? 'liquid-glass liquid-glass-investor border-amber-500 shadow-xl ring-2 ring-amber-600/40 -translate-y-1'
-                      : 'liquid-glass border-steel-200 hover:border-amber-400 hover:bg-amber-50/30 hover:-translate-y-1 hover:shadow-xl hover:shadow-amber-500/10'
+                      ? 'liquid-glass liquid-glass-investor border-growth-500  ring-2 ring-growth-500/40 -translate-y-1'
+                      : 'liquid-glass border-steel-200 hover:border-growth-400 hover:bg-transparent group-hover:bg-transparent group-hover:bg-growth-50/30 hover:-translate-y-1 hover: hover:shadow-growth-500/10'
                   }`}
                 >
-                  <div className="p-3 rounded-xl bg-amber-50 text-growth-800 border border-amber-200 shrink-0 transition-transform duration-300 group-hover:scale-110 group-hover:bg-amber-100">
+                  <div className="p-3 bg-transparent group-hover:bg-transparent group-hover:bg-growth-50 text-steel-900 border border-steel-200 group-hover:border-growth-400 shrink-0 transition-transform duration-300 group-hover:scale-110 group-hover:bg-amber-100">
                     <TrendingUp className="w-6 h-6" />
                   </div>
                   <div>
-                    <h4 className="font-extrabold text-base text-steel-900 group-hover:text-growth-800 transition-colors">
+                    <h4 className="font-extrabold text-base text-steel-900 group-hover:text-growth-700 transition-colors">
                       Investor / Strategic Partner
                     </h4>
                     <p className="text-xs text-steel-600 mt-1 leading-relaxed font-normal">
@@ -274,13 +274,13 @@ export const InquiryForm: React.FC<InquiryFormProps> = ({ initialSegment = 'dist
             <div className="space-y-6">
               
               <div className="flex items-center justify-between border-b border-steel-200 pb-4">
-                <span className="text-xs sm:text-sm font-black text-growth-700 uppercase tracking-widest font-mono">
+                <span className="text-xs sm:text-sm font-black text-steel-900 uppercase tracking-widest font-mono">
                   Segment Role: {segment}
                 </span>
                 <button
                   type="button"
                   onClick={() => setStep(1)}
-                  className="glass-pill px-3 py-1 text-xs sm:text-sm text-steel-700 hover:text-steel-900 flex items-center gap-1 min-h-[44px]"
+                  className="badge-base px-3 py-1 text-xs sm:text-sm text-steel-700 hover:text-growth-700 flex items-center gap-1 min-h-[44px]"
                 >
                   <ArrowLeft className="w-3.5 h-3.5" /> Change Role
                 </button>
@@ -296,9 +296,9 @@ export const InquiryForm: React.FC<InquiryFormProps> = ({ initialSegment = 'dist
                     type="button"
                     onClick={() => setFormData((p) => ({ ...p, specInterest: 'structural_steel' }))}
                     aria-pressed={formData.specInterest === 'structural_steel'}
-                    className={`p-3.5 sm:p-3 rounded-2xl text-xs sm:text-sm transition-all border min-h-[48px] ${
+                    className={`p-3.5 sm:p-3  text-xs sm:text-sm transition-all border min-h-[48px] ${
                       formData.specInterest === 'structural_steel'
-                        ? 'bg-white text-black font-black border-steel-300 shadow-md'
+                        ? 'bg-white text-black font-black border-steel-300 '
                         : 'btn-secondary text-steel-700 hover:text-black font-bold'
                     }`}
                   >
@@ -308,9 +308,9 @@ export const InquiryForm: React.FC<InquiryFormProps> = ({ initialSegment = 'dist
                     type="button"
                     onClick={() => setFormData((p) => ({ ...p, specInterest: 'tmt_bar' }))}
                     aria-pressed={formData.specInterest === 'tmt_bar'}
-                    className={`p-3.5 sm:p-3 rounded-2xl text-xs sm:text-sm transition-all border min-h-[48px] ${
+                    className={`p-3.5 sm:p-3  text-xs sm:text-sm transition-all border min-h-[48px] ${
                       formData.specInterest === 'tmt_bar'
-                        ? 'bg-white text-black font-black border-steel-300 shadow-md'
+                        ? 'bg-white text-black font-black border-steel-300 '
                         : 'btn-secondary text-steel-700 hover:text-black font-bold'
                     }`}
                   >
@@ -320,9 +320,9 @@ export const InquiryForm: React.FC<InquiryFormProps> = ({ initialSegment = 'dist
                     type="button"
                     onClick={() => setFormData((p) => ({ ...p, specInterest: 'both' }))}
                     aria-pressed={formData.specInterest === 'both'}
-                    className={`p-3.5 sm:p-3 rounded-2xl text-xs sm:text-sm transition-all border min-h-[48px] ${
+                    className={`p-3.5 sm:p-3  text-xs sm:text-sm transition-all border min-h-[48px] ${
                       formData.specInterest === 'both'
-                        ? 'bg-white text-black font-black border-steel-300 shadow-md'
+                        ? 'bg-white text-black font-black border-steel-300 '
                         : 'btn-secondary text-steel-700 hover:text-black font-bold'
                     }`}
                   >
@@ -346,7 +346,7 @@ export const InquiryForm: React.FC<InquiryFormProps> = ({ initialSegment = 'dist
                       value={formData.currentSuppliers || ''}
                       onChange={handleInputChange}
                       placeholder="e.g., Regional mills, Kamdhenu, Tata"
-                      className="w-full px-4 py-4 sm:py-3 glass-input rounded-2xl text-sm min-h-[48px] focus:outline-none"
+                      className="w-full px-4 py-4 sm:py-3 form-input text-sm min-h-[48px] focus:outline-none"
                     />
                     {fieldErrors.currentSuppliers && (
                       <p id="error-currentSuppliers" role="alert" className="text-xs font-semibold mt-1" style={{ color: 'var(--color-alert-700)' }}>
@@ -367,7 +367,7 @@ export const InquiryForm: React.FC<InquiryFormProps> = ({ initialSegment = 'dist
                       value={formData.annualVolumeMT || ''}
                       onChange={handleInputChange}
                       placeholder="e.g., 500 – 2,000 MT / year"
-                      className="w-full px-4 py-4 sm:py-3 glass-input rounded-2xl text-sm min-h-[48px] focus:outline-none"
+                      className="w-full px-4 py-4 sm:py-3 form-input text-sm min-h-[48px] focus:outline-none"
                     />
                     {fieldErrors.annualVolumeMT && (
                       <p id="error-annualVolumeMT" role="alert" className="text-xs font-semibold mt-1" style={{ color: 'var(--color-alert-700)' }}>
@@ -392,7 +392,7 @@ export const InquiryForm: React.FC<InquiryFormProps> = ({ initialSegment = 'dist
                       value={formData.projectScope || ''}
                       onChange={handleInputChange}
                       placeholder="e.g., City, region, or project area"
-                      className="w-full px-4 py-4 sm:py-3 glass-input rounded-2xl text-sm min-h-[48px] focus:outline-none"
+                      className="w-full px-4 py-4 sm:py-3 form-input text-sm min-h-[48px] focus:outline-none"
                     />
                     {fieldErrors.projectScope && (
                       <p id="error-projectScope" role="alert" className="text-xs font-semibold mt-1" style={{ color: 'var(--color-alert-700)' }}>
@@ -413,7 +413,7 @@ export const InquiryForm: React.FC<InquiryFormProps> = ({ initialSegment = 'dist
                       value={formData.requiredVolumeMT || ''}
                       onChange={handleInputChange}
                       placeholder="e.g., 100 MT initial batch"
-                      className="w-full px-4 py-4 sm:py-3 glass-input rounded-2xl text-sm min-h-[48px] focus:outline-none"
+                      className="w-full px-4 py-4 sm:py-3 form-input text-sm min-h-[48px] focus:outline-none"
                     />
                     {fieldErrors.requiredVolumeMT && (
                       <p id="error-requiredVolumeMT" role="alert" className="text-xs font-semibold mt-1" style={{ color: 'var(--color-alert-700)' }}>
@@ -437,7 +437,7 @@ export const InquiryForm: React.FC<InquiryFormProps> = ({ initialSegment = 'dist
                     value={formData.investmentScale || ''}
                     onChange={handleInputChange}
                     placeholder="e.g., PE Institutional Growth Fund / Strategic Co-Investment"
-                    className="w-full px-4 py-4 sm:py-3 glass-input rounded-2xl text-sm min-h-[48px] focus:outline-none"
+                    className="w-full px-4 py-4 sm:py-3 form-input text-sm min-h-[48px] focus:outline-none"
                   />
                   {fieldErrors.investmentScale && (
                     <p id="error-investmentScale" role="alert" className="text-xs font-semibold mt-1" style={{ color: 'var(--color-alert-700)' }}>
@@ -451,14 +451,14 @@ export const InquiryForm: React.FC<InquiryFormProps> = ({ initialSegment = 'dist
                 <button
                   type="button"
                   onClick={() => setStep(1)}
-                  className="btn-secondary px-5 py-2.5 sm:py-2 rounded-full text-xs sm:text-sm font-bold min-h-[48px]"
+                  className="btn-secondary px-5 py-2.5 sm:py-2 text-xs sm:text-sm font-bold min-h-[48px]"
                 >
                   Back
                 </button>
                 <button
                   type="button"
                   onClick={() => setStep(3)}
-                  className="btn-primary px-6 py-2.5 sm:py-2 rounded-full text-xs sm:text-sm font-bold flex items-center gap-2 min-h-[48px]"
+                  className="btn-primary px-6 py-2.5 sm:py-2 text-xs sm:text-sm font-bold flex items-center gap-2 min-h-[48px]"
                 >
                   <span>Next: Contact Details</span>
                   <ArrowRight className="w-4 h-4" />
@@ -473,20 +473,20 @@ export const InquiryForm: React.FC<InquiryFormProps> = ({ initialSegment = 'dist
             <form onSubmit={handleSubmit} className="space-y-4">
               
               <div className="flex items-center justify-between border-b border-steel-200 pb-4">
-                <span className="text-xs sm:text-sm font-black text-growth-700 uppercase tracking-widest font-mono">
+                <span className="text-xs sm:text-sm font-black text-steel-900 uppercase tracking-widest font-mono">
                   Contact Information
                 </span>
                 <button
                   type="button"
                   onClick={() => setStep(2)}
-                  className="glass-pill px-3 py-1 text-xs sm:text-sm text-steel-700 hover:text-steel-900 flex items-center gap-1 min-h-[44px]"
+                  className="badge-base px-3 py-1 text-xs sm:text-sm text-steel-700 hover:text-growth-700 flex items-center gap-1 min-h-[44px]"
                 >
                   <ArrowLeft className="w-3.5 h-3.5" /> Back to Specs
                 </button>
               </div>
 
               {errorMessage && (
-                <div role="alert" aria-live="assertive" className="p-3.5 rounded-2xl badge-alert text-xs font-semibold">
+                <div role="alert" aria-live="assertive" className="p-3.5 badge-alert text-xs font-semibold">
                   ⚠️ {errorMessage}
                 </div>
               )}
@@ -505,7 +505,7 @@ export const InquiryForm: React.FC<InquiryFormProps> = ({ initialSegment = 'dist
                     value={formData.companyName}
                     onChange={handleInputChange}
                     placeholder="Company or Business Name"
-                    className="w-full px-4 py-4 sm:py-3 glass-input rounded-2xl text-sm min-h-[48px] focus:outline-none"
+                    className="w-full px-4 py-4 sm:py-3 form-input text-sm min-h-[48px] focus:outline-none"
                   />
                   {fieldErrors.companyName && (
                     <p id="error-companyName" role="alert" className="text-xs font-semibold mt-1" style={{ color: 'var(--color-alert-700)' }}>
@@ -527,7 +527,7 @@ export const InquiryForm: React.FC<InquiryFormProps> = ({ initialSegment = 'dist
                     value={formData.contactName}
                     onChange={handleInputChange}
                     placeholder="Full Name"
-                    className="w-full px-4 py-4 sm:py-3 glass-input rounded-2xl text-sm min-h-[48px] focus:outline-none"
+                    className="w-full px-4 py-4 sm:py-3 form-input text-sm min-h-[48px] focus:outline-none"
                   />
                   {fieldErrors.contactName && (
                     <p id="error-contactName" role="alert" className="text-xs font-semibold mt-1" style={{ color: 'var(--color-alert-700)' }}>
@@ -549,7 +549,7 @@ export const InquiryForm: React.FC<InquiryFormProps> = ({ initialSegment = 'dist
                     value={formData.email}
                     onChange={handleInputChange}
                     placeholder="name@company.com"
-                    className="w-full px-4 py-4 sm:py-3 glass-input rounded-2xl text-sm min-h-[48px] focus:outline-none"
+                    className="w-full px-4 py-4 sm:py-3 form-input text-sm min-h-[48px] focus:outline-none"
                   />
                   {fieldErrors.email && (
                     <p id="error-email" role="alert" className="text-xs font-semibold mt-1" style={{ color: 'var(--color-alert-700)' }}>
@@ -571,7 +571,7 @@ export const InquiryForm: React.FC<InquiryFormProps> = ({ initialSegment = 'dist
                     value={formData.phone}
                     onChange={handleInputChange}
                     placeholder="+91 98765 43210"
-                    className="w-full px-4 py-4 sm:py-3 glass-input rounded-2xl text-sm min-h-[48px] focus:outline-none"
+                    className="w-full px-4 py-4 sm:py-3 form-input text-sm min-h-[48px] focus:outline-none"
                   />
                   {fieldErrors.phone && (
                     <p id="error-phone" role="alert" className="text-xs font-semibold mt-1" style={{ color: 'var(--color-alert-700)' }}>
@@ -594,7 +594,7 @@ export const InquiryForm: React.FC<InquiryFormProps> = ({ initialSegment = 'dist
                   value={formData.message}
                   onChange={handleInputChange}
                   placeholder="Describe your steel requirements, delivery schedule, or partnership interest..."
-                  className="w-full px-4 py-3 glass-textarea rounded-2xl text-sm focus:outline-none min-h-[48px]"
+                  className="w-full px-4 py-3 form-input text-sm focus:outline-none min-h-[48px]"
                 />
                 {fieldErrors.message && (
                   <p id="error-message" role="alert" className="text-xs font-semibold mt-1" style={{ color: 'var(--color-alert-700)' }}>
@@ -618,7 +618,7 @@ export const InquiryForm: React.FC<InquiryFormProps> = ({ initialSegment = 'dist
               </div>
 
               <div className="flex items-center gap-2 text-xs text-steel-600 pt-1">
-                <ShieldCheck className="w-4 h-4 text-trust-700 shrink-0" />
+                <ShieldCheck className="w-4 h-4 text-steel-900 shrink-0" />
                 <span>Encrypted submission. Response from our assigned regional lead within 24h.</span>
               </div>
 
@@ -626,7 +626,7 @@ export const InquiryForm: React.FC<InquiryFormProps> = ({ initialSegment = 'dist
                 <button
                   type="button"
                   onClick={() => setStep(2)}
-                  className="btn-secondary px-5 py-2.5 sm:py-2 rounded-full text-xs sm:text-sm font-bold min-h-[48px]"
+                  className="btn-secondary px-5 py-2.5 sm:py-2 text-xs sm:text-sm font-bold min-h-[48px]"
                 >
                   Back
                 </button>
@@ -634,7 +634,7 @@ export const InquiryForm: React.FC<InquiryFormProps> = ({ initialSegment = 'dist
                 <button
                   type="submit"
                   disabled={loading}
-                  className="btn-primary px-8 py-3 sm:py-2.5 rounded-full text-xs sm:text-sm font-extrabold flex items-center gap-2 transition-all disabled:opacity-50 min-h-[48px]"
+                  className="btn-primary px-8 py-3 sm:py-2.5 text-xs sm:text-sm font-extrabold flex items-center gap-2 transition-all disabled:opacity-50 min-h-[48px]"
                 >
                   {loading ? (
                     <>
@@ -656,12 +656,12 @@ export const InquiryForm: React.FC<InquiryFormProps> = ({ initialSegment = 'dist
           {/* STEP 4: SUBMISSION CONFIRMATION */}
           {step === 4 && submissionResult && (
             <div className="text-center space-y-6 py-6 animate-in zoom-in-95 duration-200">
-              <div className="w-16 h-16 rounded-full bg-trust-50 border border-trust-300 text-trust-700 flex items-center justify-center mx-auto shadow-lg">
+              <div className="w-16 h-16 bg-transparent group-hover:bg-transparent group-hover:bg-growth-50 border border-steel-300 group-hover:border-growth-400 text-steel-900 flex items-center justify-center mx-auto">
                 <CheckCircle className="w-8 h-8" />
               </div>
 
               <div>
-                <span className="text-xs font-extrabold text-trust-700 uppercase tracking-widest block font-mono">
+                <span className="text-xs font-extrabold text-steel-900 uppercase tracking-widest block font-mono">
                   Inquiry Successfully Received & Tagged
                 </span>
                 <h3 className="text-3xl font-black text-steel-900 mt-1">
@@ -672,14 +672,14 @@ export const InquiryForm: React.FC<InquiryFormProps> = ({ initialSegment = 'dist
                 </p>
               </div>
 
-              <div className="p-6 rounded-2xl max-w-md mx-auto text-left text-xs space-y-2 bg-steel-50 border border-steel-200">
+              <div className="p-6 max-w-md mx-auto text-left text-xs space-y-2 bg-steel-50 border border-steel-200">
                 <div className="flex justify-between py-1 border-b border-steel-200">
                   <span className="text-steel-600">Assigned Team:</span>
-                  <span className="font-bold text-growth-700">{submissionResult.assignedRole}</span>
+                  <span className="font-bold text-steel-900">{submissionResult.assignedRole}</span>
                 </div>
                 <div className="flex justify-between py-1 border-b border-steel-200">
                   <span className="text-steel-600">CRM Tag:</span>
-                  <span className="font-mono text-trust-700">{submissionResult.crmTag}</span>
+                  <span className="font-mono text-steel-900">{submissionResult.crmTag}</span>
                 </div>
                 <div className="flex justify-between py-1">
                   <span className="text-steel-600">Target SLA:</span>
@@ -698,7 +698,7 @@ export const InquiryForm: React.FC<InquiryFormProps> = ({ initialSegment = 'dist
                     setStep(1);
                     setSubmissionResult(null);
                   }}
-                  className="btn-secondary px-6 py-2.5 rounded-full text-xs font-bold"
+                  className="btn-secondary px-6 py-2.5 text-xs font-bold"
                 >
                   Submit Another Inquiry
                 </button>

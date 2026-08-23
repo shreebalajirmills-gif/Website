@@ -35,7 +35,7 @@ export function HomePageClient() {
   };
 
   return (
-    <main id="main-content" className="min-h-screen bg-steel-base text-primary flex flex-col selection:bg-growth-500 selection:text-white font-sans">
+    <main id="main-content" className="min-h-screen bg-steel-base text-primary flex flex-col selection:bg-transparent group-hover:bg-growth-500 selection:text-white font-sans">
       {/* Fixed Institutional Navigation Dock */}
       <Header onSelectSegment={handleSelectSegment} />
 

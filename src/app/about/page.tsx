@@ -54,9 +54,9 @@ export default function AboutPage() {
         <div className="ambient-liquid-glow ambient-glow-growth top-1/3 left-1/2 -translate-x-1/2" />
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-          <div className="glass-pill px-5 py-2 inline-flex items-center gap-2.5 backdrop-blur-xl border-steel-300 mb-6 shadow-sm">
+          <div className="badge-base px-5 py-2 inline-flex items-center gap-2.5 backdrop-blur-xl border-steel-300 mb-6">
             <Building2 className="w-4 h-4 text-growth-600" />
-            <span className="text-xs sm:text-sm font-mono font-bold text-growth-700 uppercase tracking-wider">
+            <span className="text-xs sm:text-sm font-mono font-bold text-steel-900 uppercase tracking-wider">
               SHREE BALAJI ROLLING MILLS PVT. LTD.
             </span>
           </div>
@@ -71,16 +71,16 @@ export default function AboutPage() {
           </p>
 
           <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-            <a href="#journey" className="btn-secondary text-xs sm:text-sm !py-2.5 sm:!py-2 !px-5 rounded-full font-bold min-h-[48px] shrink-0 whitespace-nowrap">
+            <a href="#journey" className="btn-secondary text-xs sm:text-sm !py-2.5 sm:!py-2 !px-5 font-bold min-h-[48px] shrink-0 whitespace-nowrap">
               Know Our Journey
             </a>
-            <a href="#why-us" className="btn-secondary text-xs sm:text-sm !py-2.5 sm:!py-2 !px-5 rounded-full font-bold min-h-[48px] shrink-0 whitespace-nowrap">
+            <a href="#why-us" className="btn-secondary text-xs sm:text-sm !py-2.5 sm:!py-2 !px-5 font-bold min-h-[48px] shrink-0 whitespace-nowrap">
               Why Choose Us
             </a>
-            <a href="#clients" className="btn-secondary text-xs sm:text-sm !py-2.5 sm:!py-2 !px-5 rounded-full font-bold min-h-[48px] shrink-0 whitespace-nowrap">
+            <a href="#clients" className="btn-secondary text-xs sm:text-sm !py-2.5 sm:!py-2 !px-5 font-bold min-h-[48px] shrink-0 whitespace-nowrap">
               Our Clients
             </a>
-            <a href="#environment" className="btn-secondary text-xs sm:text-sm !py-2.5 sm:!py-2 !px-5 rounded-full font-bold min-h-[48px] shrink-0 whitespace-nowrap">
+            <a href="#environment" className="btn-secondary text-xs sm:text-sm !py-2.5 sm:!py-2 !px-5 font-bold min-h-[48px] shrink-0 whitespace-nowrap">
               Environment & Sustainability
             </a>
           </div>
@@ -90,7 +90,7 @@ export default function AboutPage() {
       {/* SECTION 1: Know Our Journey */}
       <section id="journey" className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="glass-pill px-4 py-1.5 text-xs sm:text-sm font-mono font-bold uppercase tracking-widest text-growth-700">
+          <span className="badge-base px-4 py-1.5 text-xs sm:text-sm font-mono font-bold uppercase tracking-widest text-steel-900">
             Corporate History & Scale
           </span>
           <h2 className="text-3xl sm:text-5xl font-black text-slate-950 mt-4 tracking-tight">
@@ -105,14 +105,14 @@ export default function AboutPage() {
           {milestones.map((m, idx) => (
             <div key={idx} className="relative pl-8 sm:pl-12 group">
               {/* Year Marker Pill */}
-              <div className="absolute -left-2 sm:-left-6 md:-left-28 top-0 sm:top-1 font-mono font-black text-xs sm:text-sm text-growth-700 bg-growth-50 border border-growth-300 px-2 sm:px-3 py-1 rounded-full shadow-sm whitespace-nowrap min-h-[44px] flex items-center">
+              <div className="absolute -left-2 sm:-left-6 md:-left-28 top-0 sm:top-1 font-mono font-black text-xs sm:text-sm text-steel-900 bg-transparent group-hover:bg-growth-50 border border-steel-300 group-hover:border-growth-400 px-2 sm:px-3 py-1 whitespace-nowrap min-h-[44px] flex items-center">
                 {m.year}
               </div>
               
               {/* Node Dot */}
-              <div className="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-growth-600 border-4 border-white shadow-md group-hover:scale-125 transition-transform" />
+              <div className="absolute -left-[9px] top-1.5 w-4 h-4 bg-growth-600 border-4 border-white group-hover:scale-125 transition-transform" />
 
-              <div className="liquid-glass p-6 rounded-3xl border border-steel-200 hover:border-growth-400 transition-all space-y-2">
+              <div className="card-base p-6 border border-steel-200 hover:border-growth-400 transition-all space-y-2">
                 <h3 className="text-xl font-bold text-slate-950">{m.title}</h3>
                 <p className="text-xs sm:text-sm text-steel-600 leading-relaxed font-normal">{m.desc}</p>
               </div>
@@ -125,7 +125,7 @@ export default function AboutPage() {
       <section id="why-us" className="py-24 bg-steel-subtle border-y border-steel-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="glass-pill px-4 py-1.5 text-xs sm:text-sm font-mono font-bold uppercase tracking-widest text-authority-700">
+            <span className="badge-base px-4 py-1.5 text-xs sm:text-sm font-mono font-bold uppercase tracking-widest text-steel-900">
               Institutional Advantage
             </span>
             <h2 className="text-3xl sm:text-5xl font-black text-slate-950 mt-4 tracking-tight">
@@ -137,8 +137,8 @@ export default function AboutPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="liquid-glass p-8 rounded-3xl border border-steel-200 space-y-4">
-              <div className="w-12 h-12 rounded-2xl bg-amber-100 border border-amber-300 flex items-center justify-center text-amber-800 font-bold">
+            <div className="card-base p-8 border border-steel-200 space-y-4">
+              <div className="w-12 h-12 bg-amber-100 border border-steel-300 group-hover:border-growth-400 flex items-center justify-center text-amber-800 font-bold">
                 01
               </div>
               <h3 className="text-xl font-bold text-slate-950">Direct Mill Pricing</h3>
@@ -147,8 +147,8 @@ export default function AboutPage() {
               </p>
             </div>
 
-            <div className="liquid-glass p-8 rounded-3xl border border-steel-200 space-y-4">
-              <div className="w-12 h-12 rounded-2xl bg-authority-100 border border-authority-300 flex items-center justify-center text-authority-800 font-bold">
+            <div className="card-base p-8 border border-steel-200 space-y-4">
+              <div className="w-12 h-12 bg-authority-100 border border-steel-300 group-hover:border-growth-400 flex items-center justify-center text-authority-800 font-bold">
                 02
               </div>
               <h3 className="text-xl font-bold text-slate-950">180,000 TPA Total Scale</h3>
@@ -157,8 +157,8 @@ export default function AboutPage() {
               </p>
             </div>
 
-            <div className="liquid-glass p-8 rounded-3xl border border-steel-200 space-y-4">
-              <div className="w-12 h-12 rounded-2xl bg-growth-100 border border-growth-300 flex items-center justify-center text-growth-800 font-bold">
+            <div className="card-base p-8 border border-steel-200 space-y-4">
+              <div className="w-12 h-12 bg-growth-100 border border-steel-300 group-hover:border-growth-400 flex items-center justify-center text-steel-900 font-bold">
                 03
               </div>
               <h3 className="text-xl font-bold text-slate-950">BIS & Lab Certified</h3>
@@ -172,10 +172,10 @@ export default function AboutPage() {
 
       {/* SECTION 3: EBrochure and Corporate Profile */}
       <section id="ebrochure" className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="liquid-glass-prominent rounded-3xl p-8 sm:p-12 border border-steel-200 shadow-2xl bg-slate-950 text-white grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div className="card-base card-product p-8 sm:p-12 border border-steel-200 bg-slate-950 text-white grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           
           <div className="lg:col-span-8 space-y-4">
-            <span className="glass-pill px-4 py-1.5 text-xs sm:text-sm font-mono font-bold uppercase tracking-widest text-amber-400 border border-amber-400/30">
+            <span className="badge-base px-4 py-1.5 text-xs sm:text-sm font-mono font-bold uppercase tracking-widest text-amber-400 border border-amber-400/30">
               Corporate Downloads
             </span>
             <h2 className="text-3xl sm:text-4xl font-black text-white tracking-tight">
@@ -189,14 +189,14 @@ export default function AboutPage() {
           <div className="lg:col-span-4 flex flex-col gap-3">
             <Link
               href="/inquiry"
-              className="btn-primary !py-3.5 sm:!py-3 !px-6 rounded-2xl text-xs sm:text-sm font-extrabold text-center flex items-center justify-center gap-2 shadow-lg min-h-[48px]"
+              className="btn-primary !py-3.5 sm:!py-3 !px-6 text-xs sm:text-sm font-extrabold text-center flex items-center justify-center gap-2 min-h-[48px]"
             >
               <Download className="w-4 h-4" />
               <span>Download Corporate Profile</span>
             </Link>
             <Link
               href="/growth"
-              className="btn-secondary !py-3.5 sm:!py-3 !px-6 rounded-2xl text-xs sm:text-sm font-extrabold text-center text-slate-950 min-h-[48px]"
+              className="btn-secondary !py-3.5 sm:!py-3 !px-6 text-xs sm:text-sm font-extrabold text-center text-slate-950 min-h-[48px]"
             >
               View FY26–FY30 Financial Plan
             </Link>
@@ -208,7 +208,7 @@ export default function AboutPage() {
       {/* SECTION 4: Environment & Sustainability */}
       <section id="environment" className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <span className="glass-pill px-4 py-1.5 text-xs sm:text-sm font-mono font-bold uppercase tracking-widest text-emerald-700">
+          <span className="badge-base px-4 py-1.5 text-xs sm:text-sm font-mono font-bold uppercase tracking-widest text-emerald-700">
             Green Steel Commitment
           </span>
           <h2 className="text-3xl sm:text-5xl font-black text-slate-950 mt-4 tracking-tight">
@@ -220,7 +220,7 @@ export default function AboutPage() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="liquid-glass p-6 rounded-3xl border border-steel-200 space-y-3">
+          <div className="card-base p-6 border border-steel-200 space-y-3">
             <Leaf className="w-8 h-8 text-emerald-600" />
             <h3 className="text-lg font-bold text-slate-950">100% Scrap Recycling</h3>
             <p className="text-xs sm:text-sm text-steel-600 leading-relaxed">
@@ -228,7 +228,7 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <div className="liquid-glass p-6 rounded-3xl border border-steel-200 space-y-3">
+          <div className="card-base p-6 border border-steel-200 space-y-3">
             <Users className="w-8 h-8 text-growth-600" />
             <h3 className="text-lg font-bold text-slate-950">Zero Effluent Discharge</h3>
             <p className="text-xs sm:text-sm text-steel-600 leading-relaxed">
@@ -236,7 +236,7 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <div className="liquid-glass p-6 rounded-3xl border border-steel-200 space-y-3">
+          <div className="card-base p-6 border border-steel-200 space-y-3">
             <ShieldCheck className="w-8 h-8 text-authority-600" />
             <h3 className="text-lg font-bold text-slate-950">Recuperative Heating</h3>
             <p className="text-xs sm:text-sm text-steel-600 leading-relaxed">

@@ -23,7 +23,7 @@ export default function TeamPage() {
           
           {/* Header Badge */}
           <div className="space-y-3">
-            <span className="glass-pill px-4 py-1.5 text-xs font-bold text-growth-700 uppercase tracking-widest inline-flex items-center gap-2">
+            <span className="badge-base px-4 py-1.5 text-xs font-bold text-steel-900 uppercase tracking-widest inline-flex items-center gap-2">
               <Code2 className="w-4 h-4 text-growth-600" />
               <span>DIGITAL & ENGINEERING INFRASTRUCTURE</span>
             </span>
@@ -36,13 +36,13 @@ export default function TeamPage() {
           </div>
 
           {/* Minimal Tech Team Card */}
-          <div className="liquid-glass-prominent rounded-3xl p-8 border border-steel-200 shadow-xl space-y-6 text-left">
+          <div className="card-base card-product p-8 border border-steel-200 space-y-6 text-left">
             <div className="flex items-center justify-between border-b border-steel-200 pb-4">
               <div>
                 <h2 className="text-lg font-extrabold text-steel-900">Digital Lead & Architect</h2>
                 <span className="text-xs text-steel-500 font-mono">Full-Stack & Systems Infrastructure</span>
               </div>
-              <span className="glass-pill px-3 py-1 text-[11px] font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200 inline-flex items-center gap-1">
+              <span className="badge-base px-3 py-1 text-[11px] font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200 inline-flex items-center gap-1">
                 <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" /> Verified
               </span>
             </div>
@@ -55,7 +55,7 @@ export default function TeamPage() {
                 href="https://utkarshmanitripathi.vercel.app"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-secondary !py-2 !px-4 rounded-xl text-xs font-bold inline-flex items-center gap-1.5 hover:text-growth-700 transition-all shadow-sm"
+                className="btn-secondary !py-2 !px-4 text-xs font-bold inline-flex items-center gap-1.5 hover:text-growth-700 transition-all"
               >
                 <span>Visit Profile</span>
                 <ExternalLink className="w-3.5 h-3.5" />

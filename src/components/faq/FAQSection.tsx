@@ -66,7 +66,7 @@ export const FAQSection: React.FC<FAQSectionProps> = ({
         
         {/* Section Header */}
         <div className="text-center space-y-3 max-w-2xl mx-auto">
-          <div className="glass-pill px-4 py-1.5 inline-flex items-center gap-2 text-growth-700 text-xs font-bold uppercase tracking-wider">
+          <div className="badge-base px-4 py-1.5 inline-flex items-center gap-2 text-steel-900 text-xs font-bold uppercase tracking-wider">
             <HelpCircle className="w-4 h-4 text-growth-600" />
             <span>KNOWLEDGE & INQUIRIES</span>
           </div>
@@ -88,7 +88,7 @@ export const FAQSection: React.FC<FAQSectionProps> = ({
             return (
               <div
                 key={idx}
-                className="liquid-glass rounded-2xl border border-steel-200 overflow-hidden transition-all duration-200 shadow-sm"
+                className="liquid-glass border border-steel-200 overflow-hidden transition-all duration-200"
               >
                 <h3>
                   <button
@@ -97,12 +97,12 @@ export const FAQSection: React.FC<FAQSectionProps> = ({
                     onClick={() => toggleAccordion(idx)}
                     aria-expanded={isOpen}
                     aria-controls={accordionId}
-                    className="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 font-bold text-sm sm:text-base text-steel-900 hover:text-growth-700 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-growth-500 rounded-2xl"
+                    className="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 font-bold text-sm sm:text-base text-steel-900 hover:text-growth-700 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-growth-500"
                   >
                     <span className="leading-snug">{item.question}</span>
                     <div
-                      className={`w-8 h-8 rounded-xl bg-steel-100 flex items-center justify-center shrink-0 transition-transform duration-300 ${
-                        isOpen ? 'rotate-180 bg-growth-100 text-growth-700' : 'text-steel-600'
+                      className={`w-8 h-8  bg-steel-100 flex items-center justify-center shrink-0 transition-transform duration-300 ${
+                        isOpen ? 'rotate-180 bg-growth-100 text-steel-900' : 'text-steel-600'
                       }`}
                     >
                       <ChevronDown className="w-4 h-4" />

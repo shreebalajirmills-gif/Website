@@ -32,7 +32,7 @@ export default function InquiryPage() {
 
       <section className="pt-36 pb-12 bg-white border-b border-slate-200 steel-grid-pattern text-center">
         <div className="max-w-4xl mx-auto px-4 space-y-3">
-          <span className="text-xs font-mono font-bold text-amber-800 bg-amber-50 px-3 py-1 rounded-full border border-amber-200">
+          <span className="text-xs font-mono font-bold text-amber-800 bg-transparent group-hover:bg-transparent group-hover:bg-growth-50 px-3 py-1 border border-steel-200 group-hover:border-growth-400">
             CONTEXT-AWARE B2B ROUTING
           </span>
           <h1 className="text-4xl sm:text-5xl font-black text-slate-900">

@@ -44,7 +44,7 @@ export const ProductHub: React.FC<ProductHubProps> = ({ onSelectSegment }) => {
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-          <div className="glass-pill px-4 py-1.5 inline-flex items-center gap-2 text-growth-700 text-xs font-bold uppercase tracking-wider">
+          <div className="badge-base px-4 py-1.5 inline-flex items-center gap-2 text-steel-900 text-xs font-bold uppercase tracking-wider">
             Institutional Product Suite
           </div>
           <h2 className="text-3xl sm:text-5xl font-black text-steel-900 tracking-tight">
@@ -65,24 +65,24 @@ export const ProductHub: React.FC<ProductHubProps> = ({ onSelectSegment }) => {
                 key={product.id}
                 className={`liquid-glass liquid-glass-interactive ${
                   product.isNewFacility ? 'liquid-glass-contractor' : 'liquid-glass-distributor'
-                } rounded-3xl p-8 flex flex-col justify-between relative shadow-lg`}
+                }  p-8 flex flex-col justify-between relative `}
               >
                 <div>
                   {/* Badge & Lead Time */}
                   <div className="flex items-center justify-between gap-4 mb-5">
-                    <span className={`text-xs font-extrabold px-3 py-1 rounded-full font-mono border ${
+                    <span className={`text-xs font-extrabold px-3 py-1  font-mono border ${
                       product.isNewFacility ? 'badge-contractor' : 'badge-distributor'
                     }`}>
                       {product.badge}
                     </span>
-                    <div className="flex items-center gap-1.5 text-xs text-steel-600 font-medium glass-pill px-3 py-1">
+                    <div className="flex items-center gap-1.5 text-xs text-steel-600 font-medium badge-base px-3 py-1">
                       <Clock className="w-3.5 h-3.5 text-growth-600" />
                       <span>Lead Time: {product.leadTime}</span>
                     </div>
                   </div>
 
                   <h3 className="text-3xl font-extrabold text-steel-900 mb-2">{product.name}</h3>
-                  <p className="text-sm font-bold text-growth-700 mb-4">{product.tagline}</p>
+                  <p className="text-sm font-bold text-steel-900 mb-4">{product.tagline}</p>
 
                   {/* 3D Interactive Model Section Toggle */}
                   <div className="mb-6">
@@ -94,7 +94,7 @@ export const ProductHub: React.FC<ProductHubProps> = ({ onSelectSegment }) => {
                       <button
                         type="button"
                         onClick={() => toggle3DViewer(product.id)}
-                        className="text-[11px] text-growth-700 hover:underline font-bold"
+                        className="text-[11px] text-steel-900 hover:underline font-bold"
                       >
                         {isViewerOpen ? 'Hide 3D View' : 'Show 3D View'}
                       </button>
@@ -110,7 +110,7 @@ export const ProductHub: React.FC<ProductHubProps> = ({ onSelectSegment }) => {
                 </p>
 
                 {/* Liquid Glass Specifications Box */}
-                <div className="grid grid-cols-2 gap-3 p-5 rounded-2xl bg-steel-100/90 border border-steel-200 mb-6">
+                <div className="grid grid-cols-2 gap-3 p-5 bg-steel-100/90 border border-steel-200 mb-6">
                   <div>
                     <span className="text-[10px] font-bold text-steel-500 uppercase tracking-widest block">
                       Standard
@@ -123,7 +123,7 @@ export const ProductHub: React.FC<ProductHubProps> = ({ onSelectSegment }) => {
                     <span className="text-[10px] font-bold text-steel-500 uppercase tracking-widest block">
                       Tensile Strength
                     </span>
-                    <span className="text-sm font-bold text-growth-700 mt-1 block">
+                    <span className="text-sm font-bold text-steel-900 mt-1 block">
                       {product.specs.tensileStrength}
                     </span>
                   </div>
@@ -139,7 +139,7 @@ export const ProductHub: React.FC<ProductHubProps> = ({ onSelectSegment }) => {
                     <span className="text-[10px] font-bold text-steel-500 uppercase tracking-widest block">
                       Monthly Capacity
                     </span>
-                    <span className="text-sm font-bold text-trust-700 mt-1 block">
+                    <span className="text-sm font-bold text-steel-900 mt-1 block">
                       {product.capacity.formatMonthly}
                     </span>
                   </div>
@@ -154,9 +154,9 @@ export const ProductHub: React.FC<ProductHubProps> = ({ onSelectSegment }) => {
                     {product.specs.certifications.map((cert, idx) => (
                       <span
                         key={idx}
-                        className="badge-success px-3 py-1 text-xs font-semibold rounded-full inline-flex items-center gap-1.5"
+                        className="badge-success px-3 py-1 text-xs font-semibold inline-flex items-center gap-1.5"
                       >
-                        <ShieldCheck className="w-3.5 h-3.5 text-trust-700" />
+                        <ShieldCheck className="w-3.5 h-3.5 text-steel-900" />
                         {cert}
                       </span>
                     ))}
@@ -184,7 +184,7 @@ export const ProductHub: React.FC<ProductHubProps> = ({ onSelectSegment }) => {
                   onClick={() => setActiveModalProduct(product)}
                   className="w-full sm:w-auto flex-1 btn-secondary !py-3 !px-4 text-xs font-bold flex items-center justify-center gap-2"
                 >
-                  <FileText className="w-4 h-4 text-growth-700" />
+                  <FileText className="w-4 h-4 text-steel-900" />
                   <span>View Technical Specs</span>
                 </button>
 
@@ -208,7 +208,7 @@ export const ProductHub: React.FC<ProductHubProps> = ({ onSelectSegment }) => {
                   }}
                   className="w-full sm:w-auto flex-1 btn-secondary !py-3 !px-4 text-xs font-bold flex items-center justify-center gap-2"
                 >
-                  <Download className="w-4 h-4 text-growth-700" />
+                  <Download className="w-4 h-4 text-steel-900" />
                   <span>Download Spec PDF</span>
                 </button>
 
@@ -233,11 +233,11 @@ export const ProductHub: React.FC<ProductHubProps> = ({ onSelectSegment }) => {
       {/* Technical Spec Sheet Modal */}
       {activeModalProduct && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-steel-900/60 backdrop-blur-md animate-in fade-in duration-200">
-          <div className="liquid-glass-prominent rounded-3xl max-w-2xl w-full p-6 sm:p-8 space-y-6 shadow-2xl relative border border-steel-300 max-h-[90vh] overflow-y-auto">
+          <div className="card-base card-product max-w-2xl w-full p-6 sm:p-8 space-y-6 relative border border-steel-300 max-h-[90vh] overflow-y-auto">
             
             <div className="flex items-start justify-between">
               <div>
-                <span className="text-xs font-bold text-growth-700 uppercase tracking-widest block font-mono">
+                <span className="text-xs font-bold text-steel-900 uppercase tracking-widest block font-mono">
                   Technical Specification Datasheet
                 </span>
                 <h3 className="text-2xl sm:text-3xl font-black text-steel-900 mt-1">
@@ -246,7 +246,7 @@ export const ProductHub: React.FC<ProductHubProps> = ({ onSelectSegment }) => {
               </div>
               <button
                 onClick={() => setActiveModalProduct(null)}
-                className="btn-secondary !p-2 rounded-full text-steel-600 hover:text-steel-900"
+                className="btn-secondary !p-2 text-steel-600 hover:text-growth-700"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -254,22 +254,22 @@ export const ProductHub: React.FC<ProductHubProps> = ({ onSelectSegment }) => {
 
             <div className="space-y-5 border-y border-steel-200 py-5 text-sm text-steel-700">
               <div className="grid grid-cols-2 gap-4">
-                <div className="p-4 rounded-2xl bg-steel-100/80 border border-steel-200">
+                <div className="p-4 bg-steel-100/80 border border-steel-200">
                   <span className="text-xs text-steel-500 block font-medium">Standard Specification</span>
                   <strong className="text-steel-900 text-base block mt-1 font-bold">{activeModalProduct.specs.standard}</strong>
                 </div>
-                <div className="p-4 rounded-2xl bg-steel-100/80 border border-steel-200">
+                <div className="p-4 bg-steel-100/80 border border-steel-200">
                   <span className="text-xs text-steel-500 block font-medium">Platform Capacity</span>
-                  <strong className="text-trust-700 text-base block mt-1 font-bold">{activeModalProduct.capacity.formatTpa}</strong>
+                  <strong className="text-steel-900 text-base block mt-1 font-bold">{activeModalProduct.capacity.formatTpa}</strong>
                 </div>
               </div>
 
               <div className="space-y-3">
                 <h4 className="font-bold text-steel-900 text-sm">Mechanical Properties:</h4>
-                <div className="rounded-2xl p-4 divide-y divide-steel-200 bg-steel-50 border border-steel-200 text-xs">
+                <div className="p-4 divide-y divide-steel-200 bg-steel-50 border border-steel-200 text-xs">
                   <div className="flex justify-between py-2">
                     <span className="text-steel-600">Tensile Strength Range</span>
-                    <span className="font-bold text-growth-700">{activeModalProduct.specs.tensileStrength}</span>
+                    <span className="font-bold text-steel-900">{activeModalProduct.specs.tensileStrength}</span>
                   </div>
                   <div className="flex justify-between py-2">
                     <span className="text-steel-600">Minimum Yield Strength</span>
@@ -292,7 +292,7 @@ export const ProductHub: React.FC<ProductHubProps> = ({ onSelectSegment }) => {
                 <h4 className="font-bold text-steel-900 text-sm">Quality Compliance:</h4>
                 <div className="flex flex-wrap gap-2">
                   {activeModalProduct.specs.certifications.map((c, i) => (
-                    <span key={i} className="badge-success px-3 py-1 text-xs font-semibold rounded-full">
+                    <span key={i} className="badge-success px-3 py-1 text-xs font-semibold">
                       ✓ {c}
                     </span>
                   ))}
@@ -321,7 +321,7 @@ export const ProductHub: React.FC<ProductHubProps> = ({ onSelectSegment }) => {
                 }}
                 className="w-full sm:w-auto flex-1 btn-secondary !py-3 !px-5 text-xs font-bold flex items-center justify-center gap-2"
               >
-                <Download className="w-4 h-4 text-growth-700" />
+                <Download className="w-4 h-4 text-steel-900" />
                 <span>Download Official PDF Spec</span>
               </button>
 

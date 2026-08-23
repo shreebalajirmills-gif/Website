@@ -26,7 +26,7 @@ export const LocationMapSection: React.FC<LocationMapSectionProps> = ({
         
         {/* Section Header */}
         <div className="text-center space-y-3 max-w-2xl mx-auto">
-          <div className="glass-pill px-4 py-1.5 inline-flex items-center gap-2 text-growth-700 text-xs font-bold uppercase tracking-wider">
+          <div className="badge-base px-4 py-1.5 inline-flex items-center gap-2 text-steel-900 text-xs font-bold uppercase tracking-wider">
             <MapPin className="w-4 h-4 text-growth-600" />
             <span>GEOGRAPHIC TELEMETRY & VISITS</span>
           </div>
@@ -45,9 +45,9 @@ export const LocationMapSection: React.FC<LocationMapSectionProps> = ({
           <div className="lg:col-span-5 space-y-6 flex flex-col justify-between">
             
             {/* Factory Address Card */}
-            <div className="liquid-glass-prominent rounded-3xl p-6 sm:p-7 border border-steel-200 shadow-lg space-y-3">
+            <div className="card-base card-product p-6 sm:p-7 border border-steel-200 space-y-3">
               <div className="flex items-center justify-between">
-                <span className="glass-pill px-3 py-1 text-[10px] font-mono font-bold uppercase tracking-wider text-growth-700 bg-growth-50 border-growth-200">
+                <span className="badge-base px-3 py-1 text-[10px] font-mono font-bold uppercase tracking-wider text-steel-900 bg-transparent group-hover:bg-growth-50 border-steel-200 group-hover:border-growth-400">
                   Primary Rolling Mill
                 </span>
                 <MapPin className="w-5 h-5 text-growth-600" />
@@ -61,7 +61,7 @@ export const LocationMapSection: React.FC<LocationMapSectionProps> = ({
                   href={mapDirectionsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-primary py-2.5 px-4 rounded-xl text-xs font-extrabold inline-flex items-center gap-2 shadow-sm"
+                  className="btn-primary py-2.5 px-4 text-xs font-extrabold inline-flex items-center gap-2"
                 >
                   <Navigation className="w-4 h-4" />
                   <span>Get Directions on Google Maps</span>
@@ -71,9 +71,9 @@ export const LocationMapSection: React.FC<LocationMapSectionProps> = ({
             </div>
 
             {/* Corporate Office Card */}
-            <div className="liquid-glass-prominent rounded-3xl p-6 sm:p-7 border border-steel-200 shadow-lg space-y-3">
+            <div className="card-base card-product p-6 sm:p-7 border border-steel-200 space-y-3">
               <div className="flex items-center justify-between">
-                <span className="glass-pill px-3 py-1 text-[10px] font-mono font-bold uppercase tracking-wider text-authority-700 bg-authority-50 border-authority-200">
+                <span className="badge-base px-3 py-1 text-[10px] font-mono font-bold uppercase tracking-wider text-steel-900 bg-transparent group-hover:bg-transparent group-hover:bg-growth-50 border-steel-200 group-hover:border-growth-400">
                   Commercial Desk
                 </span>
                 <MapPin className="w-5 h-5 text-authority-600" />
@@ -85,14 +85,14 @@ export const LocationMapSection: React.FC<LocationMapSectionProps> = ({
               <div className="pt-2 flex flex-wrap gap-3 text-xs">
                 <a
                   href={`tel:${SITE_CONFIG.contact.phoneRaw}`}
-                  className="py-2 px-3 bg-white border border-steel-200 rounded-xl text-steel-900 font-bold inline-flex items-center gap-1.5 hover:border-growth-400 transition-all"
+                  className="py-2 px-3 bg-white border border-steel-200 text-steel-900 font-bold inline-flex items-center gap-1.5 hover:border-growth-400 transition-all"
                 >
                   <Phone className="w-3.5 h-3.5 text-amber-600" />
                   <span>{SITE_CONFIG.contact.phone}</span>
                 </a>
                 <a
                   href={`mailto:${SITE_CONFIG.contact.email}`}
-                  className="py-2 px-3 bg-white border border-steel-200 rounded-xl text-steel-900 font-bold inline-flex items-center gap-1.5 hover:border-growth-400 transition-all truncate"
+                  className="py-2 px-3 bg-white border border-steel-200 text-steel-900 font-bold inline-flex items-center gap-1.5 hover:border-growth-400 transition-all truncate"
                 >
                   <Mail className="w-3.5 h-3.5 text-authority-600" />
                   <span className="truncate">{SITE_CONFIG.contact.email}</span>
@@ -101,7 +101,7 @@ export const LocationMapSection: React.FC<LocationMapSectionProps> = ({
             </div>
 
             {/* Operational Telemetry Summary */}
-            <div className="p-5 rounded-2xl bg-steel-950 text-white space-y-2 border border-slate-800 shadow-md">
+            <div className="p-5 bg-steel-950 text-white space-y-2 border border-slate-800">
               <div className="flex items-center gap-2 text-xs font-bold text-amber-400 font-mono">
                 <Clock className="w-4 h-4" />
                 <span>Mill Dispatch Hours: Mon–Sat, 09:00–18:00 IST</span>
@@ -114,7 +114,7 @@ export const LocationMapSection: React.FC<LocationMapSectionProps> = ({
           </div>
 
           {/* Right Column: Visual Map Container */}
-          <div className="lg:col-span-7 bg-slate-900 rounded-3xl overflow-hidden border border-steel-300 shadow-xl relative min-h-[380px] flex flex-col justify-between p-6 sm:p-8 text-white group">
+          <div className="lg:col-span-7 bg-slate-900 overflow-hidden border border-steel-300 relative min-h-[380px] flex flex-col justify-between p-6 sm:p-8 text-white group">
             
             {/* Visual Industrial Backdrop Overlay */}
             <div className="absolute inset-0 bg-[radial-gradient(#334155_1px,transparent_1px)] [background-size:16px_16px] opacity-40 pointer-events-none" />
@@ -122,7 +122,7 @@ export const LocationMapSection: React.FC<LocationMapSectionProps> = ({
 
             <div className="relative z-10 space-y-3">
               <div className="flex items-center justify-between">
-                <span className="glass-pill px-3 py-1 text-[10px] font-mono font-bold uppercase tracking-wider text-amber-400 border border-amber-400/30">
+                <span className="badge-base px-3 py-1 text-[10px] font-mono font-bold uppercase tracking-wider text-amber-400 border border-amber-400/30">
                   Interactive Route Map
                 </span>
                 <span className="text-xs text-slate-400 font-mono">Bhiwadi Industrial Zone</span>
@@ -145,7 +145,7 @@ export const LocationMapSection: React.FC<LocationMapSectionProps> = ({
                 href={mapDirectionsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs py-3 px-5 rounded-2xl inline-flex items-center justify-center gap-2 shadow-lg transition-all border border-emerald-400/40"
+                className="bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs py-3 px-5 inline-flex items-center justify-center gap-2 transition-all border border-emerald-400/40"
               >
                 <Navigation className="w-4 h-4" />
                 <span>Launch Google Maps Route</span>

@@ -142,7 +142,7 @@ export const GrowthTimeline: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-          <div className="glass-pill px-4 py-1.5 inline-flex items-center gap-2 text-growth-800 text-xs sm:text-sm font-bold uppercase tracking-wider">
+          <div className="badge-base px-4 py-1.5 inline-flex items-center gap-2 text-steel-900 text-xs sm:text-sm font-bold uppercase tracking-wider">
             Institutional Growth Roadmap
           </div>
           <h2 className="text-3xl sm:text-5xl font-black text-steel-900 tracking-tight">
@@ -155,33 +155,33 @@ export const GrowthTimeline: React.FC = () => {
 
         {/* 3 Phase Cards in Liquid Glass */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14">
-          <div className="liquid-glass p-6 rounded-3xl border border-steel-200 relative space-y-3 shadow-md">
+          <div className="card-base p-6 border border-steel-200 relative space-y-3">
             <div className="flex items-center justify-between">
               <span className="text-xs sm:text-sm font-bold text-steel-500 uppercase tracking-widest font-mono">Phase 1</span>
-              <span className="glass-pill px-2.5 py-0.5 text-xs sm:text-sm font-semibold text-steel-700">Baseline</span>
+              <span className="badge-base px-2.5 py-0.5 text-xs sm:text-sm font-semibold text-steel-700">Baseline</span>
             </div>
             <h3 className="text-xl font-bold text-steel-900">Baseline Foundation</h3>
             <p className="text-2xl font-black text-steel-900 font-mono">₹200 Cr Base</p>
             <p className="text-xs sm:text-sm text-steel-600 font-normal">Initial production platform stabilization & foundation</p>
           </div>
 
-          <div className="liquid-glass liquid-glass-contractor p-6 rounded-3xl border border-growth-400/40 relative space-y-3 shadow-xl">
+          <div className="card-base liquid-glass-contractor p-6 border border-growth-400/40 relative space-y-3">
             <div className="flex items-center justify-between">
-              <span className="text-xs sm:text-sm font-extrabold text-growth-800 uppercase tracking-widest font-mono">Phase 3</span>
-              <span className="badge-contractor px-2.5 py-0.5 text-xs sm:text-sm font-bold rounded-full border">Inflection</span>
+              <span className="text-xs sm:text-sm font-extrabold text-steel-900 uppercase tracking-widest font-mono">Phase 3</span>
+              <span className="badge-contractor px-2.5 py-0.5 text-xs sm:text-sm font-bold border">Inflection</span>
             </div>
             <h3 className="text-xl font-bold text-steel-900">Capacity Inflection</h3>
-            <p className="text-2xl font-black text-growth-700 font-mono">₹600 Cr Milestone</p>
+            <p className="text-2xl font-black text-steel-900 font-mono">₹600 Cr Milestone</p>
             <p className="text-xs sm:text-sm text-steel-700 font-normal">Revenue leap driven by TMT facility expansion & ramp-up</p>
           </div>
 
-          <div className="liquid-glass liquid-glass-investor p-6 rounded-3xl border border-growth-600/40 relative space-y-3 shadow-md">
+          <div className="card-base liquid-glass-investor p-6 border border-growth-600/40 relative space-y-3">
             <div className="flex items-center justify-between">
               <span className="text-xs sm:text-sm font-extrabold text-growth-900 uppercase tracking-widest font-mono">Phase 5</span>
-              <span className="badge-investor px-2.5 py-0.5 text-xs sm:text-sm font-bold rounded-full border">Scale</span>
+              <span className="badge-investor px-2.5 py-0.5 text-xs sm:text-sm font-bold border">Scale</span>
             </div>
             <h3 className="text-xl font-bold text-steel-900">Scale & PAT Expansion</h3>
-            <p className="text-2xl font-black text-growth-800 font-mono">₹1,000 Cr Target</p>
+            <p className="text-2xl font-black text-steel-900 font-mono">₹1,000 Cr Target</p>
             <p className="text-xs sm:text-sm text-steel-700 font-normal">Sustained market growth & profitability expansion milestone</p>
           </div>
         </div>
@@ -194,17 +194,17 @@ export const GrowthTimeline: React.FC = () => {
               <button
                 key={metric.year}
                 onClick={() => handleManualYearSelect(metric.year)}
-                className={`glass-pill px-6 py-2.5 text-xs sm:text-sm font-black transition-all flex items-center gap-2 cursor-pointer min-h-[48px] ${
+                className={`badge-base px-6 py-2.5 text-xs sm:text-sm font-black transition-all flex items-center gap-2 cursor-pointer min-h-[48px] ${
                   isSelected
-                    ? 'bg-slate-950 text-amber-400 font-black border border-slate-700 shadow-md scale-105 ring-2 ring-amber-500/30'
-                    : 'text-steel-600 hover:text-steel-900 hover:bg-steel-100'
+                    ? 'bg-growth-50 text-growth-700 border-growth-400 font-black scale-105 ring-2 ring-growth-500/40'
+                    : 'text-steel-600 hover:text-growth-700 hover:bg-steel-100'
                 }`}
               >
                 <span>{metric.year}</span>
                 {metric.year === 'Phase 3' && (
                   <span
                     className={`text-[9px] sm:text-[10px] px-1.5 py-0.5 rounded font-black uppercase ${
-                      isSelected ? 'bg-amber-400 text-slate-950' : 'bg-growth-100 text-growth-800'
+                      isSelected ? 'bg-amber-400 text-slate-950' : 'bg-growth-100 text-steel-900'
                     }`}
                   >
                     Inflection
@@ -216,7 +216,7 @@ export const GrowthTimeline: React.FC = () => {
         </div>
 
         {/* Liquid Glass Interactive Visualizer */}
-        <div className="liquid-glass-prominent rounded-3xl p-6 sm:p-8 border border-steel-200 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center shadow-xl">
+        <div className="card-base card-product p-6 sm:p-8 border border-steel-200 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           {/* Left Column: Interactive Vector Graph Visualizer */}
           <div className="lg:col-span-7 space-y-6">
             {/* Chart Header & Metric Selectors */}
@@ -227,14 +227,14 @@ export const GrowthTimeline: React.FC = () => {
               </h4>
 
               {/* Mode Toggles */}
-              <div className="flex items-center gap-1.5 p-1 bg-steel-100 rounded-full border border-steel-200 text-xs font-bold">
+              <div className="flex items-center gap-1.5 p-1 bg-steel-100 border border-steel-200 text-xs font-bold">
                 <button
                   type="button"
                   onClick={() => handleManualModeSelect('revenue')}
-                  className={`px-3 py-1 rounded-full transition-all flex items-center gap-1 cursor-pointer ${
+                  className={`px-3 py-1  transition-all flex items-center gap-1 cursor-pointer ${
                     chartMode === 'revenue'
-                      ? 'bg-white text-growth-800 shadow-sm font-black'
-                      : 'text-steel-600 hover:text-steel-900'
+                      ? 'bg-growth-50 text-growth-700 font-black'
+                      : 'text-steel-600 hover:text-growth-700'
                   }`}
                 >
                   <TrendingUp className="w-3.5 h-3.5" />
@@ -243,10 +243,10 @@ export const GrowthTimeline: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => handleManualModeSelect('capacity')}
-                  className={`px-3 py-1 rounded-full transition-all flex items-center gap-1 cursor-pointer ${
+                  className={`px-3 py-1  transition-all flex items-center gap-1 cursor-pointer ${
                     chartMode === 'capacity'
-                      ? 'bg-white text-trust-800 shadow-sm font-black'
-                      : 'text-steel-600 hover:text-steel-900'
+                      ? 'bg-growth-50 text-growth-700 font-black'
+                      : 'text-steel-600 hover:text-growth-700'
                   }`}
                 >
                   <Layers className="w-3.5 h-3.5" />
@@ -255,10 +255,10 @@ export const GrowthTimeline: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => handleManualModeSelect('ebitda')}
-                  className={`px-3 py-1 rounded-full transition-all flex items-center gap-1 cursor-pointer ${
+                  className={`px-3 py-1  transition-all flex items-center gap-1 cursor-pointer ${
                     chartMode === 'ebitda'
-                      ? 'bg-white text-amber-800 shadow-sm font-black'
-                      : 'text-steel-600 hover:text-steel-900'
+                      ? 'bg-growth-50 text-growth-700 font-black'
+                      : 'text-steel-600 hover:text-growth-700'
                   }`}
                 >
                   <Activity className="w-3.5 h-3.5" />
@@ -268,7 +268,7 @@ export const GrowthTimeline: React.FC = () => {
             </div>
 
             {/* Responsive Vector SVG Graph */}
-            <div className="w-full bg-steel-50/80 rounded-2xl p-4 border border-steel-200 relative overflow-hidden shadow-inner">
+            <div className="w-full bg-steel-50/80 p-4 border border-steel-200 relative overflow-hidden">
               <svg viewBox={`0 0 ${width} ${height}`} className="w-full h-auto overflow-visible" preserveAspectRatio="xMidYMid meet">
                 <defs>
                   <linearGradient id="growthGradient" x1="0" y1="0" x2="0" y2="1">
@@ -338,7 +338,7 @@ export const GrowthTimeline: React.FC = () => {
                   transition={{ type: 'spring', stiffness: 160, damping: 22 }}
                 >
                   <circle r="14" className="fill-growth-500/30 animate-ping" />
-                  <circle r="6" className="fill-growth-600 stroke-white stroke-2 shadow-lg" />
+                  <circle r="6" className="fill-growth-600 stroke-white stroke-2" />
                 </motion.g>
 
                 {/* Data Points & Interactive Nodes */}
@@ -370,7 +370,7 @@ export const GrowthTimeline: React.FC = () => {
                         transition={{ type: 'spring', stiffness: 300, damping: 25 }}
                         className={`transition-colors duration-300 ${
                           isSelected
-                            ? 'fill-growth-500 stroke-growth-900 stroke-2 shadow-md'
+                            ? 'fill-growth-500 stroke-growth-900 stroke-2 '
                             : 'fill-white stroke-growth-600 stroke-2 group-hover:r-8'
                         }`}
                       />
@@ -417,10 +417,10 @@ export const GrowthTimeline: React.FC = () => {
           </div>
 
           {/* Right Column: Liquid Glass Active Metric Card */}
-          <div className="lg:col-span-5 liquid-glass p-6 rounded-2xl border border-steel-200 space-y-5 bg-white shadow-md">
+          <div className="lg:col-span-5 card-base p-6 border border-steel-200 space-y-5 bg-white">
             <div className="flex items-center justify-between border-b border-steel-200 pb-4">
               <div>
-                <span className="text-xs sm:text-sm font-bold text-growth-700 uppercase tracking-widest block font-mono">
+                <span className="text-xs sm:text-sm font-bold text-steel-900 uppercase tracking-widest block font-mono">
                   Phase: {activeMetric.phase}
                 </span>
                 <h3 className="text-3xl font-black text-steel-900 mt-0.5">
@@ -429,32 +429,32 @@ export const GrowthTimeline: React.FC = () => {
               </div>
               <div className="text-right">
                 <span className="text-[10px] sm:text-xs text-steel-500 font-bold uppercase tracking-wider block">Total Platform</span>
-                <span className="text-sm font-black text-trust-700 block mt-0.5">
+                <span className="text-sm font-black text-steel-900 block mt-0.5">
                   {activeMetric.capacityTpa.toLocaleString()} TPA
                 </span>
               </div>
             </div>
 
-            <p className="text-xs sm:text-sm text-steel-700 leading-relaxed italic p-3.5 rounded-xl bg-steel-50 border border-steel-200">
+            <p className="text-xs sm:text-sm text-steel-700 leading-relaxed italic p-3.5 bg-steel-50 border border-steel-200">
               &ldquo;{activeMetric.phaseDescription}&rdquo;
             </p>
 
             <div className="grid grid-cols-2 gap-3 text-sm">
-              <div className="p-3.5 rounded-xl bg-steel-50 border border-steel-200">
+              <div className="p-3.5 bg-steel-50 border border-steel-200">
                 <span className="text-[10px] sm:text-xs text-steel-500 uppercase tracking-wider font-bold block">Revenue</span>
                 <span className="text-xl font-black text-steel-900 mt-0.5 block">₹{activeMetric.revenueCr} Cr</span>
               </div>
-              <div className="p-3.5 rounded-xl bg-steel-50 border border-steel-200">
+              <div className="p-3.5 bg-steel-50 border border-steel-200">
                 <span className="text-[10px] sm:text-xs text-steel-500 uppercase tracking-wider font-bold block">EBITDA Margin</span>
-                <span className="text-xl font-black text-growth-700 mt-0.5 block">{activeMetric.ebitdaMarginPct}%</span>
+                <span className="text-xl font-black text-steel-900 mt-0.5 block">{activeMetric.ebitdaMarginPct}%</span>
               </div>
-              <div className="p-3.5 rounded-xl bg-steel-50 border border-steel-200">
+              <div className="p-3.5 bg-steel-50 border border-steel-200">
                 <span className="text-[10px] sm:text-xs text-steel-500 uppercase tracking-wider font-bold block">PAT Net Profit</span>
-                <span className="text-xl font-black text-trust-700 mt-0.5 block">₹{activeMetric.patCr} Cr</span>
+                <span className="text-xl font-black text-steel-900 mt-0.5 block">₹{activeMetric.patCr} Cr</span>
               </div>
-              <div className="p-3.5 rounded-xl bg-steel-50 border border-steel-200">
+              <div className="p-3.5 bg-steel-50 border border-steel-200">
                 <span className="text-[10px] sm:text-xs text-steel-500 uppercase tracking-wider font-bold block">PAT Margin</span>
-                <span className="text-xl font-black text-authority-700 mt-0.5 block">{activeMetric.patMarginPct}%</span>
+                <span className="text-xl font-black text-steel-900 mt-0.5 block">{activeMetric.patMarginPct}%</span>
               </div>
             </div>
 
@@ -473,9 +473,9 @@ export const GrowthTimeline: React.FC = () => {
         </div>
 
         {/* Operating Leverage Key Insight Banner */}
-        <div className="mt-8 p-6 rounded-3xl liquid-glass liquid-glass-contractor flex flex-col sm:flex-row items-center justify-between gap-4 border border-growth-400/40 shadow-lg">
+        <div className="mt-8 p-6 card-base liquid-glass-contractor flex flex-col sm:flex-row items-center justify-between gap-4 border border-growth-400/40">
           <div className="flex items-center gap-4">
-            <div className="p-3 rounded-2xl bg-growth-100 text-growth-700 shrink-0 border border-growth-300">
+            <div className="p-3 bg-growth-100 text-steel-900 shrink-0 border border-steel-300 group-hover:border-growth-400">
               <Award className="w-7 h-7" />
             </div>
             <div>
@@ -502,15 +502,15 @@ export const GrowthTimeline: React.FC = () => {
                   ]
                 );
               }}
-              className="btn-secondary px-4 py-2.5 rounded-full text-xs font-bold flex items-center gap-1.5"
+              className="btn-secondary px-4 py-2.5 text-xs font-bold flex items-center gap-1.5"
             >
-              <Download className="w-4 h-4 text-growth-700" />
+              <Download className="w-4 h-4 text-steel-900" />
               <span>Download Report.pdf</span>
             </button>
 
             <a
               href="#inquiry-portal"
-              className="btn-primary px-5 py-2.5 rounded-full text-xs font-bold"
+              className="btn-primary px-5 py-2.5 text-xs font-bold"
             >
               Investor Deck Request
             </a>

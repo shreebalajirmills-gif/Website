@@ -20,12 +20,12 @@ function ThankYouContent() {
       <div className="max-w-2xl mx-auto px-4 sm:px-6 text-center relative z-10 space-y-8">
         
         {/* Success Icon */}
-        <div className="mx-auto w-20 h-20 rounded-3xl bg-emerald-50 text-emerald-600 border border-emerald-200 flex items-center justify-center shadow-lg animate-in zoom-in-90 duration-300">
+        <div className="mx-auto w-20 h-20 bg-emerald-50 text-emerald-600 border border-emerald-200 flex items-center justify-center animate-in zoom-in-90 duration-300">
           <CheckCircle2 className="w-10 h-10" />
         </div>
 
         <div className="space-y-3">
-          <span className="glass-pill px-4 py-1.5 text-xs font-bold text-emerald-800 uppercase tracking-widest inline-block border-emerald-300">
+          <span className="badge-base px-4 py-1.5 text-xs font-bold text-emerald-800 uppercase tracking-widest inline-block border-emerald-300">
             ENQUIRY CONFIRMED & ROUTED
           </span>
           <h1 className="text-3xl sm:text-5xl font-black text-steel-900 tracking-tight">
@@ -37,7 +37,7 @@ function ThankYouContent() {
         </div>
 
         {/* Expected Next Steps Card */}
-        <div className="liquid-glass-prominent rounded-3xl p-6 sm:p-8 border border-steel-200 shadow-xl space-y-6 text-left">
+        <div className="card-base card-product p-6 sm:p-8 border border-steel-200 space-y-6 text-left">
           
           <div className="flex items-center gap-3 border-b border-steel-200 pb-4">
             <Clock className="w-5 h-5 text-growth-600 shrink-0" />
@@ -57,21 +57,21 @@ function ThankYouContent() {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
               <Link
                 href="/products"
-                className="py-3 px-4 rounded-2xl bg-white border border-steel-200 text-steel-900 font-bold text-xs hover:bg-steel-50 hover:border-steel-300 transition-all flex items-center justify-center gap-2 shadow-sm"
+                className="py-3 px-4 bg-white border border-steel-200 text-steel-900 font-bold text-xs hover:bg-steel-50 hover:border-steel-300 transition-all flex items-center justify-center gap-2"
               >
                 <Package className="w-4 h-4 text-growth-600" />
                 <span>View Products</span>
               </Link>
               <Link
                 href="/calculator"
-                className="py-3 px-4 rounded-2xl bg-white border border-steel-200 text-steel-900 font-bold text-xs hover:bg-steel-50 hover:border-steel-300 transition-all flex items-center justify-center gap-2 shadow-sm"
+                className="py-3 px-4 bg-white border border-steel-200 text-steel-900 font-bold text-xs hover:bg-steel-50 hover:border-steel-300 transition-all flex items-center justify-center gap-2"
               >
                 <Calculator className="w-4 h-4 text-authority-600" />
                 <span>Steel Calculator</span>
               </Link>
               <Link
                 href="/"
-                className="py-3 px-4 rounded-2xl bg-slate-950 text-white font-bold text-xs hover:bg-slate-800 transition-all flex items-center justify-center gap-2 shadow-md"
+                className="py-3 px-4 bg-slate-950 text-white font-bold text-xs hover:bg-slate-800 transition-all flex items-center justify-center gap-2"
               >
                 <Home className="w-4 h-4 text-amber-400" />
                 <span>Return Home</span>

@@ -19,7 +19,7 @@ export default function NotFound() {
 
       <main id="main-content" className="flex-1 pt-36 pb-24 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto w-full text-center flex flex-col items-center justify-center space-y-8">
         
-        <div className="glass-pill px-4 py-1.5 inline-flex items-center gap-2 text-red-700 bg-red-50 border border-red-200 text-xs font-mono font-bold uppercase tracking-wider">
+        <div className="badge-base px-4 py-1.5 inline-flex items-center gap-2 text-red-700 bg-red-50 border border-red-200 text-xs font-mono font-bold uppercase tracking-wider">
           <ShieldAlert className="w-4 h-4 text-red-600" />
           HTTP 404 — PAGE NOT FOUND
         </div>
@@ -37,7 +37,7 @@ export default function NotFound() {
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full max-w-2xl pt-4">
           <Link
             href="/"
-            className="liquid-glass p-5 rounded-2xl border border-steel-200 hover:border-growth-400 text-left transition-all group space-y-2"
+            className="card-base p-5 border border-steel-200 hover:border-growth-400 text-left transition-all group space-y-2"
           >
             <Building2 className="w-5 h-5 text-growth-600 group-hover:scale-110 transition-transform" />
             <h2 className="text-sm font-bold text-slate-950">Platform Home</h2>
@@ -46,7 +46,7 @@ export default function NotFound() {
 
           <Link
             href="/products"
-            className="liquid-glass p-5 rounded-2xl border border-steel-200 hover:border-growth-400 text-left transition-all group space-y-2"
+            className="card-base p-5 border border-steel-200 hover:border-growth-400 text-left transition-all group space-y-2"
           >
             <Layers className="w-5 h-5 text-authority-600 group-hover:scale-110 transition-transform" />
             <h2 className="text-sm font-bold text-slate-950">Product Suite</h2>
@@ -55,7 +55,7 @@ export default function NotFound() {
 
           <Link
             href="/contact"
-            className="liquid-glass p-5 rounded-2xl border border-steel-200 hover:border-growth-400 text-left transition-all group space-y-2"
+            className="card-base p-5 border border-steel-200 hover:border-growth-400 text-left transition-all group space-y-2"
           >
             <Phone className="w-5 h-5 text-trust-600 group-hover:scale-110 transition-transform" />
             <h2 className="text-sm font-bold text-slate-950">Contact Desk</h2>
@@ -66,7 +66,7 @@ export default function NotFound() {
         <div className="pt-4">
           <Link
             href="/"
-            className="btn-primary py-3 px-6 rounded-full text-xs font-extrabold inline-flex items-center gap-2"
+            className="btn-primary py-3 px-6 text-xs font-extrabold inline-flex items-center gap-2"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Return to Main Website</span>
