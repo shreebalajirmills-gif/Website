@@ -25,9 +25,9 @@ export const FloatingWhatsApp: React.FC<FloatingWhatsAppProps> = ({
         className="group relative inline-flex items-center gap-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-mono font-bold text-xs sm:text-sm px-4 py-3 hover:shadow-emerald-500/25 transition-all duration-300 transform hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2 border border-emerald-400/40"
       >
         {/* Pulse Indicator */}
-        <span className="relative flex h-3 w-3">
-          <span className="animate-ping absolute inline-flex h-full w-full bg-emerald-200 opacity-75"></span>
-          <span className="relative inline-flex h-3 w-3 bg-emerald-100"></span>
+        <span className="relative flex h-2.5 w-2.5 shrink-0">
+          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-200 opacity-75"></span>
+          <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-100"></span>
         </span>
 
         {/* WhatsApp Icon */}
