@@ -30,7 +30,7 @@ export const Footer: React.FC<FooterProps> = ({ onSelectSegment = () => {} }) =>
             <div className="flex items-center gap-3">
               <img 
                 src="/logo.png" 
-                alt="Shree Balaji Rolling Mills Private Limited Logo" 
+                alt="Shree Balaji Rolling Mills Limited Logo" 
                 width={180}
                 height={48}
                 loading="lazy"
@@ -182,7 +182,7 @@ export const Footer: React.FC<FooterProps> = ({ onSelectSegment = () => {} }) =>
 
         {/* Bottom Legal & Copyright Bar */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-400 font-medium">
-          <p>© {new Date().getFullYear()} Shree Balaji Rolling Mills Private Limited. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Shree Balaji Rolling Mills Limited. All rights reserved.</p>
           <div className="flex flex-wrap items-center gap-6">
             <Link
               href="/templates/privacy"

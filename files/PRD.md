@@ -701,7 +701,7 @@ Acceptance Criteria:
 ```
 ┌──────────────────────────────────────────────────────────┐
 │                                                          │
-│  SHREE BALAJI ROLLING MILLS PVT. LTD.                    │
+│  SHREE BALAJI ROLLING MILLS LTD.                    │
 │                                                          │
 │  Products        |  Company      |  Support             │
 │  • Structural    |  • About      |  • Contact Us        │

@@ -8,7 +8,7 @@ import { CheckCircle2, Package, Calculator, Home, Clock, PhoneCall } from 'lucid
 
 export const metadata: Metadata = constructMetadata({
   title: 'Enquiry Submitted | Shree Balaji Rolling Mills',
-  description: 'Thank you for submitting your commercial inquiry to Shree Balaji Rolling Mills Private Limited.',
+  description: 'Thank you for submitting your commercial inquiry to Shree Balaji Rolling Mills Limited.',
   noIndex: true,
 });
 

@@ -12,7 +12,7 @@ export function downloadDynamicPdf(filename: string, title: string, contentLines
 
   const cleanTitle = sanitizeText(title);
   const dateStr = sanitizeText(`Generated: ${new Date().toLocaleDateString('en-US', { dateStyle: 'full' })}`);
-  const headerStr = sanitizeText('SHREE BALAJI ROLLING MILLS PRIVATE LIMITED');
+  const headerStr = sanitizeText('SHREE BALAJI ROLLING MILLS LIMITED');
 
   // Build PDF Stream Instructions
   let streamText = `BT\n`;

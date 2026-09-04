@@ -54,7 +54,7 @@ export async function sendInquiryEmails(data: InquiryEmailPayload) {
             <tr><td style="padding: 10px; color: #94a3b8; font-weight: bold;">Project Requirement:</td><td style="padding: 10px; color: #e2e8f0; line-height: 1.5;">${data.message || 'None provided'}</td></tr>
           </table>
           <div style="margin-top: 24px; padding: 12px; background-color: #1e293b; border-radius: 8px; font-size: 12px; color: #94a3b8; text-align: center;">
-            Dispatched via Shree Balaji Rolling Mills Private Limited API Engine.
+            Dispatched via Shree Balaji Rolling Mills Limited API Engine.
           </div>
         </div>
       `,
@@ -64,11 +64,11 @@ export async function sendInquiryEmails(data: InquiryEmailPayload) {
     const customerMailOptions = {
       from: `"Shree Balaji Rolling Mills" <${smtpUser}>`,
       to: data.email,
-      subject: `Inquiry Confirmation [${data.inquiryId}] — Shree Balaji Rolling Mills Pvt. Ltd.`,
+      subject: `Inquiry Confirmation [${data.inquiryId}] — Shree Balaji Rolling Mills Ltd.`,
       html: `
         <div style="font-family: Arial, sans-serif; background-color: #f8fafc; color: #0f172a; padding: 32px; border: 1px solid #e2e8f0; border-radius: 16px; max-width: 600px; margin: auto;">
           <div style="text-align: center; margin-bottom: 24px;">
-            <h1 style="color: #0f172a; margin: 0; font-size: 22px; font-weight: 800;">Shree Balaji Rolling Mills Pvt. Ltd.</h1>
+            <h1 style="color: #0f172a; margin: 0; font-size: 22px; font-weight: 800;">Shree Balaji Rolling Mills Ltd.</h1>
             <p style="color: #64748b; font-size: 12px; font-family: monospace; margin-top: 4px; uppercase; letter-spacing: 1px;">Bhiwadi, Haryana | 180,000 TPA Total Throughput</p>
           </div>
 
@@ -91,7 +91,7 @@ export async function sendInquiryEmails(data: InquiryEmailPayload) {
           <hr style="border: none; border-top: 1px solid #e2e8f0; margin: 28px 0;" />
 
           <div style="font-size: 12px; color: #64748b; line-height: 1.5;">
-            <strong>Shree Balaji Rolling Mills Private Limited</strong><br/>
+            <strong>Shree Balaji Rolling Mills Limited</strong><br/>
             Factory Location: Bhiwadi, Haryana | Business Region: Delhi NCR<br/>
             Product Scope: BIS IS 2062 Structural Steel & IS 1786 Fe-500D TMT Bars
           </div>

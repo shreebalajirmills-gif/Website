@@ -25,7 +25,7 @@ const TEMPLATES: Record<string, TemplateData> = {
     badge: 'Legal & Data Governance',
     updatedAt: 'August 2026',
     description:
-      'Official Privacy Policy and Data Governance Policy for Shree Balaji Rolling Mills Private Limited.',
+      'Official Privacy Policy and Data Governance Policy for Shree Balaji Rolling Mills Limited.',
     sections: [
       {
         heading: '1. Overview & Data Collection',
@@ -282,7 +282,7 @@ export default async function TemplatePage({ params }: { params: Promise<{ slug:
         <div className="mt-12 p-6 bg-steel-100 border border-steel-300 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-medium">
           <div className="flex items-center gap-2 text-steel-700">
             <Building className="w-4 h-4 text-growth-600 shrink-0" />
-            <span>Shree Balaji Rolling Mills Private Limited — Official Digital Document Platform</span>
+            <span>Shree Balaji Rolling Mills Limited — Official Digital Document Platform</span>
           </div>
           <Link
             href="/"

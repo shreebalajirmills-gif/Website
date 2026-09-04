@@ -158,7 +158,7 @@ export const Header: React.FC<HeaderProps> = ({ onSelectSegment }) => {
           <Link href="/" onClick={handleLogoClick} className="flex items-center gap-2 sm:gap-3 group shrink-0">
             <img 
               src="/logo.png" 
-              alt="Shree Balaji Rolling Mills Private Limited Logo" 
+              alt="Shree Balaji Rolling Mills Limited Logo" 
               width={180}
               height={48}
               loading="eager"

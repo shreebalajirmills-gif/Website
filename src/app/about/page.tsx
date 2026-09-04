@@ -18,7 +18,7 @@ import {
 export const metadata: Metadata = constructMetadata({
   title: 'About Us & Mill History | 180,000 TPA Capacity',
   description:
-    'Discover the journey of Shree Balaji Rolling Mills Private Limited from a regional rolling mill in Bhiwadi, Haryana to a 180,000 TPA structural steel & Fe-500D TMT bar manufacturing platform.',
+    'Discover the journey of Shree Balaji Rolling Mills Limited from a regional rolling mill in Bhiwadi, Haryana to a 180,000 TPA structural steel & Fe-500D TMT bar manufacturing platform.',
   canonicalUrl: '/about',
   keywords: [
     'About Shree Balaji Rolling Mills',
@@ -30,7 +30,7 @@ export const metadata: Metadata = constructMetadata({
 
 export default function AboutPage() {
   const milestones = [
-    { year: '2010', title: 'Company Establishment', desc: 'Shree Balaji Rolling Mills Private Limited incorporated with foundational vision for Northern India infrastructure steel.' },
+    { year: '2010', title: 'Company Establishment', desc: 'Shree Balaji Rolling Mills Limited incorporated with foundational vision for Northern India infrastructure steel.' },
     { year: '2015', title: '36,000 TPA Structural Steel Mill', desc: 'Bhiwadi, Haryana rolling facility commissioned for IS 2062 MS Angles, Channels, and Joists.' },
     { year: '2022', title: '144,000 TPA TMT Expansion Plan', desc: 'Initiated ₹12+ Crore capital expansion for Thermex quenched IS 1786 Fe-500D TMT bar production.' },
     { year: 'FY25', title: '₹242.33 Cr Revenue Base', desc: 'Achieved major operational milestone supplying leading civic, industrial, and real estate projects in NCR.' },
@@ -57,7 +57,7 @@ export default function AboutPage() {
           <div className="badge-base px-5 py-2 inline-flex items-center gap-2.5 backdrop-blur-xl border-steel-300 mb-6">
             <Building2 className="w-4 h-4 text-growth-600" />
             <span className="text-xs sm:text-sm font-mono font-bold text-steel-900 uppercase tracking-wider">
-              SHREE BALAJI ROLLING MILLS PVT. LTD.
+              SHREE BALAJI ROLLING MILLS LTD.
             </span>
           </div>
 

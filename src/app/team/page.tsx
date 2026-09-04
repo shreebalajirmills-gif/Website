@@ -8,7 +8,7 @@ import { Code2, ExternalLink, ShieldCheck } from 'lucide-react';
 export const metadata: Metadata = constructMetadata({
   title: 'Tech Team | Shree Balaji Rolling Mills',
   description:
-    'Engineering and digital infrastructure desk for Shree Balaji Rolling Mills Private Limited.',
+    'Engineering and digital infrastructure desk for Shree Balaji Rolling Mills Limited.',
   canonicalUrl: '/team',
 });
 
@@ -31,7 +31,7 @@ export default function TeamPage() {
               Tech Team
             </h1>
             <p className="text-sm text-steel-600 max-w-md mx-auto leading-relaxed font-normal">
-              Digital architecture, platform security, and web engineering for Shree Balaji Rolling Mills Private Limited.
+              Digital architecture, platform security, and web engineering for Shree Balaji Rolling Mills Limited.
             </p>
           </div>
 

@@ -274,7 +274,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onSelectSegment 
               <span>Factory & Corporate Locations</span>
             </h3>
             <p className="text-xs text-steel-600 leading-relaxed font-normal">
-              Shree Balaji Rolling Mills Private Limited operates steel manufacturing and corporate sales desks serving Northern India.
+              Shree Balaji Rolling Mills Limited operates steel manufacturing and corporate sales desks serving Northern India.
             </p>
 
             <div className="space-y-3 pt-2 text-xs">

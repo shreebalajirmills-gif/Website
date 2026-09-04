@@ -408,7 +408,7 @@ export default function ManufacturingProcessesPage() {
               Our Commitment to Environment & Zero Defect
             </h2>
             <p className="text-steel-600 text-sm sm:text-base leading-relaxed">
-              At Shree Balaji Rolling Mills Private Limited, quality and sustainability go hand in hand. Our Bhiwadi plant utilizes 100% recyclable steel scrap, energy-efficient furnace recuperators, and zero-effluent discharge water cooling systems.
+              At Shree Balaji Rolling Mills Limited, quality and sustainability go hand in hand. Our Bhiwadi plant utilizes 100% recyclable steel scrap, energy-efficient furnace recuperators, and zero-effluent discharge water cooling systems.
             </p>
           </div>
 

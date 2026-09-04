@@ -1,13 +1,13 @@
 import contactData from './contact.json';
 
 export const SITE_CONFIG = {
-  name: 'Shree Balaji Rolling Mills Private Limited',
+  name: 'Shree Balaji Rolling Mills Limited',
   shortName: 'Shree Balaji Rolling Mills',
   acronym: 'SBMPL',
   url: (process.env.NEXT_PUBLIC_SITE_URL || 'https://shree-balaji-site.pages.dev').replace(/\/$/, ''),
   ogImage: '/logo.png',
   description:
-    'Shree Balaji Rolling Mills Private Limited is a premier steel manufacturer in Bhiwadi, Haryana & Delhi NCR, producing BIS certified IS 2062 Structural Steel shapes and IS 1786 Fe-500D TMT bars with 180,000 TPA total rolling capacity.',
+    'Shree Balaji Rolling Mills Limited is a premier steel manufacturer in Bhiwadi, Haryana & Delhi NCR, producing BIS certified IS 2062 Structural Steel shapes and IS 1786 Fe-500D TMT bars with 180,000 TPA total rolling capacity.',
   keywords: [
     'Shree Balaji Rolling Mills',
     'Structural Steel Manufacturers',
