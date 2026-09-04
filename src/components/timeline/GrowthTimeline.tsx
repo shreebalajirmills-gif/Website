@@ -3,14 +3,14 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { FINANCIAL_METRICS } from '@/data/financial';
 import { FinancialGrowthMetric } from '@/types';
-import { BarChart3, Zap, Award, Download, TrendingUp, Layers, Activity } from 'lucide-react';
+import { BarChart3, Zap, Award, Download, TrendingUp, Layers } from 'lucide-react';
 import { downloadDynamicPdf } from '@/lib/pdf-generator';
 import { SteelSparksCanvas } from '@/components/3d/SteelSparksCanvas';
 import { motion, useScroll, useSpring, useMotionValueEvent } from 'framer-motion';
 
 export const GrowthTimeline: React.FC = () => {
   const [selectedYear, setSelectedYear] = useState<string>(FINANCIAL_METRICS[0].year);
-  const [chartMode, setChartMode] = useState<'revenue' | 'capacity' | 'ebitda'>('revenue');
+  const [chartMode, setChartMode] = useState<'revenue' | 'capacity'>('revenue');
   const [isManualSelection, setIsManualSelection] = useState<boolean>(false);
   const [chartDimensions, setChartDimensions] = useState({ width: 560, height: 240, padLeft: 55, padRight: 35, padTop: 30, padBottom: 40 });
 
@@ -68,11 +68,6 @@ export const GrowthTimeline: React.FC = () => {
       maxVal = 200000;
       unit = 'TPA';
       labelVal = `${(item.capacityTpa / 1000).toFixed(0)}k TPA`;
-    } else if (chartMode === 'ebitda') {
-      val = item.ebitdaMarginPct;
-      maxVal = 6;
-      unit = '%';
-      labelVal = `${item.ebitdaMarginPct}%`;
     }
 
     const ratio = Math.min(val / maxVal, 1);
@@ -120,7 +115,7 @@ export const GrowthTimeline: React.FC = () => {
     setTimeout(() => setIsManualSelection(false), 5000);
   };
 
-  const handleManualModeSelect = (mode: 'revenue' | 'capacity' | 'ebitda') => {
+  const handleManualModeSelect = (mode: 'revenue' | 'capacity') => {
     setIsManualSelection(true);
     setChartMode(mode);
     setTimeout(() => setIsManualSelection(false), 5000);
@@ -252,18 +247,6 @@ export const GrowthTimeline: React.FC = () => {
                   <Layers className="w-3.5 h-3.5" />
                   <span>Capacity</span>
                 </button>
-                <button
-                  type="button"
-                  onClick={() => handleManualModeSelect('ebitda')}
-                  className={`px-3 py-1  transition-all flex items-center gap-1 cursor-pointer ${
-                    chartMode === 'ebitda'
-                      ? 'bg-growth-50 text-growth-700 font-black'
-                      : 'text-steel-600 hover:text-growth-700'
-                  }`}
-                >
-                  <Activity className="w-3.5 h-3.5" />
-                  <span>Margin %</span>
-                </button>
               </div>
             </div>
 
@@ -324,7 +307,7 @@ export const GrowthTimeline: React.FC = () => {
                   d={pathD}
                   fill="none"
                   stroke="#059669"
-                  strokeWidth="4"
+                  strokeWidth="0.6"
                   strokeLinecap="round"
                   filter="url(#glow)"
                   clipPath="url(#scrollCurveClip)"
@@ -337,8 +320,8 @@ export const GrowthTimeline: React.FC = () => {
                   animate={{ x: activePoint.cx, y: activePoint.cy }}
                   transition={{ type: 'spring', stiffness: 160, damping: 22 }}
                 >
-                  <circle r="14" className="fill-growth-500/30 animate-ping" />
-                  <circle r="6" className="fill-growth-600 stroke-white stroke-2" />
+                  <circle r="9" className="fill-growth-500/30 animate-ping" />
+                  <circle r="4" className="fill-growth-600 stroke-white stroke-2" />
                 </motion.g>
 
                 {/* Data Points & Interactive Nodes */}
@@ -448,13 +431,12 @@ export const GrowthTimeline: React.FC = () => {
                 <span className="text-[10px] sm:text-xs text-steel-500 uppercase tracking-wider font-bold block">EBITDA Margin</span>
                 <span className="text-xl font-black text-steel-900 mt-0.5 block">{activeMetric.ebitdaMarginPct}%</span>
               </div>
-              <div className="p-3.5 bg-steel-50 border border-steel-200">
-                <span className="text-[10px] sm:text-xs text-steel-500 uppercase tracking-wider font-bold block">PAT Net Profit</span>
-                <span className="text-xl font-black text-steel-900 mt-0.5 block">₹{activeMetric.patCr} Cr</span>
-              </div>
-              <div className="p-3.5 bg-steel-50 border border-steel-200">
-                <span className="text-[10px] sm:text-xs text-steel-500 uppercase tracking-wider font-bold block">PAT Margin</span>
-                <span className="text-xl font-black text-steel-900 mt-0.5 block">{activeMetric.patMarginPct}%</span>
+              <div className="p-3.5 bg-steel-50 border border-steel-200 col-span-2 flex items-center justify-between">
+                <div>
+                  <span className="text-[10px] sm:text-xs text-steel-500 uppercase tracking-wider font-bold block">PAT Net Profit</span>
+                  <span className="text-xl font-black text-steel-900 mt-0.5 block">₹{activeMetric.patCr} Cr</span>
+                </div>
+                <span className="text-[11px] font-mono text-steel-500 font-semibold uppercase tracking-wider">After Tax Earnings</span>
               </div>
             </div>
 
@@ -496,7 +478,7 @@ export const GrowthTimeline: React.FC = () => {
                   [
                     'Baseline FY26: Revenue ₹203 Cr | EBITDA 2.42% | PAT ₹0.95 Cr',
                     'Inflection FY27-FY28: Revenue ₹260 Cr -> ₹812 Cr | Capacity 180,000 TPA',
-                    'Scale FY29-FY30: Revenue ₹903 Cr -> ₹1,006 Cr | PAT ₹30.00 Cr (2.98%)',
+                    'Scale FY29-FY30: Revenue ₹903 Cr -> ₹1,006 Cr | PAT Net Profit ₹30.00 Cr',
                     'Key Driver: Operating leverage & TMT Rebar Fe-500D 144,000 TPA expansion',
                     'Factory: Bhiwadi, Haryana | Head Office: Delhi NCR'
                   ]

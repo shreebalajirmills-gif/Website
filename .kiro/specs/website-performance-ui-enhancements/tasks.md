@@ -44,12 +44,12 @@ Implement the three-pillar enhancement strategy for the Shree Balaji Rolling Mil
     - Add `@media (prefers-reduced-motion: reduce)` rule to disable shimmer animation
     - _Requirements: 3.1, 3.2, 3.3, 17.3_
 
-  - [~] 3.2 Create `HeroSectionSkeleton` and `ProductHubSkeleton`
+  - [ ] 3.2 Create `HeroSectionSkeleton` and `ProductHubSkeleton`
     - Create `src/components/ui/skeleton/HeroSectionSkeleton.tsx` mirroring the hero section layout (badge, 3 heading lines, 4 card placeholders in `grid-cols-4`, metric banner)
     - Create `src/components/ui/skeleton/ProductHubSkeleton.tsx` mirroring the product hub layout (heading block, 2 full-height cards in `grid-cols-2`)
     - _Requirements: 3.4, 3.5, 3.6, 3.7_
 
-  - [~] 3.3 Create remaining section skeletons
+  - [ ] 3.3 Create remaining section skeletons
     - Create `GrowthTimelineSkeleton`, `InquiryFormSkeleton`, `TrustSectionSkeleton`, `ContactSectionSkeleton`, and `FooterSkeleton` in `src/components/ui/skeleton/`
     - Each must mirror the real component's outer dimensions to prevent CLS
     - _Requirements: 3.6, 3.7_
@@ -108,52 +108,52 @@ Implement the three-pillar enhancement strategy for the Shree Balaji Rolling Mil
     - _Requirements: 7.1, 7.2, 7.3, 7.4, 21.2_
 
 - [ ] 6. Build animation UI components
-  - [~] 6.1 Create `src/components/ui/animation/ScrollAnimationWrapper.tsx`
+  - [ ] 6.1 Create `src/components/ui/animation/ScrollAnimationWrapper.tsx`
     - Accept `variant`, `delay`, `threshold`, `once`, `className`, and `as` props
     - Use `useScrollAnimation` for intersection detection and apply the selected `ANIMATION_VARIANTS` entry
     - Log a `console.warn` and render children without animation when `variant` is unknown
     - Skip animation entirely (render in `visible` state) when `useReducedMotion` is active
     - _Requirements: 5.1, 5.2, 5.3, 5.4, 4.5_
 
-  - [~] 6.2 Create `src/components/ui/animation/StaggerContainer.tsx` with `StaggerItem`
+  - [ ] 6.2 Create `src/components/ui/animation/StaggerContainer.tsx` with `StaggerItem`
     - `StaggerContainer` uses `whileInView` with `staggerChildren: 0.08` and `delayChildren: 0.1`
     - `StaggerItem` animates from `{ opacity: 0, y: 24 }` to `{ opacity: 1, y: 0 }` over 0.5s
     - _Requirements: 5.5, 5.6_
 
-  - [~] 6.3 Create `src/components/ui/animation/PageTransition.tsx`
+  - [ ] 6.3 Create `src/components/ui/animation/PageTransition.tsx`
     - Wrap children in `AnimatePresence mode="wait"` keyed on `usePathname()`
     - Exit animation: `{ opacity: 0, y: -8 }` over 0.25s; enter: `{ opacity: 0, y: 12 }` → `{ opacity: 1, y: 0 }` over 0.35s
     - When `useReducedMotion` is active, use `initial={false}` and zero transition duration
     - _Requirements: 6.1, 6.2, 6.3, 6.4, 6.5, 17.6_
 
-  - [~] 6.4 Create `src/components/ui/animation/ScrollProgress.tsx`
+  - [ ] 6.4 Create `src/components/ui/animation/ScrollProgress.tsx`
     - Use `useScroll()` → `scrollYProgress` smoothed via `useSpring({ stiffness: 100, damping: 30, restDelta: 0.001 })`
     - Render a `fixed top-0` full-width bar (height `0.5` / 2px) with `z-[100]` and amber gradient; `aria-hidden="true"`
     - _Requirements: 13.1, 13.2, 13.3_
 
-  - [~] 6.5 Create `src/components/ui/animation/ParallaxLayer.tsx`
+  - [ ] 6.5 Create `src/components/ui/animation/ParallaxLayer.tsx`
     - Accept `speed` (default 0.2) and map `scrollYProgress [0,1]` to `y: [-speed*80px, speed*80px]`
     - Apply zero y-translation when `useReducedMotion` is active
     - _Requirements: 14.1, 14.3, 17.7_
 
-  - [~] 6.6 Create `src/components/ui/animation/TiltCard.tsx`
+  - [ ] 6.6 Create `src/components/ui/animation/TiltCard.tsx`
     - Track pointer position within card bounds and compute `rotateX`/`rotateY` bounded by `±intensity` degrees (default 8°)
     - Use `useSpring` with stiffness 300 and damping 30; spring back to 0 on mouse leave
     - Apply no 3D transforms when `useReducedMotion` is active
     - _Requirements: 15.1, 15.2, 15.3, 17.8_
 
-  - [~] 6.7 Create `src/components/ui/animation/FlickerText.tsx`
+  - [ ] 6.7 Create `src/components/ui/animation/FlickerText.tsx`
     - Animate opacity through `[1, 0.85, 1, 0.9, 1, 0.75, 1]` over 0.6s with `repeatDelay: 4` and `repeat: Infinity`
     - Render children with no animation when `useReducedMotion` is active
     - _Requirements: 12.1, 12.2, 17.9_
 
-  - [~] 6.8 Create `src/components/ui/animation/TextReveal.tsx`
+  - [ ] 6.8 Create `src/components/ui/animation/TextReveal.tsx`
     - Split `text` into individual characters and animate each from `{ opacity: 0, y: 16 }` to `{ opacity: 1, y: 0 }` with 0.025s stagger, triggered `whileInView once`
     - Set `aria-label={text}` on the container; `aria-hidden="true"` on each character `span`
     - Render plain `<span>{text}</span>` when `useReducedMotion` is active
     - _Requirements: 12.3, 12.4, 12.5, 17.10_
 
-- [~] 7. Checkpoint — wire foundation together
+- [ ] 7. Checkpoint — wire foundation together
   - Mount `MouseTrackerProvider`, `PageTransition`, and `ScrollProgress` in `src/app/layout.tsx`
   - `MouseTrackerProvider` wraps body content; `PageTransition` wraps `{children}`; `ScrollProgress` is a sibling before children
   - Verify dev server starts without errors and scroll progress bar is visible
@@ -161,129 +161,129 @@ Implement the three-pillar enhancement strategy for the Shree Balaji Rolling Mil
   - Ensure all tests pass, ask the user if questions arise.
 
 - [ ] 8. Implement Web Vitals reporting
-  - [~] 8.1 Create `src/lib/web-vitals.ts` with `reportWebVitals` function
+  - [ ] 8.1 Create `src/lib/web-vitals.ts` with `reportWebVitals` function
     - Log `[Web Vitals] name: value` in development
     - Send beacon to `/api/vitals` with `{ name, value, rating, id }` in production
     - _Requirements: 20.1, 20.2, 20.3_
 
-  - [~] 8.2 Create `src/instrumentation.ts` registration file
+  - [ ] 8.2 Create `src/instrumentation.ts` registration file
     - Export `register()` that dynamically imports `web-vitals` and hooks `onCLS`, `onFCP`, `onLCP`, `onTTFB`, `onINP` to `reportWebVitals`
     - _Requirements: 20.1_
 
-  - [~] 8.3 Create `/api/vitals` route handler at `src/app/api/vitals/route.ts`
+  - [ ] 8.3 Create `/api/vitals` route handler at `src/app/api/vitals/route.ts`
     - Accept `POST` requests with JSON body `{ name, value, rating, id }`
     - Return `200 OK`; log or forward to analytics as appropriate
     - _Requirements: 20.3_
 
 - [ ] 9. Add Hero section entrance animations and counters
-  - [~] 9.1 Animate `h1`, subheading, and floating badge in `HeroSection.tsx`
+  - [ ] 9.1 Animate `h1`, subheading, and floating badge in `HeroSection.tsx`
     - Wrap `<h1>` in `motion.h1` with `initial={{ opacity: 0, y: 40 }}` → `animate={{ opacity: 1, y: 0 }}`, duration 0.7s, delay 0.1s
     - Wrap subheading `<p>` in `motion.p` with `initial={{ opacity: 0, y: 24 }}` → duration 0.6s, delay 0.25s
     - Wrap the floating badge `<div>` in `motion.div` with `animate={{ y: [0, -8, 0] }}`, duration 5s, `repeat: Infinity, ease: 'easeInOut'`
     - _Requirements: 9.1, 9.2, 9.6_
 
-  - [~] 9.2 Wrap four CTA segment cards with `StaggerContainer`, `StaggerItem`, `TiltCard`, and hover spring
+  - [ ] 9.2 Wrap four CTA segment cards with `StaggerContainer`, `StaggerItem`, `TiltCard`, and hover spring
     - Replace the raw `grid` wrapper with `<StaggerContainer className="grid ...">` and wrap each card in `<StaggerItem>`
     - Wrap each card in `<TiltCard>` for 3D perspective tilt
     - Apply `whileHover={{ y: -6, scale: 1.02 }}` and `whileTap={{ scale: 0.97 }}` with spring stiffness 400, damping 25
     - _Requirements: 9.3, 9.4, 9.5, 9.8, 18.1_
 
-  - [~] 9.3 Animate metric banner counters with `useAnimatedCounter`
+  - [ ] 9.3 Animate metric banner counters with `useAnimatedCounter`
     - Replace static metric values with `useAnimatedCounter` instances (revenue ₹203 Cr, capacity 180,000 TPA, margin 2.42%, scale ₹1,000 Cr)
     - Use `useScrollAnimation({ threshold: 0.5 })` on the banner ref and call `start()` on each counter when `isInView` becomes true
     - _Requirements: 9.7_
 
-  - [~] 9.4 Wrap hero ambient glow elements in `ParallaxLayer`
+  - [ ] 9.4 Wrap hero ambient glow elements in `ParallaxLayer`
     - Wrap each `ambient-liquid-glow` div in `<ParallaxLayer speed={0.15} className="absolute inset-0 pointer-events-none">`
     - _Requirements: 14.2_
 
 - [ ] 10. Add Header scroll and navigation animations
-  - [~] 10.1 Add scroll-aware backdrop blur and active nav pill to `Header.tsx`
+  - [ ] 10.1 Add scroll-aware backdrop blur and active nav pill to `Header.tsx`
     - Import `useScroll`, `useTransform` from `framer-motion`; compute `headerBlur` from `scrollY [0, 80] → [16, 28]`
     - Convert `<header>` to `<motion.header>` and apply the blur transform via `style`
     - Replace the active nav link `<Link>` styling with a `motion.span layoutId="nav-active-pill"` rendered when `isActive`, using spring stiffness 380, damping 30
     - _Requirements: 10.1, 10.2_
 
-  - [~] 10.2 Replace CSS-animated mobile menu drawer with Framer Motion `AnimatePresence`
+  - [ ] 10.2 Replace CSS-animated mobile menu drawer with Framer Motion `AnimatePresence`
     - Remove `animate-in slide-in-from-top` Tailwind class from the mobile menu div
     - Wrap mobile menu render in `<AnimatePresence>` and add `motion.div` with enter `{ opacity: 0, y: -16, scale: 0.97 }` → `{ opacity: 1, y: 0, scale: 1 }` spring (stiffness 350, damping 30)
     - Add exit `{ opacity: 0, y: -12, scale: 0.97 }`
     - _Requirements: 10.3, 10.4_
 
 - [ ] 11. Add ProductHub animations
-  - [~] 11.1 Wrap product cards in `StaggerContainer` and add 3D viewer expand/collapse animation
+  - [ ] 11.1 Wrap product cards in `StaggerContainer` and add 3D viewer expand/collapse animation
     - Wrap the product card grid with `<StaggerContainer>` and each card in `<StaggerItem>`
     - Replace any CSS transition on the 3D viewer toggle with `<AnimatePresence>` + `motion.div` animating `{ height: 0, opacity: 0 }` → `{ height: 320, opacity: 1 }` over 0.4s
     - Add keyboard `Tab` + `Enter` accessibility to the toggle
     - _Requirements: 11.1, 11.2, 18.3_
 
-  - [~] 11.2 Add spring entrance animation to the product detail modal
+  - [ ] 11.2 Add spring entrance animation to the product detail modal
     - Wrap the modal backdrop in `motion.div` with `initial={{ opacity: 0 }}` → `animate={{ opacity: 1 }}`
     - Wrap the modal panel in `motion.div` with `initial={{ opacity: 0, scale: 0.94, y: 20 }}` → spring stiffness 300, damping 28
     - _Requirements: 11.3_
 
 - [ ] 12. Add GrowthTimeline animations
-  - [~] 12.1 Add SVG path draw-in and milestone dot spring stagger to `GrowthTimeline`
+  - [ ] 12.1 Add SVG path draw-in and milestone dot spring stagger to `GrowthTimeline`
     - Apply `initial={{ pathLength: 0 }}` → `whileInView={{ pathLength: 1 }}` over 2.5s with `viewport={{ once: true, amount: 0.3 }}` to the SVG `<motion.path>`
     - Apply per-milestone `motion.circle` with `initial={{ scale: 0, opacity: 0 }}` → `whileInView spring` at stiffness 400, each delayed by `index * 0.3s`
     - _Requirements: 11.4, 11.5_
 
-  - [~] 12.2 Add `useAnimatedCounter` revenue counters to `GrowthTimeline`
+  - [ ] 12.2 Add `useAnimatedCounter` revenue counters to `GrowthTimeline`
     - Replace static FY milestone numbers (FY26 ₹203 Cr through FY30 ₹1,006 Cr) with `useAnimatedCounter` instances with custom formatters and durations between 1.8s–2.5s
     - Start counters when the milestone enters view using `useScrollAnimation`
     - _Requirements: 11.6_
 
 - [ ] 13. Add TrustSection, ContactSection, InquiryForm, and Footer animations
-  - [~] 13.1 Add badge stagger and stat counter to `TrustSection`
+  - [ ] 13.1 Add badge stagger and stat counter to `TrustSection`
     - Wrap certification badges in `<StaggerContainer>` + `<StaggerItem>` with `whileHover={{ scale: 1.06, rotate: 1 }}` spring (stiffness 500, damping 20)
     - Replace static "98.5%" stat with `useAnimatedCounter({ to: 98.5, decimals: 1, duration: 2.0 })` triggered on scroll
     - _Requirements: 11.7, 11.8_
 
-  - [~] 13.2 Add card hover micro-animations to `ContactSection`
+  - [ ] 13.2 Add card hover micro-animations to `ContactSection`
     - Convert contact card wrappers to `motion.div` with `whileHover={{ y: -8 }}` and amber box-shadow, spring stiffness 350, damping 25
     - _Requirements: 11.9_
 
-  - [~] 13.3 Add step-slide transition to `InquiryForm`
+  - [ ] 13.3 Add step-slide transition to `InquiryForm`
     - Wrap the current-step render in `<AnimatePresence mode="wait">` + `motion.div` keyed on `currentStep`
     - Exit: `{ opacity: 0, x: -30 }` over 0.3s; enter: from `{ opacity: 0, x: 40 }` over 0.3s
     - _Requirements: 11.10_
 
-  - [~] 13.4 Add underline draw animation to `Footer` links
+  - [ ] 13.4 Add underline draw animation to `Footer` links
     - Wrap each footer `<a>` in `motion.a whileHover="hover"` and add a child `motion.span` with `variants={{ initial: { scaleX: 0, originX: 0 }, hover: { scaleX: 1 } }}` over 0.25s
     - _Requirements: 11.11_
 
-- [~] 14. Checkpoint — all sections animated
+- [ ] 14. Checkpoint — all sections animated
   - Verify all section animations render in the browser without console errors
   - Confirm reduced-motion behavior: toggle `prefers-reduced-motion: reduce` in browser DevTools and assert all animations are suppressed
   - Ensure all tests pass, ask the user if questions arise.
 
 - [ ] 15. Enhance Three.js canvas components
-  - [~] 15.1 Refactor `SteelHeroCanvas` to use `MouseTrackerContext` and add keyboard nudge
+  - [ ] 15.1 Refactor `SteelHeroCanvas` to use `MouseTrackerContext` and add keyboard nudge
     - Remove `window.addEventListener('mousemove', handleMouseMove)` and consume `const { x: mouseX, y: mouseY } = useMouseTracker()` instead
     - Add a `targetRef.current` for keyboard-driven nudge: `useEffect` registers a `keydown` listener on the container element that adds `±0.05` to target rotation per arrow key press
     - Add `aria-label="Interactive 3D steel product visualization"` and `tabIndex={0}` to the container `div`
     - Update the rAF loop to read from `targetRef` for keyboard offset plus context mouse position
     - _Requirements: 16.1, 16.2, 16.3, 16.4, 18.2_
 
-  - [~] 15.2 Add scroll-driven multiplier to `SteelSparksCanvas`
+  - [ ] 15.2 Add scroll-driven multiplier to `SteelSparksCanvas`
     - Add `scroll` event listener (passive) that computes `scrollMultiplier ∈ [0.2, 2.5]` based on the growth section's `getBoundingClientRect()`
     - Scale particle y-velocities by `scrollMultiplier.current` each rAF tick
     - Remove listener on cleanup
     - _Requirements: 16.5, 16.6_
 
-  - [~] 15.3 Verify Three.js cleanup completeness across all three canvas components
+  - [ ] 15.3 Verify Three.js cleanup completeness across all three canvas components
     - Audit `SteelHeroCanvas`, `SteelSparksCanvas`, and `SteelProductViewer` cleanup functions
     - Ensure each cancels its rAF, removes all event listeners, disposes every geometry and material, and calls `renderer.dispose()`
     - _Requirements: 16.7_
 
-  - [~] 15.4 Create `WebGLErrorBoundary` component and wrap all Three.js canvases
+  - [ ] 15.4 Create `WebGLErrorBoundary` component and wrap all Three.js canvases
     - Create `src/components/3d/WebGLErrorBoundary.tsx` as a React class component error boundary
     - Render a static CSS gradient background matching the canvas colors when the boundary catches an error (WebGL unavailable or initialization failure)
     - Wrap `SteelHeroCanvas`, `SteelSparksCanvas`, and `SteelProductViewer` in `<WebGLErrorBoundary>` at their usage sites
     - _Requirements: 16.8_
 
 - [ ] 16. Write property-based tests
-  - [~] 16.1 Set up `fast-check` and write property tests for mouse normalization (Property 4) and counter behavior (Property 3)
+  - [ ] 16.1 Set up `fast-check` and write property tests for mouse normalization (Property 4) and counter behavior (Property 3)
     - Install `fast-check` as a dev dependency
     - Create `src/lib/__tests__/mouseNormalization.test.ts`
       - **Property 4: Mouse Position Normalization** — use `fc.property(fc.float, fc.float, fc.float, fc.float, fc.float)` to assert `|x| ≤ strength` and `|y| ≤ strength` for all inputs
@@ -302,7 +302,7 @@ Implement the three-pillar enhancement strategy for the Shree Balaji Rolling Mil
     - Assert children still render without animation
     - _Requirements: 4.5_
 
-- [~] 17. Final checkpoint — full integration verification
+- [ ] 17. Final checkpoint — full integration verification
   - Run `npm run build` (or `next build`) and confirm it completes without errors
   - Verify `ANALYZE=true npm run build` opens the bundle analyzer and `vendor-three` and `vendor-framer` chunks appear as separate async chunks
   - Confirm no hydration mismatch errors appear in the browser console on first load

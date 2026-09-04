@@ -52,7 +52,7 @@ export const FINANCIAL_METRICS: FinancialGrowthMetric[] = [
   {
     year: 'FY30',
     phase: 'Scale',
-    phaseDescription: 'Transition to a highly profitable ₹1,000+ Cr enterprise with peking PAT margins at nearly 3%.',
+    phaseDescription: 'Transition to a highly profitable ₹1,000+ Cr enterprise with accelerated PAT net profit scaling to ₹30 Cr.',
     revenueCr: 1006.40,
     ebitdaVolumeCr: 48.12,
     ebitdaMarginPct: 4.78,
