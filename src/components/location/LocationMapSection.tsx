@@ -50,54 +50,54 @@ export const LocationMapSection: React.FC<LocationMapSectionProps> = ({
             <div className="space-y-6">
               
               {/* Primary Plant Hub */}
-              <div className="space-y-3 p-5 rounded-xl bg-slate-900/60 border border-slate-800">
+              <div className="space-y-3.5 p-6 rounded-2xl bg-slate-900 border border-slate-700/80 shadow-md">
                 <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-amber-400 animate-ping" />
-                    <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-amber-400">
+                  <div className="flex items-center gap-2.5">
+                    <span className="w-2.5 h-2.5 rounded-full bg-amber-400 animate-pulse" />
+                    <span className="text-xs font-mono font-black uppercase tracking-wider text-amber-400">
                       Primary Rolling Mill Plant
                     </span>
                   </div>
-                  <span className="text-[11px] font-mono text-slate-500">180,000 TPA</span>
+                  <span className="text-xs font-mono font-bold text-slate-400 bg-slate-800 px-2.5 py-1 rounded-md border border-slate-700">180,000 TPA</span>
                 </div>
-                <h3 className="text-lg font-bold text-white">Bhiwadi Manufacturing Facility</h3>
-                <p className="text-xs text-slate-300 leading-relaxed font-normal">
+                <h3 className="text-xl font-black text-white tracking-tight">Bhiwadi Manufacturing Facility</h3>
+                <p className="text-sm text-slate-200 leading-relaxed font-normal">
                   {SITE_CONFIG.address.factory}
                 </p>
-                <div className="pt-1 flex items-center gap-3 text-[11px] font-mono text-slate-400">
-                  <span className="inline-flex items-center gap-1 text-slate-300">
-                    <Truck className="w-3.5 h-3.5 text-amber-400" /> NH-48 Heavy Freight Access
+                <div className="pt-2 flex items-center gap-3 text-xs font-mono text-slate-300">
+                  <span className="inline-flex items-center gap-1.5 text-amber-400 font-semibold">
+                    <Truck className="w-4 h-4" /> NH-48 Heavy Freight Access
                   </span>
-                  <span>•</span>
-                  <span>Weighbridge Active</span>
+                  <span className="text-slate-500">•</span>
+                  <span className="text-slate-300">Weighbridge Active</span>
                 </div>
               </div>
 
               {/* Commercial Sales Desk */}
-              <div className="space-y-3 p-5 rounded-xl bg-slate-900/60 border border-slate-800">
+              <div className="space-y-3.5 p-6 rounded-2xl bg-slate-900 border border-slate-700/80 shadow-md">
                 <div className="flex items-center justify-between">
-                  <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-slate-400">
+                  <span className="text-xs font-mono font-black uppercase tracking-wider text-slate-300">
                     Commercial Desk & Corporate Office
                   </span>
-                  <span className="text-[11px] font-mono text-slate-500">Sales & Tenders</span>
+                  <span className="text-xs font-mono font-bold text-amber-400 bg-slate-800 px-2.5 py-1 rounded-md border border-slate-700">Sales & Tenders</span>
                 </div>
-                <h3 className="text-lg font-bold text-white">Delhi NCR Business Office</h3>
-                <p className="text-xs text-slate-300 leading-relaxed font-normal">
+                <h3 className="text-xl font-black text-white tracking-tight">Delhi NCR Business Office</h3>
+                <p className="text-sm text-slate-200 leading-relaxed font-normal">
                   {SITE_CONFIG.address.office}
                 </p>
-                <div className="pt-2 flex flex-wrap gap-2.5 text-xs">
+                <div className="pt-2 flex flex-wrap gap-3 text-xs">
                   <a
                     href={`tel:${SITE_CONFIG.contact.phoneRaw}`}
-                    className="py-2 px-3.5 rounded-lg bg-slate-800/90 hover:bg-slate-700/90 text-white font-mono font-bold inline-flex items-center gap-2 border border-slate-700 transition-colors"
+                    className="py-2.5 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-mono font-bold inline-flex items-center gap-2 border border-slate-600 transition-colors shadow-sm"
                   >
-                    <Phone className="w-3.5 h-3.5 text-amber-400" />
+                    <Phone className="w-4 h-4 text-amber-400" />
                     <span>{SITE_CONFIG.contact.phone}</span>
                   </a>
                   <a
                     href={`mailto:${SITE_CONFIG.contact.email}`}
-                    className="py-2 px-3.5 rounded-lg bg-slate-800/90 hover:bg-slate-700/90 text-white font-mono font-bold inline-flex items-center gap-2 border border-slate-700 transition-colors truncate"
+                    className="py-2.5 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-mono font-bold inline-flex items-center gap-2 border border-slate-600 transition-colors truncate shadow-sm"
                   >
-                    <Mail className="w-3.5 h-3.5 text-slate-300" />
+                    <Mail className="w-4 h-4 text-amber-400" />
                     <span className="truncate">{SITE_CONFIG.contact.email}</span>
                   </a>
                 </div>
@@ -105,12 +105,19 @@ export const LocationMapSection: React.FC<LocationMapSectionProps> = ({
 
             </div>
 
-            {/* Operating Hours Bar */}
-            <div className="flex items-center gap-3 p-4 rounded-xl bg-slate-900/40 border border-slate-800/60 text-xs text-slate-300">
-              <Clock className="w-4 h-4 text-amber-400 shrink-0" />
-              <div className="leading-snug">
-                <span className="font-bold text-white font-mono">Mill Operations:</span> Mon–Sat, 09:00–18:00 IST • 24/7 Gate Dispatch & Weighbridge Logistics
+            {/* High-Contrast Mill Dispatch Hours Bar */}
+            <div className="p-6 rounded-2xl bg-slate-900 border border-slate-700/80 shadow-lg space-y-3">
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-8 rounded-lg bg-amber-500/15 border border-amber-500/30 flex items-center justify-center shrink-0">
+                  <Clock className="w-4 h-4 text-amber-400" />
+                </div>
+                <span className="text-sm sm:text-base font-black text-amber-400 tracking-wide font-mono uppercase">
+                  Mill Dispatch Hours: Mon–Sat, 09:00–18:00 IST
+                </span>
               </div>
+              <p className="text-xs sm:text-sm text-slate-200 leading-relaxed font-normal pl-11">
+                Rolling dispatch & weighbridge operations serve infrastructure projects & distributor trucks across Northern India with 24/7 gate entry clearance.
+              </p>
             </div>
 
           </div>
