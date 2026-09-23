@@ -69,7 +69,7 @@ export const ProductHub: React.FC<ProductHubProps> = ({ onSelectSegment }) => {
         </div>
 
         {/* Category Filter Tabs */}
-        <div className="flex flex-wrap items-center justify-center gap-2 mb-12">
+        <div className="flex flex-wrap items-center justify-center gap-3 mb-12">
           {categories.map((cat) => {
             const isActive = selectedCategory === cat.id;
             return (
@@ -77,10 +77,10 @@ export const ProductHub: React.FC<ProductHubProps> = ({ onSelectSegment }) => {
                 key={cat.id}
                 type="button"
                 onClick={() => setSelectedCategory(cat.id)}
-                className={`px-4 py-2 text-xs font-mono font-bold transition-all border ${
+                className={`px-5 py-2.5 text-xs sm:text-sm font-mono font-extrabold transition-all border shadow-sm ${
                   isActive
-                    ? 'bg-growth-600 text-white border-growth-600 shadow-md shadow-growth-500/20'
-                    : 'bg-steel-100/80 hover:bg-steel-200/80 text-steel-700 border-steel-200'
+                    ? 'bg-slate-950 text-white border-slate-950 shadow-md ring-2 ring-slate-950/20'
+                    : 'bg-white hover:bg-slate-100 text-slate-900 border-slate-400 hover:border-slate-600'
                 }`}
               >
                 {cat.label}

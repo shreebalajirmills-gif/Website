@@ -172,8 +172,8 @@ export const Header: React.FC<HeaderProps> = ({ onSelectSegment }) => {
             {/* Overview / Home */}
             <Link
               href="/"
-              className={`px-3 sm:px-4 py-1.5 text-[10px] sm:text-xs font-bold transition-all duration-200 min-h-[44px] flex items-center ${
-                pathname === '/' ? 'bg-slate-200 text-black font-black border border-slate-300' : 'text-slate-800 hover:text-growth-700 hover:bg-steel-50'
+              className={`px-3.5 sm:px-4 py-1.5 text-[11px] sm:text-xs font-bold transition-all duration-200 min-h-[40px] flex items-center ${
+                pathname === '/' ? 'bg-slate-900 text-white font-extrabold shadow-sm' : 'text-slate-900 hover:text-slate-950 hover:bg-slate-200/80 font-bold'
               }`}
             >
               Home
@@ -187,14 +187,14 @@ export const Header: React.FC<HeaderProps> = ({ onSelectSegment }) => {
             >
               <Link
                 href="/about"
-                className={`px-3 sm:px-4 py-1.5 text-[10px] sm:text-xs font-bold inline-flex items-center gap-1 transition-all duration-200 min-h-[44px] ${
+                className={`px-3.5 sm:px-4 py-1.5 text-[11px] sm:text-xs font-bold inline-flex items-center gap-1 transition-all duration-200 min-h-[40px] ${
                   pathname.startsWith('/about') || activeMegaMenu === 'about'
-                    ? 'bg-slate-200 text-black font-black border border-slate-300'
-                    : 'text-slate-800 hover:text-growth-700 hover:bg-steel-50'
+                    ? 'bg-slate-900 text-white font-extrabold shadow-sm'
+                    : 'text-slate-900 hover:text-slate-950 hover:bg-slate-200/80 font-bold'
                 }`}
               >
                 <span>About Us</span>
-                <ChevronDown className="w-3 h-3 sm:w-3.5 sm:h-3.5 opacity-70" />
+                <ChevronDown className="w-3 h-3 sm:w-3.5 sm:h-3.5 opacity-80" />
               </Link>
             </div>
 
@@ -206,14 +206,14 @@ export const Header: React.FC<HeaderProps> = ({ onSelectSegment }) => {
             >
               <Link
                 href="/products"
-                className={`px-3 sm:px-4 py-1.5 text-[10px] sm:text-xs font-bold inline-flex items-center gap-1 transition-all duration-200 min-h-[44px] ${
+                className={`px-3.5 sm:px-4 py-1.5 text-[11px] sm:text-xs font-bold inline-flex items-center gap-1 transition-all duration-200 min-h-[40px] ${
                   pathname.startsWith('/products') || activeMegaMenu === 'products'
-                    ? 'bg-slate-200 text-black font-black border border-slate-300'
-                    : 'text-slate-800 hover:text-growth-700 hover:bg-steel-50'
+                    ? 'bg-slate-900 text-white font-extrabold shadow-sm'
+                    : 'text-slate-900 hover:text-slate-950 hover:bg-slate-200/80 font-bold'
                 }`}
               >
                 <span>Our Products</span>
-                <ChevronDown className="w-3 h-3 sm:w-3.5 sm:h-3.5 opacity-70" />
+                <ChevronDown className="w-3 h-3 sm:w-3.5 sm:h-3.5 opacity-80" />
               </Link>
             </div>
 
@@ -225,14 +225,14 @@ export const Header: React.FC<HeaderProps> = ({ onSelectSegment }) => {
             >
               <Link
                 href="/manufacturing-processes"
-                className={`px-3 sm:px-4 py-1.5 text-[10px] sm:text-xs font-bold inline-flex items-center gap-1 transition-all duration-200 min-h-[44px] ${
+                className={`px-3.5 sm:px-4 py-1.5 text-[11px] sm:text-xs font-bold inline-flex items-center gap-1 transition-all duration-200 min-h-[40px] ${
                   pathname.startsWith('/manufacturing-processes') || activeMegaMenu === 'processes'
-                    ? 'bg-slate-200 text-black font-black border border-slate-300'
-                    : 'text-slate-800 hover:text-growth-700 hover:bg-steel-50'
+                    ? 'bg-slate-900 text-white font-extrabold shadow-sm'
+                    : 'text-slate-900 hover:text-slate-950 hover:bg-slate-200/80 font-bold'
                 }`}
               >
                 <span>Processes</span>
-                <ChevronDown className="w-3 h-3 sm:w-3.5 sm:h-3.5 opacity-70" />
+                <ChevronDown className="w-3 h-3 sm:w-3.5 sm:h-3.5 opacity-80" />
               </Link>
             </div>
 
@@ -244,22 +244,24 @@ export const Header: React.FC<HeaderProps> = ({ onSelectSegment }) => {
             >
               <Link
                 href="/growth"
-                className={`px-3 sm:px-4 py-1.5 text-[10px] sm:text-xs font-bold inline-flex items-center gap-1 transition-all duration-200 min-h-[44px] ${
+                className={`px-3.5 sm:px-4 py-1.5 text-[11px] sm:text-xs font-bold inline-flex items-center gap-1 transition-all duration-200 min-h-[40px] ${
                   pathname.startsWith('/growth') || activeMegaMenu === 'media'
-                    ? 'bg-slate-200 text-black font-black border border-slate-300'
-                    : 'text-slate-800 hover:text-growth-700 hover:bg-steel-50'
+                    ? 'bg-slate-900 text-white font-extrabold shadow-sm'
+                    : 'text-slate-900 hover:text-slate-950 hover:bg-slate-200/80 font-bold'
                 }`}
               >
                 <span>Media</span>
-                <ChevronDown className="w-3 h-3 sm:w-3.5 sm:h-3.5 opacity-70" />
+                <ChevronDown className="w-3 h-3 sm:w-3.5 sm:h-3.5 opacity-80" />
               </Link>
             </div>
 
             {/* Our Certificates */}
             <Link
               href="/trust"
-              className={`px-3 sm:px-4 py-1.5 text-[10px] sm:text-xs font-bold transition-all duration-200 min-h-[44px] flex items-center ${
-                pathname === '/trust' ? 'bg-slate-200 text-black font-black border border-slate-300' : 'text-slate-800 hover:text-growth-700 hover:bg-steel-50'
+              className={`px-3.5 sm:px-4 py-1.5 text-[11px] sm:text-xs font-bold transition-all duration-200 min-h-[40px] flex items-center ${
+                pathname === '/trust'
+                  ? 'bg-slate-900 text-white font-extrabold shadow-sm'
+                  : 'text-slate-900 hover:text-slate-950 hover:bg-slate-200/80 font-bold'
               }`}
             >
               Certificates
