@@ -1,9 +1,8 @@
 'use client';
 
 import React from 'react';
-import { MapPin, Navigation, Phone, Mail, Clock, ExternalLink } from 'lucide-react';
+import { MapPin, Navigation, Phone, Mail, Clock, ExternalLink, ShieldCheck, Truck } from 'lucide-react';
 import { SITE_CONFIG } from '@/config/site';
-import { SocialIcon } from '@/components/social/SocialLinks';
 
 interface LocationMapSectionProps {
   className?: string;
@@ -12,9 +11,9 @@ interface LocationMapSectionProps {
 }
 
 export const LocationMapSection: React.FC<LocationMapSectionProps> = ({
-  className = 'py-20 bg-steel-base border-b border-steel-200 relative overflow-hidden',
-  title = 'Mill Facility & Corporate Offices',
-  subtitle = 'Visit our manufacturing rolling mill in Bhiwadi, Haryana, or connect with our corporate sales desk in Delhi NCR.',
+  className = 'py-20 bg-slate-900 border-b border-slate-800 relative overflow-hidden',
+  title = 'Mill Plant & Freight Dispatch Hub',
+  subtitle = 'Strategic manufacturing in Bhiwadi industrial belt directly linked to Delhi-NCR & Western Freight Corridor.',
 }) => {
   const mapDirectionsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
     'Bhiwadi Industrial Area Bhiwadi Haryana India'
@@ -22,122 +21,141 @@ export const LocationMapSection: React.FC<LocationMapSectionProps> = ({
 
   return (
     <section className={className}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-12">
+      {/* Precision Industrial Ambient Grid */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:48px_48px] pointer-events-none" />
+      <div className="absolute top-0 right-1/4 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-10">
         
         {/* Section Header */}
         <div className="text-center space-y-3 max-w-2xl mx-auto">
-          <div className="badge-base px-4 py-1.5 inline-flex items-center gap-2 text-steel-900 text-xs font-bold uppercase tracking-wider">
-            <MapPin className="w-4 h-4 text-growth-600" />
-            <span>GEOGRAPHIC TELEMETRY & VISITS</span>
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-800/80 border border-slate-700/80 text-amber-400 text-xs font-mono font-bold uppercase tracking-wider">
+            <MapPin className="w-3.5 h-3.5 text-amber-400" />
+            <span>Facility Telemetry & Dispatches</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-black text-steel-900 tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-black text-white tracking-tight">
             {title}
           </h2>
-          <p className="text-sm text-steel-600 leading-relaxed font-normal">
+          <p className="text-sm text-slate-400 leading-relaxed font-normal">
             {subtitle}
           </p>
         </div>
 
-        {/* Location Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+        {/* Unified Integrated Command Card */}
+        <div className="bg-slate-950/80 backdrop-blur-xl border border-slate-800 rounded-2xl shadow-2xl overflow-hidden grid grid-cols-1 lg:grid-cols-12">
           
-          {/* Left Column: Address Cards & Operations Info */}
-          <div className="lg:col-span-5 space-y-6 flex flex-col justify-between">
+          {/* Left Column: Dual Facility & Operations Desk */}
+          <div className="lg:col-span-6 p-6 sm:p-8 flex flex-col justify-between space-y-8 border-b lg:border-b-0 lg:border-r border-slate-800/80">
             
-            {/* Factory Address Card */}
-            <div className="card-base card-product p-6 sm:p-7 border border-steel-200 space-y-3">
-              <div className="flex items-center justify-between">
-                <span className="badge-base px-3 py-1 text-[10px] font-mono font-bold uppercase tracking-wider text-steel-900 bg-transparent group-hover:bg-growth-50 border-steel-200 group-hover:border-growth-400">
-                  Primary Rolling Mill
-                </span>
-                <MapPin className="w-5 h-5 text-growth-600" />
+            <div className="space-y-6">
+              
+              {/* Primary Plant Hub */}
+              <div className="space-y-3 p-5 rounded-xl bg-slate-900/60 border border-slate-800">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-amber-400 animate-ping" />
+                    <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-amber-400">
+                      Primary Rolling Mill Plant
+                    </span>
+                  </div>
+                  <span className="text-[11px] font-mono text-slate-500">180,000 TPA</span>
+                </div>
+                <h3 className="text-lg font-bold text-white">Bhiwadi Manufacturing Facility</h3>
+                <p className="text-xs text-slate-300 leading-relaxed font-normal">
+                  {SITE_CONFIG.address.factory}
+                </p>
+                <div className="pt-1 flex items-center gap-3 text-[11px] font-mono text-slate-400">
+                  <span className="inline-flex items-center gap-1 text-slate-300">
+                    <Truck className="w-3.5 h-3.5 text-amber-400" /> NH-48 Heavy Freight Access
+                  </span>
+                  <span>•</span>
+                  <span>Weighbridge Active</span>
+                </div>
               </div>
-              <h3 className="text-xl font-bold text-steel-900">Bhiwadi Manufacturing Facility</h3>
-              <p className="text-xs text-steel-600 leading-relaxed font-normal">
-                {SITE_CONFIG.address.factory}
-              </p>
-              <div className="pt-2">
-                <a
-                  href={mapDirectionsUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-primary py-2.5 px-4 text-xs font-extrabold inline-flex items-center gap-2"
-                >
-                  <Navigation className="w-4 h-4" />
-                  <span>Get Directions on Google Maps</span>
-                  <ExternalLink className="w-3 h-3 opacity-70" />
-                </a>
+
+              {/* Commercial Sales Desk */}
+              <div className="space-y-3 p-5 rounded-xl bg-slate-900/60 border border-slate-800">
+                <div className="flex items-center justify-between">
+                  <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-slate-400">
+                    Commercial Desk & Corporate Office
+                  </span>
+                  <span className="text-[11px] font-mono text-slate-500">Sales & Tenders</span>
+                </div>
+                <h3 className="text-lg font-bold text-white">Delhi NCR Business Office</h3>
+                <p className="text-xs text-slate-300 leading-relaxed font-normal">
+                  {SITE_CONFIG.address.office}
+                </p>
+                <div className="pt-2 flex flex-wrap gap-2.5 text-xs">
+                  <a
+                    href={`tel:${SITE_CONFIG.contact.phoneRaw}`}
+                    className="py-2 px-3.5 rounded-lg bg-slate-800/90 hover:bg-slate-700/90 text-white font-mono font-bold inline-flex items-center gap-2 border border-slate-700 transition-colors"
+                  >
+                    <Phone className="w-3.5 h-3.5 text-amber-400" />
+                    <span>{SITE_CONFIG.contact.phone}</span>
+                  </a>
+                  <a
+                    href={`mailto:${SITE_CONFIG.contact.email}`}
+                    className="py-2 px-3.5 rounded-lg bg-slate-800/90 hover:bg-slate-700/90 text-white font-mono font-bold inline-flex items-center gap-2 border border-slate-700 transition-colors truncate"
+                  >
+                    <Mail className="w-3.5 h-3.5 text-slate-300" />
+                    <span className="truncate">{SITE_CONFIG.contact.email}</span>
+                  </a>
+                </div>
               </div>
+
             </div>
 
-            {/* Corporate Office Card */}
-            <div className="card-base card-product p-6 sm:p-7 border border-steel-200 space-y-3">
-              <div className="flex items-center justify-between">
-                <span className="badge-base px-3 py-1 text-[10px] font-mono font-bold uppercase tracking-wider text-steel-900 bg-transparent group-hover:bg-transparent group-hover:bg-growth-50 border-steel-200 group-hover:border-growth-400">
-                  Commercial Desk
-                </span>
-                <MapPin className="w-5 h-5 text-authority-600" />
+            {/* Operating Hours Bar */}
+            <div className="flex items-center gap-3 p-4 rounded-xl bg-slate-900/40 border border-slate-800/60 text-xs text-slate-300">
+              <Clock className="w-4 h-4 text-amber-400 shrink-0" />
+              <div className="leading-snug">
+                <span className="font-bold text-white font-mono">Mill Operations:</span> Mon–Sat, 09:00–18:00 IST • 24/7 Gate Dispatch & Weighbridge Logistics
               </div>
-              <h3 className="text-xl font-bold text-steel-900">Delhi NCR Business Office</h3>
-              <p className="text-xs text-steel-600 leading-relaxed font-normal">
-                {SITE_CONFIG.address.office}
-              </p>
-              <div className="pt-2 flex flex-wrap gap-3 text-xs">
-                <a
-                  href={`tel:${SITE_CONFIG.contact.phoneRaw}`}
-                  className="py-2 px-3 bg-white border border-steel-200 text-steel-900 font-bold inline-flex items-center gap-1.5 hover:border-growth-400 transition-all"
-                >
-                  <Phone className="w-3.5 h-3.5 text-amber-600" />
-                  <span>{SITE_CONFIG.contact.phone}</span>
-                </a>
-                <a
-                  href={`mailto:${SITE_CONFIG.contact.email}`}
-                  className="py-2 px-3 bg-white border border-steel-200 text-steel-900 font-bold inline-flex items-center gap-1.5 hover:border-growth-400 transition-all truncate"
-                >
-                  <Mail className="w-3.5 h-3.5 text-authority-600" />
-                  <span className="truncate">{SITE_CONFIG.contact.email}</span>
-                </a>
-              </div>
-            </div>
-
-            {/* Operational Telemetry Summary */}
-            <div className="p-5 bg-steel-950 text-white space-y-2 border border-slate-800">
-              <div className="flex items-center gap-2 text-xs font-bold text-amber-400 font-mono">
-                <Clock className="w-4 h-4" />
-                <span>Mill Dispatch Hours: Mon–Sat, 09:00–18:00 IST</span>
-              </div>
-              <p className="text-[11px] text-slate-300 leading-normal">
-                Rolling dispatch & weighbridge operations serve infrastructure projects & distributor trucks across Northern India.
-              </p>
             </div>
 
           </div>
 
-          {/* Right Column: Visual Map Container */}
-          <div className="lg:col-span-7 bg-slate-900 overflow-hidden border border-steel-300 relative min-h-[380px] flex flex-col justify-between p-6 sm:p-8 text-white group">
+          {/* Right Column: Visual Highway Freight Connectivity & Single Google Maps Action */}
+          <div className="lg:col-span-6 p-6 sm:p-8 flex flex-col justify-between bg-gradient-to-br from-slate-950 via-slate-900/90 to-slate-950 relative">
             
-            {/* Visual Industrial Backdrop Overlay */}
-            <div className="absolute inset-0 bg-[radial-gradient(#334155_1px,transparent_1px)] [background-size:16px_16px] opacity-40 pointer-events-none" />
-            <div className="ambient-liquid-glow ambient-glow-growth top-0 right-0 opacity-30 pointer-events-none" />
-
-            <div className="relative z-10 space-y-3">
+            {/* Top Corridor Specs */}
+            <div className="space-y-4 relative z-10">
               <div className="flex items-center justify-between">
-                <span className="badge-base px-3 py-1 text-[10px] font-mono font-bold uppercase tracking-wider text-amber-400 border border-amber-400/30">
-                  Interactive Route Map
+                <span className="px-3 py-1 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider text-amber-400 bg-amber-500/10 border border-amber-500/20">
+                  Freight Route Logistics
                 </span>
-                <span className="text-xs text-slate-400 font-mono">Bhiwadi Industrial Zone</span>
+                <span className="text-xs font-mono text-slate-400">Delhi-NCR / Jaipur Corridor</span>
               </div>
-              <h3 className="text-2xl font-black text-white tracking-tight">
-                Direct Highway Connectivity to Delhi-NCR & Jaipur Freight Corridor
+
+              <h3 className="text-2xl font-black text-white tracking-tight leading-snug">
+                Direct Highway Connectivity for Seamless Heavy Dispatch
               </h3>
-              <p className="text-xs text-slate-300 max-w-lg leading-relaxed font-normal">
-                Situated in the Bhiwadi Industrial Area (Rajasthan/Haryana border), offering seamless heavy freight transport to Delhi, Gurugram, Jaipur, and wider Northern Indian commercial hubs.
+
+              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
+                Situated squarely inside the Bhiwadi Industrial Area (Rajasthan/Haryana axis) with immediate link to NH-48 and the Western Dedicated Freight Corridor. Direct trailer fleet dispatches reach NCR job-sites within 3–5 hours.
               </p>
+
+              {/* Transit Metrics Grid */}
+              <div className="grid grid-cols-3 gap-3 pt-3">
+                <div className="p-3 rounded-lg bg-slate-900/80 border border-slate-800 text-center">
+                  <div className="text-lg font-black font-mono text-amber-400">~60 km</div>
+                  <div className="text-[10px] text-slate-400 uppercase tracking-wider mt-0.5">Gurugram Hub</div>
+                </div>
+                <div className="p-3 rounded-lg bg-slate-900/80 border border-slate-800 text-center">
+                  <div className="text-lg font-black font-mono text-white">~85 km</div>
+                  <div className="text-[10px] text-slate-400 uppercase tracking-wider mt-0.5">Delhi Ring Rd</div>
+                </div>
+                <div className="p-3 rounded-lg bg-slate-900/80 border border-slate-800 text-center">
+                  <div className="text-lg font-black font-mono text-white">~200 km</div>
+                  <div className="text-[10px] text-slate-400 uppercase tracking-wider mt-0.5">Jaipur Axis</div>
+                </div>
+              </div>
             </div>
 
-            <div className="relative z-10 pt-8 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 border-t border-slate-800">
-              <div className="space-y-1">
-                <span className="text-[11px] font-mono text-slate-400 block">Factory Coordinates / Region:</span>
+            {/* Bottom Single Unified Route Action */}
+            <div className="pt-8 relative z-10 border-t border-slate-800 mt-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div className="space-y-0.5">
+                <span className="text-[10px] font-mono text-slate-400 block uppercase">Destination Pin</span>
                 <span className="text-xs font-bold text-slate-200">Bhiwadi Industrial Belt (NH-48 Axis)</span>
               </div>
 
@@ -145,11 +163,11 @@ export const LocationMapSection: React.FC<LocationMapSectionProps> = ({
                 href={mapDirectionsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs py-3 px-5 inline-flex items-center justify-center gap-2 transition-all border border-emerald-400/40"
+                className="py-3 px-5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-xs inline-flex items-center justify-center gap-2 shadow-lg shadow-amber-500/20 transition-all hover:scale-[1.02] shrink-0"
               >
-                <Navigation className="w-4 h-4" />
-                <span>Launch Google Maps Route</span>
-                <ExternalLink className="w-3.5 h-3.5" />
+                <Navigation className="w-4 h-4 fill-current" />
+                <span>Navigate on Google Maps</span>
+                <ExternalLink className="w-3.5 h-3.5 opacity-80" />
               </a>
             </div>
 

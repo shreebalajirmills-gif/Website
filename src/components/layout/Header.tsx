@@ -152,28 +152,30 @@ export const Header: React.FC<HeaderProps> = ({ onSelectSegment }) => {
       <div className="max-w-7xl mx-auto flex items-center justify-between pointer-events-auto relative">
         
         {/* Floating Architectural Navigation Dock */}
-        <div className="w-full liquid-glass px-3 sm:px-5 py-2.5 sm:py-3 flex items-center justify-between border border-slate-200/90 relative z-50">
+        <div className="w-full bg-slate-950/85 backdrop-blur-2xl px-3.5 sm:px-6 py-2.5 sm:py-3 flex items-center justify-between border border-slate-800/90 rounded-2xl shadow-2xl relative z-50">
           
           {/* Logo & Brand */}
           <Link href="/" onClick={handleLogoClick} className="flex items-center gap-2 sm:gap-3 group shrink-0">
-            <img 
-              src="/logo.png" 
-              alt="Shree Balaji Rolling Mills Limited Logo" 
-              width={180}
-              height={48}
-              loading="eager"
-              className="h-8 sm:h-10 lg:h-12 w-auto object-contain transition-transform group-hover:scale-105"
-            />
+            <div className="bg-white/95 px-2 py-1 rounded-lg border border-white/20">
+              <img 
+                src="/logo.png" 
+                alt="Shree Balaji Rolling Mills Limited Logo" 
+                width={160}
+                height={42}
+                loading="eager"
+                className="h-7 sm:h-9 lg:h-10 w-auto object-contain transition-transform group-hover:scale-105"
+              />
+            </div>
           </Link>
 
           {/* Navigation Links with Mega Menu Dropdowns - Hidden on mobile */}
-          <nav className="hidden lg:flex items-center gap-0.5 sm:gap-1 bg-steel-100/90 p-1 border border-steel-200/90">
+          <nav className="hidden lg:flex items-center gap-1 bg-slate-900/90 p-1.5 rounded-xl border border-slate-800">
             
             {/* Overview / Home */}
             <Link
               href="/"
-              className={`px-3 sm:px-4 py-1.5  text-[10px] sm:text-xs font-bold transition-all duration-200 min-h-[44px] flex items-center ${
-                pathname === '/' ? 'bg-slate-200 text-black font-black border border-slate-300' : 'text-slate-800 hover:text-growth-700 hover:bg-steel-50'
+              className={`px-3.5 py-1.5 rounded-lg text-[11px] font-bold transition-all duration-200 min-h-[38px] flex items-center ${
+                pathname === '/' ? 'bg-amber-500 text-slate-950 font-black shadow-md shadow-amber-500/20' : 'text-slate-300 hover:text-white hover:bg-slate-800'
               }`}
             >
               Home
@@ -187,14 +189,14 @@ export const Header: React.FC<HeaderProps> = ({ onSelectSegment }) => {
             >
               <Link
                 href="/about"
-                className={`px-3 sm:px-4 py-1.5  text-[10px] sm:text-xs font-bold inline-flex items-center gap-1 transition-all duration-200 min-h-[44px] ${
+                className={`px-3.5 py-1.5 rounded-lg text-[11px] font-bold inline-flex items-center gap-1 transition-all duration-200 min-h-[38px] ${
                   pathname.startsWith('/about') || activeMegaMenu === 'about'
-                    ? 'bg-slate-200 text-black font-black border border-slate-300'
-                    : 'text-slate-800 hover:text-growth-700 hover:bg-steel-50'
+                    ? 'bg-amber-500 text-slate-950 font-black shadow-md shadow-amber-500/20'
+                    : 'text-slate-300 hover:text-white hover:bg-slate-800'
                 }`}
               >
                 <span>About Us</span>
-                <ChevronDown className="w-3 h-3 sm:w-3.5 sm:h-3.5 opacity-70" />
+                <ChevronDown className="w-3 h-3 opacity-70" />
               </Link>
             </div>
 
@@ -206,14 +208,14 @@ export const Header: React.FC<HeaderProps> = ({ onSelectSegment }) => {
             >
               <Link
                 href="/products"
-                className={`px-3 sm:px-4 py-1.5  text-[10px] sm:text-xs font-bold inline-flex items-center gap-1 transition-all duration-200 min-h-[44px] ${
+                className={`px-3.5 py-1.5 rounded-lg text-[11px] font-bold inline-flex items-center gap-1 transition-all duration-200 min-h-[38px] ${
                   pathname.startsWith('/products') || activeMegaMenu === 'products'
-                    ? 'bg-slate-200 text-black font-black border border-slate-300'
-                    : 'text-slate-800 hover:text-growth-700 hover:bg-steel-50'
+                    ? 'bg-amber-500 text-slate-950 font-black shadow-md shadow-amber-500/20'
+                    : 'text-slate-300 hover:text-white hover:bg-slate-800'
                 }`}
               >
                 <span>Our Products</span>
-                <ChevronDown className="w-3 h-3 sm:w-3.5 sm:h-3.5 opacity-70" />
+                <ChevronDown className="w-3 h-3 opacity-70" />
               </Link>
             </div>
 
@@ -225,14 +227,14 @@ export const Header: React.FC<HeaderProps> = ({ onSelectSegment }) => {
             >
               <Link
                 href="/manufacturing-processes"
-                className={`px-3 sm:px-4 py-1.5  text-[10px] sm:text-xs font-bold inline-flex items-center gap-1 transition-all duration-200 min-h-[44px] ${
+                className={`px-3.5 py-1.5 rounded-lg text-[11px] font-bold inline-flex items-center gap-1 transition-all duration-200 min-h-[38px] ${
                   pathname.startsWith('/manufacturing-processes') || activeMegaMenu === 'processes'
-                    ? 'bg-slate-200 text-black font-black border border-slate-300'
-                    : 'text-slate-800 hover:text-growth-700 hover:bg-steel-50'
+                    ? 'bg-amber-500 text-slate-950 font-black shadow-md shadow-amber-500/20'
+                    : 'text-slate-300 hover:text-white hover:bg-slate-800'
                 }`}
               >
-                <span>Manufacturing Processes</span>
-                <ChevronDown className="w-3 h-3 sm:w-3.5 sm:h-3.5 opacity-70" />
+                <span>Processes</span>
+                <ChevronDown className="w-3 h-3 opacity-70" />
               </Link>
             </div>
 
@@ -244,25 +246,25 @@ export const Header: React.FC<HeaderProps> = ({ onSelectSegment }) => {
             >
               <Link
                 href="/growth"
-                className={`px-3 sm:px-4 py-1.5  text-[10px] sm:text-xs font-bold inline-flex items-center gap-1 transition-all duration-200 min-h-[44px] ${
+                className={`px-3.5 py-1.5 rounded-lg text-[11px] font-bold inline-flex items-center gap-1 transition-all duration-200 min-h-[38px] ${
                   pathname.startsWith('/growth') || activeMegaMenu === 'media'
-                    ? 'bg-slate-200 text-black font-black border border-slate-300'
-                    : 'text-slate-800 hover:text-growth-700 hover:bg-steel-50'
+                    ? 'bg-amber-500 text-slate-950 font-black shadow-md shadow-amber-500/20'
+                    : 'text-slate-300 hover:text-white hover:bg-slate-800'
                 }`}
               >
                 <span>Media</span>
-                <ChevronDown className="w-3 h-3 sm:w-3.5 sm:h-3.5 opacity-70" />
+                <ChevronDown className="w-3 h-3 opacity-70" />
               </Link>
             </div>
 
             {/* Our Certificates */}
             <Link
               href="/trust"
-              className={`px-3 sm:px-4 py-1.5  text-[10px] sm:text-xs font-bold transition-all duration-200 min-h-[44px] flex items-center ${
-                pathname === '/trust' ? 'bg-slate-200 text-black font-black border border-slate-300' : 'text-slate-800 hover:text-growth-700 hover:bg-steel-50'
+              className={`px-3.5 py-1.5 rounded-lg text-[11px] font-bold transition-all duration-200 min-h-[38px] flex items-center ${
+                pathname === '/trust' ? 'bg-amber-500 text-slate-950 font-black shadow-md shadow-amber-500/20' : 'text-slate-300 hover:text-white hover:bg-slate-800'
               }`}
             >
-              Our Certificates
+              Certificates
             </Link>
           </nav>
 
@@ -273,7 +275,7 @@ export const Header: React.FC<HeaderProps> = ({ onSelectSegment }) => {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Direct WhatsApp Quote Chat with Mill Sales Desk"
-              className="hidden sm:inline-flex items-center gap-1.5 bg-emerald-600 hover:bg-emerald-500 text-white font-mono font-bold text-[10px] sm:text-xs px-3 py-1.5 sm:py-2 transition-all border border-emerald-400/40 shrink-0"
+              className="hidden sm:inline-flex items-center gap-1.5 bg-emerald-600/90 hover:bg-emerald-500 text-white font-mono font-bold text-[11px] px-3.5 py-2 rounded-xl transition-all border border-emerald-500/40 shrink-0 shadow-sm shadow-emerald-950"
             >
               <SocialIcon platform="whatsapp" className="w-3.5 h-3.5 fill-current" />
               <span>WhatsApp Quote</span>
@@ -281,17 +283,17 @@ export const Header: React.FC<HeaderProps> = ({ onSelectSegment }) => {
 
             <Link
               href="/inquiry"
-              className="btn-primary !py-1.5 sm:!py-2 !px-3 sm:!px-4 text-[10px] sm:text-xs !font-extrabold flex items-center gap-1 sm:gap-1.5"
+              className="bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-xs py-2 px-4 rounded-xl flex items-center gap-1.5 transition-all shadow-md shadow-amber-500/20 hover:scale-[1.02]"
             >
               <span className="hidden sm:inline">Inquire Now</span>
               <span className="sm:hidden">Inquire</span>
-              <ArrowRight className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
+              <ArrowRight className="w-3.5 h-3.5" />
             </Link>
 
             <button
               ref={toggleRef}
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-4 text-steel-700 hover:bg-steel-100 min-h-[44px] min-w-[44px]"
+              className="lg:hidden p-2 text-slate-300 hover:text-white hover:bg-slate-800/80 rounded-lg min-h-[40px] min-w-[40px] flex items-center justify-center border border-slate-700/50"
               aria-label="Toggle Navigation"
               aria-expanded={mobileMenuOpen}
               aria-controls="mobile-navigation"

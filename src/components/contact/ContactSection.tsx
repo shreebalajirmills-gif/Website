@@ -48,19 +48,20 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onSelectSegment 
   };
 
   return (
-    <section id="contact" ref={containerRef} className="py-28 bg-steel-base border-b border-steel-200 relative overflow-hidden">
-      <div className="ambient-liquid-glow ambient-glow-authority top-1/3 right-1/4" />
+    <section id="contact" ref={containerRef} className="py-24 bg-slate-950 border-b border-slate-800 relative overflow-hidden text-white">
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:48px_48px] pointer-events-none" />
+      <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-          <div className="badge-base px-4 py-1.5 inline-flex items-center gap-2 text-steel-900 text-xs font-bold uppercase tracking-wider">
+        <div className="text-center max-w-3xl mx-auto space-y-3 mb-16">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900 border border-slate-800 text-amber-400 text-xs font-mono font-bold uppercase tracking-wider">
             DIRECT SALES & MILL DISPATCH DESK
           </div>
-          <h2 className="text-3xl sm:text-5xl font-black text-steel-900 tracking-tight">
-            Get In Touch With <span className="text-gradient-authority">Our Commercial Desk</span>
+          <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight">
+            Connect Directly With <span className="text-amber-400">Our Commercial Desk</span>
           </h2>
-          <p className="text-sm text-steel-600 max-w-xl mx-auto font-normal leading-relaxed">
-            Connect directly via Phone, Email, WhatsApp, or explore our official social channels for instant price quotes, structural steel specifications, and rolling mill dispatch schedules.
+          <p className="text-sm text-slate-400 max-w-xl mx-auto font-normal leading-relaxed">
+            Connect via Phone, WhatsApp, Email, or institutional procurement portals for immediate mill pricing, dispatch schedules, and technical queries.
           </p>
         </div>
 
@@ -68,45 +69,45 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onSelectSegment 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
           
           {/* Card 1: Phone Calling Desk */}
-          <div className="contact-card card-base liquid-glass-interactive p-6 flex flex-col justify-between border border-steel-200" data-idx={0}>
+          <div className="contact-card p-6 rounded-2xl bg-slate-900/80 border border-slate-800 flex flex-col justify-between hover:border-amber-500/50 transition-all shadow-xl" data-idx={0}>
             <div className="space-y-3">
-              <div className="w-10 h-10 bg-transparent group-hover:bg-transparent group-hover:bg-growth-50 text-amber-700 border border-steel-200 group-hover:border-growth-400 flex items-center justify-center">
+              <div className="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-400 border border-amber-500/20 flex items-center justify-center">
                 <Phone className="w-5 h-5" />
               </div>
-              <span className="text-[10px] font-extrabold text-amber-800 uppercase tracking-widest block font-mono">
+              <span className="text-[10px] font-bold text-amber-400 uppercase tracking-widest block font-mono">
                 PHONE SALES DESK
               </span>
-              <h3 className="text-xl font-bold text-steel-900">Direct Call Line</h3>
-              <p className="text-xs text-steel-600 leading-relaxed font-normal">
+              <h3 className="text-lg font-bold text-white">Direct Call Line</h3>
+              <p className="text-xs text-slate-400 leading-relaxed font-normal">
                 Speak directly with our mill sales desk for urgent delivery schedules & order status.
               </p>
-              <div className="pt-2 text-sm font-bold text-slate-900 font-mono">
+              <div className="pt-2 text-sm font-bold text-amber-400 font-mono">
                 {SITE_CONFIG.contact.phone}
               </div>
             </div>
             <a
               href={`tel:${SITE_CONFIG.contact.phoneRaw}`}
-              className="mt-6 btn-primary py-3 px-4 text-xs font-extrabold flex items-center justify-center gap-2"
+              className="mt-6 py-2.5 px-4 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-black flex items-center justify-center gap-2 transition-all shadow-md shadow-amber-500/20"
             >
               <Phone className="w-3.5 h-3.5" />
-              <span>Call +91 8800106726</span>
+              <span>Call Sales Desk</span>
             </a>
           </div>
 
           {/* Card 2: WhatsApp Instant Quotation */}
-          <div className="contact-card card-base liquid-glass-interactive p-6 flex flex-col justify-between border border-emerald-200/80 bg-emerald-50/30" data-idx={1}>
+          <div className="contact-card p-6 rounded-2xl bg-slate-900/80 border border-emerald-500/30 flex flex-col justify-between hover:border-emerald-500/60 transition-all shadow-xl" data-idx={1}>
             <div className="space-y-3">
-              <div className="w-10 h-10 bg-emerald-100 text-emerald-700 border border-emerald-300 flex items-center justify-center">
+              <div className="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 flex items-center justify-center">
                 <SocialIcon platform="whatsapp" className="w-5 h-5 fill-current" />
               </div>
-              <span className="text-[10px] font-extrabold text-emerald-800 uppercase tracking-widest block font-mono">
+              <span className="text-[10px] font-bold text-emerald-400 uppercase tracking-widest block font-mono">
                 WHATSAPP BUSINESS
               </span>
-              <h3 className="text-xl font-bold text-steel-900">Instant Quotation</h3>
-              <p className="text-xs text-steel-600 leading-relaxed font-normal">
+              <h3 className="text-lg font-bold text-white">Instant Quotation</h3>
+              <p className="text-xs text-slate-400 leading-relaxed font-normal">
                 Start a direct chat for price quotes with prefilled inquiry details.
               </p>
-              <div className="pt-2 text-xs font-mono font-semibold text-emerald-800">
+              <div className="pt-2 text-xs font-mono font-semibold text-emerald-400">
                 &quot;Talk for Quotation ....&quot;
               </div>
             </div>
@@ -114,7 +115,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onSelectSegment 
               href={getWhatsAppUrl()}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-6 bg-emerald-600 hover:bg-emerald-500 text-white py-3 px-4 text-xs font-bold flex items-center justify-center gap-2 transition-all border border-emerald-400/40"
+              className="mt-6 bg-emerald-600 hover:bg-emerald-500 text-white py-2.5 px-4 rounded-xl text-xs font-black flex items-center justify-center gap-2 transition-all border border-emerald-400/40 shadow-md shadow-emerald-950"
             >
               <SocialIcon platform="whatsapp" className="w-3.5 h-3.5 fill-current" />
               <span>Chat on WhatsApp</span>
@@ -122,49 +123,49 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onSelectSegment 
           </div>
 
           {/* Card 3: Email Desk */}
-          <div className="contact-card card-base liquid-glass-interactive p-6 flex flex-col justify-between border border-steel-200" data-idx={2}>
+          <div className="contact-card p-6 rounded-2xl bg-slate-900/80 border border-slate-800 flex flex-col justify-between hover:border-slate-700 transition-all shadow-xl" data-idx={2}>
             <div className="space-y-3">
-              <div className="w-10 h-10 bg-transparent group-hover:bg-transparent group-hover:bg-growth-50 text-steel-900 border border-steel-200 group-hover:border-growth-400 flex items-center justify-center">
+              <div className="w-10 h-10 rounded-xl bg-slate-800 text-slate-300 border border-slate-700 flex items-center justify-center">
                 <Mail className="w-5 h-5" />
               </div>
-              <span className="text-[10px] font-extrabold text-steel-900 uppercase tracking-widest block font-mono">
+              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block font-mono">
                 CORPORATE EMAIL
               </span>
-              <h3 className="text-xl font-bold text-steel-900">Email Inquiry</h3>
-              <p className="text-xs text-steel-600 leading-relaxed font-normal">
+              <h3 className="text-lg font-bold text-white">Email Inquiry</h3>
+              <p className="text-xs text-slate-400 leading-relaxed font-normal">
                 Send formal RFQs, purchase orders, or technical specification inquiries.
               </p>
-              <div className="pt-2 text-xs font-mono font-semibold text-slate-800 truncate">
+              <div className="pt-2 text-xs font-mono font-semibold text-slate-300 truncate">
                 {SITE_CONFIG.contact.email}
               </div>
             </div>
             <a
               href={`mailto:${SITE_CONFIG.contact.email}`}
-              className="mt-6 btn-secondary py-3 px-4 text-xs font-bold flex items-center justify-center gap-2"
+              className="mt-6 py-2.5 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 text-white text-xs font-bold flex items-center justify-center gap-2 transition-all border border-slate-700"
             >
               <Mail className="w-3.5 h-3.5" />
-              <span>Send Email Request</span>
+              <span>Send Email RFQ</span>
             </a>
           </div>
 
           {/* Card 4: Direct Sales Portal */}
-          <div className="contact-card card-base liquid-glass-interactive p-6 flex flex-col justify-between border border-steel-200" data-idx={3}>
+          <div className="contact-card p-6 rounded-2xl bg-slate-900/80 border border-slate-800 flex flex-col justify-between hover:border-amber-500/40 transition-all shadow-xl" data-idx={3}>
             <div className="space-y-3">
-              <div className="w-10 h-10 bg-transparent group-hover:bg-transparent group-hover:bg-growth-50 text-steel-900 border border-steel-200 group-hover:border-growth-400 flex items-center justify-center">
+              <div className="w-10 h-10 rounded-xl bg-slate-800 text-slate-300 border border-slate-700 flex items-center justify-center">
                 <MessageSquare className="w-5 h-5" />
               </div>
-              <span className="text-[10px] font-extrabold text-steel-900 uppercase tracking-widest block font-mono">
+              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block font-mono">
                 ONLINE FORM
               </span>
-              <h3 className="text-xl font-bold text-steel-900">B2B Portal</h3>
-              <p className="text-xs text-steel-600 leading-relaxed font-normal">
+              <h3 className="text-lg font-bold text-white">B2B Portal</h3>
+              <p className="text-xs text-slate-400 leading-relaxed font-normal">
                 Submit channel partnership terms or tender proposals through our digital form.
               </p>
             </div>
             <button
               type="button"
               onClick={() => openInquiry('distributor')}
-              className="mt-6 badge-project py-3 px-4 text-xs font-bold flex items-center justify-center gap-2"
+              className="mt-6 py-2.5 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 text-amber-400 text-xs font-bold flex items-center justify-center gap-2 transition-all border border-slate-700"
             >
               <span>Open Online Portal</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -174,17 +175,17 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onSelectSegment 
         </div>
 
         {/* Official Social Media Profiles Grid */}
-        <div className="card-base card-product p-8 border border-steel-200 mb-12">
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6 border-b border-steel-200 pb-6">
+        <div className="p-6 sm:p-8 rounded-2xl bg-slate-900/60 border border-slate-800">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6 border-b border-slate-800/80 pb-6">
             <div>
-              <span className="text-xs font-mono font-bold text-steel-900 uppercase tracking-wider block mb-1">
+              <span className="text-xs font-mono font-bold text-amber-400 uppercase tracking-wider block mb-1">
                 INSTITUTIONAL SOCIAL PRESENCE
               </span>
-              <h3 className="text-2xl font-black text-steel-900">
-                Official Social Media Channels
+              <h3 className="text-2xl font-black text-white">
+                Official Media Channels
               </h3>
             </div>
-            <p className="text-xs text-steel-600 max-w-md">
+            <p className="text-xs text-slate-400 max-w-md">
               Follow Shree Balaji Rolling Mills for rolling schedule announcements, steel market updates, plant expansion milestones, and product datasheets.
             </p>
           </div>
@@ -196,16 +197,16 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onSelectSegment 
               href={SITE_CONFIG.socialLinks.instagram}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-5 bg-white border border-steel-200 hover:border-pink-500/50 hover: transition-all group flex items-center gap-4"
+              className="p-4 rounded-xl bg-slate-800/70 border border-slate-700 hover:border-pink-500/50 hover:bg-slate-800 transition-all group flex items-center gap-4"
             >
-              <div className="w-12 h-12 bg-pink-50 text-pink-600 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
-                <SocialIcon platform="instagram" className="w-6 h-6" />
+              <div className="w-10 h-10 rounded-lg bg-pink-500/10 text-pink-400 border border-pink-500/20 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                <SocialIcon platform="instagram" className="w-5 h-5" />
               </div>
               <div>
-                <span className="text-xs font-bold text-slate-900 group-hover:text-pink-600 transition-colors block">
+                <span className="text-xs font-bold text-slate-200 group-hover:text-pink-400 transition-colors block">
                   Instagram
                 </span>
-                <span className="text-[11px] font-mono text-steel-500">@sbrm.2026</span>
+                <span className="text-[11px] font-mono text-slate-400">@sbrm.2026</span>
               </div>
             </a>
 
@@ -214,16 +215,16 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onSelectSegment 
               href={SITE_CONFIG.socialLinks.facebook}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-5 bg-white border border-steel-200 hover:border-blue-600/50 hover: transition-all group flex items-center gap-4"
+              className="p-4 rounded-xl bg-slate-800/70 border border-slate-700 hover:border-blue-500/50 hover:bg-slate-800 transition-all group flex items-center gap-4"
             >
-              <div className="w-12 h-12 bg-blue-50 text-blue-600 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
-                <SocialIcon platform="facebook" className="w-6 h-6" />
+              <div className="w-10 h-10 rounded-lg bg-blue-500/10 text-blue-400 border border-blue-500/20 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                <SocialIcon platform="facebook" className="w-5 h-5" />
               </div>
               <div>
-                <span className="text-xs font-bold text-slate-900 group-hover:text-blue-600 transition-colors block">
+                <span className="text-xs font-bold text-slate-200 group-hover:text-blue-400 transition-colors block">
                   Facebook
                 </span>
-                <span className="text-[11px] font-mono text-steel-500">Shree Balaji Roll Mill</span>
+                <span className="text-[11px] font-mono text-slate-400">Shree Balaji Roll Mill</span>
               </div>
             </a>
 
@@ -232,16 +233,16 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onSelectSegment 
               href={SITE_CONFIG.socialLinks.x}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-5 bg-white border border-steel-200 hover:border-slate-900/50 hover: transition-all group flex items-center gap-4"
+              className="p-4 rounded-xl bg-slate-800/70 border border-slate-700 hover:border-slate-500 hover:bg-slate-800 transition-all group flex items-center gap-4"
             >
-              <div className="w-12 h-12 bg-slate-100 text-slate-900 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+              <div className="w-10 h-10 rounded-lg bg-slate-700 text-white border border-slate-600 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
                 <SocialIcon platform="x" className="w-5 h-5" />
               </div>
               <div>
-                <span className="text-xs font-bold text-slate-900 group-hover:text-slate-950 transition-colors block">
+                <span className="text-xs font-bold text-slate-200 group-hover:text-white transition-colors block">
                   X (Twitter)
                 </span>
-                <span className="text-[11px] font-mono text-steel-500">@SBRM2026</span>
+                <span className="text-[11px] font-mono text-slate-400">@SBRM2026</span>
               </div>
             </a>
 
@@ -250,67 +251,23 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onSelectSegment 
               href={SITE_CONFIG.socialLinks.reddit}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-5 bg-white border border-steel-200 hover:border-orange-500/50 hover: transition-all group flex items-center gap-4"
+              className="p-4 rounded-xl bg-slate-800/70 border border-slate-700 hover:border-orange-500/50 hover:bg-slate-800 transition-all group flex items-center gap-4"
             >
-              <div className="w-12 h-12 bg-orange-50 text-orange-600 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
-                <SocialIcon platform="reddit" className="w-6 h-6" />
+              <div className="w-10 h-10 rounded-lg bg-orange-500/10 text-orange-400 border border-orange-500/20 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                <SocialIcon platform="reddit" className="w-5 h-5" />
               </div>
               <div>
-                <span className="text-xs font-bold text-slate-900 group-hover:text-orange-600 transition-colors block">
+                <span className="text-xs font-bold text-slate-200 group-hover:text-orange-400 transition-colors block">
                   Reddit
                 </span>
-                <span className="text-[11px] font-mono text-steel-500">u/ShreeBalajiRollMill</span>
+                <span className="text-[11px] font-mono text-slate-400">u/ShreeBalajiRollMill</span>
               </div>
             </a>
 
           </div>
         </div>
 
-        {/* Factory & Business Locations Details */}
-        <div className="card-base card-product p-8 border border-steel-200 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-          <div className="space-y-4">
-            <h3 className="text-2xl font-bold text-steel-900 flex items-center gap-2">
-              <MapPin className="w-6 h-6 text-growth-600" />
-              <span>Factory & Corporate Locations</span>
-            </h3>
-            <p className="text-xs text-steel-600 leading-relaxed font-normal">
-              Shree Balaji Rolling Mills Limited operates steel manufacturing and corporate sales desks serving Northern India.
-            </p>
 
-            <div className="space-y-3 pt-2 text-xs">
-              <div className="p-4 bg-steel-50 border border-steel-200">
-                <strong className="text-steel-900 block font-bold mb-1">Factory Facility:</strong>
-                {SITE_CONFIG.address.factory}
-              </div>
-              <div className="p-4 bg-steel-50 border border-steel-200">
-                <strong className="text-steel-900 block font-bold mb-1">Corporate Sales Office:</strong>
-                {SITE_CONFIG.address.office}
-              </div>
-            </div>
-          </div>
-
-          <div className="p-6 bg-steel-50 border border-steel-200 space-y-4">
-            <div className="flex items-center gap-2 text-sm font-bold text-steel-900 border-b border-steel-200 pb-3">
-              <Clock className="w-4 h-4 text-growth-600" />
-              <span>Mill Capacity & Operational Telemetry</span>
-            </div>
-
-            <div className="space-y-2 text-xs">
-              <div className="flex justify-between text-steel-700">
-                <span>Total Post-Expansion Capacity:</span>
-                <span className="font-bold text-steel-900">180,000 TPA</span>
-              </div>
-              <div className="flex justify-between text-steel-700">
-                <span>Structural Steel Line:</span>
-                <span className="font-bold text-steel-900">36,000 TPA (3,000 MT/mo)</span>
-              </div>
-              <div className="flex justify-between text-steel-700 pt-2 border-t border-steel-200">
-                <span>TMT Bar Facility:</span>
-                <span className="font-bold text-steel-900">144,000 TPA (12,000 MT/mo)</span>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   );
