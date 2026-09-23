@@ -1,6 +1,6 @@
 export type BuyerSegment = 'distributor' | 'contractor' | 'project' | 'investor';
 
-export type ProductType = 'structural_steel' | 'tmt_bar';
+export type ProductType = 'structural_steel' | 'tmt_bar' | 'ms_angles' | 'ms_channels' | 'ms_flats' | 'ms_rounds';
 
 export interface ProductSizeSpec {
   size: string;

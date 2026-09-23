@@ -78,8 +78,8 @@ export const SteelProductViewer: React.FC<SteelProductViewerProps> = ({ productT
     mainGroup.scale.set(0.82, 0.82, 0.82);
     scene.add(mainGroup);
 
-    if (productType === 'structural_steel') {
-      // 3D Angle/Channel Profile
+    if (productType === 'structural_steel' || productType === 'ms_angles') {
+      // 3D Equal Angle Profile (L-Shape)
       const shape = new THREE.Shape();
       const w = 1.6;
       const h = 1.6;
@@ -95,7 +95,7 @@ export const SteelProductViewer: React.FC<SteelProductViewerProps> = ({ productT
       const extrudeSettings = {
         depth: 3.5,
         bevelEnabled: true,
-        bevelSegments: 2, // Reduced for mobile
+        bevelSegments: 2,
         bevelSize: 0.03,
         bevelThickness: 0.03,
       };
@@ -111,10 +111,66 @@ export const SteelProductViewer: React.FC<SteelProductViewerProps> = ({ productT
 
       const mesh = new THREE.Mesh(geo, mat);
       mainGroup.add(mesh);
+    } else if (productType === 'ms_channels') {
+      // 3D ISMC Channel Profile (C-Shape)
+      const shape = new THREE.Shape();
+      const w = 1.5;
+      const h = 2.2;
+      const t = 0.25;
+      shape.moveTo(0, 0);
+      shape.lineTo(w, 0);
+      shape.lineTo(w, t);
+      shape.lineTo(t, t);
+      shape.lineTo(t, h - t);
+      shape.lineTo(w, h - t);
+      shape.lineTo(w, h);
+      shape.lineTo(0, h);
+      shape.closePath();
+
+      const extrudeSettings = {
+        depth: 3.5,
+        bevelEnabled: true,
+        bevelSegments: 2,
+        bevelSize: 0.02,
+        bevelThickness: 0.02,
+      };
+
+      const geo = new THREE.ExtrudeGeometry(shape, extrudeSettings);
+      geo.center();
+
+      const mat = new THREE.MeshStandardMaterial({
+        color: 0x475569,
+        metalness: 0.9,
+        roughness: 0.18,
+      });
+
+      const mesh = new THREE.Mesh(geo, mat);
+      mainGroup.add(mesh);
+    } else if (productType === 'ms_flats') {
+      // 3D MS Flat Profile (Solid Rectangle Bar)
+      const geo = new THREE.BoxGeometry(2.4, 0.35, 3.5);
+      const mat = new THREE.MeshStandardMaterial({
+        color: 0x64748B,
+        metalness: 0.85,
+        roughness: 0.22,
+      });
+      const mesh = new THREE.Mesh(geo, mat);
+      mainGroup.add(mesh);
+    } else if (productType === 'ms_rounds') {
+      // 3D MS Round Bar (Smooth Solid Cylinder)
+      const cylGeo = new THREE.CylinderGeometry(0.45, 0.45, 4, 32);
+      const mat = new THREE.MeshStandardMaterial({
+        color: 0x94A3B8,
+        metalness: 0.92,
+        roughness: 0.15,
+      });
+      const cyl = new THREE.Mesh(cylGeo, mat);
+      cyl.rotation.z = Math.PI / 4;
+      mainGroup.add(cyl);
     } else {
       // 3D TMT Fe-500D Bar with Ribs
       const barGroup = new THREE.Group();
-      const cylGeo = new THREE.CylinderGeometry(0.4, 0.4, 4, 24); // Reduced segments for mobile
+      const cylGeo = new THREE.CylinderGeometry(0.4, 0.4, 4, 24);
       const mat = new THREE.MeshStandardMaterial({
         color: 0xF59E0B,
         metalness: 0.9,
@@ -124,7 +180,7 @@ export const SteelProductViewer: React.FC<SteelProductViewerProps> = ({ productT
       barGroup.add(cyl);
 
       // Rib rings
-      const ribGeo = new THREE.TorusGeometry(0.42, 0.04, 8, 16); // Reduced segments for mobile
+      const ribGeo = new THREE.TorusGeometry(0.42, 0.04, 8, 16);
       const ribMat = new THREE.MeshStandardMaterial({
         color: 0xD97706,
         metalness: 0.95,

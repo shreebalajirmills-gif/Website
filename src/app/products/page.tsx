@@ -3,18 +3,22 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, CheckCircle2 } from 'lucide-react';
 import { SteelComparisonMatrix } from '@/components/products/SteelComparisonMatrix';
 import { constructMetadata, getBreadcrumbJsonLd } from '@/lib/seo';
 import { JsonLd } from '@/components/seo/JsonLd';
+import { PRODUCTS_DATA } from '@/data/products';
 
 export const metadata: Metadata = constructMetadata({
   title: 'Products Suite | Structural Steel & TMT Bars (BIS Certified)',
   description:
-    'Explore Shree Balaji Rolling Mills product catalog: IS 2062 Structural Steel Angles & Channels (36,000 TPA) and IS 1786 Fe-500D High-Ductility TMT Rebars (144,000 TPA).',
+    'Explore Shree Balaji Rolling Mills product catalog: IS 2062 MS Angles, Channels (ISMC), MS Flats, MS Round Bars (36,000 TPA) and IS 1786 Fe-500D High-Ductility TMT Rebars (144,000 TPA).',
   canonicalUrl: '/products',
   keywords: [
     'IS 2062 Angles and Channels',
+    'MS Equal Angles Manufacturer',
+    'ISMC Steel Channels Bhiwadi',
+    'MS Flats and Round Bars',
     'Fe 500D TMT Bar Catalog',
     'Structural Steel Specifications India',
     'Bhiwadi Rolling Mill Products',
@@ -42,89 +46,90 @@ export default function ProductsPage() {
             Institutional Product Suite & <span className="text-gradient-growth">Technical Standards</span>
           </h1>
           <p className="text-base text-steel-600 max-w-2xl mx-auto font-normal">
-            Direct rolling mill manufactured structural steel profiles (IS 2062) and high-ductility TMT rebars (IS 1786 Fe-500D) engineered for Northern India’s commercial infrastructure.
+            Direct rolling mill manufactured structural steel profiles (IS 2062 MS Angles, Channels, Flats, Rounds) and high-ductility TMT rebars (IS 1786 Fe-500D) engineered for Northern India’s commercial infrastructure.
           </p>
         </div>
       </section>
 
       {/* Product Cards Grid */}
       <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full space-y-16">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          
-          {/* Structural Steel Dedicated Entry Card */}
-          <div className="card-base liquid-glass-distributor p-8 border border-steel-200 flex flex-col justify-between space-y-6">
-            <div>
-              <div className="flex items-center justify-between gap-4 mb-4">
-                <span className="badge-distributor px-3 py-1 text-xs font-extrabold font-mono">
-                  BIS IS 2062 Grade E250
-                </span>
-                <span className="text-xs font-mono font-bold text-steel-900">36,000 TPA Capacity</span>
-              </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {PRODUCTS_DATA.map((product) => {
+            const isStructural = product.type !== 'tmt_bar';
+            const detailUrl = isStructural ? '/products/structural-steel' : '/products/tmt-rebars';
 
-              <h2 className="text-3xl font-black text-steel-900 mb-2">Structural Angles & Channels</h2>
-              <p className="text-sm font-bold text-steel-900 mb-4">Industrial Framing, Transmission Towers & Sheds</p>
-              <p className="text-xs sm:text-sm text-steel-600 leading-relaxed mb-6 font-normal">
-                Manufactured from premium steel billets in Bhiwadi. Features high weldability (Carbon max 0.23%), uniform flange thickness, and zero internal lamination defects.
-              </p>
+            return (
+              <div
+                key={product.id}
+                className={`card-base p-7 border border-steel-200 flex flex-col justify-between space-y-6 ${
+                  product.isNewFacility ? 'liquid-glass-contractor' : 'liquid-glass-distributor'
+                }`}
+              >
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between gap-2">
+                    <span className={`px-2.5 py-1 text-[11px] font-mono font-bold border ${
+                      product.isNewFacility ? 'badge-contractor' : 'badge-distributor'
+                    }`}>
+                      {product.specs.standard}
+                    </span>
+                    <span className="text-[11px] font-mono font-bold text-steel-700">
+                      {product.capacity.formatTpa}
+                    </span>
+                  </div>
 
-              <div className="grid grid-cols-2 gap-3 p-4 bg-steel-100/90 border border-steel-200 mb-6 text-xs font-mono">
-                <div>
-                  <span className="text-steel-500 block text-[10px]">MIN YIELD STRENGTH</span>
-                  <span className="text-steel-900 font-bold text-sm">250 MPa</span>
+                  <div>
+                    <h2 className="text-2xl font-black text-steel-900 leading-tight">
+                      {product.name}
+                    </h2>
+                    <p className="text-xs font-bold text-growth-700 mt-1">
+                      {product.tagline}
+                    </p>
+                  </div>
+
+                  <p className="text-xs text-steel-600 leading-relaxed">
+                    {product.description}
+                  </p>
+
+                  {/* Size schedule summary */}
+                  {product.sizeRangeSummary && (
+                    <div className="p-3 bg-steel-100/90 border border-steel-200 text-xs">
+                      <span className="text-[10px] font-mono uppercase tracking-wider text-steel-500 block font-bold">
+                        Available Sizes & Sections
+                      </span>
+                      <span className="font-mono text-xs font-bold text-steel-900 mt-0.5 block">
+                        {product.sizeRangeSummary}
+                      </span>
+                    </div>
+                  )}
+
+                  {/* Key Highlights */}
+                  <div className="space-y-1 pt-1">
+                    <span className="text-[11px] font-mono uppercase tracking-wider text-steel-500 block font-bold">
+                      Target Applications:
+                    </span>
+                    <ul className="space-y-1 text-xs text-steel-700">
+                      {product.applications.slice(0, 3).map((app, idx) => (
+                        <li key={idx} className="flex items-center gap-1.5">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-growth-600 shrink-0" />
+                          <span>{app}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
-                <div>
-                  <span className="text-steel-500 block text-[10px]">TENSILE STRENGTH</span>
-                  <span className="text-steel-900 font-bold text-sm">410 – 540 MPa</span>
+
+                <div className="pt-4 border-t border-steel-200">
+                  <Link
+                    href={detailUrl}
+                    className="btn-primary w-full py-3 px-4 text-xs font-extrabold flex items-center justify-center gap-2"
+                  >
+                    <span>View Technical Specifications & Schedule</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
                 </div>
               </div>
-            </div>
-
-            <Link
-              href="/products/structural-steel"
-              className="btn-primary py-3.5 px-6 text-xs font-extrabold flex items-center justify-center gap-2"
-            >
-              <span>Explore In-Depth Structural Steel Specs</span>
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
-
-          {/* TMT Rebar Dedicated Entry Card */}
-          <div className="card-base liquid-glass-contractor p-8 border border-steel-200 flex flex-col justify-between space-y-6">
-            <div>
-              <div className="flex items-center justify-between gap-4 mb-4">
-                <span className="badge-contractor px-3 py-1 text-xs font-extrabold font-mono">
-                  BIS IS 1786 Fe-500D
-                </span>
-                <span className="text-xs font-mono font-bold text-steel-900">144,000 TPA Target</span>
-              </div>
-
-              <h2 className="text-3xl font-black text-steel-900 mb-2">High-Ductility TMT Rebars</h2>
-              <p className="text-sm font-bold text-steel-900 mb-4">High-Rise Foundations, Civil Bridges & Seismic Zones</p>
-              <p className="text-xs sm:text-sm text-steel-600 leading-relaxed mb-6 font-normal">
-                Thermo-mechanically treated rebars (8mm to 32mm) with high elongation (min 16%) for seismic energy absorption during earthquakes.
-              </p>
-
-              <div className="grid grid-cols-2 gap-3 p-4 bg-steel-100/90 border border-steel-200 mb-6 text-xs font-mono">
-                <div>
-                  <span className="text-steel-500 block text-[10px]">MIN YIELD STRENGTH</span>
-                  <span className="text-steel-900 font-bold text-sm">500 MPa</span>
-                </div>
-                <div>
-                  <span className="text-steel-500 block text-[10px]">MIN ELONGATION</span>
-                  <span className="text-steel-900 font-bold text-sm">16% (Seismic)</span>
-                </div>
-              </div>
-            </div>
-
-            <Link
-              href="/products/tmt-rebars"
-              className="btn-primary py-3.5 px-6 text-xs font-extrabold flex items-center justify-center gap-2"
-            >
-              <span>Explore In-Depth TMT Rebar Specs</span>
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
-
+            );
+          })}
         </div>
 
         {/* Technical Side-by-Side Matrix */}

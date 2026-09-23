@@ -26,7 +26,7 @@ export const ProductHub: React.FC<ProductHubProps> = ({ onSelectSegment }) => {
     }));
   };
 
-  const handleOrderInquiry = (productType: 'structural_steel' | 'tmt_bar') => {
+  const handleOrderInquiry = (productType?: ProductType) => {
     onSelectSegment('contractor');
     const element = document.getElementById('inquiry-portal');
     if (element) {
@@ -34,6 +34,21 @@ export const ProductHub: React.FC<ProductHubProps> = ({ onSelectSegment }) => {
     }
     setActiveModalProduct(null);
   };
+
+  const [selectedCategory, setSelectedCategory] = useState<string>('all');
+
+  const categories = [
+    { id: 'all', label: 'All Products (6)' },
+    { id: 'ms_angles', label: 'MS Equal Angles' },
+    { id: 'ms_channels', label: 'MS Channels (ISMC)' },
+    { id: 'ms_flats', label: 'MS Flats' },
+    { id: 'ms_rounds', label: 'MS Round Bars' },
+    { id: 'tmt_bar', label: 'TMT Rebars (Fe-500D)' },
+  ];
+
+  const filteredProducts = selectedCategory === 'all'
+    ? PRODUCTS_DATA
+    : PRODUCTS_DATA.filter((p) => p.type === selectedCategory || (selectedCategory === 'structural_steel' && p.type === 'structural_steel'));
 
   return (
     <section id="products" className="py-28 bg-steel-base border-b border-steel-200 relative">
@@ -43,7 +58,7 @@ export const ProductHub: React.FC<ProductHubProps> = ({ onSelectSegment }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
+        <div className="text-center max-w-3xl mx-auto space-y-4 mb-12">
           <div className="badge-base px-4 py-1.5 inline-flex items-center gap-2 text-steel-900 text-xs font-bold uppercase tracking-wider">
             Institutional Product Suite
           </div>
@@ -55,9 +70,30 @@ export const ProductHub: React.FC<ProductHubProps> = ({ onSelectSegment }) => {
           </p>
         </div>
 
+        {/* Category Filter Tabs */}
+        <div className="flex flex-wrap items-center justify-center gap-2 mb-12">
+          {categories.map((cat) => {
+            const isActive = selectedCategory === cat.id;
+            return (
+              <button
+                key={cat.id}
+                type="button"
+                onClick={() => setSelectedCategory(cat.id)}
+                className={`px-4 py-2 text-xs font-mono font-bold transition-all border ${
+                  isActive
+                    ? 'bg-growth-600 text-white border-growth-600 shadow-md shadow-growth-500/20'
+                    : 'bg-steel-100/80 hover:bg-steel-200/80 text-steel-700 border-steel-200'
+                }`}
+              >
+                {cat.label}
+              </button>
+            );
+          })}
+        </div>
+
         {/* Product Cards Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
-          {PRODUCTS_DATA.map((product) => {
+          {filteredProducts.map((product) => {
             const isViewerOpen = active3DViewers[product.id] ?? true;
 
             return (

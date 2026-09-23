@@ -122,7 +122,7 @@ export default function StructuralSteelPage() {
         </div>
 
         {/* Dimension & Weight Schedule Table */}
-        <div className="card-base card-product p-8 border border-steel-200 space-y-6">
+        <div id="angles" className="card-base card-product p-8 border border-steel-200 space-y-6 scroll-mt-28">
           <div className="flex items-center justify-between border-b border-steel-200 pb-4">
             <div className="flex items-center gap-2">
               <Scale className="w-5 h-5 text-growth-600" />
@@ -158,7 +158,7 @@ export default function StructuralSteelPage() {
         </div>
 
         {/* MS Channels Schedule Table */}
-        <div className="card-base card-product p-8 border border-steel-200 space-y-6">
+        <div id="channels" className="card-base card-product p-8 border border-steel-200 space-y-6 scroll-mt-28">
           <div className="flex items-center justify-between border-b border-steel-200 pb-4">
             <div className="flex items-center gap-2">
               <Scale className="w-5 h-5 text-growth-600" />
@@ -194,7 +194,7 @@ export default function StructuralSteelPage() {
         </div>
 
         {/* MS Flats & Round Bars Schedule Table */}
-        <div className="card-base card-product p-8 border border-steel-200 space-y-6">
+        <div id="flats-rounds" className="card-base card-product p-8 border border-steel-200 space-y-6 scroll-mt-28">
           <div className="flex items-center justify-between border-b border-steel-200 pb-4">
             <div className="flex items-center gap-2">
               <Scale className="w-5 h-5 text-growth-600" />

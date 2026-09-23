@@ -102,14 +102,14 @@ export const Header: React.FC<HeaderProps> = ({ onSelectSegment }) => {
       icon: Layers,
       bgImage: '/assets/products-menu-bg.jpg',
       col1: [
-        { label: 'IS 2062 Structural Steel', href: '/products/structural-steel', desc: 'Equal angles, channels, joists & beams' },
-        { label: 'MS Angles & Channels', href: '/products/structural-steel#angles', desc: 'Heavy structural framing profiles' },
-        { label: 'MS Joists & Beams', href: '/products/structural-steel#joists', desc: 'High load-bearing civic columns' },
+        { label: 'MS Equal Angles (IS 2062)', href: '/products/structural-steel#angles', desc: '40x5 to 100x12 mm for towers & sheds' },
+        { label: 'MS Channels ISMC Profiles', href: '/products/structural-steel#channels', desc: 'ISMC 75 to 200 mm heavy purlins & columns' },
+        { label: 'MS Flats & Round Bars', href: '/products/structural-steel#flats-rounds', desc: 'Flats up to 100x12 mm, Rounds 16 to 32 mm Ø' },
       ],
       col2: [
-        { label: 'IS 1786 Fe-500D TMT Bars', href: '/products/tmt-rebars', desc: 'Thermex quenched high-ductility seismic rebars' },
-        { label: 'Weight & Bundle Calculator', href: '/calculator', desc: 'Interactive tonnage & bundle estimation tool' },
-        { label: 'Technical Specs Matrix', href: '/products#specs', desc: 'Chemical & mechanical tolerance tables' },
+        { label: 'Fe-500D TMT Rebars', href: '/products/tmt-rebars', desc: '8 mm to 32 mm high-ductility seismic rebars' },
+        { label: 'Steel Weight Calculator', href: '/calculator', desc: 'Interactive tonnage & trailer bundle estimation tool' },
+        { label: 'Full Product Catalog & Matrix', href: '/products', desc: 'Compare all 6 production profiles & chemical specs' },
       ]
     },
     processes: {
