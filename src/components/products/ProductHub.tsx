@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { PRODUCTS_DATA } from '@/data/products';
-import { ProductSpec, BuyerSegment } from '@/types';
+import { ProductSpec, BuyerSegment, ProductType } from '@/types';
 import { Download, ShieldCheck, Clock, CheckCircle2, FileText, X, ArrowRight, Box } from 'lucide-react';
 import { SteelProductViewer } from '@/components/3d/SteelProductViewer';
 import { SteelComparisonMatrix } from '@/components/products/SteelComparisonMatrix';
