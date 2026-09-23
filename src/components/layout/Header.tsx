@@ -104,12 +104,12 @@ export const Header: React.FC<HeaderProps> = ({ onSelectSegment }) => {
       col1: [
         { label: 'MS Equal Angles (IS 2062)', href: '/products/structural-steel#angles', desc: '40x5 to 100x12 mm for towers & sheds' },
         { label: 'MS Channels ISMC Profiles', href: '/products/structural-steel#channels', desc: 'ISMC 75 to 200 mm heavy purlins & columns' },
-        { label: 'MS Flats & Round Bars', href: '/products/structural-steel#flats-rounds', desc: 'Flats up to 100x12 mm, Rounds 16 to 32 mm Ø' },
+        { label: 'Patti, Gol & Chakor (IS 2062)', href: '/products/structural-steel#flats-rounds', desc: 'Flats up to 150x25 mm, Rounds to 63 mm, Squares to 50 mm' },
       ],
       col2: [
         { label: 'Fe-500D TMT Rebars', href: '/products/tmt-rebars', desc: '8 mm to 32 mm high-ductility seismic rebars' },
         { label: 'Steel Weight Calculator', href: '/calculator', desc: 'Interactive tonnage & trailer bundle estimation tool' },
-        { label: 'Full Product Catalog & Matrix', href: '/products', desc: 'Compare all 6 production profiles & chemical specs' },
+        { label: 'Full Product Catalog & Matrix', href: '/products', desc: 'Compare all 7 production profiles & chemical specs' },
       ]
     },
     processes: {

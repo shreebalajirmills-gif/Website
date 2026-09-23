@@ -45,13 +45,71 @@ export default function StructuralSteelPage() {
   ];
 
   const flatAndRoundSizes = [
-    { type: 'MS Flat', size: '50 x 6 mm', weightPerM: '2.36 kg/m', length: '6 Meters', app: 'Base Plates & Earthing Strips' },
-    { type: 'MS Flat', size: '75 x 10 mm', weightPerM: '5.89 kg/m', length: '6 Meters', app: 'Flange Joint Plates & Brackets' },
-    { type: 'MS Flat', size: '100 x 12 mm', weightPerM: '9.42 kg/m', length: '6 Meters', app: 'Heavy Gusset & Structural Tie Plates' },
-    { type: 'Round Bar', size: '16 mm Ø', weightPerM: '1.58 kg/m', length: '6 - 12 Meters', app: 'Foundation Anchor Bolts' },
-    { type: 'Round Bar', size: '20 mm Ø', weightPerM: '2.47 kg/m', length: '6 - 12 Meters', app: 'Cross Bracing & Sag Rods' },
-    { type: 'Round Bar', size: '25 mm Ø', weightPerM: '3.85 kg/m', length: '6 - 12 Meters', app: 'Heavy Anchor Bolts & Engineering Shafts' },
-    { type: 'Round Bar', size: '32 mm Ø', weightPerM: '6.31 kg/m', length: '6 - 12 Meters', app: 'Industrial Turnbuckles & Load Pins' },
+    // Patti (MS Flats)
+    { type: 'MS Flat (Patti)', size: '50 x 6 mm', weightPerM: '2.36 kg/m', length: '6 Meters', app: 'Substation Earthing & Pipe Clamps' },
+    { type: 'MS Flat (Patti)', size: '50 x 8 mm', weightPerM: '3.14 kg/m', length: '6 Meters', app: 'Grounding Busbars & Fabrication Brackets' },
+    { type: 'MS Flat (Patti)', size: '50 x 10 mm', weightPerM: '3.93 kg/m', length: '6 Meters', app: 'Heavy Clamps & Structural Ties' },
+    { type: 'MS Flat (Patti)', size: '50 x 12 mm', weightPerM: '4.71 kg/m', length: '6 Meters', app: 'Base Plates & Flange Brackets' },
+    { type: 'MS Flat (Patti)', size: '50 x 16 mm', weightPerM: '6.28 kg/m', length: '6 Meters', app: 'Engineering Guides & Stiffeners' },
+    { type: 'MS Flat (Patti)', size: '50 x 20 mm', weightPerM: '7.85 kg/m', length: '6 Meters', app: 'Heavy Machine Mounts & Spacers' },
+    { type: 'MS Flat (Patti)', size: '50 x 25 mm', weightPerM: '9.81 kg/m', length: '6 Meters', app: 'High-Load Machine Beds & Wear Strips' },
+    { type: 'MS Flat (Patti)', size: '65 x 6 mm', weightPerM: '3.06 kg/m', length: '6 Meters', app: 'Fabrication Brackets & Grounding' },
+    { type: 'MS Flat (Patti)', size: '65 x 8 mm', weightPerM: '4.08 kg/m', length: '6 Meters', app: 'Electrical Earthing & Structural Splices' },
+    { type: 'MS Flat (Patti)', size: '65 x 10 mm', weightPerM: '5.10 kg/m', length: '6 Meters', app: 'Flange Joint Plates & Brackets' },
+    { type: 'MS Flat (Patti)', size: '65 x 12 mm', weightPerM: '6.12 kg/m', length: '6 Meters', app: 'Heavy Machinery Guide Strips' },
+    { type: 'MS Flat (Patti)', size: '65 x 16 mm', weightPerM: '8.16 kg/m', length: '6 Meters', app: 'Heavy Duty Structural Stiffeners' },
+    { type: 'MS Flat (Patti)', size: '65 x 20 mm', weightPerM: '10.21 kg/m', length: '6 Meters', app: 'Industrial Foundation Mounts' },
+    { type: 'MS Flat (Patti)', size: '65 x 25 mm', weightPerM: '12.76 kg/m', length: '6 Meters', app: 'Heavy Engineering Beds' },
+    { type: 'MS Flat (Patti)', size: '65 x 32 mm', weightPerM: '16.33 kg/m', length: '6 Meters', app: 'High-Stress Machine Blocks' },
+    { type: 'MS Flat (Patti)', size: '75 x 6 mm', weightPerM: '3.53 kg/m', length: '6 Meters', app: 'Substation Earthing & Flange Brackets' },
+    { type: 'MS Flat (Patti)', size: '75 x 8 mm', weightPerM: '4.71 kg/m', length: '6 Meters', app: 'Joint Plates & Structural Stiffeners' },
+    { type: 'MS Flat (Patti)', size: '75 x 10 mm', weightPerM: '5.89 kg/m', length: '6 Meters', app: 'Base Plates, Heavy Clamps & Joint Gussets' },
+    { type: 'MS Flat (Patti)', size: '75 x 12 mm', weightPerM: '7.07 kg/m', length: '6 Meters', app: 'Column Splices & Machinery Beds' },
+    { type: 'MS Flat (Patti)', size: '75 x 16 mm', weightPerM: '9.42 kg/m', length: '6 Meters', app: 'Heavy Industrial Machine Foundations' },
+    { type: 'MS Flat (Patti)', size: '75 x 20 mm', weightPerM: '11.78 kg/m', length: '6 Meters', app: 'Bridge Bearings & Crane Stanchions' },
+    { type: 'MS Flat (Patti)', size: '75 x 25 mm', weightPerM: '14.72 kg/m', length: '6 Meters', app: 'High-Load Machine Beds & Splices' },
+    { type: 'MS Flat (Patti)', size: '75 x 32 mm', weightPerM: '18.84 kg/m', length: '6 Meters', app: 'Heavy Duty Engineering Blocks' },
+    { type: 'MS Flat (Patti)', size: '100 x 5 mm', weightPerM: '3.93 kg/m', length: '6 Meters', app: 'Light Base Plates & Purlin Cleats' },
+    { type: 'MS Flat (Patti)', size: '100 x 6 mm', weightPerM: '4.71 kg/m', length: '6 Meters', app: 'Earthing Flats & Joint Plates' },
+    { type: 'MS Flat (Patti)', size: '100 x 8 mm', weightPerM: '6.28 kg/m', length: '6 Meters', app: 'Truss Flange Joint Plates' },
+    { type: 'MS Flat (Patti)', size: '100 x 10 mm', weightPerM: '7.85 kg/m', length: '6 Meters', app: 'Heavy Stiffener Plates & Splices' },
+    { type: 'MS Flat (Patti)', size: '100 x 12 mm', weightPerM: '9.42 kg/m', length: '6 Meters', app: 'Machinery Beds & Anchor Washer Plates' },
+    { type: 'MS Flat (Patti)', size: '100 x 16 mm', weightPerM: '12.56 kg/m', length: '6 Meters', app: 'Heavy Gussets & Column Splices' },
+    { type: 'MS Flat (Patti)', size: '100 x 20 mm', weightPerM: '15.70 kg/m', length: '6 Meters', app: 'Crane Track Base Plates & Beds' },
+    { type: 'MS Flat (Patti)', size: '100 x 25 mm', weightPerM: '19.63 kg/m', length: '6 Meters', app: 'Bridge Column Bases & Girders' },
+    { type: 'MS Flat (Patti)', size: '100 x 32 mm', weightPerM: '25.12 kg/m', length: '6 Meters', app: 'Power Plant Machine Foundations' },
+    { type: 'MS Flat (Patti)', size: '100 x 40 mm', weightPerM: '31.40 kg/m', length: '6 Meters', app: 'Heavy Forging Beds & Press Blocks' },
+    { type: 'MS Flat (Patti)', size: '125 x 6 mm', weightPerM: '5.89 kg/m', length: '6 Meters', app: 'Heavy Earthing & Splice Plates' },
+    { type: 'MS Flat (Patti)', size: '125 x 8 mm', weightPerM: '7.85 kg/m', length: '6 Meters', app: 'Column Joint Gussets & Ties' },
+    { type: 'MS Flat (Patti)', size: '125 x 10 mm', weightPerM: '9.81 kg/m', length: '6 Meters', app: 'Heavy Beam Connection Brackets' },
+    { type: 'MS Flat (Patti)', size: '125 x 12 mm', weightPerM: '11.78 kg/m', length: '6 Meters', app: 'Stanchion Base Plates' },
+    { type: 'MS Flat (Patti)', size: '125 x 16 mm', weightPerM: '15.70 kg/m', length: '6 Meters', app: 'EOT Crane Gantry Tie Plates' },
+    { type: 'MS Flat (Patti)', size: '125 x 20 mm', weightPerM: '19.63 kg/m', length: '6 Meters', app: 'Heavy Mounts & Bridge Bearings' },
+    { type: 'MS Flat (Patti)', size: '125 x 25 mm', weightPerM: '24.53 kg/m', length: '6 Meters', app: 'Heavy Infrastructure Stiffeners' },
+    { type: 'MS Flat (Patti)', size: '150 x 5 mm', weightPerM: '5.89 kg/m', length: '6 Meters', app: 'Sheet Metal Tooling & Wide Flanges' },
+    { type: 'MS Flat (Patti)', size: '150 x 6 mm', weightPerM: '7.07 kg/m', length: '6 Meters', app: 'Wide Earthing Strips & Guides' },
+    { type: 'MS Flat (Patti)', size: '150 x 8 mm', weightPerM: '9.42 kg/m', length: '6 Meters', app: 'Heavy Structural Stiffener Plates' },
+    { type: 'MS Flat (Patti)', size: '150 x 10 mm', weightPerM: '11.78 kg/m', length: '6 Meters', app: 'Warehouse Column Base Plates' },
+    { type: 'MS Flat (Patti)', size: '150 x 12 mm', weightPerM: '14.13 kg/m', length: '6 Meters', app: 'Heavy Gusset Splices & Girders' },
+    { type: 'MS Flat (Patti)', size: '150 x 16 mm', weightPerM: '18.84 kg/m', length: '6 Meters', app: 'Bridge Girder Bearings' },
+    { type: 'MS Flat (Patti)', size: '150 x 20 mm', weightPerM: '23.55 kg/m', length: '6 Meters', app: 'Machine Beds & Turbine Bases' },
+    { type: 'MS Flat (Patti)', size: '150 x 25 mm', weightPerM: '29.44 kg/m', length: '6 Meters', app: 'Heavy Gantry Columns & Press Plates' },
+
+    // Gol (MS Round Bars)
+    { type: 'Round Bar (Gol)', size: '25 mm Ø', weightPerM: '3.85 kg/m', length: '6 - 12 Meters', app: 'Foundation Anchor J-Bolts & Transmission Bracing' },
+    { type: 'Round Bar (Gol)', size: '30 mm Ø', weightPerM: '5.55 kg/m', length: '6 - 12 Meters', app: 'Heavy Column Anchor Bolts & Tie Rods' },
+    { type: 'Round Bar (Gol)', size: '32 mm Ø', weightPerM: '6.31 kg/m', length: '6 - 12 Meters', app: 'Industrial Turnbuckles & Cross Bracing Rods' },
+    { type: 'Round Bar (Gol)', size: '40 mm Ø', weightPerM: '9.87 kg/m', length: '6 - 12 Meters', app: 'Heavy Machine Foundation Bolts & Engineering Pins' },
+    { type: 'Round Bar (Gol)', size: '50 mm Ø', weightPerM: '15.42 kg/m', length: '6 - 12 Meters', app: 'Heavy Duty Shafting, Axles & Industrial Pins' },
+    { type: 'Round Bar (Gol)', size: '56 mm Ø', weightPerM: '19.34 kg/m', length: '6 - 12 Meters', app: 'Power Generation Equipment Shafts & Rollers' },
+    { type: 'Round Bar (Gol)', size: '60 mm Ø', weightPerM: '22.20 kg/m', length: '6 - 12 Meters', app: 'Heavy Machine Drive Shafts & Guide Bars' },
+    { type: 'Round Bar (Gol)', size: '63 mm Ø', weightPerM: '24.47 kg/m', length: '6 - 12 Meters', app: 'High-Load Marine & Industrial Engineering Shafts' },
+
+    // Chakor (MS Square Bars)
+    { type: 'Square Bar (Chakor)', size: '25 x 25 mm', weightPerM: '4.91 kg/m', length: '6 Meters', app: 'Factory Gate Frames, Grilles & Light Rails' },
+    { type: 'Square Bar (Chakor)', size: '32 x 32 mm', weightPerM: '8.04 kg/m', length: '6 Meters', app: 'Crane Runway Tracks & Heavy Machine Slides' },
+    { type: 'Square Bar (Chakor)', size: '40 x 40 mm', weightPerM: '12.56 kg/m', length: '6 Meters', app: 'Heavy Industrial Track Rails & Machine Tooling' },
+    { type: 'Square Bar (Chakor)', size: '50 x 50 mm', weightPerM: '19.63 kg/m', length: '6 Meters', app: 'Heavy Equipment Rails, Tooling Blocks & Stanchions' },
   ];
 
   const breadcrumbJsonLd = getBreadcrumbJsonLd([
@@ -198,10 +256,10 @@ export default function StructuralSteelPage() {
           <div className="flex items-center justify-between border-b border-steel-200 pb-4">
             <div className="flex items-center gap-2">
               <Scale className="w-5 h-5 text-growth-600" />
-              <h2 className="text-xl font-bold text-steel-900">MS Flats & Round Bars (Engineering Sections)</h2>
+              <h2 className="text-xl font-bold text-steel-900">MS Flats (Patti), Round Bars (Gol) & Square Bars (Chakor)</h2>
             </div>
             <span className="text-xs font-mono font-bold text-steel-900 bg-transparent group-hover:bg-growth-50 px-3 py-1 border border-steel-200 group-hover:border-growth-400">
-              Flats & Rounds
+              Patti, Gol & Chakor
             </span>
           </div>
 

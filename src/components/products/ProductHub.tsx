@@ -38,11 +38,12 @@ export const ProductHub: React.FC<ProductHubProps> = ({ onSelectSegment }) => {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
 
   const categories = [
-    { id: 'all', label: 'All Products (6)' },
+    { id: 'all', label: 'All Products (7)' },
     { id: 'ms_angles', label: 'MS Equal Angles' },
     { id: 'ms_channels', label: 'MS Channels (ISMC)' },
-    { id: 'ms_flats', label: 'MS Flats' },
-    { id: 'ms_rounds', label: 'MS Round Bars' },
+    { id: 'ms_flats', label: 'MS Flats (Patti)' },
+    { id: 'ms_rounds', label: 'MS Round Bars (Gol)' },
+    { id: 'ms_squares', label: 'MS Square Bars (Chakor)' },
     { id: 'tmt_bar', label: 'TMT Rebars (Fe-500D)' },
   ];
 

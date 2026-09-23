@@ -157,7 +157,7 @@ export const SteelProductViewer: React.FC<SteelProductViewerProps> = ({ productT
       const mesh = new THREE.Mesh(geo, mat);
       mainGroup.add(mesh);
     } else if (productType === 'ms_rounds') {
-      // 3D MS Round Bar (Smooth Solid Cylinder)
+      // 3D MS Round Bar - Gol (Smooth Solid Cylinder)
       const cylGeo = new THREE.CylinderGeometry(0.45, 0.45, 4, 32);
       const mat = new THREE.MeshStandardMaterial({
         color: 0x94A3B8,
@@ -167,6 +167,18 @@ export const SteelProductViewer: React.FC<SteelProductViewerProps> = ({ productT
       const cyl = new THREE.Mesh(cylGeo, mat);
       cyl.rotation.z = Math.PI / 4;
       mainGroup.add(cyl);
+    } else if (productType === 'ms_squares') {
+      // 3D MS Square Bar - Chakor (Cuboidal Solid Rod, square cross-section)
+      const sqGeo = new THREE.BoxGeometry(0.8, 0.8, 4);
+      const mat = new THREE.MeshStandardMaterial({
+        color: 0x475569,
+        metalness: 0.88,
+        roughness: 0.2,
+      });
+      const sqMesh = new THREE.Mesh(sqGeo, mat);
+      sqMesh.rotation.z = Math.PI / 4;
+      sqMesh.rotation.y = Math.PI / 6;
+      mainGroup.add(sqMesh);
     } else {
       // 3D TMT Fe-500D Bar with Ribs
       const barGroup = new THREE.Group();
