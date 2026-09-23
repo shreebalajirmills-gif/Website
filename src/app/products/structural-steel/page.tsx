@@ -33,6 +33,25 @@ export default function StructuralSteelPage() {
     { size: '75 x 75 x 6 mm', weightPerM: '6.84 kg/m', length: '12 Meters', app: 'Industrial Plant Platforms' },
     { size: '90 x 90 x 8 mm', weightPerM: '10.92 kg/m', length: '12 Meters', app: 'Heavy Structural Stanchions' },
     { size: '100 x 100 x 10 mm', weightPerM: '14.90 kg/m', length: '12 Meters', app: 'Bridge Columns & Cranes' },
+    { size: '100 x 100 x 12 mm', weightPerM: '17.70 kg/m', length: '12 Meters', app: 'High-Load Heavy Industrial Gantries' },
+  ];
+
+  const channelSizes = [
+    { size: 'ISMC 75 x 40 mm', weightPerM: '7.14 kg/m', length: '12 Meters', app: 'Roof Purlins & Window Framing' },
+    { size: 'ISMC 100 x 50 mm', weightPerM: '9.56 kg/m', length: '12 Meters', app: 'Shed Purlins, Commercial Framing' },
+    { size: 'ISMC 125 x 65 mm', weightPerM: '13.10 kg/m', length: '12 Meters', app: 'Industrial Stanchions & Support Brackets' },
+    { size: 'ISMC 150 x 75 mm', weightPerM: '16.80 kg/m', length: '12 Meters', app: 'Warehouse Columns & Primary Girders' },
+    { size: 'ISMC 200 x 75 mm', weightPerM: '22.30 kg/m', length: '12 Meters', app: 'Heavy Machine Bases & Freight Bays' },
+  ];
+
+  const flatAndRoundSizes = [
+    { type: 'MS Flat', size: '50 x 6 mm', weightPerM: '2.36 kg/m', length: '6 Meters', app: 'Base Plates & Earthing Strips' },
+    { type: 'MS Flat', size: '75 x 10 mm', weightPerM: '5.89 kg/m', length: '6 Meters', app: 'Flange Joint Plates & Brackets' },
+    { type: 'MS Flat', size: '100 x 12 mm', weightPerM: '9.42 kg/m', length: '6 Meters', app: 'Heavy Gusset & Structural Tie Plates' },
+    { type: 'Round Bar', size: '16 mm Ø', weightPerM: '1.58 kg/m', length: '6 - 12 Meters', app: 'Foundation Anchor Bolts' },
+    { type: 'Round Bar', size: '20 mm Ø', weightPerM: '2.47 kg/m', length: '6 - 12 Meters', app: 'Cross Bracing & Sag Rods' },
+    { type: 'Round Bar', size: '25 mm Ø', weightPerM: '3.85 kg/m', length: '6 - 12 Meters', app: 'Heavy Anchor Bolts & Engineering Shafts' },
+    { type: 'Round Bar', size: '32 mm Ø', weightPerM: '6.31 kg/m', length: '6 - 12 Meters', app: 'Industrial Turnbuckles & Load Pins' },
   ];
 
   const breadcrumbJsonLd = getBreadcrumbJsonLd([
@@ -127,6 +146,80 @@ export default function StructuralSteelPage() {
               <tbody className="divide-y divide-steel-200 font-mono text-steel-800">
                 {angleSizes.map((item, i) => (
                   <tr key={i} className="hover:bg-steel-50 transition-colors">
+                    <td className="py-3.5 px-4 font-bold text-steel-900">{item.size}</td>
+                    <td className="py-3.5 px-4 font-bold text-steel-900">{item.weightPerM}</td>
+                    <td className="py-3.5 px-4 text-steel-600">{item.length}</td>
+                    <td className="py-3.5 px-4 font-sans text-steel-600">{item.app}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        {/* MS Channels Schedule Table */}
+        <div className="card-base card-product p-8 border border-steel-200 space-y-6">
+          <div className="flex items-center justify-between border-b border-steel-200 pb-4">
+            <div className="flex items-center gap-2">
+              <Scale className="w-5 h-5 text-growth-600" />
+              <h2 className="text-xl font-bold text-steel-900">Standard Mild Steel Channels (ISMC Schedule)</h2>
+            </div>
+            <span className="text-xs font-mono font-bold text-steel-900 bg-transparent group-hover:bg-growth-50 px-3 py-1 border border-steel-200 group-hover:border-growth-400">
+              ISMC Profiles
+            </span>
+          </div>
+
+          <div className="overflow-x-auto">
+            <table className="w-full text-left text-xs sm:text-sm border-collapse">
+              <thead>
+                <tr className="border-b border-steel-200 text-steel-500 font-mono text-[11px] uppercase">
+                  <th className="py-3 px-4">Channel Designation</th>
+                  <th className="py-3 px-4">Unit Weight (kg/m)</th>
+                  <th className="py-3 px-4">Standard Stock Length</th>
+                  <th className="py-3 px-4">Primary Application</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-steel-200 font-mono text-steel-800">
+                {channelSizes.map((item, i) => (
+                  <tr key={i} className="hover:bg-steel-50 transition-colors">
+                    <td className="py-3.5 px-4 font-bold text-steel-900">{item.size}</td>
+                    <td className="py-3.5 px-4 font-bold text-steel-900">{item.weightPerM}</td>
+                    <td className="py-3.5 px-4 text-steel-600">{item.length}</td>
+                    <td className="py-3.5 px-4 font-sans text-steel-600">{item.app}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        {/* MS Flats & Round Bars Schedule Table */}
+        <div className="card-base card-product p-8 border border-steel-200 space-y-6">
+          <div className="flex items-center justify-between border-b border-steel-200 pb-4">
+            <div className="flex items-center gap-2">
+              <Scale className="w-5 h-5 text-growth-600" />
+              <h2 className="text-xl font-bold text-steel-900">MS Flats & Round Bars (Engineering Sections)</h2>
+            </div>
+            <span className="text-xs font-mono font-bold text-steel-900 bg-transparent group-hover:bg-growth-50 px-3 py-1 border border-steel-200 group-hover:border-growth-400">
+              Flats & Rounds
+            </span>
+          </div>
+
+          <div className="overflow-x-auto">
+            <table className="w-full text-left text-xs sm:text-sm border-collapse">
+              <thead>
+                <tr className="border-b border-steel-200 text-steel-500 font-mono text-[11px] uppercase">
+                  <th className="py-3 px-4">Product Category</th>
+                  <th className="py-3 px-4">Nominal Size</th>
+                  <th className="py-3 px-4">Unit Weight (kg/m)</th>
+                  <th className="py-3 px-4">Stock Length</th>
+                  <th className="py-3 px-4">Target Application</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-steel-200 font-mono text-steel-800">
+                {flatAndRoundSizes.map((item, i) => (
+                  <tr key={i} className="hover:bg-steel-50 transition-colors">
+                    <td className="py-3.5 px-4 font-bold text-steel-900">{item.type}</td>
                     <td className="py-3.5 px-4 font-bold text-steel-900">{item.size}</td>
                     <td className="py-3.5 px-4 font-bold text-steel-900">{item.weightPerM}</td>
                     <td className="py-3.5 px-4 text-steel-600">{item.length}</td>

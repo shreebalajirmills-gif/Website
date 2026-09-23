@@ -2,6 +2,14 @@ export type BuyerSegment = 'distributor' | 'contractor' | 'project' | 'investor'
 
 export type ProductType = 'structural_steel' | 'tmt_bar';
 
+export interface ProductSizeSpec {
+  size: string;
+  weightPerM?: string;
+  dimensions?: string;
+  standardLength?: string;
+  application?: string;
+}
+
 export interface ProductSpec {
   id: string;
   type: ProductType;
@@ -25,6 +33,8 @@ export interface ProductSpec {
   };
   leadTime: string;
   applications: string[];
+  availableSizes?: ProductSizeSpec[];
+  sizeRangeSummary?: string;
   pdfFilename: string;
 }
 

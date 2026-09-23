@@ -163,6 +163,18 @@ export const ProductHub: React.FC<ProductHubProps> = ({ onSelectSegment }) => {
                   </div>
                 </div>
 
+                {/* Size Range & Available Dimensions */}
+                {product.sizeRangeSummary && (
+                  <div className="mb-6 p-3.5 bg-steel-50 border border-steel-200">
+                    <span className="text-[10px] font-bold text-steel-500 uppercase tracking-widest block mb-1">
+                      Available Sections & Size Envelope
+                    </span>
+                    <p className="text-xs font-mono font-bold text-steel-800 leading-snug">
+                      {product.sizeRangeSummary}
+                    </p>
+                  </div>
+                )}
+
                 {/* Key Applications */}
                 <div className="space-y-2 mb-8">
                   <span className="text-xs font-bold text-steel-500 uppercase tracking-wider block">
@@ -287,6 +299,35 @@ export const ProductHub: React.FC<ProductHubProps> = ({ onSelectSegment }) => {
                   </div>
                 </div>
               </div>
+
+              {/* Dimensional Schedule Table */}
+              {activeModalProduct.availableSizes && activeModalProduct.availableSizes.length > 0 && (
+                <div className="space-y-3">
+                  <h4 className="font-bold text-steel-900 text-sm">Standard Section & Dimension Schedule:</h4>
+                  <div className="overflow-x-auto border border-steel-200 bg-steel-50 max-h-60 overflow-y-auto">
+                    <table className="w-full text-left text-xs border-collapse font-mono">
+                      <thead className="bg-steel-200/80 sticky top-0 text-[10px] text-steel-700 uppercase">
+                        <tr>
+                          <th className="py-2 px-3">Profile / Diameter</th>
+                          <th className="py-2 px-3">Unit Weight</th>
+                          <th className="py-2 px-3">Stock Length</th>
+                          <th className="py-2 px-3">Target Application</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-steel-200 text-steel-800">
+                        {activeModalProduct.availableSizes.map((sz, idx) => (
+                          <tr key={idx} className="hover:bg-steel-100">
+                            <td className="py-2 px-3 font-bold text-steel-900">{sz.size}</td>
+                            <td className="py-2 px-3 font-medium">{sz.weightPerM || '—'}</td>
+                            <td className="py-2 px-3 text-steel-600">{sz.standardLength || '12 Meters'}</td>
+                            <td className="py-2 px-3 text-steel-600 font-sans">{sz.application || '—'}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              )}
 
               <div className="space-y-2">
                 <h4 className="font-bold text-steel-900 text-sm">Quality Compliance:</h4>
