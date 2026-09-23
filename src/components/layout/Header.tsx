@@ -97,19 +97,19 @@ export const Header: React.FC<HeaderProps> = ({ onSelectSegment }) => {
     products: {
       title: 'Our Products',
       href: '/products',
-      tagline: 'BIS Certified IS 2062 Structural Profiles & IS 1786 Fe-500D TMT Bars',
-      badge: 'BIS IS 2062 & IS 1786',
+      tagline: 'BIS IS 2062 Grade E250 Flats (Patti), Rounds (Gol) & Squares (Chakor)',
+      badge: 'BIS IS 2062 Certified',
       icon: Layers,
       bgImage: '/assets/products-menu-bg.jpg',
       col1: [
-        { label: 'MS Equal Angles (IS 2062)', href: '/products/structural-steel#angles', desc: '40x5 to 100x12 mm for towers & sheds' },
-        { label: 'MS Channels ISMC Profiles', href: '/products/structural-steel#channels', desc: 'ISMC 75 to 200 mm heavy purlins & columns' },
-        { label: 'Patti, Gol & Chakor (IS 2062)', href: '/products/structural-steel#flats-rounds', desc: 'Flats up to 150x25 mm, Rounds to 63 mm, Squares to 50 mm' },
+        { label: 'MS Flats / Patti (IS 2062)', href: '/products#products', desc: '50 to 150 mm widths, 5 to 40 mm thicknesses for earthing & plates' },
+        { label: 'MS Round Bars / Gol (IS 2062)', href: '/products#products', desc: '25 to 63 mm Ø cylindrical solid rods for anchor bolts & shafts' },
+        { label: 'MS Square Bars / Chakor', href: '/products#products', desc: '25 to 50 mm solid cuboidal square rods for crane rails & grilles' },
       ],
       col2: [
-        { label: 'Fe-500D TMT Rebars', href: '/products/tmt-rebars', desc: '8 mm to 32 mm high-ductility seismic rebars' },
         { label: 'Steel Weight Calculator', href: '/calculator', desc: 'Interactive tonnage & trailer bundle estimation tool' },
-        { label: 'Full Product Catalog & Matrix', href: '/products', desc: 'Compare all 7 production profiles & chemical specs' },
+        { label: 'Bhiwadi Rolling Facility', href: '/about#journey', desc: 'Direct mill pricing & verified BIS certification' },
+        { label: 'Direct Mill Commercial Desk', href: '/#contact', desc: 'Request wholesale quotes, dispatch & allocation' },
       ]
     },
     processes: {
@@ -152,30 +152,28 @@ export const Header: React.FC<HeaderProps> = ({ onSelectSegment }) => {
       <div className="max-w-7xl mx-auto flex items-center justify-between pointer-events-auto relative">
         
         {/* Floating Architectural Navigation Dock */}
-        <div className="w-full bg-slate-950/85 backdrop-blur-2xl px-3.5 sm:px-6 py-2.5 sm:py-3 flex items-center justify-between border border-slate-800/90 rounded-2xl shadow-2xl relative z-50">
+        <div className="w-full liquid-glass px-3 sm:px-5 py-2.5 sm:py-3 flex items-center justify-between border border-slate-200/90 relative z-50">
           
           {/* Logo & Brand */}
           <Link href="/" onClick={handleLogoClick} className="flex items-center gap-2 sm:gap-3 group shrink-0">
-            <div className="bg-white/95 px-2 py-1 rounded-lg border border-white/20">
-              <img 
-                src="/logo.png" 
-                alt="Shree Balaji Rolling Mills Limited Logo" 
-                width={160}
-                height={42}
-                loading="eager"
-                className="h-7 sm:h-9 lg:h-10 w-auto object-contain transition-transform group-hover:scale-105"
-              />
-            </div>
+            <img 
+              src="/logo.png" 
+              alt="Shree Balaji Rolling Mills Limited Logo" 
+              width={180}
+              height={48}
+              loading="eager"
+              className="h-8 sm:h-10 lg:h-12 w-auto object-contain transition-transform group-hover:scale-105"
+            />
           </Link>
 
           {/* Navigation Links with Mega Menu Dropdowns - Hidden on mobile */}
-          <nav className="hidden lg:flex items-center gap-1 bg-slate-900/90 p-1.5 rounded-xl border border-slate-800">
+          <nav className="hidden lg:flex items-center gap-0.5 sm:gap-1 bg-steel-100/90 p-1 border border-steel-200/90">
             
             {/* Overview / Home */}
             <Link
               href="/"
-              className={`px-3.5 py-1.5 rounded-lg text-[11px] font-bold transition-all duration-200 min-h-[38px] flex items-center ${
-                pathname === '/' ? 'bg-amber-500 text-slate-950 font-black shadow-md shadow-amber-500/20' : 'text-slate-300 hover:text-white hover:bg-slate-800'
+              className={`px-3 sm:px-4 py-1.5 text-[10px] sm:text-xs font-bold transition-all duration-200 min-h-[44px] flex items-center ${
+                pathname === '/' ? 'bg-slate-200 text-black font-black border border-slate-300' : 'text-slate-800 hover:text-growth-700 hover:bg-steel-50'
               }`}
             >
               Home
@@ -189,14 +187,14 @@ export const Header: React.FC<HeaderProps> = ({ onSelectSegment }) => {
             >
               <Link
                 href="/about"
-                className={`px-3.5 py-1.5 rounded-lg text-[11px] font-bold inline-flex items-center gap-1 transition-all duration-200 min-h-[38px] ${
+                className={`px-3 sm:px-4 py-1.5 text-[10px] sm:text-xs font-bold inline-flex items-center gap-1 transition-all duration-200 min-h-[44px] ${
                   pathname.startsWith('/about') || activeMegaMenu === 'about'
-                    ? 'bg-amber-500 text-slate-950 font-black shadow-md shadow-amber-500/20'
-                    : 'text-slate-300 hover:text-white hover:bg-slate-800'
+                    ? 'bg-slate-200 text-black font-black border border-slate-300'
+                    : 'text-slate-800 hover:text-growth-700 hover:bg-steel-50'
                 }`}
               >
                 <span>About Us</span>
-                <ChevronDown className="w-3 h-3 opacity-70" />
+                <ChevronDown className="w-3 h-3 sm:w-3.5 sm:h-3.5 opacity-70" />
               </Link>
             </div>
 
@@ -208,14 +206,14 @@ export const Header: React.FC<HeaderProps> = ({ onSelectSegment }) => {
             >
               <Link
                 href="/products"
-                className={`px-3.5 py-1.5 rounded-lg text-[11px] font-bold inline-flex items-center gap-1 transition-all duration-200 min-h-[38px] ${
+                className={`px-3 sm:px-4 py-1.5 text-[10px] sm:text-xs font-bold inline-flex items-center gap-1 transition-all duration-200 min-h-[44px] ${
                   pathname.startsWith('/products') || activeMegaMenu === 'products'
-                    ? 'bg-amber-500 text-slate-950 font-black shadow-md shadow-amber-500/20'
-                    : 'text-slate-300 hover:text-white hover:bg-slate-800'
+                    ? 'bg-slate-200 text-black font-black border border-slate-300'
+                    : 'text-slate-800 hover:text-growth-700 hover:bg-steel-50'
                 }`}
               >
                 <span>Our Products</span>
-                <ChevronDown className="w-3 h-3 opacity-70" />
+                <ChevronDown className="w-3 h-3 sm:w-3.5 sm:h-3.5 opacity-70" />
               </Link>
             </div>
 
@@ -227,14 +225,14 @@ export const Header: React.FC<HeaderProps> = ({ onSelectSegment }) => {
             >
               <Link
                 href="/manufacturing-processes"
-                className={`px-3.5 py-1.5 rounded-lg text-[11px] font-bold inline-flex items-center gap-1 transition-all duration-200 min-h-[38px] ${
+                className={`px-3 sm:px-4 py-1.5 text-[10px] sm:text-xs font-bold inline-flex items-center gap-1 transition-all duration-200 min-h-[44px] ${
                   pathname.startsWith('/manufacturing-processes') || activeMegaMenu === 'processes'
-                    ? 'bg-amber-500 text-slate-950 font-black shadow-md shadow-amber-500/20'
-                    : 'text-slate-300 hover:text-white hover:bg-slate-800'
+                    ? 'bg-slate-200 text-black font-black border border-slate-300'
+                    : 'text-slate-800 hover:text-growth-700 hover:bg-steel-50'
                 }`}
               >
                 <span>Processes</span>
-                <ChevronDown className="w-3 h-3 opacity-70" />
+                <ChevronDown className="w-3 h-3 sm:w-3.5 sm:h-3.5 opacity-70" />
               </Link>
             </div>
 
@@ -246,22 +244,22 @@ export const Header: React.FC<HeaderProps> = ({ onSelectSegment }) => {
             >
               <Link
                 href="/growth"
-                className={`px-3.5 py-1.5 rounded-lg text-[11px] font-bold inline-flex items-center gap-1 transition-all duration-200 min-h-[38px] ${
+                className={`px-3 sm:px-4 py-1.5 text-[10px] sm:text-xs font-bold inline-flex items-center gap-1 transition-all duration-200 min-h-[44px] ${
                   pathname.startsWith('/growth') || activeMegaMenu === 'media'
-                    ? 'bg-amber-500 text-slate-950 font-black shadow-md shadow-amber-500/20'
-                    : 'text-slate-300 hover:text-white hover:bg-slate-800'
+                    ? 'bg-slate-200 text-black font-black border border-slate-300'
+                    : 'text-slate-800 hover:text-growth-700 hover:bg-steel-50'
                 }`}
               >
                 <span>Media</span>
-                <ChevronDown className="w-3 h-3 opacity-70" />
+                <ChevronDown className="w-3 h-3 sm:w-3.5 sm:h-3.5 opacity-70" />
               </Link>
             </div>
 
             {/* Our Certificates */}
             <Link
               href="/trust"
-              className={`px-3.5 py-1.5 rounded-lg text-[11px] font-bold transition-all duration-200 min-h-[38px] flex items-center ${
-                pathname === '/trust' ? 'bg-amber-500 text-slate-950 font-black shadow-md shadow-amber-500/20' : 'text-slate-300 hover:text-white hover:bg-slate-800'
+              className={`px-3 sm:px-4 py-1.5 text-[10px] sm:text-xs font-bold transition-all duration-200 min-h-[44px] flex items-center ${
+                pathname === '/trust' ? 'bg-slate-200 text-black font-black border border-slate-300' : 'text-slate-800 hover:text-growth-700 hover:bg-steel-50'
               }`}
             >
               Certificates
@@ -275,7 +273,7 @@ export const Header: React.FC<HeaderProps> = ({ onSelectSegment }) => {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Direct WhatsApp Quote Chat with Mill Sales Desk"
-              className="hidden sm:inline-flex items-center gap-1.5 bg-emerald-600/90 hover:bg-emerald-500 text-white font-mono font-bold text-[11px] px-3.5 py-2 rounded-xl transition-all border border-emerald-500/40 shrink-0 shadow-sm shadow-emerald-950"
+              className="hidden sm:inline-flex items-center gap-1.5 bg-emerald-600 hover:bg-emerald-500 text-white font-mono font-bold text-[10px] sm:text-xs px-3 py-1.5 sm:py-2 transition-all border border-emerald-400/40 shrink-0"
             >
               <SocialIcon platform="whatsapp" className="w-3.5 h-3.5 fill-current" />
               <span>WhatsApp Quote</span>
@@ -283,17 +281,17 @@ export const Header: React.FC<HeaderProps> = ({ onSelectSegment }) => {
 
             <Link
               href="/inquiry"
-              className="bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-xs py-2 px-4 rounded-xl flex items-center gap-1.5 transition-all shadow-md shadow-amber-500/20 hover:scale-[1.02]"
+              className="btn-primary !py-1.5 sm:!py-2 !px-3 sm:!px-4 text-[10px] sm:text-xs !font-extrabold flex items-center gap-1 sm:gap-1.5"
             >
               <span className="hidden sm:inline">Inquire Now</span>
               <span className="sm:hidden">Inquire</span>
-              <ArrowRight className="w-3.5 h-3.5" />
+              <ArrowRight className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
             </Link>
 
             <button
               ref={toggleRef}
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-2 text-slate-300 hover:text-white hover:bg-slate-800/80 rounded-lg min-h-[40px] min-w-[40px] flex items-center justify-center border border-slate-700/50"
+              className="lg:hidden p-4 text-steel-700 hover:bg-steel-100 min-h-[44px] min-w-[44px]"
               aria-label="Toggle Navigation"
               aria-expanded={mobileMenuOpen}
               aria-controls="mobile-navigation"

@@ -38,18 +38,15 @@ export const ProductHub: React.FC<ProductHubProps> = ({ onSelectSegment }) => {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
 
   const categories = [
-    { id: 'all', label: 'All Products (7)' },
-    { id: 'ms_angles', label: 'MS Equal Angles' },
-    { id: 'ms_channels', label: 'MS Channels (ISMC)' },
+    { id: 'all', label: 'All Products (3)' },
     { id: 'ms_flats', label: 'MS Flats (Patti)' },
     { id: 'ms_rounds', label: 'MS Round Bars (Gol)' },
     { id: 'ms_squares', label: 'MS Square Bars (Chakor)' },
-    { id: 'tmt_bar', label: 'TMT Rebars (Fe-500D)' },
   ];
 
   const filteredProducts = selectedCategory === 'all'
     ? PRODUCTS_DATA
-    : PRODUCTS_DATA.filter((p) => p.type === selectedCategory || (selectedCategory === 'structural_steel' && p.type === 'structural_steel'));
+    : PRODUCTS_DATA.filter((p) => p.type === selectedCategory);
 
   return (
     <section id="products" className="py-28 bg-steel-base border-b border-steel-200 relative">
@@ -64,10 +61,10 @@ export const ProductHub: React.FC<ProductHubProps> = ({ onSelectSegment }) => {
             Institutional Product Suite
           </div>
           <h2 className="text-3xl sm:text-5xl font-black text-steel-900 tracking-tight">
-            Structural Steel & <span className="text-gradient-growth">High-Ductility TMT Bars</span>
+            MS Flats (Patti), Round Bars (Gol) & <span className="text-gradient-growth">Square Bars (Chakor)</span>
           </h2>
           <p className="text-base text-steel-600 leading-relaxed font-normal">
-            Manufactured to Bureau of Indian Standards (BIS) IS 2062 & IS 1786 at our Bhiwadi rolling facility. Engineered for heavy infrastructure, commercial towers, and industrial framing.
+            Direct mill manufactured to Bureau of Indian Standards (BIS) IS 2062 Grade E250 at our Bhiwadi rolling facility. Engineered for substation earthing, foundation anchor bolts, machine shafts, crane tracks, and heavy structural fabrication.
           </p>
         </div>
 

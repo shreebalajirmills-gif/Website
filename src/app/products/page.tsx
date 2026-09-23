@@ -10,18 +10,17 @@ import { JsonLd } from '@/components/seo/JsonLd';
 import { PRODUCTS_DATA } from '@/data/products';
 
 export const metadata: Metadata = constructMetadata({
-  title: 'Products Suite | Structural Steel & TMT Bars (BIS Certified)',
+  title: 'Products Suite | MS Flats, Round Bars & Square Bars (BIS Certified)',
   description:
-    'Explore Shree Balaji Rolling Mills product catalog: IS 2062 MS Angles, Channels (ISMC), MS Flats, MS Round Bars (36,000 TPA) and IS 1786 Fe-500D High-Ductility TMT Rebars (144,000 TPA).',
+    'Explore Shree Balaji Rolling Mills product catalog: IS 2062 MS Flats (Patti), Round Bars (Gol), and Square Bars (Chakor) manufactured per BIS IS 2062:2011 Grade E250 in Bhiwadi, Haryana.',
   canonicalUrl: '/products',
   keywords: [
-    'IS 2062 Angles and Channels',
-    'MS Equal Angles Manufacturer',
-    'ISMC Steel Channels Bhiwadi',
-    'MS Flats and Round Bars',
-    'Fe 500D TMT Bar Catalog',
-    'Structural Steel Specifications India',
+    'MS Flats Manufacturer',
+    'MS Round Bars Gol',
+    'MS Square Bars Chakor',
+    'IS 2062 Grade E250 Steel',
     'Bhiwadi Rolling Mill Products',
+    'Patti Gol Chakor Delhi NCR',
   ],
 });
 
@@ -46,7 +45,7 @@ export default function ProductsPage() {
             Institutional Product Suite & <span className="text-gradient-growth">Technical Standards</span>
           </h1>
           <p className="text-base text-steel-600 max-w-2xl mx-auto font-normal">
-            Direct rolling mill manufactured structural steel profiles (IS 2062 MS Angles, Channels, Flats, Rounds) and high-ductility TMT rebars (IS 1786 Fe-500D) engineered for Northern India’s commercial infrastructure.
+            Direct rolling mill manufactured MS Flats (Patti), MS Round Bars (Gol), and MS Square Bars (Chakor) per BIS IS 2062 Grade E250 at our Bhiwadi facility.
           </p>
         </div>
       </section>

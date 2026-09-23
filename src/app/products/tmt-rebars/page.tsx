@@ -24,7 +24,18 @@ export const metadata: Metadata = constructMetadata({
 });
 
 export default function TmtRebarsPage() {
-  const tmtProduct = PRODUCTS_DATA[1];
+  const tmtProduct = {
+    name: 'Fe-500D High-Ductility TMT Bars',
+    description: 'Advanced Thermo-Mechanically Treated reinforcement bars featuring superior earthquake resistance, high elongation capability, and corrosion resistance for high-rise commercial towers and civic infrastructure.',
+    specs: { standard: 'IS 1786:2018 Grade Fe-500D' },
+    capacity: { formatTpa: '144,000 TPA' },
+    applications: [
+      'High-Rise Commercial & Residential Towers',
+      'Metro Rail Corridors & Flyovers',
+      'Industrial Heavy Machine Foundations',
+      'High-Load Seismic Zone Construction',
+    ],
+  };
 
   const rebarSizes = [
     { size: '8 mm', weightPerM: '0.395 kg/m', bundlePcs: '10 Pcs', app: 'Slab reinforcement & Stirrups' },

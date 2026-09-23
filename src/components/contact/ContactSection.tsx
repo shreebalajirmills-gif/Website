@@ -65,29 +65,29 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onSelectSegment 
           </p>
         </div>
 
-        {/* 4 Direct Contact Cards */}
+        {/* 4 Direct Contact Cards - Fully Uniform Layout & Contrast */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
           
           {/* Card 1: Phone Calling Desk */}
-          <div className="contact-card p-6 rounded-2xl bg-slate-900/80 border border-slate-800 flex flex-col justify-between hover:border-amber-500/50 transition-all shadow-xl" data-idx={0}>
+          <div className="contact-card p-6 rounded-2xl bg-slate-900 border border-slate-700/80 flex flex-col justify-between hover:border-amber-400 transition-all shadow-xl min-h-[310px]" data-idx={0}>
             <div className="space-y-3">
-              <div className="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-400 border border-amber-500/20 flex items-center justify-center">
+              <div className="w-10 h-10 rounded-xl bg-slate-800 text-amber-400 border border-slate-700 flex items-center justify-center">
                 <Phone className="w-5 h-5" />
               </div>
               <span className="text-[10px] font-bold text-amber-400 uppercase tracking-widest block font-mono">
                 PHONE SALES DESK
               </span>
               <h3 className="text-lg font-bold text-white">Direct Call Line</h3>
-              <p className="text-xs text-slate-400 leading-relaxed font-normal">
+              <p className="text-xs text-slate-300 leading-relaxed font-normal">
                 Speak directly with our mill sales desk for urgent delivery schedules & order status.
               </p>
-              <div className="pt-2 text-sm font-bold text-amber-400 font-mono">
+              <div className="pt-2 text-sm font-bold text-white font-mono">
                 {SITE_CONFIG.contact.phone}
               </div>
             </div>
             <a
               href={`tel:${SITE_CONFIG.contact.phoneRaw}`}
-              className="mt-6 py-2.5 px-4 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-black flex items-center justify-center gap-2 transition-all shadow-md shadow-amber-500/20"
+              className="mt-6 py-2.5 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 text-amber-400 text-xs font-bold flex items-center justify-center gap-2 transition-all border border-slate-700"
             >
               <Phone className="w-3.5 h-3.5" />
               <span>Call Sales Desk</span>
@@ -95,16 +95,16 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onSelectSegment 
           </div>
 
           {/* Card 2: WhatsApp Instant Quotation */}
-          <div className="contact-card p-6 rounded-2xl bg-slate-900/80 border border-emerald-500/30 flex flex-col justify-between hover:border-emerald-500/60 transition-all shadow-xl" data-idx={1}>
+          <div className="contact-card p-6 rounded-2xl bg-slate-900 border border-slate-700/80 flex flex-col justify-between hover:border-emerald-400 transition-all shadow-xl min-h-[310px]" data-idx={1}>
             <div className="space-y-3">
-              <div className="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 flex items-center justify-center">
+              <div className="w-10 h-10 rounded-xl bg-slate-800 text-emerald-400 border border-slate-700 flex items-center justify-center">
                 <SocialIcon platform="whatsapp" className="w-5 h-5 fill-current" />
               </div>
               <span className="text-[10px] font-bold text-emerald-400 uppercase tracking-widest block font-mono">
                 WHATSAPP BUSINESS
               </span>
               <h3 className="text-lg font-bold text-white">Instant Quotation</h3>
-              <p className="text-xs text-slate-400 leading-relaxed font-normal">
+              <p className="text-xs text-slate-300 leading-relaxed font-normal">
                 Start a direct chat for price quotes with prefilled inquiry details.
               </p>
               <div className="pt-2 text-xs font-mono font-semibold text-emerald-400">
@@ -115,7 +115,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onSelectSegment 
               href={getWhatsAppUrl()}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-6 bg-emerald-600 hover:bg-emerald-500 text-white py-2.5 px-4 rounded-xl text-xs font-black flex items-center justify-center gap-2 transition-all border border-emerald-400/40 shadow-md shadow-emerald-950"
+              className="mt-6 py-2.5 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 text-emerald-400 text-xs font-bold flex items-center justify-center gap-2 transition-all border border-slate-700"
             >
               <SocialIcon platform="whatsapp" className="w-3.5 h-3.5 fill-current" />
               <span>Chat on WhatsApp</span>
@@ -123,25 +123,25 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onSelectSegment 
           </div>
 
           {/* Card 3: Email Desk */}
-          <div className="contact-card p-6 rounded-2xl bg-slate-900/80 border border-slate-800 flex flex-col justify-between hover:border-slate-700 transition-all shadow-xl" data-idx={2}>
+          <div className="contact-card p-6 rounded-2xl bg-slate-900 border border-slate-700/80 flex flex-col justify-between hover:border-amber-400 transition-all shadow-xl min-h-[310px]" data-idx={2}>
             <div className="space-y-3">
-              <div className="w-10 h-10 rounded-xl bg-slate-800 text-slate-300 border border-slate-700 flex items-center justify-center">
+              <div className="w-10 h-10 rounded-xl bg-slate-800 text-amber-400 border border-slate-700 flex items-center justify-center">
                 <Mail className="w-5 h-5" />
               </div>
-              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block font-mono">
+              <span className="text-[10px] font-bold text-amber-400 uppercase tracking-widest block font-mono">
                 CORPORATE EMAIL
               </span>
               <h3 className="text-lg font-bold text-white">Email Inquiry</h3>
-              <p className="text-xs text-slate-400 leading-relaxed font-normal">
+              <p className="text-xs text-slate-300 leading-relaxed font-normal">
                 Send formal RFQs, purchase orders, or technical specification inquiries.
               </p>
-              <div className="pt-2 text-xs font-mono font-semibold text-slate-300 truncate">
+              <div className="pt-2 text-xs font-mono font-semibold text-white truncate">
                 {SITE_CONFIG.contact.email}
               </div>
             </div>
             <a
               href={`mailto:${SITE_CONFIG.contact.email}`}
-              className="mt-6 py-2.5 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 text-white text-xs font-bold flex items-center justify-center gap-2 transition-all border border-slate-700"
+              className="mt-6 py-2.5 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 text-amber-400 text-xs font-bold flex items-center justify-center gap-2 transition-all border border-slate-700"
             >
               <Mail className="w-3.5 h-3.5" />
               <span>Send Email RFQ</span>
@@ -149,18 +149,21 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onSelectSegment 
           </div>
 
           {/* Card 4: Direct Sales Portal */}
-          <div className="contact-card p-6 rounded-2xl bg-slate-900/80 border border-slate-800 flex flex-col justify-between hover:border-amber-500/40 transition-all shadow-xl" data-idx={3}>
+          <div className="contact-card p-6 rounded-2xl bg-slate-900 border border-slate-700/80 flex flex-col justify-between hover:border-amber-400 transition-all shadow-xl min-h-[310px]" data-idx={3}>
             <div className="space-y-3">
-              <div className="w-10 h-10 rounded-xl bg-slate-800 text-slate-300 border border-slate-700 flex items-center justify-center">
+              <div className="w-10 h-10 rounded-xl bg-slate-800 text-amber-400 border border-slate-700 flex items-center justify-center">
                 <MessageSquare className="w-5 h-5" />
               </div>
-              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block font-mono">
+              <span className="text-[10px] font-bold text-amber-400 uppercase tracking-widest block font-mono">
                 ONLINE FORM
               </span>
               <h3 className="text-lg font-bold text-white">B2B Portal</h3>
-              <p className="text-xs text-slate-400 leading-relaxed font-normal">
+              <p className="text-xs text-slate-300 leading-relaxed font-normal">
                 Submit channel partnership terms or tender proposals through our digital form.
               </p>
+              <div className="pt-2 text-xs font-mono font-semibold text-white">
+                Online RFP & Tender Desk
+              </div>
             </div>
             <button
               type="button"

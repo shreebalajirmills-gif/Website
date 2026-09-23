@@ -39,6 +39,37 @@ export const InquiryForm: React.FC<InquiryFormProps> = ({ initialSegment = 'dist
     investmentScale: '',
   });
 
+  // Dynamic progress calculation that hops per step and advances with fields
+  const calculateProgress = () => {
+    if (step === 1) {
+      return segment ? 33 : 15;
+    }
+    if (step === 2) {
+      let step2Fields = 1; // specInterest has default 'both'
+      let totalStep2Fields = 2;
+      if (segment === 'distributor' && formData.annualVolumeMT) step2Fields++;
+      if (segment === 'contractor' && formData.requiredVolumeMT) step2Fields++;
+      if (segment === 'project' && formData.projectScope) step2Fields++;
+      if (segment === 'investor' && formData.investmentScale) step2Fields++;
+      const step2Bonus = Math.min((step2Fields / totalStep2Fields) * 33, 33);
+      return Math.round(33 + step2Bonus); // 33% -> up to 66%
+    }
+    if (step === 3) {
+      let step3Filled = 0;
+      const totalStep3 = 5; // companyName, contactName, email, phone, message
+      if (formData.companyName.trim()) step3Filled++;
+      if (formData.contactName.trim()) step3Filled++;
+      if (formData.email.trim()) step3Filled++;
+      if (formData.phone.trim()) step3Filled++;
+      if (formData.message.trim()) step3Filled++;
+      const step3Bonus = (step3Filled / totalStep3) * 34;
+      return Math.min(Math.round(66 + step3Bonus), 100);
+    }
+    return 100;
+  };
+
+  const currentProgress = calculateProgress();
+
   const handleSegmentSelect = (seg: BuyerSegment) => {
     setSegment(seg);
     setFormData((prev) => ({ ...prev, segment: seg }));
@@ -143,19 +174,52 @@ export const InquiryForm: React.FC<InquiryFormProps> = ({ initialSegment = 'dist
           {/* Step Progress Bar */}
           {step < 4 && (
             <div className="mb-10 border-b border-steel-200 pb-6">
-              <div className="flex items-center justify-between text-xs sm:text-sm font-bold text-steel-700 mb-2">
-                <span>Step {step} of 3</span>
-                <span className="text-steel-900 uppercase tracking-widest font-extrabold font-mono">
-                  {step === 1 && 'Select Segment Role'}
-                  {step === 2 && `${segment.toUpperCase()} Specifics & Products`}
-                  {step === 3 && 'Contact & Logistics'}
-                </span>
+              <div className="flex items-center justify-between text-xs sm:text-sm font-bold text-steel-700 mb-2.5">
+                <div className="flex items-center gap-2">
+                  <span className="bg-steel-900 text-white font-mono text-[11px] px-2 py-0.5 font-extrabold">
+                    STEP {step}/3
+                  </span>
+                  <span className="text-steel-900 font-extrabold font-mono text-xs sm:text-sm">
+                    {step === 1 && 'Select Segment Role'}
+                    {step === 2 && `${segment.toUpperCase()} Specifics & Products`}
+                    {step === 3 && 'Contact & Logistics'}
+                  </span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-[11px] font-mono text-steel-500 font-bold">Progress:</span>
+                  <span className="text-xs font-mono font-extrabold text-growth-700 bg-growth-50 px-2 py-0.5 border border-growth-200">
+                    {currentProgress}%
+                  </span>
+                </div>
               </div>
-              <div className="w-full bg-steel-200 h-2 overflow-hidden border border-steel-300">
-                <div
-                  className="bg-growth-600 h-full transition-all duration-300"
-                  style={{ width: `${(step / 3) * 100}%` }}
-                />
+
+              {/* Progress Track with animated gradient fill and step nodes */}
+              <div className="relative">
+                <div className="w-full bg-steel-200 h-2.5 overflow-hidden border border-steel-300">
+                  <div
+                    className="h-full bg-gradient-to-r from-amber-500 via-growth-500 to-growth-600 transition-all duration-500 ease-out shadow-sm"
+                    style={{ width: `${currentProgress}%` }}
+                  />
+                </div>
+                {/* 3 Step hop checkpoints */}
+                <div className="flex justify-between items-center -mt-3.5 px-0.5 pointer-events-none">
+                  {[1, 2, 3].map((s) => {
+                    const isPassed = step > s || (step === s && currentProgress >= (s * 33));
+                    const isCurrent = step === s;
+                    return (
+                      <div
+                        key={s}
+                        className={`w-5 h-5 rounded-full border-2 flex items-center justify-center text-[10px] font-mono font-bold transition-all duration-300 shadow-sm ${
+                          isPassed || isCurrent
+                            ? 'bg-steel-900 border-amber-400 text-amber-300 scale-110'
+                            : 'bg-white border-steel-300 text-steel-400'
+                        }`}
+                      >
+                        {s}
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
             </div>
           )}
@@ -289,44 +353,44 @@ export const InquiryForm: React.FC<InquiryFormProps> = ({ initialSegment = 'dist
               {/* Product Interest Selector */}
               <div>
                 <label className="block text-xs sm:text-sm font-bold text-steel-700 uppercase tracking-wider mb-2">
-                  Product Line Interest *
+                  Select Product Required *
                 </label>
-                <div className="grid grid-cols-3 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                   <button
                     type="button"
                     onClick={() => setFormData((p) => ({ ...p, specInterest: 'structural_steel' }))}
                     aria-pressed={formData.specInterest === 'structural_steel'}
-                    className={`p-3.5 sm:p-3  text-xs sm:text-sm transition-all border min-h-[48px] ${
+                    className={`p-3.5 sm:p-3 text-xs sm:text-sm transition-all border min-h-[48px] text-center ${
                       formData.specInterest === 'structural_steel'
-                        ? 'bg-white text-black font-black border-steel-300 '
+                        ? 'bg-steel-900 text-white font-extrabold border-steel-900 shadow-sm'
                         : 'btn-secondary text-steel-700 hover:text-black font-bold'
                     }`}
                   >
-                    Structural Steel
+                    MS Flats (Patti)
                   </button>
                   <button
                     type="button"
                     onClick={() => setFormData((p) => ({ ...p, specInterest: 'tmt_bar' }))}
                     aria-pressed={formData.specInterest === 'tmt_bar'}
-                    className={`p-3.5 sm:p-3  text-xs sm:text-sm transition-all border min-h-[48px] ${
+                    className={`p-3.5 sm:p-3 text-xs sm:text-sm transition-all border min-h-[48px] text-center ${
                       formData.specInterest === 'tmt_bar'
-                        ? 'bg-white text-black font-black border-steel-300 '
+                        ? 'bg-steel-900 text-white font-extrabold border-steel-900 shadow-sm'
                         : 'btn-secondary text-steel-700 hover:text-black font-bold'
                     }`}
                   >
-                    TMT Fe-500D Bars
+                    MS Rounds (Gol)
                   </button>
                   <button
                     type="button"
                     onClick={() => setFormData((p) => ({ ...p, specInterest: 'both' }))}
                     aria-pressed={formData.specInterest === 'both'}
-                    className={`p-3.5 sm:p-3  text-xs sm:text-sm transition-all border min-h-[48px] ${
+                    className={`p-3.5 sm:p-3 text-xs sm:text-sm transition-all border min-h-[48px] text-center ${
                       formData.specInterest === 'both'
-                        ? 'bg-white text-black font-black border-steel-300 '
+                        ? 'bg-steel-900 text-white font-extrabold border-steel-900 shadow-sm'
                         : 'btn-secondary text-steel-700 hover:text-black font-bold'
                     }`}
                   >
-                    Both Product Lines
+                    MS Squares (Chakor) / All
                   </button>
                 </div>
               </div>
