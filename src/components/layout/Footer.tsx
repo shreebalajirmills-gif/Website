@@ -69,18 +69,23 @@ export const Footer: React.FC<FooterProps> = ({ onSelectSegment = () => {} }) =>
             </h3>
             <ul className="space-y-2.5 text-sm">
               <li>
-                <Link href="/products/structural-steel" className="hover:text-amber-300 transition-colors">
-                  Structural Steel Angles & Channels
+                <Link href="/products#products" className="hover:text-amber-300 transition-colors">
+                  MS Flats / Patti (IS 2062)
                 </Link>
               </li>
               <li>
-                <Link href="/products/tmt-rebars" className="hover:text-amber-300 transition-colors">
-                  TMT Fe-500D High-Ductility Bars
+                <Link href="/products#products" className="hover:text-amber-300 transition-colors">
+                  MS Round Bars / Gol (IS 2062)
+                </Link>
+              </li>
+              <li>
+                <Link href="/products#products" className="hover:text-amber-300 transition-colors">
+                  MS Square Bars / Chakor (IS 2062)
                 </Link>
               </li>
               <li>
                 <Link href="/products" className="hover:text-amber-300 transition-colors">
-                  BIS Technical Datasheets & Matrix
+                  Full Mill Product Schedule & Specs
                 </Link>
               </li>
               <li>

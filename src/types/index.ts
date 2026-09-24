@@ -58,7 +58,7 @@ export interface InquiryFormData {
   email: string;
   phone: string;
   message: string;
-  specInterest: 'structural_steel' | 'tmt_bar' | 'both';
+  specInterest: 'structural_steel' | 'tmt_bar' | 'both' | 'ms_flats' | 'ms_rounds' | 'ms_squares' | 'all_products';
   
   // Segment-specific optional fields
   currentSuppliers?: string;

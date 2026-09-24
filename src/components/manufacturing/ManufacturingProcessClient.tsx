@@ -63,21 +63,23 @@ export function ManufacturingProcessClient() {
       id: 'step-3',
       number: '03',
       title: 'High-Speed Multi-Stand Rolling Mill',
-      tagline: 'Dimensional Precision Across Structural & Rebar Profiles',
+      tagline: 'Dimensional Precision for MS Flats, Rounds & Squares',
       icon: Layers,
       color: 'from-blue-500 to-cyan-600',
-      description: 'Heated billets pass through our multi-stand roughing, intermediate, and finishing mill stands fitted with tungsten carbide rolls. This ensures razor-sharp section geometry for IS 2062 structural profiles and uniform rib height for TMT bars.',
+      description: 'Heated billets pass through our multi-stand roughing, intermediate, and finishing mill stands fitted with tungsten carbide rolls. Calibrated roll pass design ensures razor-sharp section geometry and exact dimensional tolerances for our core product lines: MS Flats (Patti), MS Round Bars (Gol), and MS Square Bars (Chakor) under IS 2062.',
       highlights: [
-        'Computerized roll pass design for exact sectional tolerances',
-        'Tungsten carbide finishing rolls for flawless surface finish',
-        'Synchronized high-speed rolling up to 30 m/sec',
-        'Continuous automatic gauge control (AGC)'
+        'Dedicated rolling passes for MS Flats (Patti: 25x3mm to 100x20mm)',
+        'Continuous high-speed rolling for MS Rounds (Gol: 10mm to 50mm dia)',
+        'Sharp 90° edge profiling for MS Squares (Chakor: 10x10mm to 40x40mm)',
+        'Tungsten carbide finishing rolls ensuring uniform surface without seams',
+        'Continuous automatic gauge control (AGC) conforming to IS 1852'
       ],
       specs: {
-        'Tolerance Range': 'BIS IS 1852 & IS 1786 Strict Class',
-        'Structural Profiles': 'MS Angles, Channels, Joists',
-        'TMT Bar Range': '8mm to 32mm Diameter',
-        'Surface Finish': 'Smooth & Crack-Free'
+        'Tolerance Range': 'BIS IS 1852 & IS 2062 Class A',
+        'MS Flats (Patti)': '25x3 mm up to 100x20 mm',
+        'MS Rounds (Gol)': '10 mm up to 50 mm Dia',
+        'MS Squares (Chakor)': '10x10 mm up to 40x40 mm',
+        'Surface Finish': 'Uniform, Crack-Free & Scale-Free'
       }
     },
     {
@@ -108,17 +110,17 @@ export function ManufacturingProcessClient() {
       tagline: 'Controlled Atmospheric Stabilization & Dispatch Quality',
       icon: Activity,
       color: 'from-purple-500 to-indigo-600',
-      description: 'Quenched bars are sheared to standard 12-meter lengths and transferred onto an automatic rake cooling bed. Controlled air cooling ensures residual stress relief, uniform mechanical properties, and automatic bundle tagging for full batch traceability.',
+      description: 'Rolled Flats, Rounds, and Squares are sheared to exact 6-meter or 12-meter commercial lengths and transferred onto an automatic rake cooling bed. Controlled atmospheric cooling eliminates thermal stresses and distortion, followed by automated counting and bundle tagging.',
       highlights: [
-        'Automatic rake cooling bed for uniform cooling rate',
-        'Cold flying shear cutting for clean, burr-free ends',
-        'Automated counting, bundling, and metal strap tying',
-        'Barcode-tagged mill test certificate (MTC) attachment'
+        'Automatic cooling bed preventing warping in Flats and Squares',
+        'Cold flying shear cutting for clean, square, burr-free ends',
+        'Rigid bundle strapping with steel bands for safe transit',
+        'Barcode-tagged Mill Test Certificate (MTC) matching Heat No. per bundle'
       ],
       specs: {
-        'Standard Length': '12.0 Meters (Custom Available)',
-        'Bundle Weight': 'Approx. 2.0 to 2.5 MT per Bundle',
-        'Traceability': 'Heat Number Tagged per Bundle',
+        'Standard Length': '6.0M & 12.0M (Custom Lengths Available)',
+        'Bundle Weight': 'Approx. 1.5 to 2.5 MT Strapped Bundles',
+        'Traceability': 'Heat Number Tagged on Every Bundle',
         'Packaging': 'Corrosion Inhibitor Strapped'
       }
     }

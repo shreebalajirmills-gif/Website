@@ -111,7 +111,7 @@ export default function ManufacturingProcessesPage() {
           </h1>
 
           <p className="mt-6 text-base sm:text-xl text-steel-600 max-w-3xl mx-auto leading-relaxed">
-            Discover how Shree Balaji Rolling Mills combines advanced induction melting, continuous rolling mill passes, and Thermex water-quenching technology in Bhiwadi, Haryana to produce 180,000 TPA structural steel and Fe-500D TMT bars.
+            Discover how Shree Balaji Rolling Mills combines advanced induction melting, continuous multi-stand rolling passes, and Thermex water-quenching technology in Bhiwadi, Haryana to produce 180,000 TPA of certified MS Flats (Patti), MS Rounds (Gol), MS Squares (Chakor), and Fe-500D TMT bars.
           </p>
 
           {/* Quick Nav Anchors */}
@@ -126,7 +126,7 @@ export default function ManufacturingProcessesPage() {
               Laboratory Checks
             </a>
             <a href="#testing-guide" className="btn-secondary text-xs sm:text-xs !py-3 sm:!py-2.5 !px-5 font-bold min-h-[48px] shrink-0 whitespace-nowrap">
-              How to Test TMT Bar
+              How to Test Quality
             </a>
           </div>
         </div>
@@ -139,10 +139,10 @@ export default function ManufacturingProcessesPage() {
             Step-By-Step Engineering
           </span>
           <h2 className="text-3xl sm:text-5xl font-black text-slate-950 mt-4 tracking-tight">
-            The 5-Stage TMT & Rolling Process
+            The 5-Stage Rolling & Finishing Process
           </h2>
           <p className="mt-4 text-steel-600 text-sm sm:text-base">
-            Click through each phase below to inspect the metallurgy, thermal cycles, and technical specifications of our Bhiwadi rolling facility.
+            Click through each phase below to inspect the metallurgy, thermal cycles, and technical specifications for MS Flats, MS Rounds, and MS Squares at our Bhiwadi rolling facility.
           </p>
         </div>
 

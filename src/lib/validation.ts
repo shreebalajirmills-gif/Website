@@ -21,7 +21,15 @@ export const inquirySchema = z.object({
     .string()
     .min(10, 'Message should be at least 10 characters detailing your requirement')
     .max(2000, 'Message cannot exceed 2000 characters'),
-  specInterest: z.enum(['structural_steel', 'tmt_bar', 'both'], {
+  specInterest: z.enum([
+    'structural_steel',
+    'tmt_bar',
+    'both',
+    'ms_flats',
+    'ms_rounds',
+    'ms_squares',
+    'all_products',
+  ], {
     message: 'Please select a product of interest',
   }),
   

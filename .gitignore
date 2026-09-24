@@ -43,3 +43,8 @@ next-env.d.ts
 # cloudflare / opennext
 /.open-next/
 .wrangler/
+dev.log
+balaji-products-extracted/
+Task.md
+OPENCLAW_CHAT_HISTORY.md
+POSTS/

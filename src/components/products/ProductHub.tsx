@@ -343,7 +343,6 @@ export const ProductHub: React.FC<ProductHubProps> = ({ onSelectSegment }) => {
                       <thead className="bg-steel-200/80 sticky top-0 text-[10px] text-steel-700 uppercase">
                         <tr>
                           <th className="py-2 px-3">Profile / Diameter</th>
-                          <th className="py-2 px-3">Unit Weight</th>
                           <th className="py-2 px-3">Stock Length</th>
                           <th className="py-2 px-3">Target Application</th>
                         </tr>
@@ -352,8 +351,7 @@ export const ProductHub: React.FC<ProductHubProps> = ({ onSelectSegment }) => {
                         {activeModalProduct.availableSizes.map((sz, idx) => (
                           <tr key={idx} className="hover:bg-steel-100">
                             <td className="py-2 px-3 font-bold text-steel-900">{sz.size}</td>
-                            <td className="py-2 px-3 font-medium">{sz.weightPerM || '—'}</td>
-                            <td className="py-2 px-3 text-steel-600">{sz.standardLength || '12 Meters'}</td>
+                            <td className="py-2 px-3 text-steel-600">{sz.standardLength || '6 - 12 Meters'}</td>
                             <td className="py-2 px-3 text-steel-600 font-sans">{sz.application || '—'}</td>
                           </tr>
                         ))}

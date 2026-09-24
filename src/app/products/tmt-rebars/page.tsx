@@ -38,13 +38,13 @@ export default function TmtRebarsPage() {
   };
 
   const rebarSizes = [
-    { size: '8 mm', weightPerM: '0.395 kg/m', bundlePcs: '10 Pcs', app: 'Slab reinforcement & Stirrups' },
-    { size: '10 mm', weightPerM: '0.617 kg/m', bundlePcs: '7 Pcs', app: 'Residential beams & Floor slabs' },
-    { size: '12 mm', weightPerM: '0.888 kg/m', bundlePcs: '5 Pcs', app: 'Commercial columns & Beams' },
-    { size: '16 mm', weightPerM: '1.580 kg/m', bundlePcs: '3 Pcs', app: 'Heavy foundations & Flyovers' },
-    { size: '20 mm', weightPerM: '2.470 kg/m', bundlePcs: '2 Pcs', app: 'Bridge piers & High-rise pillars' },
-    { size: '25 mm', weightPerM: '3.850 kg/m', bundlePcs: '1 Pc', app: 'Infrastructure dams & Heavy foundations' },
-    { size: '32 mm', weightPerM: '6.310 kg/m', bundlePcs: '1 Pc', app: 'Industrial plant foundations & Power plants' },
+    { size: '8 mm', bundlePcs: '10 Pcs', app: 'Slab reinforcement & Stirrups' },
+    { size: '10 mm', bundlePcs: '7 Pcs', app: 'Residential beams & Floor slabs' },
+    { size: '12 mm', bundlePcs: '5 Pcs', app: 'Commercial columns & Beams' },
+    { size: '16 mm', bundlePcs: '3 Pcs', app: 'Heavy foundations & Flyovers' },
+    { size: '20 mm', bundlePcs: '2 Pcs', app: 'Bridge piers & High-rise pillars' },
+    { size: '25 mm', bundlePcs: '1 Pc', app: 'Infrastructure dams & Heavy foundations' },
+    { size: '32 mm', bundlePcs: '1 Pc', app: 'Industrial plant foundations & Power plants' },
   ];
 
   const breadcrumbJsonLd = getBreadcrumbJsonLd([
@@ -114,15 +114,15 @@ export default function TmtRebarsPage() {
           </p>
         </div>
 
-        {/* TMT Rebar Weight Schedule Table */}
+        {/* TMT Rebar Dimension Schedule Table */}
         <div className="card-base card-product p-8 border border-steel-200 space-y-6">
           <div className="flex items-center justify-between border-b border-steel-200 pb-4">
             <div className="flex items-center gap-2">
               <Scale className="w-5 h-5 text-growth-600" />
-              <h2 className="text-xl font-bold text-steel-900">TMT Fe-500D Diameter & Weight Schedule</h2>
+              <h2 className="text-xl font-bold text-steel-900">TMT Fe-500D Diameter & Dimension Schedule</h2>
             </div>
             <span className="text-xs font-mono font-bold text-steel-900 bg-transparent group-hover:bg-growth-50 px-3 py-1 border border-steel-200 group-hover:border-growth-400">
-              Formula: (D² / 162) kg/m
+              IS 1786 Specifications
             </span>
           </div>
 
@@ -131,7 +131,6 @@ export default function TmtRebarsPage() {
               <thead>
                 <tr className="border-b border-steel-200 text-steel-500 font-mono text-[11px] uppercase">
                   <th className="py-3 px-4">Bar Diameter (mm)</th>
-                  <th className="py-3 px-4">Unit Weight (kg/m)</th>
                   <th className="py-3 px-4">Standard Bundle Count</th>
                   <th className="py-3 px-4">Structural Application</th>
                 </tr>
@@ -140,7 +139,6 @@ export default function TmtRebarsPage() {
                 {rebarSizes.map((item, i) => (
                   <tr key={i} className="hover:bg-steel-50 transition-colors">
                     <td className="py-3.5 px-4 font-bold text-steel-900">{item.size}</td>
-                    <td className="py-3.5 px-4 font-bold text-steel-900">{item.weightPerM}</td>
                     <td className="py-3.5 px-4 text-steel-600">{item.bundlePcs}</td>
                     <td className="py-3.5 px-4 font-sans text-steel-600">{item.app}</td>
                   </tr>

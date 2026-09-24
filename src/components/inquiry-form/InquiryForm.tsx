@@ -355,42 +355,54 @@ export const InquiryForm: React.FC<InquiryFormProps> = ({ initialSegment = 'dist
                 <label className="block text-xs sm:text-sm font-bold text-steel-700 uppercase tracking-wider mb-2">
                   Select Product Required *
                 </label>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3">
                   <button
                     type="button"
-                    onClick={() => setFormData((p) => ({ ...p, specInterest: 'structural_steel' }))}
-                    aria-pressed={formData.specInterest === 'structural_steel'}
-                    className={`p-3.5 sm:p-3 text-xs sm:text-sm transition-all border min-h-[48px] text-center ${
-                      formData.specInterest === 'structural_steel'
-                        ? 'bg-steel-900 text-white font-extrabold border-steel-900 shadow-sm'
-                        : 'btn-secondary text-steel-700 hover:text-black font-bold'
+                    onClick={() => setFormData((p) => ({ ...p, specInterest: 'ms_flats' }))}
+                    aria-pressed={formData.specInterest === 'ms_flats' || formData.specInterest === 'structural_steel'}
+                    className={`p-3 sm:p-3.5 text-xs sm:text-sm transition-all border min-h-[48px] text-center font-bold rounded-lg cursor-pointer ${
+                      formData.specInterest === 'ms_flats' || formData.specInterest === 'structural_steel'
+                        ? 'bg-amber-600 text-white font-black border-amber-600 shadow-md ring-2 ring-amber-500/40'
+                        : 'bg-white text-slate-800 border-steel-300 hover:border-amber-500 hover:text-black hover:bg-slate-50'
                     }`}
                   >
                     MS Flats (Patti)
                   </button>
                   <button
                     type="button"
-                    onClick={() => setFormData((p) => ({ ...p, specInterest: 'tmt_bar' }))}
-                    aria-pressed={formData.specInterest === 'tmt_bar'}
-                    className={`p-3.5 sm:p-3 text-xs sm:text-sm transition-all border min-h-[48px] text-center ${
-                      formData.specInterest === 'tmt_bar'
-                        ? 'bg-steel-900 text-white font-extrabold border-steel-900 shadow-sm'
-                        : 'btn-secondary text-steel-700 hover:text-black font-bold'
+                    onClick={() => setFormData((p) => ({ ...p, specInterest: 'ms_rounds' }))}
+                    aria-pressed={formData.specInterest === 'ms_rounds' || formData.specInterest === 'tmt_bar'}
+                    className={`p-3 sm:p-3.5 text-xs sm:text-sm transition-all border min-h-[48px] text-center font-bold rounded-lg cursor-pointer ${
+                      formData.specInterest === 'ms_rounds' || formData.specInterest === 'tmt_bar'
+                        ? 'bg-amber-600 text-white font-black border-amber-600 shadow-md ring-2 ring-amber-500/40'
+                        : 'bg-white text-slate-800 border-steel-300 hover:border-amber-500 hover:text-black hover:bg-slate-50'
                     }`}
                   >
                     MS Rounds (Gol)
                   </button>
                   <button
                     type="button"
-                    onClick={() => setFormData((p) => ({ ...p, specInterest: 'both' }))}
-                    aria-pressed={formData.specInterest === 'both'}
-                    className={`p-3.5 sm:p-3 text-xs sm:text-sm transition-all border min-h-[48px] text-center ${
-                      formData.specInterest === 'both'
-                        ? 'bg-steel-900 text-white font-extrabold border-steel-900 shadow-sm'
-                        : 'btn-secondary text-steel-700 hover:text-black font-bold'
+                    onClick={() => setFormData((p) => ({ ...p, specInterest: 'ms_squares' }))}
+                    aria-pressed={formData.specInterest === 'ms_squares'}
+                    className={`p-3 sm:p-3.5 text-xs sm:text-sm transition-all border min-h-[48px] text-center font-bold rounded-lg cursor-pointer ${
+                      formData.specInterest === 'ms_squares'
+                        ? 'bg-amber-600 text-white font-black border-amber-600 shadow-md ring-2 ring-amber-500/40'
+                        : 'bg-white text-slate-800 border-steel-300 hover:border-amber-500 hover:text-black hover:bg-slate-50'
                     }`}
                   >
-                    MS Squares (Chakor) / All
+                    MS Squares (Chakor)
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setFormData((p) => ({ ...p, specInterest: 'all_products' }))}
+                    aria-pressed={formData.specInterest === 'all_products' || formData.specInterest === 'both'}
+                    className={`p-3 sm:p-3.5 text-xs sm:text-sm transition-all border min-h-[48px] text-center font-bold rounded-lg cursor-pointer ${
+                      formData.specInterest === 'all_products' || formData.specInterest === 'both'
+                        ? 'bg-amber-600 text-white font-black border-amber-600 shadow-md ring-2 ring-amber-500/40'
+                        : 'bg-white text-slate-800 border-steel-300 hover:border-amber-500 hover:text-black hover:bg-slate-50'
+                    }`}
+                  >
+                    All 3 Products / Mix
                   </button>
                 </div>
               </div>
@@ -537,9 +549,23 @@ export const InquiryForm: React.FC<InquiryFormProps> = ({ initialSegment = 'dist
             <form onSubmit={handleSubmit} className="space-y-4">
               
               <div className="flex items-center justify-between border-b border-steel-200 pb-4">
-                <span className="text-xs sm:text-sm font-black text-steel-900 uppercase tracking-widest font-mono">
-                  Contact Information
-                </span>
+                <div>
+                  <span className="text-xs sm:text-sm font-black text-steel-900 uppercase tracking-widest font-mono block">
+                    Contact Information
+                  </span>
+                  <div className="flex items-center gap-1.5 mt-1 text-xs text-steel-600">
+                    <span>Selected Product:</span>
+                    <span className="font-bold text-amber-700 font-mono bg-amber-50 px-2 py-0.5 rounded border border-amber-200">
+                      {formData.specInterest === 'ms_flats' || formData.specInterest === 'structural_steel'
+                        ? 'MS Flats (Patti)'
+                        : formData.specInterest === 'ms_rounds' || formData.specInterest === 'tmt_bar'
+                        ? 'MS Rounds (Gol)'
+                        : formData.specInterest === 'ms_squares'
+                        ? 'MS Squares (Chakor)'
+                        : 'All 3 Products / Mix'}
+                    </span>
+                  </div>
+                </div>
                 <button
                   type="button"
                   onClick={() => setStep(2)}

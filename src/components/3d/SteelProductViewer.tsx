@@ -147,14 +147,107 @@ export const SteelProductViewer: React.FC<SteelProductViewerProps> = ({ productT
       const mesh = new THREE.Mesh(geo, mat);
       mainGroup.add(mesh);
     } else if (productType === 'ms_flats') {
-      // 3D MS Flat Profile (Solid Rectangle Bar)
-      const geo = new THREE.BoxGeometry(2.4, 0.35, 3.5);
+      // 3D MS Flat / Patti Strip Profile (Elongated hot-rolled steel flat strip)
+      // Realistic proportions: wide (0.95), slender gauge thickness (0.12), elongated commercial stock strip (5.4)
+      const stripWidth = 0.95;
+      const stripThickness = 0.12;
+      const stripLength = 5.4;
+
+      // Create procedural canvas textures for authentic hot-rolled mill scale steel
+      const createMillScaleTexture = () => {
+        const canvas = document.createElement('canvas');
+        canvas.width = 512;
+        canvas.height = 512;
+        const ctx = canvas.getContext('2d');
+        if (!ctx) return null;
+
+        // Base dark blue-gray steel mill finish
+        ctx.fillStyle = '#2b313b';
+        ctx.fillRect(0, 0, 512, 512);
+
+        // Rolling mill grain striations along the length
+        for (let i = 0; i < 500; i++) {
+          const y = Math.random() * 512;
+          const h = 1 + Math.random() * 2.5;
+          const alpha = 0.04 + Math.random() * 0.08;
+          ctx.fillStyle = Math.random() > 0.4 
+            ? `rgba(20, 24, 30, ${alpha})` 
+            : `rgba(65, 75, 88, ${alpha})`;
+          ctx.fillRect(0, y, 512, h);
+        }
+
+        // Mill scale micro-mottling & thermal oxidation specks
+        for (let j = 0; j < 3000; j++) {
+          const x = Math.random() * 512;
+          const y = Math.random() * 512;
+          const radius = Math.random() * 1.8;
+          const shade = Math.random();
+          if (shade > 0.6) {
+            ctx.fillStyle = 'rgba(78, 88, 102, 0.12)'; // cooler steel fleck
+          } else if (shade > 0.2) {
+            ctx.fillStyle = 'rgba(15, 18, 22, 0.18)'; // dark magnetite scale
+          } else {
+            ctx.fillStyle = 'rgba(92, 60, 38, 0.09)'; // subtle oxidation tint
+          }
+          ctx.beginPath();
+          ctx.arc(x, y, radius, 0, Math.PI * 2);
+          ctx.fill();
+        }
+
+        const texture = new THREE.CanvasTexture(canvas);
+        texture.wrapS = THREE.RepeatWrapping;
+        texture.wrapT = THREE.RepeatWrapping;
+        texture.repeat.set(1, 4);
+        return texture;
+      };
+
+      const createBumpTexture = () => {
+        const canvas = document.createElement('canvas');
+        canvas.width = 256;
+        canvas.height = 256;
+        const ctx = canvas.getContext('2d');
+        if (!ctx) return null;
+
+        ctx.fillStyle = '#808080';
+        ctx.fillRect(0, 0, 256, 256);
+
+        // Subtle hot-rolled surface roughness
+        for (let k = 0; k < 2000; k++) {
+          const x = Math.random() * 256;
+          const y = Math.random() * 256;
+          const val = Math.floor(Math.random() * 60);
+          ctx.fillStyle = `rgb(${val}, ${val}, ${val})`;
+          ctx.fillRect(x, y, 1.5, 1.5);
+        }
+
+        const bumpMap = new THREE.CanvasTexture(canvas);
+        bumpMap.wrapS = THREE.RepeatWrapping;
+        bumpMap.wrapT = THREE.RepeatWrapping;
+        bumpMap.repeat.set(1, 4);
+        return bumpMap;
+      };
+
+      const millScaleTex = createMillScaleTexture();
+      const bumpTex = createBumpTexture();
+
+      const geo = new THREE.BoxGeometry(stripWidth, stripThickness, stripLength);
+
+      // Authentic hot-rolled structural steel material:
+      // Dark slate/gunmetal with cool charcoal-blue undertone (#333842)
       const mat = new THREE.MeshStandardMaterial({
-        color: 0x64748B,
-        metalness: 0.85,
-        roughness: 0.22,
+        color: 0x333b45,
+        map: millScaleTex || null,
+        bumpMap: bumpTex || null,
+        bumpScale: 0.015,
+        metalness: 0.86,
+        roughness: 0.42,
       });
+
       const mesh = new THREE.Mesh(geo, mat);
+      // Realistic diagonal dynamic display angle so buyer sees the elongated flat strip profile clearly
+      mesh.rotation.x = THREE.MathUtils.degToRad(18);
+      mesh.rotation.y = THREE.MathUtils.degToRad(-35);
+      mesh.rotation.z = THREE.MathUtils.degToRad(22);
       mainGroup.add(mesh);
     } else if (productType === 'ms_rounds') {
       // 3D MS Round Bar - Gol (Smooth Solid Cylinder)

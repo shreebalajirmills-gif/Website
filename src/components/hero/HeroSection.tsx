@@ -36,8 +36,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onSelectSegment }) => 
         {/* Top Mill Telemetry Badge */}
         <div className="flex justify-center mb-8">
           <div className="badge-base px-5 py-2 inline-flex items-center gap-3 backdrop-blur-xl border-steel-300">
-            <span className="flex items-center gap-1.5 text-xs font-mono font-bold text-steel-900">
-              <Flame className="w-4 h-4 text-growth-600 animate-pulse" />
+            <span className="text-xs font-mono font-bold text-steel-900">
               STEEL MANUFACTURING PLATFORM
             </span>
             <span className="h-3 w-px bg-steel-300" />
